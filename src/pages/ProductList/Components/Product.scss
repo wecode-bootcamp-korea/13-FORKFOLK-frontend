@@ -1,0 +1,27 @@
+.Product {
+  font-family: "Quicksand", serif, sans-serif;
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin-bottom: 40px;
+
+  img {
+    width: 228px;
+    height: 228px;
+  }
+  button {
+    margin: 7px 0 20px;
+    font-size: 12px;
+    background: none;
+    border: none;
+    display: block;
+    cursor: pointer;
+    letter-spacing: 1px;
+    padding: 0px;
+  }
+  p,
+  div {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+}

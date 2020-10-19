@@ -1,0 +1,36 @@
+.ProductList {
+  margin: 0 20px;
+  font-family: "Quicksand", serif, sans-serif;
+
+  .pageHeader {
+    padding: 70px 0;
+    text-align: center;
+
+    ul {
+      color: darkgray;
+      margin: 0 5px;
+      li {
+        text-align: center;
+        box-sizing: border-box;
+        display: inline-flex;
+        margin: 0 5px;
+
+        button {
+          background: none;
+          border: none;
+          color: inherit;
+          font-family: inherit;
+          cursor: pointer;
+        }
+      }
+    }
+    span {
+      font-size: 13.5px;
+    }
+  }
+
+  .products ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

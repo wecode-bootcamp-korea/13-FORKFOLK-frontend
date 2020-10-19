@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "image": "https://images.unsplash.com/photo-1529607225807-563e0851ee7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "ART PRINTS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 1,
+      "image": "https://images.unsplash.com/photo-1529607225807-563e0851ee7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "BOOKS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 2,
+      "image": "https://images.unsplash.com/photo-1529607225807-563e0851ee7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "MAGAZINE",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 3,
+      "image": "https://images.unsplash.com/photo-1529607225807-563e0851ee7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "NOTECARDS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 4,
+      "image": "https://images.unsplash.com/photo-1529607225807-563e0851ee7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "SUBSCRIPTIONS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    }
+  ]
+}

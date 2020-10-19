@@ -1,0 +1,34 @@
+{
+  "filterList": [
+    {
+      "id": 0,
+      "category": "all",
+      "name": "ALL"
+    },
+    {
+      "id": 1,
+      "category": "artPrints",
+      "name": "ART PRINTS"
+    },
+    {
+      "id": 2,
+      "category": "books",
+      "name": "BOOKS"
+    },
+    {
+      "id": 3,
+      "category": "magazine",
+      "name": "MAGAZINE"
+    },
+    {
+      "id": 4,
+      "category": "notecards",
+      "name": "NOTECARDS"
+    },
+    {
+      "id": 5,
+      "category": "subscriptions",
+      "name": "SUBSCRIPTIONS"
+    }
+  ]
+}
