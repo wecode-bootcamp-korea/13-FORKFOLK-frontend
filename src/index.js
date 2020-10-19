@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './reset.scss';
-import './common.scss';
+import './styles/reset.scss';
+import './styles/common.scss';
+import Account from "./pages/Account/Account";
 
-ReactDOM.render(<Routes />, document.getElementById('root'));
+ReactDOM.render(<Account />, document.getElementById('root'));
