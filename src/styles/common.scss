@@ -1,0 +1,17 @@
+// font-family: 'EB Garamond', 'Quicksand', serif, sans-serif;
+
+@mixin displayColLeftBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@mixin displayRowCenterTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+@mixin hoverColor {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+$liWidth: 240px;
+$standardSpace: 40px;
