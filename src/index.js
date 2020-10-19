@@ -2,6 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/reset.scss';
 import './styles/common.scss';
-import Account from "./pages/Account/Account";
+import Routes from "./Routes";
 
-ReactDOM.render(<Account />, document.getElementById('root'));
+ReactDOM.render(<Routes />, document.getElementById('root'));
