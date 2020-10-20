@@ -15,7 +15,7 @@ class DiveIn extends Component {
       .then((res) => res.json())
       .then((result) =>
         this.setState({
-          DiveIn: result.data.DiveIn,
+          DiveIn: result.flexItemsData.DiveIn,
         })
       );
   }

@@ -15,7 +15,7 @@ class ExtraordinaryInteriors extends Component {
       .then((res) => res.json())
       .then((result) =>
         this.setState({
-          ExtraordinaryInteriors: result.data.ExtraordinaryInteriors,
+          ExtraordinaryInteriors: result.flexItemsData.ExtraordinaryInteriors,
         })
       );
   }

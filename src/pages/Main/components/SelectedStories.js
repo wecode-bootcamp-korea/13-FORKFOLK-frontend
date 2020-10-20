@@ -14,7 +14,7 @@ class SelectedStories extends Component {
     })
       .then((res) => res.json())
       .then((result) =>
-        this.setState({ selectedStories: result.data.selectedStories })
+        this.setState({ selectedStories: result.flexItemsData.selectedStories })
       );
   }
   render() {
