@@ -1,13 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import "./Main.scss";
 
 class Main extends Component {
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
-    }
+  render() {
+    return (
+      <main className="Main">
+        <div className="mainIssue">
+          <span className="quickSand">ARTS &#38; CULTURE</span>
+          <br />
+          Navigate Nature
+          <br />
+          <span>How to orienteer outdoors</span>
+        </div>
+      </main>
+    );
+  }
 }
 
-export default Main
+export default Main;
