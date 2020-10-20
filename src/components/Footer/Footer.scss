@@ -1,4 +1,30 @@
+@import "../../styles/common.scss";
+* {
+  box-sizing: border-box;
+}
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
+}
+.Footer {
+  display: flex;
+  height: 42px;
+  margin: 0 $standardSpace;
+  padding: 10px 0 100px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  border-top: 3px solid #000;
+  justify-content: space-between;
+  a {
+    transition: 0.35s ease;
+    &:hover {
+      color: #bcbcbc;
+    }
+  }
+  ul {
+    display: flex;
+    li {
+      padding: 10px;
+    }
+  }
 }

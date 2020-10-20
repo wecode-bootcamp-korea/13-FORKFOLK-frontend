@@ -5,8 +5,8 @@ import "./Footer.scss";
 class Footer extends Component {
   render() {
     return (
-      <footer>
-        <ul className="siteInfo">
+      <footer className="Footer">
+        <ul>
           <li>© Kinfolk 2020</li>
           <li>
             <Link>Terms</Link>
@@ -15,7 +15,7 @@ class Footer extends Component {
             <Link>Subscribe</Link>
           </li>
         </ul>
-        <ul className="sns">
+        <ul>
           <li>
             <a href="https://www.facebook.com/kinfolkmag">Facebook</a>
           </li>
