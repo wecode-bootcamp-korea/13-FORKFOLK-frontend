@@ -7,8 +7,9 @@
     text-align: center;
 
     ul {
-      color: darkgray;
+      color: rgb(77, 77, 77);
       margin: 0 5px;
+      letter-spacing: 2.5px;
       li {
         text-align: center;
         box-sizing: border-box;
@@ -16,11 +17,10 @@
         margin: 0 5px;
 
         button {
-          background: none;
-          border: none;
           color: inherit;
           font-family: inherit;
           cursor: pointer;
+          letter-spacing: 1.5px;
         }
       }
     }
@@ -29,9 +29,40 @@
     }
   }
 
-  .products ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  .products {
+    content {
+      display: flex;
+      justify-content: center;
+      ul {
+        width: 1080px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        letter-spacing: 1.5px;
+      }
+    }
+  }
+
+  .pageFooter {
+    margin: 115px 0;
+    span {
+      display: flex;
+      justify-content: center;
+      button {
+        cursor: pointer;
+        font-size: 14px;
+        color: #3d3c3b;
+        margin: 0 12px 2px;
+      }
+      .prev {
+        display: none;
+      }
+      .next {
+        display: none;
+      }
+    }
+  }
+  .invisiblePageFooter {
+    display: none;
   }
 }

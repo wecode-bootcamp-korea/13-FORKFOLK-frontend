@@ -2,33 +2,27 @@
   "filterList": [
     {
       "id": 0,
-      "category": "all",
-      "name": "ALL"
+      "category": "ALL"
     },
     {
       "id": 1,
-      "category": "artPrints",
-      "name": "ART PRINTS"
+      "category": "ART PRINTS"
     },
     {
       "id": 2,
-      "category": "books",
-      "name": "BOOKS"
+      "category": "BOOKS"
     },
     {
       "id": 3,
-      "category": "magazine",
-      "name": "MAGAZINE"
+      "category": "MAGAZINE"
     },
     {
       "id": 4,
-      "category": "notecards",
-      "name": "NOTECARDS"
+      "category": "NOTECARDS"
     },
     {
       "id": 5,
-      "category": "subscriptions",
-      "name": "SUBSCRIPTIONS"
+      "category": "SUBSCRIPTIONS"
     }
   ]
 }
