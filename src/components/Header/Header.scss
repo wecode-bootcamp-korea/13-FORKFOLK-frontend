@@ -11,10 +11,27 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 0;
     ul {
       display: flex;
+      &:nth-child(1) {
+        li {
+          &:nth-child(1) {
+            a {
+              border: 1px solid #000;
+              &:hover {
+                color: #fff;
+                background-color: #000000;
+              }
+            }
+          }
+        }
+      }
       li {
-        padding: 15px;
+        margin-left: 10px;
+        a {
+          padding: 10px;
+        }
         button {
           span {
             display: block;
@@ -22,6 +39,9 @@
             height: 2px;
             background-color: #333;
             margin-top: 5px;
+            &:first-child {
+              margin-top: 3px;
+            }
           }
           i {
             font-size: 20px;
@@ -32,6 +52,7 @@
     .imgBox {
       width: 170px;
       transform-origin: 50% 0%;
+      transition: 0.35s ease;
       transform: scale(1);
       img {
         width: 100%;

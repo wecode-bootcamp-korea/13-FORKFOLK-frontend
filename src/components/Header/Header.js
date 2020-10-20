@@ -7,16 +7,29 @@ class Header extends Component {
   constructor() {
     super();
     this.state = {
-      logoScale: 1,
+      logoScale: 8,
+      wheelDeltaCount: 0,
     };
   }
   componentDidMount() {
     window.addEventListener("wheel", (e) => {
-      console.log(e.wheelDelta);
-      this.setState({ logoScale: 2 });
+      const { wheelDelta } = e;
+      this.setState({ wheelDeltaCount: wheelDelta / 120 }, () => {
+        if (this.state.logoScale + this.state.wheelDeltaCount < 1) {
+          this.setState({ logoScale: 1 });
+        } else if (this.state.logoScale + this.state.wheelDeltaCount > 8) {
+          this.setState({ logoScale: 8 });
+        } else {
+          this.setState({
+            logoScale: this.state.logoScale + this.state.wheelDeltaCount,
+          });
+        }
+      });
     });
   }
   render() {
+    const { logoScale } = this.state;
+    console.log(this.state.wheelDeltaCount);
     return (
       <>
         <header className="Header">
@@ -34,7 +47,7 @@ class Header extends Component {
             </ul>
             <div
               className="imgBox"
-              style={{ transform: `scale(${this.state.logoScale})` }}
+              style={{ transform: `scale(${logoScale})` }}
             >
               <img src={logo} alt="logo" />
             </div>
