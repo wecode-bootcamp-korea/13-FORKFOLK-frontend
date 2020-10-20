@@ -45,12 +45,13 @@ class Header extends Component {
                 <Link to="/">Shop</Link>
               </li>
             </ul>
-            <div
+            <Link
+              to="/"
               className="imgBox"
               style={{ transform: `scale(${logoScale})` }}
             >
               <img src={logo} alt="logo" />
-            </div>
+            </Link>
             <ul>
               <li>
                 <button>

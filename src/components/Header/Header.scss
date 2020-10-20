@@ -19,6 +19,7 @@
           &:nth-child(1) {
             a {
               border: 1px solid #000;
+              transition: 0.3s ease;
               &:hover {
                 color: #fff;
                 background-color: #000000;
@@ -30,7 +31,7 @@
       li {
         margin-left: 10px;
         a {
-          padding: 10px;
+          padding: 10px 15px;
         }
         button {
           span {
