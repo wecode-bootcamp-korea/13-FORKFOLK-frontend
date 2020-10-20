@@ -2,24 +2,29 @@ import React, { Component } from "react";
 import Product from "./Components/Product"
 import "./ProductList.scss"
 
-const APIOfProductFilterList = "http://localhost:3000/Data/productFilterList.json";
-const APIOfProductList = "http://localhost:3000/Data/productList.json";
+
+
+
 
 class ProductList extends Component {
   constructor() {
     super();
     this.state = {
       filterList: [],
-      productsList: []
+      productsList: [],
+      offset: 0
     }
   }
 
   componentDidMount() {
+    const LIMIT = 12;
+    const APIOfProductFilterList = `http://localhost:3000/Data/productFilterList.json`;
+const APIOfProductList = `http://localhost:3000/Data/productList.json?limit=${LIMIT}&offset=${this.state.offset}`;
+
     Promise.all([
       fetch(APIOfProductFilterList, {method: "GET"})
         .then(res => res.json())
         .then(res => {
-          // console.log(res);
           this.setState({
             filterList: res.filterList,
           });
@@ -28,7 +33,6 @@ class ProductList extends Component {
       fetch(APIOfProductList, {method: "GET"})
         .then(res => res.json())
         .then(res => {
-          console.log(res);
           this.setState({
             productsList: res.products,
           })
@@ -56,9 +60,10 @@ class ProductList extends Component {
           </div>
           <div className="products">
             <ul>
-              {productsList.map(product => {
+              {productsList.map((product, i) => {
                 return (
                   <Product 
+                  key={i}
                   product={product}
                   />
                 )
