@@ -19,7 +19,6 @@ class Header extends Component {
   sideMenuVisibilityHandler = (e) => {
     const { sideMenuVisible } = this.state;
     this.setState({ sideMenuVisible: !sideMenuVisible });
-    console.log(e.target);
   };
   componentDidMount() {
     window.addEventListener("wheel", (e) => {
