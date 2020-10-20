@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import SideMenu from "../SideMenu/SideMenu";
 import logo from "./forkfolk.png";
 import "./Header.scss";
 
@@ -9,27 +10,39 @@ class Header extends Component {
     this.state = {
       logoScale: 8,
       wheelDeltaCount: 0,
+      sideMenuVisible: false,
     };
   }
+  goToMain = () => {
+    this.props.history.push("/");
+  };
+  sideMenuVisibilityHandler = (e) => {
+    const { sideMenuVisible } = this.state;
+    this.setState({ sideMenuVisible: !sideMenuVisible });
+    console.log(e.target);
+  };
   componentDidMount() {
     window.addEventListener("wheel", (e) => {
+      const { logoScale, wheelDeltaCount } = this.state;
       const { wheelDelta } = e;
+      if (window.pageYOffset > 1000) {
+        return;
+      }
       this.setState({ wheelDeltaCount: wheelDelta / 120 }, () => {
-        if (this.state.logoScale + this.state.wheelDeltaCount < 1) {
+        if (logoScale + wheelDeltaCount < 1) {
           this.setState({ logoScale: 1 });
-        } else if (this.state.logoScale + this.state.wheelDeltaCount > 8) {
+        } else if (logoScale + wheelDeltaCount > 8) {
           this.setState({ logoScale: 8 });
         } else {
           this.setState({
-            logoScale: this.state.logoScale + this.state.wheelDeltaCount,
+            logoScale: logoScale + wheelDeltaCount,
           });
         }
       });
     });
   }
   render() {
-    const { logoScale } = this.state;
-    console.log(this.state.wheelDeltaCount);
+    const { logoScale, sideMenuVisible } = this.state;
     return (
       <>
         <header className="Header">
@@ -45,13 +58,13 @@ class Header extends Component {
                 <Link to="/">Shop</Link>
               </li>
             </ul>
-            <Link
+            <div
               to="/"
               className="imgBox"
               style={{ transform: `scale(${logoScale})` }}
             >
-              <img src={logo} alt="logo" />
-            </Link>
+              <img src={logo} alt="logo" onClick={this.goToMain} />
+            </div>
             <ul>
               <li>
                 <button>
@@ -59,7 +72,7 @@ class Header extends Component {
                 </button>
               </li>
               <li>
-                <button>
+                <button onClick={this.sideMenuVisibilityHandler}>
                   <span></span>
                   <span></span>
                   <span></span>
@@ -68,10 +81,14 @@ class Header extends Component {
             </ul>
           </nav>
         </header>
+        <SideMenu
+          visible={sideMenuVisible}
+          sideMenuVisibilityHandler={this.sideMenuVisibilityHandler}
+        />
         <main></main>
       </>
     );
   }
 }
 
-export default Header;
+export default withRouter(Header);
