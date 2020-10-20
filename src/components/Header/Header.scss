@@ -1,18 +1,5 @@
 @import "../../styles/common.scss";
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-button {
-  border: none;
-  background-color: transparent;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 .Header {
   font-family: "Quicksand", sans-serif;
   padding: 0 $standardSpace;
