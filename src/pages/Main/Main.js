@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import SelectedStories from "./components/SelectedStories";
+import ExtraordinaryInteriors from "./components/ExtraordinaryInteriors";
+import DiveIn from "./components/DivIn";
 import "./Main.scss";
 
 class Main extends Component {
@@ -12,6 +15,9 @@ class Main extends Component {
           <br />
           <span>How to orienteer outdoors</span>
         </div>
+        <SelectedStories />
+        <ExtraordinaryInteriors />
+        <DiveIn />
       </main>
     );
   }
