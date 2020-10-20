@@ -15,3 +15,9 @@
 }
 $liWidth: 240px;
 $standardSpace: 40px;
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
