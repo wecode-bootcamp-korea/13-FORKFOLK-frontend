@@ -2,11 +2,15 @@
 
 .Header {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   padding: 10px $standardSpace;
   font-family: "Quicksand", sans-serif;
   background-color: #fff;
+  border: 1px solid #f00;
   nav {
+    height: 45px;
     display: flex;
     padding: 10px 0;
     justify-content: space-between;

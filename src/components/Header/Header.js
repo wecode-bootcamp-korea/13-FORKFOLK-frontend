@@ -19,7 +19,7 @@ class Header extends Component {
     this.setState({ sideMenuVisible: !sideMenuVisible });
   };
   render() {
-    const { logoScale } = this.props;
+    const { logoScale, logoMarginTop } = this.props;
     const { sideMenuVisible } = this.state;
     return (
       <>
@@ -39,7 +39,10 @@ class Header extends Component {
             <div
               to="/"
               className="imgBox"
-              style={{ transform: `scale(${logoScale || 1})` }}
+              style={{
+                transform: `scale(${logoScale || 1})`,
+                marginTop: `${logoMarginTop}px`,
+              }}
             >
               <img src={logo} alt="logo" onClick={this.goToMain} />
             </div>
