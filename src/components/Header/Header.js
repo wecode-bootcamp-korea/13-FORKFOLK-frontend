@@ -53,7 +53,7 @@ class Header extends Component {
                 </button>
               </li>
               <li>
-                <button onClick={this.sideMenuVisibilityHandler}>
+                <button onClick={() => this.sideMenuVisibilityHandler()}>
                   <span></span>
                   <span></span>
                   <span></span>
