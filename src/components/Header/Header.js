@@ -1,47 +1,26 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import SideMenu from "../SideMenu/SideMenu";
-import logo from "./forkfolk.png";
+import logo from "./new folk.png";
 import "./Header.scss";
 
 class Header extends Component {
   constructor() {
     super();
     this.state = {
-      logoScale: 8,
-      wheelDeltaCount: 0,
       sideMenuVisible: false,
     };
   }
   goToMain = () => {
-    this.props.history.push("/");
+    this.props.history.push("/main");
   };
-  sideMenuVisibilityHandler = (e) => {
+  sideMenuVisibilityHandler = () => {
     const { sideMenuVisible } = this.state;
     this.setState({ sideMenuVisible: !sideMenuVisible });
   };
-  componentDidMount() {
-    window.addEventListener("wheel", (e) => {
-      const { logoScale, wheelDeltaCount } = this.state;
-      const { wheelDelta } = e;
-      if (window.pageYOffset > 1000) {
-        return;
-      }
-      this.setState({ wheelDeltaCount: wheelDelta / 120 }, () => {
-        if (logoScale + wheelDeltaCount < 1) {
-          this.setState({ logoScale: 1 });
-        } else if (logoScale + wheelDeltaCount > 8) {
-          this.setState({ logoScale: 8 });
-        } else {
-          this.setState({
-            logoScale: logoScale + wheelDeltaCount,
-          });
-        }
-      });
-    });
-  }
   render() {
-    const { logoScale, sideMenuVisible } = this.state;
+    const { logoScale } = this.props;
+    const { sideMenuVisible } = this.state;
     return (
       <>
         <header className="Header">
@@ -60,7 +39,7 @@ class Header extends Component {
             <div
               to="/"
               className="imgBox"
-              style={{ transform: `scale(${logoScale})` }}
+              style={{ transform: `scale(${logoScale || 1})` }}
             >
               <img src={logo} alt="logo" onClick={this.goToMain} />
             </div>
@@ -84,7 +63,6 @@ class Header extends Component {
           visible={sideMenuVisible}
           sideMenuVisibilityHandler={this.sideMenuVisibilityHandler}
         />
-        <main></main>
       </>
     );
   }
