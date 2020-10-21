@@ -13,10 +13,6 @@ class ProductDescription extends Component {
                     text :"Meet Socrate, the beloved cat of Luc Braquet—the French photographer responsible for some of Kinfolk’s most glamourous fashion editorials including The Big Swing and Summer at Sea. Originally commissioned for Kinfolk’s Summer 2019 issue, the series Le Chat Chic saw Braquet and stylist Tania Rat-Patron try something a little different: They transformed Socrate into a Parisian glamour puss—and one of the magazine’s most popular models of all time. For The Kinfolk Print Collection, Socrate waves a classic Hermès silk scarf with carefree abandon. Fur coat: Model’s own."
                 },
                 {
-                    kategory : "DETAILS",
-                    text :"Meet Socrate, the beloved cat of Luc Braquet—the French photographer responsible for some of Kinfolk’s most glamourous fashion editorials including The Big Swing and Summer at Sea. Originally commissioned for Kinfolk’s Summer 2019 issue, the series Le Chat Chic saw Braquet and stylist Tania Rat-Patron try something a little different: They transformed Socrate into a Parisian glamour puss—and one of the magazine’s most popular models of all time. For The Kinfolk Print Collection, Socrate waves a classic Hermès silk scarf with carefree abandon. Fur coat: Model’s own."
-                },
-                {
                     kategory : "SHIPPING + HANDING",
                     text :"Meet Socrate, the beloved cat of Luc Braquet—the French photographer responsible for some of Kinfolk’s most glamourous fashion editorials including The Big Swing and Summer at Sea. Originally commissioned for Kinfolk’s Summer 2019 issue, the series Le Chat Chic saw Braquet and stylist Tania Rat-Patron try something a little different: They transformed Socrate into a Parisian glamour puss—and one of the magazine’s most popular models of all time. For The Kinfolk Print Collection, Socrate waves a classic Hermès silk scarf with carefree abandon. Fur coat: Model’s own."
                 }
@@ -37,7 +33,9 @@ class ProductDescription extends Component {
     }
 
 render() {
-    const { productName, price, descriptions, DescriptionBtnState } = this.state;
+    const {  DescriptionBtnState } = this.state;
+    const {id,productName,price,descriptions}= this.props;
+    console.log(this.props)
         return (
                 <div className="ProductDescription">
                     <h1>{productName}</h1>

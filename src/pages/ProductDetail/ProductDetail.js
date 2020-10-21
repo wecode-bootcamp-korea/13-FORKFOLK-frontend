@@ -8,11 +8,39 @@ class ProductDetail extends Component {
     constructor() {
         super();
         this.state = {
-            headerCategory : ["SHOP :","ALL","ART PRINTS","BOOKS","MAGAZINE","NOTECARDS","SUBCRIPTIONS"]
+            headerCategory: ["SHOP :", "ALL", "ART PRINTS", "BOOKS", "MAGAZINE", "NOTECARDS", "SUBCRIPTIONS"],
+            productInfo: {
+                id: null,
+                productImg :[],
+                productName: "",
+                price: "",
+                descriptions: [
+                    {
+                        kategory : "",
+                        text :""
+                    },
+                    {
+                        kategory : "",
+                        text :""
+                    }
+                ],
+            },
         }
     }
+
+    componentDidMount() {
+        fetch('http://localhost:3000/Data/ProductDetailData.json', {
+       
+        }).then(res => res.json())
+          .then(res => {
+            this.setState({
+                productInfo : res.product
+            });
+          });
+      }
+
     render() {
-        const { headerCategory } = this.state;
+        const { headerCategory, productInfo:{id,productImg,productName,price,descriptions}} = this.state;
         return (
             <div className='ProductDetail'>
                 <header>
@@ -21,10 +49,10 @@ class ProductDetail extends Component {
                     </ul>
                 </header>
                 <section>
-                    <ProductTumbnail />
+                    <ProductTumbnail productImg={productImg} />
                     <aside>
-                    <ProductDescription />
-                        <ProductCartMenu price="18" />
+                    <ProductDescription id={id} productName={productName} price={price} descriptions={descriptions}  />
+                        <ProductCartMenu price={price} />
                         </aside>
                 </section>
             </div>
