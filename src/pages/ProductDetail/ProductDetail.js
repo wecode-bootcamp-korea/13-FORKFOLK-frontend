@@ -24,7 +24,7 @@ class ProductDetail extends Component {
                     <ProductTumbnail />
                     <aside>
                     <ProductDescription />
-                        <ProductCartMenu />
+                        <ProductCartMenu price="18" />
                         </aside>
                 </section>
             </div>

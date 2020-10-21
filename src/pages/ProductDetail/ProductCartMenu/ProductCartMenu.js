@@ -5,23 +5,30 @@ class ProductCartMenu extends Component {
     constructor() {
         super();
         this.state = {
-            countProduct: 0
+            countProduct: 0,
+            totalPrice: 0
         }
     }
-    ChangeCountProduct(e) {
+
+    ChangeCountProduct = (e)=> {
         const { countProduct } = this.state;
-        this.setState(e.target.name === "plus" ? { countProduct: countProduct++ } : { countProduct: countProduct-- });
+        let count = countProduct;
+        e.target.name === "plus" ? count++ : count--;
+        if (count < 0 ) count = 0;
+        this.setState( { countProduct:  count , totalPrice:this.props.price*count});
     }
 
     render() {
-        const { countProduct } = this.state;
+        const { countProduct,totalPrice } = this.state;
     return (
         <div className="ProductCartMenu">
-            <div>
+            <div className="countContainer">
                 <span>{countProduct}</span>
-                <button name="plus" onClick={this.ChangeCountProduct}>-</button>
-                <button name="minus" onClick={this.ChangeCountProduct}>+</button>
-            </div>
+                <button name="minus" onClick={this.ChangeCountProduct}>-</button>
+                <button name="plus" onClick={this.ChangeCountProduct}>+</button>
+            </div >
+            <div className="totalContainer" ><span>Total Price</span><span>${totalPrice}</span></div>
+            <div className="cartContainer">Add to basket</div>
         </div>
         );
     }

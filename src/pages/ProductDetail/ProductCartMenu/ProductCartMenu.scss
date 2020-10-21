@@ -1,19 +1,32 @@
 .ProductCartMenu{
     font-family: 'Quicksand';
     div{
-        padding: 0 10px;
         display: flex;
         align-items: center;
-        border: 0.1px solid black;
         font-size: 20px;
         font-weight: 500;
         height: 48px;
+        margin-bottom: 20px;
         span{
-            margin-right: auto;
+            margin:0 6px;
+            &:first-child{
+                margin-right: auto;
+            }
         }
         button{
             font-size: 25px;
             cursor: pointer;
         }
+    }
+    .countContainer{
+        border-bottom: 0.1px solid black;
+    }
+
+    .totalContainer{
+        border: none;
+    }
+    .cartContainer{
+        border: 0.1px solid black;
+        justify-content: center;
     }
 }

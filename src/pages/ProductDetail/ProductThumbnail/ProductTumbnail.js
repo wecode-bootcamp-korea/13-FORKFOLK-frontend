@@ -14,7 +14,6 @@ render() {
 
         return (
                 <div className="ProductThumbnail"></div>
-
         );
     }
 }

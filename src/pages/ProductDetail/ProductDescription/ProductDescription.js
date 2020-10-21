@@ -45,7 +45,7 @@ render() {
                 {
                     descriptions.map((el, idx) =>
                         <>
-                        <button onClick={this.hadleClick} name={idx} ><span>{el.kategory}</span><span>+</span></button>
+                        <button onClick={this.hadleClick} name={idx} ><span>{el.kategory}</span><span>{DescriptionBtnState === `${idx}` ? "-" : "+"}</span></button>
                         <div name={idx} className={DescriptionBtnState === `${idx}` ? "openDecription" : "closeDecription"}>{el.text} </div>
                         </>
                     )
