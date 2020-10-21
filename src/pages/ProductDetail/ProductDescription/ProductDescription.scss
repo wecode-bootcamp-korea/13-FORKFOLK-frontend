@@ -1,0 +1,56 @@
+.ProductDescription{
+    font-family: 'Quicksand';
+    display: flex;
+    flex-direction: column;
+    h1{
+        font-size: 32px;
+        font-weight: 500;
+        margin-bottom: 14px;
+    }
+    h2{
+        font-size:22px;
+        font-weight: 500;
+        margin-bottom: 30px;
+    }
+    div{
+        font-family: 'EB Garamond';
+        font-size: 18px;
+        line-height: 24px;
+        height: 100px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 20px;
+        transition: 1s ease-in-out;
+    }
+    .openDecription{
+        height: 300px;
+    }
+    .closeDecription{
+        height: 100px;
+    }
+    .button{
+        border: 1px solid black;
+        height: 30px;
+        transition: 0.2s ease-in-out;
+        &:hover{
+            background-color: black;
+            color: white;
+        }
+    }
+    button{
+        border: 1px solid black;
+        width: 100px;
+        cursor: pointer;
+    }
+    .click{
+        background-color: black;
+            color: white;
+    }
+    .noClick{
+        background-color: white;
+        color:black ;
+
+    }
+    background-color:white ;
+    color: black;
+    }

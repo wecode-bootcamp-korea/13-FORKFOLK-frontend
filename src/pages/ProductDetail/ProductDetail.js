@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
-import './ProductDetail.scss'
+import React, { Component } from 'react';
+import ProductTumbnail from './ProductThumbnail/ProductTumbnail'
+import ProductDescription from './ProductDescription/ProductDescription'
+import ProductCartMenu from  './ProductCartMenu/ProductCartMenu'
+import './ProductDetail.scss';
 
 class ProductDetail extends Component {
     constructor() {
         super();
         this.state = {
-            headerCategory : ["ALL","ART PRINTS","BOOKS","MAGAZINE","NOTECARDS","SUBCRIPTIONS"]
+            headerCategory : ["SHOP :","ALL","ART PRINTS","BOOKS","MAGAZINE","NOTECARDS","SUBCRIPTIONS"]
         }
     }
     render() {
@@ -13,13 +16,17 @@ class ProductDetail extends Component {
         return (
             <div className='ProductDetail'>
                 <header>
-                    <span>SHOP:</span>
                     <ul>
-                        {headerCategory.map(el =>
-                            <li><button>{el}</button></li>
-                                )}
+                        {headerCategory.map(el =><li><button>{el}</button></li>)}
                     </ul>
                 </header>
+                <section>
+                    <ProductTumbnail />
+                    <aside>
+                    <ProductDescription />
+                        <ProductCartMenu />
+                        </aside>
+                </section>
             </div>
         )
     }
