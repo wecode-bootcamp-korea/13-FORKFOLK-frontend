@@ -1,6 +1,6 @@
 {
   "flexItemsData": {
-    "selectedStories": [
+    "SelectedStories": [
       {
         "id": 1,
         "imgSrc": "https://images.unsplash.com/photo-1523895665936-7bfe172b757d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
@@ -38,7 +38,7 @@
       },
       {
         "id": 6,
-        "imgSrc": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+        "imgSrc": "https://images.unsplash.com/photo-1502323777036-f29e3972d82f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
         "issueNumber": "37",
         "title": "Pollen Counts",
         "description": "An introduction to forensic botany"

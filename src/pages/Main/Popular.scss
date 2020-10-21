@@ -1,0 +1,9 @@
+@import "../../styles/common.scss";
+
+.Popular {
+  margin: 0 $standardSpace;
+  ul {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+}

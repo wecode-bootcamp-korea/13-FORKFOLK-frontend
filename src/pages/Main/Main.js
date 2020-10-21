@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import SelectedStories from "./components/SelectedStories";
-import ExtraordinaryInteriors from "./components/ExtraordinaryInteriors";
-import DiveIn from "./components/DivIn";
 import "./Main.scss";
+import FlexItemsList from "./components/FlexItemsList";
+import CurrentIssue from "./CurrendIssue";
+import MeetThePoets from ".//MeetThePoets";
+import Popular from "./Popular";
 
 class Main extends Component {
   constructor() {
@@ -11,9 +12,23 @@ class Main extends Component {
       logoScale: 8,
       wheelDeltaCount: 0,
       logoMarginTop: 400,
+      ExtraordinaryInteriors: [],
+      SelectedStories: [],
+      DiveIn: [],
     };
   }
   componentDidMount() {
+    fetch("http://localhost:3000/Data/FlexItemsData.json", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((result) =>
+        this.setState({
+          ExtraordinaryInteriors: result.flexItemsData.ExtraordinaryInteriors,
+          SelectedStories: result.flexItemsData.SelectedStories,
+          DiveIn: result.flexItemsData.DiveIn,
+        })
+      );
     window.addEventListener("wheel", (e) => {
       const { logoScale, wheelDeltaCount, logoMarginTop } = this.state;
       const { wheelDelta } = e;
@@ -49,9 +64,18 @@ class Main extends Component {
             <br />
             <span>How to orienteer outdoors</span>
           </div>
-          <SelectedStories />
-          <ExtraordinaryInteriors />
-          <DiveIn />
+          <CurrentIssue />
+          <FlexItemsList
+            title="Selected Stories"
+            contents={this.state.SelectedStories}
+          />
+          <FlexItemsList
+            title="Extranordinary Interiors"
+            contents={this.state.ExtraordinaryInteriors}
+          />
+          <FlexItemsList title="Dive In" contents={this.state.DiveIn} />
+          <MeetThePoets />
+          <Popular />
         </main>
       </>
     );
