@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MeetThePoetsItem from "./components/MeetThePoetsItem";
+import MeetThePoetsItem from "./MeetThePoetsItem";
 import "./MeetThePoets.scss";
 
 class MeetThePoets extends Component {

@@ -2,45 +2,45 @@
   "popular": [
     {
       "id": 1,
-      "issueNumber": 36,
+      "issue": "ARTS & CULTURE, ISSUE 36",
       "imgSrc": "https://images.unsplash.com/photo-1518655061710-5ccf392c275a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
       "title": "Jenny Slate",
-      "description": "What do you get when you cross a free spirit with a stand-up comediam? At home in Los Angeles, Jenny Slate delivers the punch line"
+      "description": "What do you get when you cross a free spirit with a stand-up comediam? At home in Los Angeles, Jenny Slate delivers the punch line."
     },
     {
       "id": 2,
-      "issueNumber": 36,
-      "imgSrc": "https://images.unsplash.com/photo-1518655061710-5ccf392c275a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
-      "title": "Jenny Slate",
-      "description": "What do you get when you cross a free spirit with a stand-up comediam? At home in Los Angeles, Jenny Slate delivers the punch line"
+      "issue": "FASHION, ISSUE 36",
+      "imgSrc": "https://images.unsplash.com/photo-1524503033411-c9566986fc8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "title": "Game Face",
+      "description": "Keep your eye on the prize-and the ball."
     },
     {
       "id": 3,
-      "issueNumber": 36,
-      "imgSrc": "https://images.unsplash.com/photo-1518655061710-5ccf392c275a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
-      "title": "Jenny Slate",
-      "description": "What do you get when you cross a free spirit with a stand-up comediam? At home in Los Angeles, Jenny Slate delivers the punch line"
+      "issue": "ARTS & CULTURE, ISSUE 36",
+      "imgSrc": "https://images.unsplash.com/photo-1599967235104-ecc2733b4773?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "title": "Birdwatching: Json Ward",
+      "description": "Whether trapped in a bad situation or just terrible traffic, watching birds in flight has always helped naturalist Jason Ward unwind."
     },
     {
       "id": 4,
-      "issueNumber": 36,
-      "imgSrc": "https://images.unsplash.com/photo-1518655061710-5ccf392c275a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
-      "title": "Jenny Slate",
-      "description": "What do you get when you cross a free spirit with a stand-up comediam? At home in Los Angeles, Jenny Slate delivers the punch line"
+      "issue": "FASHION, ISSUE 36",
+      "imgSrc": "https://images.unsplash.com/photo-1530725634868-99411c81945c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+      "title": "Island Time",
+      "description": "Stretching out the summer on Madeira's volcanic coastline."
     },
     {
       "id": 5,
-      "issueNumber": 36,
-      "imgSrc": "https://images.unsplash.com/photo-1518655061710-5ccf392c275a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
-      "title": "Jenny Slate",
-      "description": "What do you get when you cross a free spirit with a stand-up comediam? At home in Los Angeles, Jenny Slate delivers the punch line"
+      "issue": "DESIGN, ISSUE 36",
+      "imgSrc": "https://images.unsplash.com/photo-1480866179948-2caa74d9082a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80",
+      "title": "At Work With: Hariri & Hariri",
+      "description": "Sisters Gisue Hariri and Mojgan Hariri have always been 'partners in crime.' Charles Shafaieh meets them at their New York architecture studio."
     },
     {
       "id": 6,
-      "issueNumber": 36,
-      "imgSrc": "https://images.unsplash.com/photo-1518655061710-5ccf392c275a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
-      "title": "Jenny Slate",
-      "description": "What do you get when you cross a free spirit with a stand-up comediam? At home in Los Angeles, Jenny Slate delivers the punch line"
+      "issue": "ARTS & CULTURE, FASHION, ISSUE 36",
+      "imgSrc": "https://images.unsplash.com/photo-1561059488-916d69792237?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80",
+      "title": "Soft Strokes",
+      "description": "Fashion often looks to art for inspiration, so why not the other way round?"
     }
   ]
 }

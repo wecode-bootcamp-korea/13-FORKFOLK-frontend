@@ -1,7 +1,9 @@
 @import "../../../styles/common.scss";
 .FlexItemsList {
-  padding: 0 $standardSpace;
+  margin: 0 $standardSpace;
+  padding: 0 20px 150px;
   text-align: center;
+  border-bottom: 1px solid #000;
   ul {
     display: flex;
     text-align: left;

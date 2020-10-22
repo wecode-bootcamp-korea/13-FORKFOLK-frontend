@@ -20,4 +20,33 @@
     background-color: #d9d9d9;
     font-weight: 600;
   }
+  .subscribe {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    form {
+      position: relative;
+      display: inline-block;
+      input {
+        border: none;
+        border-bottom: 1px solid #000;
+        outline: none;
+        width: 520px;
+        padding: 10px 0;
+        &::placeholder {
+          font-weight: 500;
+        }
+      }
+      button {
+        position: absolute;
+      }
+    }
+    div {
+      margin-top: 10px;
+      input[type="checkbox"] {
+        margin-right: 30px;
+      }
+    }
+  }
 }
