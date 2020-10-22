@@ -4,25 +4,29 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   padding: 10px $standardSpace;
   font-family: "Quicksand", sans-serif;
   background-color: #fff;
+
   nav {
     height: 45px;
     display: flex;
     padding: 10px 0;
     justify-content: space-between;
     align-items: center;
+
     ul {
       display: flex;
       width: 100px;
+
       &:nth-child(1) {
         li {
           &:nth-child(1) {
             a {
               border: 1px solid #000;
               transition: 0.3s ease;
+
               &:hover {
                 color: #fff;
                 background-color: #000000;
@@ -33,23 +37,25 @@
       }
       li {
         margin-left: 10px;
+
         a {
           padding: 10px 15px;
         }
+
         button {
           cursor: pointer;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
           span {
             display: block;
             width: 35px;
             height: 2px;
             background-color: #333;
             margin-top: 5px;
-            &:first-child {
-              margin-top: 3px;
-            }
-          }
-          i {
-            font-size: 20px;
           }
         }
       }
@@ -59,6 +65,7 @@
       transform-origin: 50% 0%;
       transition: 0.35s ease;
       transform: scale(1);
+
       img {
         width: 100%;
         cursor: pointer;

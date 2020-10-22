@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 import SideMenu from "../SideMenu/SideMenu";
 import logo from "./new folk.png";
 import "./Header.scss";
@@ -11,19 +12,22 @@ class Header extends Component {
       sideMenuVisible: false,
     };
   }
+
   goToMain = () => {
     this.props.history.push("/main");
   };
+
   sideMenuVisibilityHandler = () => {
     const { sideMenuVisible } = this.state;
     this.setState({ sideMenuVisible: !sideMenuVisible });
   };
+
   render() {
     const { logoScale, logoMarginTop } = this.props;
     const { sideMenuVisible } = this.state;
     return (
       <>
-        <header className="Header">
+        <div className="Header">
           <nav>
             <ul>
               <li>
@@ -49,11 +53,14 @@ class Header extends Component {
             <ul>
               <li>
                 <button>
-                  <i className="xi-search"></i>
+                  <FaSearch />
                 </button>
               </li>
               <li>
-                <button onClick={() => this.sideMenuVisibilityHandler()}>
+                <button
+                  className="sideMenuButton"
+                  onClick={() => this.sideMenuVisibilityHandler()}
+                >
                   <span></span>
                   <span></span>
                   <span></span>
@@ -61,7 +68,7 @@ class Header extends Component {
               </li>
             </ul>
           </nav>
-        </header>
+        </div>
         <SideMenu
           visible={sideMenuVisible}
           sideMenuVisibilityHandler={this.sideMenuVisibilityHandler}
