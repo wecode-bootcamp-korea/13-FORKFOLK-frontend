@@ -13,10 +13,10 @@ class Main extends Component {
       logoScale: 8,
       wheelDeltaCount: 0,
       logoMarginTop: 400,
-      ExpandedViewContents: [],
-      ExtraordinaryInteriors: [],
-      SelectedStories: [],
-      DiveIn: [],
+      expandedViewContents: [],
+      extraordinaryInteriors: [],
+      selectedStories: [],
+      diveIn: [],
     };
   }
   componentDidMount() {
@@ -24,16 +24,16 @@ class Main extends Component {
       .then((res) => res.json())
       .then((result) =>
         this.setState({
-          ExtraordinaryInteriors: result.flexItemsData.ExtraordinaryInteriors,
-          SelectedStories: result.flexItemsData.SelectedStories,
-          DiveIn: result.flexItemsData.DiveIn,
+          extraordinaryInteriors: result.flexItemsData.ExtraordinaryInteriors,
+          selectedStories: result.flexItemsData.SelectedStories,
+          diveIn: result.flexItemsData.DiveIn,
         })
       );
 
     fetch("http://localhost:3000/Data/ExpandedViewData.json")
       .then((res) => res.json())
       .then((result) =>
-        this.setState({ ExpandedViewContents: result.expandedView })
+        this.setState({ expandedViewContents: result.expandedView })
       );
 
     window.addEventListener("wheel", (e) => {
@@ -61,10 +61,10 @@ class Main extends Component {
 
   render() {
     const {
-      ExpandedViewContents,
-      SelectedStories,
-      ExtraordinaryInteriors,
-      DiveIn,
+      expandedViewContents,
+      selectedStories,
+      extraordinaryInteriors,
+      diveIn,
     } = this.state;
     return (
       <>
@@ -80,17 +80,16 @@ class Main extends Component {
             <br />
             <span>How to orienteer outdoors</span>
           </div>
-          {ExpandedViewContents && (
-            <ExpandedView contents={ExpandedViewContents[0]} />
+          {expandedViewContents && (
+            <ExpandedView contents={expandedViewContents[0]} />
           )}
           <CurrentIssue />
-          <FlexItemsList title="Selected Stories" contents={SelectedStories} />
+          <FlexItemsList title="Selected Stories" contents={selectedStories} />
           <FlexItemsList
             title="Extranordinary Interiors"
-            contents={ExtraordinaryInteriors}
+            contents={extraordinaryInteriors}
           />
-          {/* <ExpandedView contents={ExpandedView[1]} /> */}
-          <FlexItemsList title="Dive In" contents={DiveIn} />
+          <FlexItemsList title="Dive In" contents={diveIn} />
           <MeetThePoets />
           <Popular />
           <div className="subscribe">
