@@ -1,6 +1,6 @@
 {
   "flexItemsData": {
-    "SelectedStories": [
+    "selectedStories": [
       {
         "id": 1,
         "imgSrc": "https://images.unsplash.com/photo-1523895665936-7bfe172b757d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
@@ -44,7 +44,7 @@
         "description": "An introduction to forensic botany"
       }
     ],
-    "ExtraordinaryInteriors": [
+    "extraordinaryInteriors": [
       {
         "id": 1,
         "imgSrc": "https://images.unsplash.com/photo-1527775507012-525d78a7e64f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80",
@@ -88,7 +88,7 @@
         "description": "Inside the French Riviera villa that Eileen Gray built, Le Corbusier “vandalized”—and history almost forgot."
       }
     ],
-    "DiveIn": [
+    "diveIn": [
       {
         "id": 1,
         "imgSrc": "https://images.unsplash.com/photo-1590293388237-be501287830a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",

@@ -1,5 +1,5 @@
 {
-  "expandedView": [
+  "expandedViewContents": [
     {
       "id": 1,
       "artsnCulture": false,
@@ -12,7 +12,7 @@
       "id": 2,
       "artsnCulture": true,
       "field": "DESIGN",
-      "title": "At Home With: \\n Nanushka",
+      "title": "At Home With: Nanushka",
       "description": "Meet the bold couple who took ther Budapest brand global. Words by Laura Rysman. Photography by Zoltan Tombor.",
       "imgSrc": "https://images.unsplash.com/photo-1477517787936-70ba786643fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
     }
