@@ -3,14 +3,13 @@ import "./ExpandedView.scss";
 
 class ExpandedView extends Component {
   render() {
-    console.log(this.props.contents);
-    // const {
-    //   field,
-    //   title,
-    //   artsnCulture,
-    //   description,
-    //   imgSrc,
-    // } = this.props.contents;
+    const {
+      field,
+      title,
+      artsnCulture,
+      description,
+      imgSrc,
+    } = this.props.contents;
     return (
       //   <div className="ExpandedView">
       //     <div>
