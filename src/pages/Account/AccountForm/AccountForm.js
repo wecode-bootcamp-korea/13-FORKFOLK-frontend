@@ -45,16 +45,20 @@ class Account extends Component {
                     console.log(result.MESSAGE);
                 }); 
         }
-      };
+    };
 
-    handleInputChange = async (event) => {
-        const { value, name } = event.target;  
-        await this.setState({ [name]: value });
+    changeLoginBtnEnabled = () => {
         const { IDInput, PWInput } = this.state;
         let isLoginFormValid = false;
         if (this.props.header === "Login") {isLoginFormValid = PWInput.length >= 5 && PWInput.length >= 5; }
         else{isLoginFormValid = IDInput.includes("@") && PWInput.length >= 5; }
         this.setState({ LoginBtnEnabled : isLoginFormValid });
+    }
+
+
+    changeInputState =  (event) => {
+        const { value, name } = event.target;
+        this.setState({ [name]: value },this.changeLoginBtnEnabled);
     };
     
     render() {
@@ -64,9 +68,9 @@ class Account extends Component {
              <form className='accountForm'>
                 <header>{header}</header>
                 <span>{inputLable}</span>
-                <input type="text" name="IDInput" onChange={this.handleInputChange}/>
+                <input type="text" name="IDInput" onChange={this.changeInputState}/>
                 <span>Password *</span>
-                <input type="password"  name="PWInput" onChange={this.handleInputChange}/>
+                <input type="password"  name="PWInput" onChange={this.changeInputState}/>
                  <div>
                      <input type="checkbox" />
                      <span>{checkBoxLable}</span>
