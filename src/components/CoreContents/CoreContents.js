@@ -1,51 +1,55 @@
 import React, { Component } from "react";
+import SubContents from "./SubContents/SubContents";
 import "./CoreContents.scss";
+
 class CoreContents extends Component {
   constructor() {
     super();
     this.state = {
-      subItem: [],
+      mainItem: {},
+      subItems: [],
     };
   }
+
   componentDidMount() {
     fetch("http://localhost:3000/Data/CoreContentsdata.json", {
       method: "GET",
     })
       .then((CoreContentsdata) => CoreContentsdata.json())
-      .then((contentsData) => this.setState({ subItem: contentsData.subItem }));
+      .then((contentsData) =>
+        this.setState({
+          mainItem: contentsData.mainItem,
+          subItems: contentsData.subItems,
+        })
+      );
   }
 
   render() {
+    const { mainItem, subItems } = this.state;
     return (
       <div className="coreComponents">
         <div className="mainContents">
-          <img src="https://images.unsplash.com/photo-1588641750012-474003b37f49?ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80" />
+          <img src={mainItem.imgSrc} />
           <p>
-            <span>FEATURE</span>
+            <span>{mainItem.subTitle}</span>
           </p>
-          <h1>Rock Steady</h1>
-          <p>
-            A breath of fresh air amid the ancient Stone Forest of <br />
-            southwestern China.
-          </p>
+          <h1>{mainItem.mainTitle}</h1>
+          <p>{mainItem.description}</p>
         </div>
         <div className="subContents">
-          {this.state.subItem.map((subItems) => {
-            const { id, imgSrc, issueNumber, title, description } = subItems;
-            return (
-              <div className="subContentItem" key={id}>
-                <img src={imgSrc} />
-                <p>
-                  <span>ISSUE {issueNumber}</span>
-                </p>
-                <h4>{title}</h4>
-                <p>{description}</p>
-              </div>
-            );
-          })}
+          {subItems.map((subItems) => (
+            <SubContents
+              id={subItems.id}
+              imgSrc={subItems.imgSrc}
+              issueNumber={subItems.issueNumber}
+              title={subItems.title}
+              description={subItems.description}
+            />
+          ))}
         </div>
       </div>
     );
   }
 }
+
 export default CoreContents;

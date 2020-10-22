@@ -1,6 +1,7 @@
 .coreComponents {
   display: flex;
   position: relative;
+
   .mainContents {
     position: sticky;
     top: 0px;
@@ -9,6 +10,7 @@
     padding: 0 20px 0 20px;
     text-align: center;
     align-self: flex-start;
+
     img {
       width: 650px;
     }
@@ -26,47 +28,8 @@
     }
     span {
       font-family: "Quicksand", sans-serif;
-      font-size: 13px;
+      font-size: 5px;
       line-height: 15.6px;
-    }
-  }
-  .subContents {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 710px;
-    .subContentItem {
-      width: 230px;
-      height: 554px;
-      padding: 0 0 0 0;
-
-      img {
-        width: 187px;
-        height: auto;
-      }
-
-      h4 {
-        margin: 15px 0 15px 0;
-        font-family: "Quicksand", sans-serif;
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 21.6px;
-      }
-      p {
-        width: 190px;
-        color: #4d4d4d;
-        font-family: "EB Garamond", serif;
-        font-size: 17px;
-        font-weight: 400;
-        line-height: 25.5px;
-      }
-      span {
-        color: #000000;
-        font-family: "Quicksand", sans-serif;
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 18.2px;
-      }
     }
   }
 }
