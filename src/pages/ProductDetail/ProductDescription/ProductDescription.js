@@ -5,18 +5,6 @@ class ProductDescription extends Component {
     constructor() {
         super();
         this.state = {
-            productName: "Issue Thirty-Two",
-            price: "18",
-            descriptions: [
-                {
-                    kategory : "DESCRIPTION",
-                    text :"Meet Socrate, the beloved cat of Luc Braquet—the French photographer responsible for some of Kinfolk’s most glamourous fashion editorials including The Big Swing and Summer at Sea. Originally commissioned for Kinfolk’s Summer 2019 issue, the series Le Chat Chic saw Braquet and stylist Tania Rat-Patron try something a little different: They transformed Socrate into a Parisian glamour puss—and one of the magazine’s most popular models of all time. For The Kinfolk Print Collection, Socrate waves a classic Hermès silk scarf with carefree abandon. Fur coat: Model’s own."
-                },
-                {
-                    kategory : "SHIPPING + HANDING",
-                    text :"Meet Socrate, the beloved cat of Luc Braquet—the French photographer responsible for some of Kinfolk’s most glamourous fashion editorials including The Big Swing and Summer at Sea. Originally commissioned for Kinfolk’s Summer 2019 issue, the series Le Chat Chic saw Braquet and stylist Tania Rat-Patron try something a little different: They transformed Socrate into a Parisian glamour puss—and one of the magazine’s most popular models of all time. For The Kinfolk Print Collection, Socrate waves a classic Hermès silk scarf with carefree abandon. Fur coat: Model’s own."
-                }
-            ],
             DescriptionBtnState: "null",
         }
     }
@@ -28,23 +16,22 @@ class ProductDescription extends Component {
 
     hadleClick = async (e) => {
         const { DescriptionBtnState } = this.state;
-        console.log(e.target.name);
-        this.setState(DescriptionBtnState===e.target.name?{ DescriptionBtnState: "null" }:{ DescriptionBtnState: e.target.name });
+        const { name } = e.target;
+        this.setState(DescriptionBtnState===name?{ DescriptionBtnState: "null" }:{ DescriptionBtnState: name });
     }
 
 render() {
     const {  DescriptionBtnState } = this.state;
     const {id,productName,price,descriptions}= this.props;
-    console.log(this.props)
         return (
                 <div className="ProductDescription">
                     <h1>{productName}</h1>
                     <h2>${price}</h2>
                 {
-                    descriptions.map((el, idx) =>
+                    descriptions.map((description, descriptionidx) =>
                         <>
-                        <button onClick={this.hadleClick} name={idx} ><span>{el.kategory}</span><span>{DescriptionBtnState === `${idx}` ? "-" : "+"}</span></button>
-                        <div name={idx} className={DescriptionBtnState === `${idx}` ? "openDecription" : "closeDecription"}>{el.text} </div>
+                        <button onClick={this.hadleClick} name={descriptionidx} ><span>{description.kategory}</span><span>{DescriptionBtnState === `${descriptionidx}` ? "-" : "+"}</span></button>
+                        <div name={descriptionidx} className={DescriptionBtnState === `${descriptionidx}` ? "openDecription" : "closeDecription"}>{description.text} </div>
                         </>
                     )
                 }

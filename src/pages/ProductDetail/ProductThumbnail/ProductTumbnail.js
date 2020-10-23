@@ -25,9 +25,7 @@ class Product extends Component {
         console.log(productImgIdx);
         return (
             <div className="ProductThumbnail" >
-                <FadeIn>
-                    <img className="fadein" src={productImg[productImgIdx]} />
-                    </FadeIn>
+                <img className="fadein" src={productImg[productImgIdx]} />
                 <button name="L" onClick = {this.changeproductImgIdx} className="ProductThumbnailLeftBtn"></button>
                 <button name="R" onClick = {this.changeproductImgIdx} className="ProductThumbnailRightBtn"></button>
             </div>
