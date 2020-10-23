@@ -12,6 +12,16 @@ class CurrendIssue extends Component {
     };
   }
 
+  imageSlideHandler = (e) => {
+    console.log(e.clientX);
+    if (e.clientX < window.innerWidth / 2) {
+      console.log("left");
+    }
+    if (e.clientX > window.innerWidth / 2) {
+      console.log("right");
+    }
+  };
+
   cursorImageHandler = (e) => {
     if (this.state.isCursorLeft === true) {
       if (e.clientX > window.innerWidth / 2) {
@@ -40,6 +50,7 @@ class CurrendIssue extends Component {
     return (
       <div
         className={`CurrentIssue ${isCursorLeft ? "left" : "right"}`}
+        onClick={(e) => this.imageSlideHandler(e)}
         onMouseMove={(e) => this.cursorImageHandler(e)}
       >
         <h3>Current Issue</h3>
