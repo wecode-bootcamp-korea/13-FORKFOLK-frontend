@@ -21,8 +21,8 @@ class TitleBox extends Component {
 
   render() {
     return (
-      <div>
-        <p></p>
+      <div className="TitleBox">
+        <h1>Fashion</h1>
       </div>
     );
   }
