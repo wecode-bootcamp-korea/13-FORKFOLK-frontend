@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './AccountForm.scss';
 import '../../../styles/reset.scss';
 
-const LoginAPI = "";
-const RegisterAPI = "";
+const LoginAPI = "http://10.58.0.139:8000/my-account/signin";
+const RegisterAPI = "http://10.58.0.139:8000/my-account/signup";
 
 class Account extends Component {
     constructor() {
@@ -15,6 +15,7 @@ class Account extends Component {
         };
     }
 
+
     loginFunc = (event) => {
         event.preventDefault();
         const { IDInput, PWInput } = this.state;
@@ -23,26 +24,27 @@ class Account extends Component {
             fetch(LoginAPI, {
                 method: "POST",
                 body: JSON.stringify({
-                    account: IDInput,
+                    email: IDInput,
                     password: PWInput,
                 }),
             })
                 .then((response) => response.json())
                 .then((result) => {
-                    console.log(result.MESSAGE);
+                    console.log(result);
+                    localStorage.setItem("user-token", result.TOKEN);
                 });
         }
         else {
             fetch(RegisterAPI, {
                 method: "POST",
                 body: JSON.stringify({
-                    account: IDInput,
+                    email: IDInput,
                     password: PWInput,
                 }),
             })
                 .then((response) => response.json())
                 .then((result) => {
-                    console.log(result.MESSAGE);
+                   
                 }); 
         }
     };
@@ -50,15 +52,19 @@ class Account extends Component {
     changeLoginBtnEnabled = () => {
         const { IDInput, PWInput } = this.state;
         let isLoginFormValid = false;
-        if (this.props.header === "Login") {isLoginFormValid = PWInput.length >= 5 && PWInput.length >= 5; }
-        else{isLoginFormValid = IDInput.includes("@") && PWInput.length >= 5; }
+        if (this.props.header === "Login") {
+            isLoginFormValid = PWInput.length >= 5 && PWInput.length >= 5;
+        } else {
+            isLoginFormValid = IDInput.includes("@") && PWInput.length >= 5;
+        }
         this.setState({ LoginBtnEnabled : isLoginFormValid });
     }
 
 
     changeInputState =  (event) => {
         const { value, name } = event.target;
-        this.setState({ [name]: value },this.changeLoginBtnEnabled);
+
+        this.setState({ [name]: value }, this.changeLoginBtnEnabled);
     };
     
     render() {

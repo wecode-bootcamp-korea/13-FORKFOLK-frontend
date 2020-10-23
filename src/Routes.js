@@ -8,7 +8,7 @@ class Routes extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={Footer} />
+          {/* <Route path="/" component={Footer} /> */}
           <Route exact path="/Account" component={Account} />
         </Switch>
       </Router>

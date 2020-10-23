@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './Account.scss';
 import AccountForm from './AccountForm/AccountForm'
 import '../../styles/reset.scss';
