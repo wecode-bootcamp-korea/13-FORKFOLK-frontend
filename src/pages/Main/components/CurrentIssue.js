@@ -1,57 +1,53 @@
 import React, { Component } from "react";
+
+import CurrentIssueItem from "./CurrentIssueItem";
 import "./CurrentIssue.scss";
 
 class CurrendIssue extends Component {
+  constructor() {
+    super();
+    this.state = {
+      imageList: [],
+      isCursorLeft: true,
+    };
+  }
+
+  cursorImageHandler = (e) => {
+    if (this.state.isCursorLeft === true) {
+      if (e.clientX > window.innerWidth / 2) {
+        this.setState({ isCursorLeft: false }, () => {
+          console.log("right");
+        });
+      }
+    }
+    if (this.state.isCursorLeft === false) {
+      if (e.clientX < window.innerWidth / 2) {
+        this.setState({ isCursorLeft: true }, () => {
+          console.log("left");
+        });
+      }
+    }
+  };
+
+  componentDidMount() {
+    fetch("http://localhost:3000/Data/CurrentIssueData.json")
+      .then((res) => res.json())
+      .then((data) => this.setState({ imageList: data.currentIssueData }));
+  }
+
   render() {
+    const { imageList, isCursorLeft } = this.state;
     return (
-      <div className="CurrentIssue">
+      <div
+        className={`CurrentIssue ${isCursorLeft ? "left" : "right"}`}
+        onMouseMove={(e) => this.cursorImageHandler(e)}
+      >
         <h3>Current Issue</h3>
-        <div className="sliderContainer">
-          <ul>
-            <li>
-              <img
-                src={
-                  "https://images.unsplash.com/photo-1456421385613-d0666bb96b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80"
-                }
-              />
-            </li>
-            <li>
-              <img
-                src={
-                  "https://images.unsplash.com/photo-1586116177830-d58010188987?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80"
-                }
-              />
-            </li>
-            <li>
-              <img
-                src={
-                  "https://images.unsplash.com/photo-1533564504789-500c2f93af7b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-                }
-              />
-            </li>
-            <li>
-              <img
-                src={
-                  "https://images.unsplash.com/photo-1530685220108-0ebdc8c85742?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-                }
-              />
-            </li>
-            <li>
-              <img
-                src={
-                  "https://images.unsplash.com/38/QoR8Bv1S2SEqH6UcSJCA_Tea.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-                }
-              />
-            </li>
-            <li>
-              <img
-                src={
-                  "https://images.unsplash.com/photo-1567005753256-c0529035b300?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-                }
-              />
-            </li>
-          </ul>
-        </div>
+        <ul>
+          {imageList.map((imageItem) => {
+            return <CurrentIssueItem key={imageItem.id} contents={imageItem} />;
+          })}
+        </ul>
       </div>
     );
   }
