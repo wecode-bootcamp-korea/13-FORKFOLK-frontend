@@ -1,24 +1,74 @@
 .Product {
+  float: left;
+  width: 25%;
+  padding: 0 1.25rem;
   font-family: "Quicksand", serif, sans-serif;
-  box-sizing: border-box;
-  padding: 0 20px;
   margin-bottom: 40px;
 
-  // 미디어쿼리 구현 시 max-width&height: 350px; max-width: 25%; 설정 예정
-  img {
-    width: 228px;
-    height: 228px;
+  .iconsInvisible {
+    display: none;
   }
-  button {
-    margin: 7px 0 20px;
-    font-size: 12px;
-    background: none;
-    border: none;
+
+  .imageContainer {
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      &:hover {
+        cursor: pointer;
+        filter: brightness(60%);
+        transition: all 0.3s ease;
+      }
+    }
+
+    &:hover {
+      .heartIcon {
+        position: absolute;
+        top: 8px;
+        right: 6px;
+        font-size: 32px;
+        cursor: pointer;
+
+        .fullHeart {
+          color: rgb(237, 73, 86);
+        }
+
+        .emptyHeart {
+          color: gray;
+        }
+      }
+
+      .addToCart {
+        position: absolute;
+        top: 42%;
+        right: 27%;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-family: inherit;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.7);
+      }
+    }
+
+    &:not(:hover) {
+      .heartIcon,
+      .addToCart {
+        display: none;
+      }
+    }
+  }
+
+  .category {
     display: block;
+    margin: 7px 0 20px;
+    padding: 0px;
+    font-size: 12px;
     cursor: pointer;
     letter-spacing: 1px;
-    padding: 0px;
   }
+
   p,
   div {
     font-size: 14px;

@@ -43,44 +43,37 @@
       "price": "$109"
     },
     {
-      "id": 5,
-      "image": "https://images.unsplash.com/photo-1511499963164-bbacc7bbe9f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "id": 6,
+      "image": "https://images.unsplash.com/photo-1598372450684-282b7d0091d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "category": "SUBSCRIPTIONS",
       "description": "Muscle Memory",
       "price": "$109"
     },
     {
-      "id": 6,
+      "id": 7,
       "image": "https://images.unsplash.com/photo-1572016875426-b49689eb652a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "category": "ART PRINTS",
       "description": "Muscle Memory",
       "price": "$109"
     },
     {
-      "id": 7,
+      "id": 8,
       "image": "https://images.unsplash.com/photo-1521572022358-c4bf55cb8512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "category": "SUBSCRIPTIONS",
       "description": "Muscle Memory",
       "price": "$109"
     },
     {
-      "id": 8,
+      "id": 9,
       "image": "https://images.unsplash.com/photo-1572028412480-0a75271c6bb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
       "category": "SUBSCRIPTIONS",
       "description": "Muscle Memory",
       "price": "$109"
     },
     {
-      "id": 9,
+      "id": 10,
       "image": "https://images.unsplash.com/photo-1497008386681-a7941f08011e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "category": "ART PRINTS",
-      "description": "Muscle Memory",
-      "price": "$109"
-    },
-    {
-      "id": 10,
-      "image": "https://images.unsplash.com/photo-1570971438458-d9fcf6909648?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-      "category": "NOTECARDS",
       "description": "Muscle Memory",
       "price": "$109"
     },
@@ -136,6 +129,153 @@
     {
       "id": 18,
       "image": "https://images.unsplash.com/photo-1575488405241-def30132aab6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "BOOKS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 19,
+      "image": "https://images.unsplash.com/photo-1585059466160-5cd3af4c49d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "BOOKS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 20,
+      "image": "https://images.unsplash.com/photo-1529607225807-563e0851ee7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "ART PRINTS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 21,
+      "image": "https://images.unsplash.com/photo-1470042100013-aff2a8f93778?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80",
+      "category": "BOOKS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 22,
+      "image": "https://images.unsplash.com/photo-1479791261936-65db171c3cc5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "MAGAZINE",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 23,
+      "image": "https://images.unsplash.com/photo-1587466317255-083616f2fcd5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "NOTECARDS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 24,
+      "image": "https://images.unsplash.com/photo-1536105158724-33fa56b7c9fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "BOOKS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 25,
+      "image": "https://images.unsplash.com/photo-1572017208060-abf082c31f55?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+      "category": "SUBSCRIPTIONS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 26,
+      "image": "https://images.unsplash.com/photo-1598372450684-282b7d0091d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "SUBSCRIPTIONS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 27,
+      "image": "https://images.unsplash.com/photo-1572016875426-b49689eb652a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "ART PRINTS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 28,
+      "image": "https://images.unsplash.com/photo-1521572022358-c4bf55cb8512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "SUBSCRIPTIONS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 29,
+      "image": "https://images.unsplash.com/photo-1572028412480-0a75271c6bb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+      "category": "SUBSCRIPTIONS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 30,
+      "image": "https://images.unsplash.com/photo-1497008386681-a7941f08011e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "ART PRINTS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 31,
+      "image": "https://images.unsplash.com/photo-1559530729-f0a09106f3da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "MAGAZINE",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 32,
+      "image": "https://images.unsplash.com/photo-1572017436980-94e258a8b72d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "MAGAZINE",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 33,
+      "image": "https://images.unsplash.com/photo-1572016875426-b49689eb652a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "SUBSCRIPTIONS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 34,
+      "image": "https://images.unsplash.com/photo-1544650039-22886fbb4323?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "NOTECARDS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 35,
+      "image": "https://images.unsplash.com/photo-1585068974106-96a87ae5cbc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "SUBSCRIPTIONS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 36,
+      "image": "https://images.unsplash.com/photo-1573247318220-36d3269fbff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "ART PRINTS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 37,
+      "image": "https://images.unsplash.com/photo-1587834116357-534be6ec1e8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "BOOKS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 38,
+      "image": "https://images.unsplash.com/photo-1575488405241-def30132aab6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "BOOKS",
+      "description": "Muscle Memory",
+      "price": "$109"
+    },
+    {
+      "id": 39,
+      "image": "https://images.unsplash.com/photo-1585059466160-5cd3af4c49d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "category": "BOOKS",
       "description": "Muscle Memory",
       "price": "$109"

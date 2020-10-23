@@ -3,18 +3,18 @@
   font-family: "Quicksand", serif, sans-serif;
 
   .pageHeader {
-    padding: 70px 0;
+    padding: 90px 0 100px;
     text-align: center;
 
     ul {
-      color: rgb(77, 77, 77);
       margin: 0 5px;
+      color: rgb(77, 77, 77);
       letter-spacing: 2.5px;
+
       li {
-        text-align: center;
-        box-sizing: border-box;
         display: inline-flex;
         margin: 0 5px;
+        text-align: center;
 
         button {
           color: inherit;
@@ -24,20 +24,23 @@
         }
       }
     }
+
     span {
       font-size: 13.5px;
     }
   }
 
   .products {
+    display: flex;
+    justify-content: center;
+    max-width: 2000px;
+    margin: 0 auto;
+
     content {
-      display: flex;
-      justify-content: center;
       ul {
-        width: 1080px;
         display: flex;
+        margin: 30px auto 0;
         flex-wrap: wrap;
-        justify-content: space-between;
         letter-spacing: 1.5px;
       }
     }
@@ -45,23 +48,25 @@
 
   .pageFooter {
     margin: 115px 0;
+
     span {
       display: flex;
       justify-content: center;
+
       button {
-        cursor: pointer;
-        font-size: 14px;
-        color: #3d3c3b;
         margin: 0 12px 2px;
+        color: #3d3c3b;
+        font-size: 14px;
+        cursor: pointer;
+        padding: 0 10px 7px;
       }
-      .prev {
-        display: none;
-      }
-      .next {
+
+      .invisible {
         display: none;
       }
     }
   }
+
   .invisiblePageFooter {
     display: none;
   }
