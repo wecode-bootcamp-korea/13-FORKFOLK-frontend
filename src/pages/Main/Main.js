@@ -7,7 +7,6 @@ import Popular from "./components/Popular";
 import ExpandedView from "./components/ExpandedView";
 import FashionIssue from "./components/FashionIssue";
 import TextSticky from "./components/TextSticky";
-import Footer from "../../components/Footer/Footer";
 
 class Main extends Component {
   constructor() {
@@ -42,15 +41,10 @@ class Main extends Component {
     });
   };
 
-  componentDidMount() {
-    this.fetchData();
-
+  logoScaleHandler = () => {
     window.addEventListener("wheel", (e) => {
       const { logoScale, wheelDeltaCount, logoMarginTop } = this.state;
       const { wheelDelta } = e;
-      if (window.pageYOffset > 1000) {
-        return;
-      }
       this.setState({ wheelDeltaCount: wheelDelta / 120 }, () => {
         if (logoScale + wheelDeltaCount < 1 || logoMarginTop < 0) {
           this.setState({ logoScale: 1, logoMarginTop: 0 });
@@ -66,6 +60,12 @@ class Main extends Component {
         });
       });
     });
+  };
+  componentDidMount() {
+    this.fetchData();
+    if (window.pageYOffset <= 1000) {
+      this.logoScaleHandler();
+    }
   }
 
   render() {
@@ -142,7 +142,6 @@ class Main extends Component {
             </div>
           </div>
         </main>
-        <Footer />
       </>
     );
   }
