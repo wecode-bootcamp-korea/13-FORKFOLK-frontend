@@ -1,20 +1,22 @@
-.ProductDescription{
+.productDescription{
     display: flex;
     height: auto;
-    font-family: 'Quicksand';
     flex-direction: column;
     border-bottom: 0.1px solid black;
     margin-bottom: 20px;
+
     h1{
         font-size: 32px;
         font-weight: 500;
         margin-bottom: 14px;
     }
+
     h2{
         font-size:22px;
         font-weight: 500;
         margin-bottom: 30px;
     }
+    
     div{
         height: 0px;
         font-size: 18px;
@@ -25,9 +27,11 @@
         border-bottom: 0.1 solid black;
         transition: 0.3s ease-in-out;
     }
+
     .openDecription{
         height: 100px;
     }
+
     .closeDecription{
         height: 0px;
     }
@@ -38,10 +42,12 @@
         height: 50px;
         font-size: 13px;
         text-align: start;
+
         cursor: pointer;
         border-top: 1px solid black;
         justify-content: space-between;
         align-items: center;
+        
         span{
             pointer-events: none; 
         }

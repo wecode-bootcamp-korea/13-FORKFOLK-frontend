@@ -43,7 +43,7 @@ class ProductDetail extends Component {
     render() {
         const {productInfo:{id,productImg,productName,price,descriptions}} = this.state;
         return (
-            <div className='ProductDetail'>
+            <div className='productDetail'>
                 <header>
                     <ul>
                         {HEADER_CATEGORYS.map(headerCategory =><li><button>{headerCategory}</button></li>)}

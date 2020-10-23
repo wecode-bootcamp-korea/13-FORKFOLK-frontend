@@ -5,7 +5,7 @@ class ProductDescription extends Component {
     constructor() {
         super();
         this.state = {
-            DescriptionBtnState: "null",
+            DescriptionBtnState: 2,
         }
     }
 
@@ -17,14 +17,14 @@ class ProductDescription extends Component {
     hadleClick = async (e) => {
         const { DescriptionBtnState } = this.state;
         const { name } = e.target;
-        this.setState(DescriptionBtnState===name?{ DescriptionBtnState: "null" }:{ DescriptionBtnState: name });
+        this.setState(DescriptionBtnState===name?{ DescriptionBtnState:2 }:{ DescriptionBtnState: name });
     }
 
 render() {
     const {  DescriptionBtnState } = this.state;
-    const {id,productName,price,descriptions}= this.props;
+    const {productName,price,descriptions}= this.props;
         return (
-                <div className="ProductDescription">
+                <div className="productDescription">
                     <h1>{productName}</h1>
                     <h2>${price}</h2>
                 {
@@ -35,9 +35,7 @@ render() {
                         </>
                     )
                 }
-
                 </div>
-
         );
     }
 }

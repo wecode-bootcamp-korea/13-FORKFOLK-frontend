@@ -1,5 +1,5 @@
 
-    .ProductThumbnail{
+    .productThumbnail{
         position: relative;
         min-width: 750px;
         min-height: 500px;
@@ -15,11 +15,11 @@
             height: 100%;
             padding: 0;
         }
-        .ProductThumbnailLeftBtn{
+        .productThumbnailLeftBtn{
             left: 0;
             cursor: url("cursorLeft.cur"),pointer;
         }
-        .ProductThumbnailRightBtn{
+        .productThumbnailRightBtn{
             right: 0;
             cursor: url("cursorRight.cur"),pointer;
         }

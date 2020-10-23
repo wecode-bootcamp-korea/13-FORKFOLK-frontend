@@ -21,7 +21,7 @@ class ProductCartMenu extends Component {
     render() {
         const { countProduct,totalPrice } = this.state;
     return (
-        <div className="ProductCartMenu">
+        <div className="productCartMenu">
             <div className="countContainer">
                 <span>{countProduct}</span>
                 <button name="minus" onClick={this.ChangeCountProduct}>-</button>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './ProductTumbnail.scss';
-import FadeIn from 'react-fade-in';
 
 class Product extends Component {
     constructor() {
@@ -12,22 +11,21 @@ class Product extends Component {
 
     changeproductImgIdx = (e) => {
         const { productImgIdx } = this.state;
-        let Idx = productImgIdx;
-        e.target.name === "R" ? Idx++ : Idx--;
-        if (Idx < 0) Idx = 3;
-        if (Idx > 3) Idx = 0;
-        this.setState({ productImgIdx: Idx } );
+        const { name } = e.target;
+        const { productImg } = this.props;
+        name === "R" ?
+            this.setState({ productImgIdx: productImgIdx < productImg.length - 1 ? productImgIdx + 1 : productImgIdx })
+            : this.setState({ productImgIdx: productImgIdx > 0 ? productImgIdx - 1 : productImgIdx })
     }
 
     render() {
         const { productImg } = this.props;
         const { productImgIdx } = this.state;
-        console.log(productImgIdx);
         return (
-            <div className="ProductThumbnail" >
+            <div className="productThumbnail" >
                 <img className="fadein" src={productImg[productImgIdx]} />
-                <button name="L" onClick = {this.changeproductImgIdx} className="ProductThumbnailLeftBtn"></button>
-                <button name="R" onClick = {this.changeproductImgIdx} className="ProductThumbnailRightBtn"></button>
+                <button name="L" onClick = {this.changeproductImgIdx} className="productThumbnailLeftBtn"></button>
+                <button name="R" onClick = {this.changeproductImgIdx} className="productThumbnailRightBtn"></button>
             </div>
         );
     }
