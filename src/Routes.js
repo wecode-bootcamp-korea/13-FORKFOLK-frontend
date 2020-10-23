@@ -7,8 +7,9 @@ class Routes extends React.Component {
   render() {
     return (
       <Router>
-        <Switch></Switch>
-        <Route path="/" component={Header} />
+        <Switch>
+          <Route exact path="/" component={Header} />
+        </Switch>
       </Router>
     );
   }

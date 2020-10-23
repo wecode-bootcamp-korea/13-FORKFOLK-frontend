@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import SideMenu from "../SideMenu/SideMenu";
 import logo from "./new folk.png";
 import "./Header.scss";
@@ -15,6 +15,9 @@ class Header extends Component {
 
   goToMain = () => {
     this.props.history.push("/main");
+  };
+  goToShoppingList = () => {
+    this.props.history.push("/cart");
   };
 
   sideMenuVisibilityHandler = () => {
@@ -48,9 +51,14 @@ class Header extends Component {
                 marginTop: `${logoMarginTop}px`,
               }}
             >
-              <img src={logo} alt="logo" onClick={this.goToMain} />
+              <img src={logo} alt="logo" onClick={() => this.goToMain()} />
             </div>
             <ul>
+              <li>
+                <button onClick={() => this.goToShoppingList()}>
+                  <FaShoppingCart />
+                </button>
+              </li>
               <li>
                 <button>
                   <FaSearch />
@@ -71,7 +79,7 @@ class Header extends Component {
         </div>
         <SideMenu
           visible={sideMenuVisible}
-          sideMenuVisibilityHandler={this.sideMenuVisibilityHandler}
+          sideMenuVisibilityHandler={() => this.sideMenuVisibilityHandler()}
         />
       </>
     );

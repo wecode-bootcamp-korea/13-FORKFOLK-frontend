@@ -8,11 +8,14 @@ class SideMenu extends Component {
     return (
       <div className={`SideMenu ${this.props.visible && "visible"}`}>
         <div className="wrapper">
-          <button onClick={this.props.sideMenuVisibilityHandler}>
+          <button
+            className="closeSideMenu"
+            onClick={this.props.sideMenuVisibilityHandler}
+          >
             <span></span>
             <span></span>
           </button>
-          <nav>
+          <nav className="ebGaramond">
             <ul>
               <li>
                 <Link to="/">Design</Link>
@@ -29,7 +32,7 @@ class SideMenu extends Component {
             </ul>
             <ul>
               <li>
-                <Link to="/">Shop</Link>
+                <Link to="/shop">Shop</Link>
               </li>
               <li>
                 <Link to="/">Current Issue</Link>
@@ -49,10 +52,10 @@ class SideMenu extends Component {
           </ul>
           <ul className="myPage">
             <li>
-              <Link to="/">Log In / Register</Link>
+              <button to="/Account">Log In / Register</button>
             </li>
             <li>
-              <Link to="/">Subscribe</Link>
+              <button to="/">Subscribe</button>
             </li>
           </ul>
         </div>
