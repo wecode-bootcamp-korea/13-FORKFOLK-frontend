@@ -16,8 +16,10 @@
     ul {
       display: flex;
       width: 130px;
+      justify-content: flex-end;
 
       &:nth-child(1) {
+        justify-content: flex-start;
         li {
           &:nth-child(1) {
             a {
@@ -32,6 +34,7 @@
           }
         }
       }
+
       li {
         margin-left: 10px;
 

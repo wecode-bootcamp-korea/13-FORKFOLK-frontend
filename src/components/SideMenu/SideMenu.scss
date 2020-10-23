@@ -6,6 +6,9 @@
   height: 100vh;
   font-family: "Quicksand", sans-serif;
   visibility: hidden;
+  z-index: 1;
+  top: 0;
+  left: 0;
 
   &.visible {
     background-color: rgba(0, 0, 0, 0.5);
@@ -15,7 +18,9 @@
     }
   }
   .wrapper {
-    float: right;
+    position: fixed;
+    right: 0;
+    top: 0;
     height: 100%;
     padding: $standardSpace;
     font-size: 14px;
