@@ -10,12 +10,14 @@ class Header extends Component {
     super();
     this.state = {
       sideMenuVisible: false,
+      shoppingListValid: false,
     };
   }
 
   goToMain = () => {
     this.props.history.push("/main");
   };
+
   goToShoppingList = () => {
     this.props.history.push("/cart");
   };
@@ -25,9 +27,18 @@ class Header extends Component {
     this.setState({ sideMenuVisible: !sideMenuVisible });
   };
 
+  shoppingListButtonValidHandler = () => {
+    localStorage.getItem("user-token") &&
+      this.setState({ shoppingListValid: true });
+  };
+
+  componentDidMount() {
+    this.shoppingListButtonValidHandler();
+  }
+
   render() {
     const { logoScale, logoMarginTop } = this.props;
-    const { sideMenuVisible } = this.state;
+    const { sideMenuVisible, shoppingListValid } = this.state;
     return (
       <>
         <div className="Header">
@@ -54,11 +65,13 @@ class Header extends Component {
               <img src={logo} alt="logo" onClick={() => this.goToMain()} />
             </div>
             <ul>
-              <li>
-                <button onClick={() => this.goToShoppingList()}>
-                  <FaShoppingCart />
-                </button>
-              </li>
+              {shoppingListValid && (
+                <li>
+                  <button onClick={() => this.goToShoppingList()}>
+                    <FaShoppingCart />
+                  </button>
+                </li>
+              )}
               <li>
                 <button>
                   <FaSearch />
