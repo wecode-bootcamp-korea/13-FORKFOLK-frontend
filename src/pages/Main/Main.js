@@ -7,6 +7,7 @@ import Popular from "./components/Popular";
 import ExpandedView from "./components/ExpandedView";
 import FashionIssue from "./components/FashionIssue";
 import TextSticky from "./components/TextSticky";
+import Footer from "../../components/Footer/Footer";
 
 class Main extends Component {
   constructor() {
@@ -141,6 +142,7 @@ class Main extends Component {
             </div>
           </div>
         </main>
+        <Footer />
       </>
     );
   }
