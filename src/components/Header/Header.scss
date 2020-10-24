@@ -1,0 +1,75 @@
+@import "../../styles/common.scss";
+
+.Header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 10px $standardSpace;
+  background-color: #fff;
+  nav {
+    display: flex;
+    height: 45px;
+    padding: 10px 0;
+    justify-content: space-between;
+    align-items: center;
+    ul {
+      display: flex;
+      width: 130px;
+      justify-content: flex-end;
+
+      &:nth-child(1) {
+        justify-content: flex-start;
+        li {
+          &:nth-child(1) {
+            a {
+              border: 1px solid #000;
+              transition: 0.3s ease;
+
+              &:hover {
+                color: #fff;
+                background-color: #000000;
+              }
+            }
+          }
+        }
+      }
+
+      li {
+        margin-left: 10px;
+
+        a {
+          padding: 10px 15px;
+        }
+
+        button {
+          display: flex;
+          height: 50px;
+          cursor: pointer;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          span {
+            display: block;
+            width: 35px;
+            height: 2px;
+            background-color: #333;
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+    .imgBox {
+      width: 170px;
+      transform-origin: 50% 0%;
+      transition: 0.35s ease;
+      transform: scale(1);
+
+      img {
+        width: 100%;
+        cursor: pointer;
+      }
+    }
+  }
+}

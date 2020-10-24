@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProductList from "./pages/ProductList/ProductList";
 import CartList from "./pages/CartList/CartList";
-import WishList from "./pages/WishList/WishList";
+import Footer from "./components/Footer/Footer";
 
 class Routes extends React.Component {
   render() {
@@ -12,8 +12,9 @@ class Routes extends React.Component {
           <Route exact path="/shop/" component={ProductList} />
           <Route exact path="/cart/" component={CartList} />
         </Switch>
+        <Route path="/" component={Footer} />
       </Router>
-    );
+    )
   }
 }
 
