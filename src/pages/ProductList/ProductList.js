@@ -53,7 +53,7 @@ class ProductList extends Component {
         mappingPage : false,
         isBtnVisible: true,
         isPageFooterVisible: true
-      })
+      }, () => {this.state.history.push('/shop/')} )
     } 
     if (category !== "ALL") {
       const filteredProducts = allProducts.filter( product => {
@@ -75,7 +75,7 @@ class ProductList extends Component {
         mappingPage : true,
         isPrevBtnVisible: false,
         isNextBtnVisible: true,
-      })
+      }, () => {})
     }
     if (num === 2) {
       this.setState({ 
