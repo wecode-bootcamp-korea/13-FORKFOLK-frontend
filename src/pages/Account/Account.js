@@ -13,11 +13,11 @@ const LOGINFORM_LABELS = {
 }
 const RESISTERFORM_LABELS = {
     header: "Register",
-                inputLable: "Email address *",
-                checkBoxLable: "Subscribe to our newsletter",
-                buttonText: "Register",
-                subText : "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our ",
-                subLink: "privacy policy.",
+    inputLable: "Email address *",
+    checkBoxLable: "Subscribe to our newsletter",
+    buttonText: "Register",
+    subText : "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our ",
+    subLink: "privacy policy.",
 }
 
 function Account () {

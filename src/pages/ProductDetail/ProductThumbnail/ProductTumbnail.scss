@@ -1,13 +1,14 @@
-
-    .productThumbnail{
+  .productThumbnail{
         position: relative;
         min-width: 750px;
         min-height: 500px;
         max-height: 500px;
         margin-right: 40px;
+
         .fadein {
             animation: fadeIn 1s linear;
           }
+
         button{
             position: absolute;
             top: 0;
@@ -15,10 +16,12 @@
             height: 100%;
             padding: 0;
         }
+
         .productThumbnailLeftBtn{
             left: 0;
             cursor: url("cursorLeft.cur"),pointer;
         }
+        
         .productThumbnailRightBtn{
             right: 0;
             cursor: url("cursorRight.cur"),pointer;

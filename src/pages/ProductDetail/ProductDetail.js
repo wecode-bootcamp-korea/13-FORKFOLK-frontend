@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductTumbnail from './ProductThumbnail/ProductTumbnail'
 import ProductDescription from './ProductDescription/ProductDescription'
 import ProductCartMenu from  './ProductCartMenu/ProductCartMenu'
+import {PRODUCT_DETAIL_API} from "../../config"
 import './ProductDetail.scss';
 
 const HEADER_CATEGORYS = ["SHOP :", "ALL", "ART PRINTS", "BOOKS", "MAGAZINE", "NOTECARDS", "SUBCRIPTIONS"];
@@ -29,15 +30,23 @@ class ProductDetail extends Component {
         }
     }
 
+    // componentDidMount() {
+    //     fetch('http://localhost:3000/Data/ProductDetailData.json', {
+    //     }).then(res => res.json())
+    //       .then(res => {
+    //         this.setState({
+    //             productInfo : res.product
+    //         });
+    //       });
+    // }
+    
     componentDidMount() {
-        fetch('http://localhost:3000/Data/ProductDetailData.json', {
-       
+        fetch(`${PRODUCT_DETAIL_API}/${this.props.match.params.id}`,
+            {
         }).then(res => res.json())
-          .then(res => {
-            this.setState({
-                productInfo : res.product
-            });
-          });
+            .then(res => {
+            this.setState({productInfo:res})
+        })
       }
 
     render() {
