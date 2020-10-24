@@ -1,24 +1,23 @@
 .CartList {
-  border: 1px solid red;
   font-family: "Quicksand", serif, sans-serif;
 
   .container {
-    max-width: 2000px;
-    padding: 0 3%;
     margin: 0 auto;
+    padding: 0 3%;
+    max-width: 2000px;
     // box-sizing: content-box; 추후 재사용해보고, 필요없으면 삭제 예정
 
     .module {
+      margin: 0 20px;
       max-width: 2000px;
       padding-top: calc(0.00937 * 100vw + 35px);
       padding-bottom: 30px;
-      margin: 0 20px;
 
       h1 {
+        font-size: 18px;
         text-align: center;
         margin-bottom: calc(0.00937 * 100vw + 35px);
         font-weight: 600;
-        font-size: 18px;
       }
     }
 
@@ -26,12 +25,12 @@
       display: flex;
 
       .leftSection {
-        flex: 18%;
         padding: 0 1.25rem;
+        font-size: 14px;
         text-align: left;
+        flex: 18%;
         letter-spacing: 1.2px;
         font-weight: lighter;
-        font-size: 14px;
       }
 
       .centerSection {
@@ -84,12 +83,12 @@
               border-top: 1px solid black;
 
               td {
-                vertical-align: middle;
                 text-align: left;
+                vertical-align: middle;
                 select {
-                  cursor: pointer;
                   width: 65px;
                   height: 40px;
+                  cursor: pointer;
                   border-radius: 0%;
                   outline: none;
                 }
@@ -114,12 +113,12 @@
                 div {
                   input {
                     display: block;
-                    margin: 0 0 20px auto;
                     width: 270px;
                     height: 40px;
+                    margin: 0 0 20px auto;
                     padding: 9px;
-                    border-radius: 0;
                     font-family: inherit;
+                    border-radius: 0;
                     letter-spacing: 1px;
                     outline: none;
                   }
@@ -127,13 +126,13 @@
                     font-size: 16px;
                   }
                   .applyCoupon {
-                    background-color: rgb(77, 77, 77);
                     color: white;
                     font-size: 14px;
+                    background-color: rgb(77, 77, 77);
                   }
                   .updateBasket {
-                    background-color: white;
                     font-size: 18px;
+                    background-color: white;
                   }
                 }
               }
@@ -143,14 +142,59 @@
       }
 
       .rightSection {
-        // border: 1px solid blueviolet;
         flex: 30%;
-        background-color: lightblue;
         h2 {
-          margin-bottom: 11px;
           font-size: 31px;
+          font-size: 1.9375rem;
+          margin-bottom: 11px;
           line-height: 1.08;
         }
+        table {
+          margin-bottom: 35px;
+
+          tbody {
+            tr {
+              border-top: 1px solid black;
+              th {
+                border-bottom: 1px solid black;
+              }
+
+              td {
+                padding: 25px 0;
+                text-align: right;
+                ul {
+                  li:last-child {
+                    margin-top: 5px;
+                  }
+                }
+              }
+              td:last-child {
+                border-bottom: 1px solid black;
+              }
+            }
+          }
+        }
+
+        div {
+          button {
+            display: block;
+            float: right;
+            width: 270px;
+            height: 40px;
+            padding: 15px auto;
+            color: white;
+            font-family: inherit;
+            text-align: center;
+            background-color: rgb(77, 77, 77);
+            letter-spacing: 2px;
+          }
+        }
+      }
+      .crossSelss {
+        border: 1px solid black;
+        margin: 130px 20px 30px;
+        width: 2000px;
+        clear: both;
       }
     }
   }

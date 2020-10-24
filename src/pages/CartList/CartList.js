@@ -4,6 +4,7 @@ import { APIROOT } from "../../config";
 import "./CartList.scss";
 import { FaChevronDown } from "react-icons/fa";
 import { FaRegTimesCircle } from "react-icons/fa";
+import { map } from "async";
 
 
 
@@ -11,25 +12,39 @@ export default class CartList extends Component {
     constructor() {
         super();
         this.state = {
-            products: []
+            cartProducts: [],
+            interestingProducts: []
+
         }
     }
 
     componentDidMount() {
         const APIOfCartList = `${APIROOT}/Data/cartList.json`
+        const APIOfProductList = `${APIROOT}/Data/productList.json`
 
-        fetch(APIOfCartList)
-            .then(res => res.json())
-            .then(res => {
-                this.setState({
-                    products: res.cartData
+        Promise.all([
+            fetch(APIOfCartList)
+                .then(res => res.json())
+                .then(res => {
+                    this.setState({
+                        cartProducts: res.cartData
+                    })
                 })
-            })
-            .catch(err => console.log("err.message", err.message))
+                .catch(err => console.log("err.message", err.message)),
+            
+            fetch(APIOfProductList)
+                .then(res => res.json())
+                .then(res => {
+                    this.setState({
+                        interestingProducts: res.products
+                    })
+                })
+        ])
+        
     }
 
     render() {
-        const { products } = this.state;
+        const { cartProducts } = this.state;
         return (
             <div className="CartList">
                 <div className="container">
@@ -61,7 +76,7 @@ export default class CartList extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {products.map((product, i) => {
+                                    {cartProducts.map((product, i) => {
                                         return (
                                             <tr key={product.id}>
                                                 <td>
@@ -123,9 +138,6 @@ export default class CartList extends Component {
                                             <span>
                                                 ${218}
                                             </span>
-                                            <p>
-                                                Shipping options will be updated during checkout.
-                                            </p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -160,6 +172,12 @@ export default class CartList extends Component {
                         </div>
                     </div>
                     <div className="crossSells">
+                        <h2>You may be interested in...</h2>
+                        <ul>
+                            {/* {APIOfProductList.map}
+                            {api 검색해서 map 돌리기 }
+                            <li></li> */}
+                        </ul>
 
                     </div>
                 </div>

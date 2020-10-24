@@ -32,7 +32,9 @@ class Product extends Component {
         return (
             <li key={product.id} className="Product">
                 <div className="imageContainer">
-                    <img src={product.image} alt="상품 이미지" />
+                    <button >
+                        <img src={product.image} alt="상품 이미지" />
+                    </button>
                     <button className="heartIcon" onClick={this.isChangeHeartColor}>
                         { isFullHeartBool ? 
                             <FaHeart className="fullHeart" /> 
