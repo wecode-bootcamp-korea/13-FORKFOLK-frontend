@@ -10,10 +10,10 @@ class Routes extends React.Component {
     return (
       <Router>
         <Switch>
-          {/* <Route path="/" component={Footer} /> */}
           <Route exact path="/Account" component={Account} />
           <Route exact path="/shop/:id" component={PreductDetail} />
         </Switch>
+        <Route path="/" component={Footer} />
       </Router>
     );
   }
