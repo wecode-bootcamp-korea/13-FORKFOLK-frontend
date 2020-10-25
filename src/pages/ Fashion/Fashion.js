@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-// import TitleBox from "../TitleBox/TitleBox.js";
-// import CoreContents from "../CoreContents/CoreContents.js";
-import SubContents from "../../components/CoreContents/CoreContents";
+// import TitleBox from "../../TitleBox/TitleBox.js";
+// import CoreContents from "../../components/CoreContents/CoreContents";
+// import SubContents from "../../components/CoreContents/CoreContents";
 import "./Fashion.scss";
 
 class Fashion extends Component {
@@ -24,18 +24,20 @@ class Fashion extends Component {
 
   render() {
     const { fashionItems } = this.state;
-    console.log("data>>>", fashionItems);
+
     return (
       <div className="FashionPage">
-        {fashionItems.map((FashionItems) => (
-          <SubContents
-            id={fashionItems.id}
-            imgSrc={fashionItems.imgSrc}
-            issueNumber={fashionItems.issueNumber}
-            title={fashionItems.title}
-            description={fashionItems.description}
-          />
-        ))}
+        {/* <div className="TitleBar">
+            <Link to "https://www.kinfolk.com/stories/design/">
+            Design </Link>    
+            <h1>Fashion</h1>
+            <Link to "https://www.kinfolk.com/stories/interiors/">
+                INTERIORS</Link>
+          </div>
+          
+          {/* {fashionItems.map((fashionItems)=>(
+              <
+          ))} */}
       </div>
     );
   }
