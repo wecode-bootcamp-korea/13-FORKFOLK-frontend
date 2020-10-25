@@ -20,7 +20,6 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    // console.log("CDM 돕니당")
     const APIOfProductFilterList = `${APIROOT}/Data/productFilterList.json`;
     const APIOfProductList = `${APIROOT}/Data/productList.json`;
 
@@ -47,7 +46,6 @@ class ProductList extends Component {
   }
 
   componentDidUpdate() {
-    // console.log("CDU 돕니당")
     fetch(`http://localhost:3000//shop/${this.props.match.params.id}`);
   }
 
@@ -91,38 +89,6 @@ class ProductList extends Component {
       isPrevBtnVisible : prevBtnBool,
       isNextBtnVisible : nextBtnBool
     })
-
-    // if (num === 1) {
-    //   this.setState({ 
-        
-    //     isPrevBtnVisible: false,
-    //     isNextBtnVisible: true,
-    //   }, () => {})
-    // }
-    // if (num === 2) {
-    //   this.setState({ 
-    //     productsByPage : productsByCategory.slice(12, 24),
-    //     mappingPage : true,
-    //     isPrevBtnVisible: true,
-    //     isNextBtnVisible: true,
-    //   })
-    // }
-    // if (num === 3) {
-    //   this.setState({ 
-    //     productsByPage : productsByCategory.slice(24, 36),
-    //     mappingPage : true,
-    //     isPrevBtnVisible: true,
-    //     isNextBtnVisible: true,
-    //   })
-    // }
-    // if (num === 4) {
-    //   this.setState({ 
-    //     productsByPage : productsByCategory.slice(36),
-    //     mappingPage : true,
-    //     isPrevBtnVisible: true,
-    //     isNextBtnVisible: false,
-    //   })
-    // }
   }
 
   goToProductDetail = () => {
@@ -132,12 +98,8 @@ class ProductList extends Component {
   }
  
   render() {
-    // console.log("this.props", this.props)
-    // console.log("this.props.match.params.category", this.props.match.params.category)
     const {filterList, productsByCategory, productsByPage, mappingPage, isPrevBtnVisible, isNextBtnVisible, isPageFooterVisible } = this.state;
     const mappingPageIn = mappingPage ? productsByPage : productsByCategory
-
-    // if (!this.state.어쩌구) return <div>roading.....</div>
 
     return (
       <div className="ProductList">
@@ -219,6 +181,3 @@ class ProductList extends Component {
 };
 
 export default ProductList;
-
-const APIOfProductList = `${APIROOT}/Data/productList.json`;
-
