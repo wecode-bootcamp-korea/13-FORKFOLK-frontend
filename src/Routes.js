@@ -16,6 +16,7 @@ class Routes extends React.Component {
       </Router>
     );
   }
+  
 }
 
 export default Routes;
