@@ -33,7 +33,7 @@ class Product extends Component {
             <li id={product.id} className="Product">
                 <div className="imageContainer">
                     <button onClick={() => {goToProductDetail(product.id)}}>
-                        <img src={product.image} alt="상품 이미지" />
+                        <img className="productImage" src={product.image} alt="상품 이미지" />
                     </button>
                     <button className="heartIcon" onClick={this.isChangeHeartColor}>
                         { isFullHeartBool ? 
