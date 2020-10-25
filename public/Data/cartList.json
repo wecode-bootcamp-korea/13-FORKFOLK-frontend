@@ -1,28 +1,58 @@
 {
   "cartData": [
     {
-      "id": 0,
+      "id": 1,
       "image": "https://images.unsplash.com/photo-1575488405241-def30132aab6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "title": "Le Chat Chic",
       "price": "142"
     },
     {
-      "id": 1,
+      "id": 22,
       "image": "https://images.unsplash.com/photo-1497008386681-a7941f08011e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "title": "Shortcut",
       "price": "30"
     },
     {
-      "id": 2,
+      "id": 3,
       "image": "https://images.unsplash.com/photo-1585059466160-5cd3af4c49d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "title": "Codingi sulsul",
       "price": "55"
     },
     {
-      "id": 3,
+      "id": 4,
       "image": "https://images.unsplash.com/photo-1573247318220-36d3269fbff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "title": "Always half full",
       "price": "102"
+    }
+  ],
+  "interestingProducts": [
+    {
+      "id": 1,
+      "image": "https://images.unsplash.com/photo-1529607225807-563e0851ee7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "ART PRINTS",
+      "description": "Anyone",
+      "price": "$109"
+    },
+    {
+      "id": 2,
+      "image": "https://images.unsplash.com/photo-1572016875426-b49689eb652a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "ART PRINTS",
+      "description": "Strategy",
+      "price": "$109"
+    },
+    {
+      "id": 3,
+      "image": "https://images.unsplash.com/photo-1497008386681-a7941f08011e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "ART PRINTS",
+      "description": "Agency",
+      "price": "$118"
+    },
+    {
+      "id": 4,
+      "image": "https://images.unsplash.com/photo-1573247318220-36d3269fbff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+      "category": "ART PRINTS",
+      "description": "Foot",
+      "price": "$118"
     }
   ]
 }

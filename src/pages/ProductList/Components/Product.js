@@ -28,11 +28,11 @@ class Product extends Component {
 
     render() {
         const { isFullHeartBool } = this.state;
-        const { product, filterByCategory } = this.props;
+        const { product, filterByCategory, goToProductDetail } = this.props;
         return (
-            <li key={product.id} className="Product">
+            <li id={product.id} className="Product">
                 <div className="imageContainer">
-                    <button >
+                    <button onClick={goToProductDetail}>
                         <img src={product.image} alt="상품 이미지" />
                     </button>
                     <button className="heartIcon" onClick={this.isChangeHeartColor}>
@@ -58,4 +58,4 @@ class Product extends Component {
     }
 }
 
-export default Product
+export default Product;
