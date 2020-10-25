@@ -91,10 +91,8 @@ class ProductList extends Component {
     })
   }
 
-  goToProductDetail = () => {
-    console.log(this.props)
-    console.log("goToProductDetail 실행");
-
+  goToProductDetail = (id) => {
+    this.props.history.push(`${id}`)
   }
  
   render() {
@@ -135,6 +133,7 @@ class ProductList extends Component {
                   return (
                     <Product 
                     key={i}
+                    id={product.id}
                     product={product}
                     filterByCategory={this.filterByCategory}
                     goToProductDetail={this.goToProductDetail}
