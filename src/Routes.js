@@ -1,5 +1,4 @@
 import React from "react";
-import ProductDetail from "./pages/ProductDetail/ProductDetail"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Account from "./pages/Account/Account";
 import ProductList from "./pages/ProductList/ProductList";
