@@ -1,0 +1,42 @@
+.productDetail{
+    display: flex;
+    height: auto;
+    margin: 70px 40px;
+    flex-direction: column;
+    align-items: center;
+
+    header{
+        display: flex;
+        margin: 80px 0;
+        font-size: 14px;
+        font-weight: 300;
+        flex-direction: row;
+        
+        ul{
+        display: flex;
+        flex-direction: row;
+
+        li{
+            margin:0 7px;
+
+            button{
+                font-size: inherit;
+                font-family: inherit;
+                text-align: center;
+            }
+        }
+        }
+    }
+
+    section{
+        display: flex;
+        flex-direction: row;
+        
+        aside{
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        }
+    }
+
+}
