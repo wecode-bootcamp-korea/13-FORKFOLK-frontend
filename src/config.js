@@ -1,1 +1,1 @@
-export const APIROOT = "http://localhost:3000"
+export const APIROOT = "http://localhost:3000";
