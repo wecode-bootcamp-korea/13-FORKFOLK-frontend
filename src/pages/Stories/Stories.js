@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { API } from "../../config";
 // import TitleBox from "../../TitleBox/TitleBox.js";
-// import CoreContents from "../../components/CoreContents/CoreContents";
+import CoreContents from "../../components/CoreContents/CoreContents";
 // import SubContents from "../../components/CoreContents/CoreContents";
 import "./Fashion.scss";
 
@@ -13,9 +14,7 @@ class Fashion extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/Data/Fashiondata.json", {
-      method: "GET",
-    })
+    fetch(`${API}Data/Fashiondata.json`)
       .then((fashionData) => fashionData.json())
       .then((fashionData) =>
         this.setState({ fashionItems: fashionData.fashionItems })
@@ -27,6 +26,8 @@ class Fashion extends Component {
 
     return (
       <div className="FashionPage">
+        <CoreContents title={fashionItems.title} />
+
         {/* <div className="TitleBar">
             <Link to "https://www.kinfolk.com/stories/design/">
             Design </Link>    

@@ -12,9 +12,7 @@ class CoreContents extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/Data/CoreContentsdata.json", {
-      method: "GET",
-    })
+    fetch("http://localhost:3000/Data/CoreContentsdata.json")
       .then((CoreContentsdata) => CoreContentsdata.json())
       .then((contentsData) =>
         this.setState({
@@ -33,7 +31,7 @@ class CoreContents extends Component {
           <p>
             <span>{mainItem.subTitle}</span>
           </p>
-          <h1>{mainItem.mainTitle}</h1>
+          <h1>{mainItem.title}</h1>
           <p>{mainItem.description}</p>
         </div>
         <div className="subContents">

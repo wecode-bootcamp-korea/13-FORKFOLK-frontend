@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CoreContents from "./components/CoreContents/CoreContents";
-import Fashion from "./pages/ Fashion/Fashion";
+// import Fashion from "./pages/ Fashion/Fashion";
 
+import Account from "./pages/Account/Account";
 import Footer from "./components/Footer/Footer";
 
 class Routes extends React.Component {
@@ -11,7 +12,8 @@ class Routes extends React.Component {
       <Router>
         <Switch>
           <Route exact path="/" component={CoreContents} />
-          <Route exact path="/fashion" component={Fashion} />
+          {/* <Route exact path="/Stories" component={Stories} /> */}
+          <Route exact path="/Account" component={Account} />
         </Switch>
         <Route path="/" component={Footer} />
       </Router>

@@ -1,4 +1,78 @@
 {
+  "designItems": [
+    {
+      "id": 1,
+      "imgSrc": "",
+      "issueNumber": "",
+      "title": "",
+      "description": ""
+    },
+
+    {
+      "id": 2,
+      "imgSrc": "",
+      "issueNumber": "",
+      "title": "",
+      "description": ""
+    },
+
+    {
+      "id": 3,
+      "imgSrc": "",
+      "issueNumber": "",
+      "title": "",
+      "description": ""
+    },
+
+    {
+      "id": 4,
+      "imgSrc": "",
+      "issueNumber": "",
+      "title": "",
+      "description": ""
+    },
+
+    {
+      "id": 5,
+      "imgSrc": "",
+      "issueNumber": "",
+      "title": "",
+      "description": ""
+    },
+
+    {
+      "id": 6,
+      "imgSrc": "",
+      "issueNumber": "",
+      "title": "",
+      "description": ""
+    },
+
+    {
+      "id": 7,
+      "imgSrc": "",
+      "issueNumber": "",
+      "title": "",
+      "description": ""
+    },
+
+    {
+      "id": 8,
+      "imgSrc": "",
+      "issueNumber": "",
+      "title": "",
+      "description": ""
+    },
+
+    {
+      "id": 9,
+      "imgSrc": "",
+      "issueNumber": "",
+      "title": "",
+      "description": ""
+    }
+  ],
+
   "fashionItems": [
     {
       "id": 1,
