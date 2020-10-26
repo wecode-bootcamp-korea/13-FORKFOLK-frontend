@@ -8,34 +8,37 @@ class CurrendIssue extends Component {
     super();
     this.state = {
       imageList: [],
-      isCursorLeft: true,
+      translateXValue: -300,
+      isCursorPositionleft: false,
     };
   }
 
   imageSlideHandler = (e) => {
-    console.log(e.clientX);
+    const { translateXValue } = this.state;
     if (e.clientX < window.innerWidth / 2) {
-      console.log("left");
+      if (translateXValue >= 600) {
+        return;
+      }
+      this.setState({ translateXValue: translateXValue + 900 });
     }
     if (e.clientX > window.innerWidth / 2) {
-      console.log("right");
+      if (translateXValue <= -3900) {
+        return;
+      }
+      this.setState({ translateXValue: translateXValue - 900 });
     }
   };
 
   cursorImageHandler = (e) => {
-    if (this.state.isCursorLeft === true) {
-      if (e.clientX > window.innerWidth / 2) {
-        this.setState({ isCursorLeft: false }, () => {
-          console.log("right");
-        });
-      }
+    if (e.clientX < window.innerWidth / 2) {
+      this.setState({
+        isCursorPositionleft: true,
+      });
     }
-    if (this.state.isCursorLeft === false) {
-      if (e.clientX < window.innerWidth / 2) {
-        this.setState({ isCursorLeft: true }, () => {
-          console.log("left");
-        });
-      }
+    if (e.clientX > window.innerWidth / 2) {
+      this.setState({
+        isCursorPositionleft: false,
+      });
     }
   };
 
@@ -46,19 +49,30 @@ class CurrendIssue extends Component {
   }
 
   render() {
-    const { imageList, isCursorLeft } = this.state;
+    const { imageList, translateXValue, isCursorPositionleft } = this.state;
+
     return (
       <div
-        className={`CurrentIssue ${isCursorLeft ? "left" : "right"}`}
-        onClick={(e) => this.imageSlideHandler(e)}
+        className="CurrentIssue"
         onMouseMove={(e) => this.cursorImageHandler(e)}
+        onClick={(e) => this.imageSlideHandler(e)}
       >
         <h3>Current Issue</h3>
-        <ul>
+        <ul className={isCursorPositionleft ? "left" : "right"}>
           {imageList.map((imageItem) => {
-            return <CurrentIssueItem key={imageItem.id} contents={imageItem} />;
+            return (
+              <CurrentIssueItem
+                key={imageItem.id}
+                contents={imageItem}
+                translateXValue={translateXValue}
+              />
+            );
           })}
         </ul>
+        <span>
+          From wilderness to windowsill: Plant roots in the world around you
+        </span>
+        <button className="quickSand">BUY NOW</button>
       </div>
     );
   }

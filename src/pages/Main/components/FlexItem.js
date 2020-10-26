@@ -6,10 +6,10 @@ class FlexItem extends Component {
     const { imgSrc, issueNumber, title, description } = this.props;
     return (
       <li className="FlexItem">
-        <figure>
+        <div>
           <img src={imgSrc} alt="person" />
-          <figcaption>ARTS &#38; CULTURE, ISSUE {issueNumber}</figcaption>
-        </figure>
+        </div>
+        <span className="issue">ARTS &#38; CULTURE, ISSUE {issueNumber}</span>
         <span>{title}</span>
         <p>{description}</p>
       </li>

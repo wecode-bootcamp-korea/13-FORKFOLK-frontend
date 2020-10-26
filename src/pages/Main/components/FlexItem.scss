@@ -3,15 +3,35 @@
 .FlexItem {
   width: $liWidth;
   font-family: "Quicksand", sans-serif;
-  figure {
-    figcaption {
-      font-size: 13px;
-      font-weight: 500;
+
+  div {
+    position: relative;
+    &:after {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      content: "";
+      top: 0;
+      left: 0;
+      display: block;
+      opacity: 0;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+    &:hover {
+      &:after {
+        opacity: 0.3;
+      }
     }
     img {
       width: 100%;
-      margin-bottom: 5px;
     }
+  }
+
+  .issue {
+    font-size: 13px;
+    font-weight: 500;
   }
   span {
     display: inline-block;

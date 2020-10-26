@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Main.scss";
+import Header from "../../components/Header/Header";
 import FlexItemsList from "./components/FlexItemsList";
 import CurrentIssue from "./components/CurrentIssue";
 import MeetThePoets from "./components/MeetThePoets";
@@ -7,14 +8,14 @@ import Popular from "./components/Popular";
 import ExpandedView from "./components/ExpandedView";
 import FashionIssue from "./components/FashionIssue";
 import TextSticky from "./components/TextSticky";
+import ParallaxBackgroundContent from "./components/ParallaxBackgroundContent";
 
 class Main extends Component {
   constructor() {
     super();
     this.state = {
-      logoScale: 8,
-      wheelDeltaCount: 0,
-      logoMarginTop: 400,
+      // logoScale: 7,
+      logoMarginTop: 300,
       expandedViewContents: [],
       extraordinaryInteriors: [],
       selectedStories: [],
@@ -42,30 +43,23 @@ class Main extends Component {
   };
 
   logoScaleHandler = () => {
-    window.addEventListener("wheel", (e) => {
-      const { logoScale, wheelDeltaCount, logoMarginTop } = this.state;
-      const { wheelDelta } = e;
-      this.setState({ wheelDeltaCount: wheelDelta / 120 }, () => {
-        if (logoScale + wheelDeltaCount < 1 || logoMarginTop < 0) {
-          this.setState({ logoScale: 1, logoMarginTop: 0 });
-          return;
-        }
-        if (logoScale + wheelDeltaCount > 8 || logoMarginTop > 400) {
-          this.setState({ logoScale: 8, logoMarginTop: 400 });
-          return;
-        }
-        this.setState({
-          logoScale: logoScale + wheelDeltaCount,
-          logoMarginTop: logoMarginTop + wheelDeltaCount * 100,
-        });
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset === 0) {
+        this.setState({ logoScale: 7, logoMarginTop: 300 });
+        return;
+      }
+      if (window.pageYOffset >= 200) {
+        this.setState({ logoScale: 1, logoMarginTop: 0 });
+        return;
+      }
+      this.setState({
+        logoScale: 7 - (window.pageYOffset / 50) * 1.5,
+        logoMarginTop: 300 - (window.pageYOffset / 50) * 75,
       });
     });
   };
   componentDidMount() {
     this.fetchData();
-    if (window.pageYOffset <= 1000) {
-      this.logoScaleHandler();
-    }
   }
 
   render() {
@@ -77,10 +71,7 @@ class Main extends Component {
     } = this.state;
     return (
       <>
-        {/* <Header
-          logoScale={logoScale}
-          logoMarginTop={logoMarginTop}
-        /> */}
+        <Header logoScaleHandler={this.logoScaleHandler} />
         <main className="Main">
           <TextSticky
             subtitle="ARTS &#38; CULTURE"
@@ -93,8 +84,13 @@ class Main extends Component {
           {expandedViewContents.length && (
             <ExpandedView contents={expandedViewContents[0]} />
           )}
+          {/* <ParallaxBackgroundContent /> */}
           <CurrentIssue />
-          <FlexItemsList title="Selected Stories" contents={selectedStories} />
+          <FlexItemsList
+            className="SelectedStories"
+            title="Selected Stories"
+            contents={selectedStories}
+          />
           <TextSticky
             title="Kinfolk Dosan"
             description="A New Community in Seoul"
@@ -103,6 +99,12 @@ class Main extends Component {
             }
           />
           <FashionIssue />
+          <ParallaxBackgroundContent />
+          <FlexItemsList
+            className="ExtraordinaryInteriors"
+            title="Extranordinary Interiors"
+            contents={extraordinaryInteriors}
+          />
           <TextSticky
             subtitle="DESIGN"
             title="DOWNSIZING"
@@ -111,14 +113,10 @@ class Main extends Component {
               "https://images.unsplash.com/photo-1508330570239-ce7cabceee22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1756&q=80"
             }
           />
-          <FlexItemsList
-            title="Extranordinary Interiors"
-            contents={extraordinaryInteriors}
-          />
           {expandedViewContents.length && (
             <ExpandedView contents={expandedViewContents[1]} />
           )}
-          <FlexItemsList title="Dive In" contents={diveIn} />
+          <FlexItemsList className="DiveIn" title="Dive In" contents={diveIn} />
           <MeetThePoets />
           <Popular />
           <div className="subscribe">

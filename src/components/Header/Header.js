@@ -11,11 +11,14 @@ class Header extends Component {
     this.state = {
       sideMenuVisible: false,
       shoppingListValid: false,
+      logoMarginTop: 300,
+      logoScale: 7,
+      isMain: true,
     };
   }
 
   goToMain = () => {
-    this.props.history.push("/main");
+    this.props.history.push("/");
   };
 
   goToShoppingList = () => {
@@ -32,13 +35,47 @@ class Header extends Component {
       this.setState({ shoppingListValid: true });
   };
 
+  logoScaleHandler = () => {
+    if (this.props.location.pathname === "/") {
+      window.addEventListener("scroll", () => {
+        const { pageYOffset } = window;
+        if (pageYOffset === 0) {
+          this.setState({ logoScale: 7, logoMarginTop: 300 });
+          return;
+        }
+        if (pageYOffset >= 200) {
+          this.setState({ logoScale: 1, logoMarginTop: 0 });
+          return;
+        }
+        this.setState({
+          logoScale: 7 - (pageYOffset / 50) * 1.5,
+          logoMarginTop: 300 - (pageYOffset / 50) * 75,
+        });
+      });
+      return;
+    }
+    this.setState({ logoScale: 1, logoMarginTop: 0 });
+  };
+
   componentDidMount() {
     this.shoppingListButtonValidHandler();
+    this.logoScaleHandler();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      if (this.props.location.pathname !== "/") {
+        this.setState({ logoScale: 1, logoMarginTop: 0 });
+      }
+    }
+  }
   render() {
-    const { logoScale, logoMarginTop } = this.props;
-    const { sideMenuVisible, shoppingListValid } = this.state;
+    const {
+      sideMenuVisible,
+      shoppingListValid,
+      logoScale,
+      logoMarginTop,
+    } = this.state;
     return (
       <>
         <div className="Header">
@@ -51,7 +88,7 @@ class Header extends Component {
                 <Link to="/">Issue</Link>
               </li>
               <li>
-                <Link to="/">Shop</Link>
+                <Link to="/shop">Shop</Link>
               </li>
             </ul>
             <div

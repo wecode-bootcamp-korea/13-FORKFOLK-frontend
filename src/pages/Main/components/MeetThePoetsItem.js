@@ -7,10 +7,12 @@ class MeetThePoetsItem extends Component {
     const { imgSrc, issueNumber, name, description } = this.props.poet;
     return (
       <li className="MeetThePoetsItem">
-        <figure>
+        <div>
           <img src={imgSrc} alt="profile" />
-          <figcaption>ARTS & CULTRE, ISSUE {issueNumber}</figcaption>
-        </figure>
+        </div>
+        <span className="issue quickSand">
+          ARTS & CULTRE, ISSUE {issueNumber}
+        </span>
         <span className="name">{name}</span>
         <span>{description}</span>
         <Link to="/">READ MORE</Link>
