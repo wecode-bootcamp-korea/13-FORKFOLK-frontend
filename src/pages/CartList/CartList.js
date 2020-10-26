@@ -14,12 +14,7 @@ export default class CartList extends Component {
         super();
         this.state = {
             cartProducts: [],
-            interestingProducts: [],
-            // 추가 기능 구현 중입니다
-            // cartProducts: [
-            //     { productId: 1, 
-            //     quantity: 1 },
-            //     ]
+            interestingProducts: []
         }
     }
 
