@@ -47,7 +47,8 @@ class ProductDetail extends Component {
             .then(res => {
             this.setState({productInfo:res})
         })
-      }
+    }
+    
 
     render() {
         const {productInfo:{id,productImg,productName,price,descriptions}} = this.state;
@@ -61,9 +62,9 @@ class ProductDetail extends Component {
                 <section>
                     <ProductTumbnail productImg={productImg} />
                     <aside>
-                    <ProductDescription id={id} productName={productName} price={price} descriptions={descriptions}  />
-                        <ProductCartMenu price={price} />
-                        </aside>
+                        <ProductDescription id={id} productName={productName} price={price} descriptions={descriptions}  />
+                        <ProductCartMenu id={id} price={price} />
+                    </aside>
                 </section>
             </div>
         )
