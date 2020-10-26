@@ -50,7 +50,6 @@ class CurrendIssue extends Component {
 
   render() {
     const { imageList, translateXValue, isCursorPositionleft } = this.state;
-
     return (
       <div
         className={`CurrentIssue ${isCursorPositionleft ? "left" : "right"}`}

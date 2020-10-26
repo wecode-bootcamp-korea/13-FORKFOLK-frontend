@@ -51,6 +51,7 @@ class Main extends Component {
       extraordinaryInteriors,
       diveIn,
     } = this.state;
+    console.log(window.pageYOffset);
 
     return (
       <main className="Main">
