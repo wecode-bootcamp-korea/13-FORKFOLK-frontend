@@ -36,8 +36,45 @@ class Header extends Component {
   };
 
   logoScaleHandler = () => {
+    const { pageYOffset } = window;
+    if (pageYOffset < 300) {
+      if (pageYOffset === 0) {
+        this.setState({ logoScale: 7, logoMarginTop: 300 });
+        return;
+      }
+      if (pageYOffset >= 200) {
+        this.setState({ logoScale: 1, logoMarginTop: 0 });
+        return;
+      }
+      this.setState({
+        logoScale: 7 - (pageYOffset / 50) * 1.5,
+        logoMarginTop: 300 - (pageYOffset / 50) * 75,
+      });
+    }
+  };
+
+  componentDidMount() {
+    this.shoppingListButtonValidHandler();
     if (this.props.location.pathname === "/") {
-      window.addEventListener("scroll", () => {
+      window.addEventListener("scroll", this.logoScaleHandler, false);
+    }
+    if (this.props.location.pathname !== "/") {
+      this.setState({ logoScale: 1, logoMarginTop: 0 });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      if (this.props.location.pathname !== "/") {
+        window.removeEventListener("scroll", this.logoScaleHandler, false);
+        this.setState({
+          logoScale: 1,
+          logoMarginTop: 0,
+          sideMenuVisible: false,
+        });
+      }
+      if (this.props.location.pathname === "/") {
+        window.addEventListener("scroll", this.logoScaleHandler, false);
         const { pageYOffset } = window;
         if (pageYOffset === 0) {
           this.setState({ logoScale: 7, logoMarginTop: 300 });
@@ -51,24 +88,10 @@ class Header extends Component {
           logoScale: 7 - (pageYOffset / 50) * 1.5,
           logoMarginTop: 300 - (pageYOffset / 50) * 75,
         });
-      });
-      return;
-    }
-    this.setState({ logoScale: 1, logoMarginTop: 0 });
-  };
-
-  componentDidMount() {
-    this.shoppingListButtonValidHandler();
-    this.logoScaleHandler();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.location.pathname !== this.props.location.pathname) {
-      if (this.props.location.pathname !== "/") {
-        this.setState({ logoScale: 1, logoMarginTop: 0 });
       }
     }
   }
+
   render() {
     const {
       sideMenuVisible,
@@ -92,7 +115,6 @@ class Header extends Component {
               </li>
             </ul>
             <div
-              to="/"
               className="imgBox"
               style={{
                 transform: `scale(${logoScale || 1})`,

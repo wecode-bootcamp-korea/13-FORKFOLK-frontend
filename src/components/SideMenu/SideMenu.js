@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import "./SideMenu.scss";
 
 class SideMenu extends Component {
+  goToAccount = () => {
+    this.props.history.push("/Account");
+  };
+  componentDidUpdate() {}
   render() {
     return (
       <div className={`SideMenu ${this.props.visible && "visible"}`}>
@@ -52,10 +56,10 @@ class SideMenu extends Component {
           </ul>
           <ul className="myPage">
             <li>
-              <button to="/Account">Log In / Register</button>
+              <button onClick={this.goToAccount}>Log In / Register</button>
             </li>
             <li>
-              <button to="/">Subscribe</button>
+              <button>Subscribe</button>
             </li>
           </ul>
         </div>
@@ -64,4 +68,4 @@ class SideMenu extends Component {
   }
 }
 
-export default SideMenu;
+export default withRouter(SideMenu);

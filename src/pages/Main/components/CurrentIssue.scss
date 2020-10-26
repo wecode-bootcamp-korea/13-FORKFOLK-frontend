@@ -8,26 +8,32 @@
   align-items: center;
   padding-bottom: 50px;
   margin-bottom: 100px;
+  overflow: hidden;
+  &.left {
+    cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-left.svg"),
+      pointer;
+  }
+  &.right {
+    cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-right.svg"),
+      pointer;
+  }
 
   ul {
-    overflow: hidden;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translate(-250px);
     display: flex;
     width: 100%;
     padding: 50px 0;
-    &.left {
-      cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-left.svg"),
-        pointer;
-    }
-    &.right {
-      cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-right.svg"),
-        pointer;
-    }
+    transform-origin: top center;
   }
   span {
     display: inline-block;
     font-size: 20px;
     padding: 50px;
   }
+
   button {
     border: 1px solid #000;
     padding: 10px 40px;

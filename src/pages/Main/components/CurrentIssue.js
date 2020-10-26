@@ -8,7 +8,7 @@ class CurrendIssue extends Component {
     super();
     this.state = {
       imageList: [],
-      translateXValue: -300,
+      translateXValue: 0,
       isCursorPositionleft: false,
     };
   }
@@ -16,7 +16,7 @@ class CurrendIssue extends Component {
   imageSlideHandler = (e) => {
     const { translateXValue } = this.state;
     if (e.clientX < window.innerWidth / 2) {
-      if (translateXValue >= 600) {
+      if (translateXValue >= 0) {
         return;
       }
       this.setState({ translateXValue: translateXValue + 900 });
@@ -53,12 +53,12 @@ class CurrendIssue extends Component {
 
     return (
       <div
-        className="CurrentIssue"
+        className={`CurrentIssue ${isCursorPositionleft ? "left" : "right"}`}
         onMouseMove={(e) => this.cursorImageHandler(e)}
         onClick={(e) => this.imageSlideHandler(e)}
       >
         <h3>Current Issue</h3>
-        <ul className={isCursorPositionleft ? "left" : "right"}>
+        <ul>
           {imageList.map((imageItem) => {
             return (
               <CurrentIssueItem
