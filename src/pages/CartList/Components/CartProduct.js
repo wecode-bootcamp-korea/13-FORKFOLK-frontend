@@ -79,6 +79,17 @@ export default class CartProduct extends Component {
 
     render() {
         const { product } = this.state;
+        const optionValue = [ 
+            {value:1, outputNum:1}, 
+            {value:2, outputNum:2}, 
+            {value:3, outputNum:3}, 
+            {value:4, outputNum:4}, 
+            {value:5, outputNum:5}, 
+            {value:6, outputNum:6}, 
+            {value:7, outputNum:7}, 
+            {value:8, outputNum:8}, 
+            {value:9, outputNum:9} 
+        ]
         
         return (
             <tr className="cartProducts" key={product.id}>
@@ -96,15 +107,11 @@ export default class CartProduct extends Component {
                         <select value={product.quantity} 
                         onChange={(e) => this.changeQuantity(e, product.id)} 
                         >
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
+                            {optionValue.map((eachOption, i) => {
+                                return (
+                                    <option key={i} value={eachOption.value}>{eachOption.outputNum}</option>
+                                )
+                            })}
                         </select>
                     </form>
                 </td>
