@@ -10,13 +10,13 @@ class ParallaxBackgroundContent extends Component {
     };
   }
   parallaxBg = () => {
-    this.setState({ scrollY: window.scrollY });
+    window.addEventListener("scroll", () => {
+      this.setState({ scrollY: window.scrollY });
+    });
   };
 
   componentDidMount() {
-    window.addEventListener("scroll", () => {
-      this.parallaxBg();
-    });
+    this.parallaxBg();
   }
   render() {
     const { scrollY } = this.props;
