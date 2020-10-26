@@ -75,7 +75,7 @@ class ProductList extends Component {
       productsByPage: [...filteredProducts],
       isPageFooterVisible: false}, () => {this.props.history.push(`/product?category=${categoryName[category]}`)})
 
-    // 10/28 수요일에 맞춰볼 예정
+    // 10/28 수요일에 백엔드 분들과 맞춰볼 예정입니다.
     // fetch(`http://`, {
     //   method: "POST",
     //   body: JSON.stringify({
