@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"; 
 import Product from "../ProductList/Components/Product"
+import CartProduct from "../CartList/Components/CartProduct"
 import { APIROOT } from "../../config";
 import "./CartList.scss";
 import { FaChevronDown } from "react-icons/fa";
-import { FaRegTimesCircle } from "react-icons/fa";
 import { map } from "async";
 
 
@@ -14,7 +14,8 @@ export default class CartList extends Component {
         super();
         this.state = {
             cartProducts: [],
-            interestingProducts: []
+            interestingProducts: [],
+            backCartProducts: [{productId: 1, quantity: 1}, {productId: 2, quantity: 1}]
         }
     }
 
@@ -40,7 +41,7 @@ export default class CartList extends Component {
         
         const { cartProducts } = this.state;
         
-        const filteredCart = cartProducts[0] && cartProducts.filter(product => {
+        const filteredCart = cartProducts.length && cartProducts.filter(product => {
             return product.id !== Number(e.target.id);
         });
 
@@ -49,8 +50,35 @@ export default class CartList extends Component {
         });
     };
 
+    changeQuantity = (e, id) => {
+        console.log("Quantity is changed!!")
+        const { value } = e.target;
+        const { cartProducts } = this.state;
+        // console.log(e)
+        // console.log(e.target)
+        console.log(e.target.value)
+        console.log(id)
+        console.log(this.state.cartProducts[1].id)
+
+        const changedProductId = cartProducts.length && cartProducts.filter(product => {
+            if (product.id === id) {
+                    // return product.id: id,
+                    let obj = {producId : product.id, quantity:e.target.value};
+               
+                //    this.setState({backcCartProducts:[...this.state.backcCartProducts, ...obj]}) 
+            }
+
+            return 
+        })
+        
+        // this.setState({
+        //     cartProducts.id.quantity: value
+        // })
+
+    }
+
     render() {
-        const { cartProducts, interestingProducts } = this.state;
+        const { cartProducts, interestingProducts, backcCartProducts } = this.state;
 
         if (cartProducts.length === 0) {
             return (
@@ -100,38 +128,10 @@ export default class CartList extends Component {
                                     <tbody>
                                         {cartProducts.map((product, i) => {
                                             return (
-                                                <tr className="cartProducts" key={product.id}>
-                                                    <td>
-                                                        <img src={product.image} alt="장바구니 상품"/>
-                                                    </td>
-                                                    <td>
-                                                        {product.title}
-                                                    </td>
-                                                    <td>
-                                                        ${product.price}
-                                                    </td>
-                                                    <td>
-                                                        <select>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                            <option value="8">8</option>
-                                                            <option value="9">9</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        ${product.price}
-                                                    </td>
-                                                    <td>
-                                                        <button id={product.id} className="delBtn" onClick={this.deleteProduct}>
-                                                            <FaRegTimesCircle className="delIcon" />
-                                                        </button>
-                                                    </td>
-                                                </tr>
+                                                <CartProduct 
+                                                key={i}
+                                                product={product}
+                                                />
                                             )
                                         })}
                                         <tr>
