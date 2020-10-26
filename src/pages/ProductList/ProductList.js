@@ -92,7 +92,7 @@ class ProductList extends Component {
   }
 
   goToProductDetail = (id) => {
-    this.props.history.push(`${id}`)
+    this.props.history.push(`/shop/${id}`)
   }
  
   render() {
