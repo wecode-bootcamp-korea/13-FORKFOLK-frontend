@@ -64,22 +64,26 @@ class ProductList extends Component {
         productsByCategory: [...allProducts],
         mappingPage : false,
         isPageFooterVisible: true
-      }, () => {this.props.history.push('/shop/')} 
-      
-      )
-    } 
-      const filteredProducts = allProducts.filter( product => {
-        return product.category === category;
-      })
-      this.setState({isPageFooterVisible: filteredProducts.length < 13,
-        productsByCategory: [...filteredProducts],
-        productsByPage: [...filteredProducts],
-        isPageFooterVisible: false}, () => {this.props.history.push(`/product-category/${categoryName[category]}/`)})
-  }
+      }, () => {this.props.history.push(`/shop?category=All&page=1`)} )
+    }
 
-  goToProductDetail = (id) => {
-    console.log(this.props.history)
-    this.props.history.push(`/shop/${id}`)
+    const filteredProducts = allProducts.filter(product => {
+      return product.category === category;
+    })
+    this.setState({isPageFooterVisible: filteredProducts.length < 13,
+      productsByCategory: [...filteredProducts],
+      productsByPage: [...filteredProducts],
+      isPageFooterVisible: false}, () => {this.props.history.push(`/product?category=${categoryName[category]}`)})
+
+    // 10/28 수요일에 맞춰볼 예정
+    // fetch(`http://`, {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     endpoint: `/product?category=${categoryName[category]}`
+    //   })
+    // })
+    //   .then(res => res.json())
+    //   .then(result => console.log("endpoint", result))
   }
 
   filterByPage = (num) => {
@@ -93,12 +97,13 @@ class ProductList extends Component {
       mappingPage : true,
       isPrevBtnVisible : prevBtnBool,
       isNextBtnVisible : nextBtnBool
-    })
+    }, () => {this.props.history.push(`/shop?category=all&page=${num}`)})
   }
 
-  
-
-  
+  goToProductDetail = (id) => {
+    console.log(this.props.history)
+    this.props.history.push(`/shop/${id}`)
+  }
  
   render() {
     const {filterList, productsByCategory, productsByPage, mappingPage, isPrevBtnVisible, isNextBtnVisible, isPageFooterVisible } = this.state;
