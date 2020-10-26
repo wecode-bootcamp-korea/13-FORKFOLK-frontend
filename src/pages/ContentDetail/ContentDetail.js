@@ -32,7 +32,7 @@ class ContentDetail extends Component {
         return (
             <main className="contentDetail">
                 <section className="contentContainer">
-                    <article className="sticky">
+                    <article>
                         <span>issue {issueNum}</span>
                         <header>{contentName}</header>
                         <p>{descriptions[0]}</p>
@@ -40,10 +40,15 @@ class ContentDetail extends Component {
                     <img src={contentImgs[0]}></img>
                 </section>
                 <section className="contentContainer">
-                    <img className="sticky" src={contentImgs[1]}></img>
-                    <article >
-                        <p>{descriptions[1]}</p>
-                        </article>
+                    <img src={contentImgs[1]}></img>
+                    <div>
+                        <div className="articleContainer">
+                        <article >
+                            <p>{descriptions[1]}</p>
+                            </article>
+                            </div>
+                        <img src={contentImgs[2]}></img>
+                    </div>
                 </section>
             </main>
         )
