@@ -76,7 +76,10 @@ class ProductList extends Component {
         isPageFooterVisible: false}, () => {this.props.history.push(`/product?category=${categoryName[category]}/`)})
   }
 
-
+  goToProductDetail = (id) => {
+    console.log(this.props.history)
+    this.props.history.push(`/shop/${id}`)
+  }
 
   filterByPage = (num) => {
     const { productsByCategory } = this.state;
@@ -92,10 +95,6 @@ class ProductList extends Component {
     })
   }
 
-  goToProductDetail = (id) => {
-    this.props.history.push(`/shop/${id}`)
-  }
- 
   render() {
     const {filterList, productsByCategory, productsByPage, mappingPage, isPrevBtnVisible, isNextBtnVisible, isPageFooterVisible } = this.state;
     const mappingPageIn = mappingPage ? productsByPage : productsByCategory
