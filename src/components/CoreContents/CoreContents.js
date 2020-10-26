@@ -12,7 +12,7 @@ class CoreContents extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/Data/CoreContentsdata.json")
+    fetch(`http://localhost:3000/Data/CoreContentsdata.json`)
       .then((CoreContentsdata) => CoreContentsdata.json())
       .then((contentsData) =>
         this.setState({
@@ -24,6 +24,7 @@ class CoreContents extends Component {
 
   render() {
     const { mainItem, subItems } = this.state;
+    console.log(this.props);
     return (
       <div className="coreComponents">
         <div className="mainContents">

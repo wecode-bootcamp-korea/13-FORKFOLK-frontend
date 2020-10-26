@@ -2,8 +2,8 @@
   "designItems": [
     {
       "id": 1,
-      "imgSrc": "",
-      "issueNumber": "",
+      "imgSrc": "https://images.unsplash.com/photo-1588641750012-474003b37f49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80",
+      "issueNumber": "37",
       "title": "",
       "description": ""
     },
@@ -11,7 +11,7 @@
     {
       "id": 2,
       "imgSrc": "",
-      "issueNumber": "",
+      "issueNumber": "37",
       "title": "",
       "description": ""
     },
@@ -19,7 +19,7 @@
     {
       "id": 3,
       "imgSrc": "",
-      "issueNumber": "",
+      "issueNumber": "37",
       "title": "",
       "description": ""
     },
@@ -27,7 +27,7 @@
     {
       "id": 4,
       "imgSrc": "",
-      "issueNumber": "",
+      "issueNumber": "36",
       "title": "",
       "description": ""
     },
@@ -35,7 +35,7 @@
     {
       "id": 5,
       "imgSrc": "",
-      "issueNumber": "",
+      "issueNumber": "36",
       "title": "",
       "description": ""
     },
@@ -43,7 +43,7 @@
     {
       "id": 6,
       "imgSrc": "",
-      "issueNumber": "",
+      "issueNumber": "36",
       "title": "",
       "description": ""
     },
@@ -51,7 +51,7 @@
     {
       "id": 7,
       "imgSrc": "",
-      "issueNumber": "",
+      "issueNumber": "35",
       "title": "",
       "description": ""
     },
@@ -59,7 +59,7 @@
     {
       "id": 8,
       "imgSrc": "",
-      "issueNumber": "",
+      "issueNumber": "35",
       "title": "",
       "description": ""
     },
@@ -67,7 +67,7 @@
     {
       "id": 9,
       "imgSrc": "",
-      "issueNumber": "",
+      "issueNumber": "35",
       "title": "",
       "description": ""
     }
@@ -76,21 +76,21 @@
   "fashionItems": [
     {
       "id": 1,
-      "imgSrc": "https://images.unsplash.com/photo-1603188435981-65c1b42c6f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1394&q=80",
+      "imgSrc": "https://images.unsplash.com/photo-1535137755190-8a0b337717e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80",
       "issueNumber": "37",
       "title": "What's going on?",
       "description": "description "
     },
     {
       "id": 2,
-      "imgSrc": "",
+      "imgSrc": "https://images.unsplash.com/photo-1598728637989-9c5de7532584?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
       "issueNumber": "",
       "title": "I hate react",
       "description": ""
     },
     {
       "id": 3,
-      "imgSrc": "",
+      "imgSrc": "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1988&q=80",
       "issueNumber": "",
       "title": "",
       "description": ""

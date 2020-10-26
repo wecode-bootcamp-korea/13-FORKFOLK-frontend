@@ -3,9 +3,9 @@ import { API } from "../../config";
 // import TitleBox from "../../TitleBox/TitleBox.js";
 import CoreContents from "../../components/CoreContents/CoreContents";
 // import SubContents from "../../components/CoreContents/CoreContents";
-import "./Fashion.scss";
+import "../Stories/Stories.scss";
 
-class Fashion extends Component {
+class Stories extends Component {
   constructor() {
     super();
     this.state = {
@@ -26,22 +26,15 @@ class Fashion extends Component {
 
     return (
       <div className="FashionPage">
+        <div className="TitleBox">
+          <button>ALL STORIES</button>
+          <h1>Design</h1>
+          <button>FASHION</button>
+        </div>
         <CoreContents title={fashionItems.title} />
-
-        {/* <div className="TitleBar">
-            <Link to "https://www.kinfolk.com/stories/design/">
-            Design </Link>    
-            <h1>Fashion</h1>
-            <Link to "https://www.kinfolk.com/stories/interiors/">
-                INTERIORS</Link>
-          </div>
-          
-          {/* {fashionItems.map((fashionItems)=>(
-              <
-          ))} */}
       </div>
     );
   }
 }
 
-export default Fashion;
+export default Stories;
