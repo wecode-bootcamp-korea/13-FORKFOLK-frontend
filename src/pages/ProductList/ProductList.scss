@@ -1,0 +1,73 @@
+.ProductList {
+  margin: 0 20px;
+  font-family: "Quicksand", serif, sans-serif;
+
+  .pageHeader {
+    padding: 90px 0 100px;
+    text-align: center;
+
+    ul {
+      margin: 0 5px;
+      color: rgb(77, 77, 77);
+      letter-spacing: 2.5px;
+
+      li {
+        display: inline-flex;
+        margin: 0 5px;
+        text-align: center;
+
+        button {
+          color: inherit;
+          font-family: inherit;
+          cursor: pointer;
+          letter-spacing: 1.5px;
+        }
+      }
+    }
+
+    span {
+      font-size: 13.5px;
+    }
+  }
+
+  .products {
+    display: flex;
+    justify-content: center;
+    max-width: 2000px;
+    margin: 0 auto;
+
+    content {
+      ul {
+        display: flex;
+        margin: 30px auto 0;
+        flex-wrap: wrap;
+        letter-spacing: 1.5px;
+      }
+    }
+  }
+
+  .pageFooter {
+    margin: 115px 0;
+
+    span {
+      display: flex;
+      justify-content: center;
+
+      button {
+        margin: 0 12px 2px;
+        color: #3d3c3b;
+        font-size: 14px;
+        cursor: pointer;
+        padding: 0 10px 7px;
+      }
+
+      .invisible {
+        display: none;
+      }
+    }
+  }
+
+  .invisiblePageFooter {
+    display: none;
+  }
+}

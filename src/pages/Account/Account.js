@@ -13,15 +13,6 @@ const LOGINFORM_LABELS = {
   subLink: "Lost your password?",
 };
 const RESISTERFORM_LABELS = {
-<<<<<<< HEAD
-    header: "Register",
-    inputLable: "Email address *",
-    checkBoxLable: "Subscribe to our newsletter",
-    buttonText: "Register",
-    subText : "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our ",
-    subLink: "privacy policy.",
-}
-=======
   header: "Register",
   inputLable: "Email address *",
   checkBoxLable: "Subscribe to our newsletter",
@@ -30,7 +21,6 @@ const RESISTERFORM_LABELS = {
     "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our ",
   subLink: "privacy policy.",
 };
->>>>>>> main
 
 function Account() {
   return (
