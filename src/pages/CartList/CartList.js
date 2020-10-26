@@ -4,7 +4,6 @@ import Product from "../ProductList/Components/Product"
 import CartProduct from "../CartList/Components/CartProduct"
 import { APIROOT } from "../../config";
 import "./CartList.scss";
-import { FaChevronDown } from "react-icons/fa";
 import { map } from "async";
 
 
@@ -15,12 +14,12 @@ export default class CartList extends Component {
         this.state = {
             cartProducts: [],
             interestingProducts: [],
-            backCartProducts: [{productId: 1, quantity: 1}, {productId: 2, quantity: 1}]
+            subtotal: 0,
+            shipping: 29
         }
     }
 
     componentDidMount() {
-        console.log("CDM")
         const APIOfCartList = `${APIROOT}/Data/cartList.json`;
 
         Promise.all([
@@ -29,56 +28,28 @@ export default class CartList extends Component {
                 .then(res => {
                     this.setState({
                         cartProducts: res.cartData,
-                        interestingProducts: res.interestingProducts
+                        interestingProducts: res.interestingProducts,
+                        subtotal: (res.cartData.map(product => {
+                            return (product.price) * (product.quantity)
+                        })).reduce((a, b) => a + b)
                     })
                 })
                 .catch(err => console.log("err.message", err.message))
         ])
     }
 
-    deleteProduct = (e) => {
-        console.log("e.target", e.target.id)
-        
-        const { cartProducts } = this.state;
-        
-        const filteredCart = cartProducts.length && cartProducts.filter(product => {
-            return product.id !== Number(e.target.id);
-        });
+    toGetDataFromChild = (eachId, prevQuantity, eachQuantity, eachPrice, eachTotalPrice) => {
+        const { subtotal } = this.state;
+        const gapOfQuantity = prevQuantity < eachQuantity ? eachQuantity - prevQuantity : -(prevQuantity - eachQuantity);
+        const sumOfGapQuantity = gapOfQuantity * eachPrice;
 
         this.setState({
-            cartProducts: [...filteredCart]
-        });
-    };
-
-    changeQuantity = (e, id) => {
-        console.log("Quantity is changed!!")
-        const { value } = e.target;
-        const { cartProducts } = this.state;
-        // console.log(e)
-        // console.log(e.target)
-        console.log(e.target.value)
-        console.log(id)
-        console.log(this.state.cartProducts[1].id)
-
-        const changedProductId = cartProducts.length && cartProducts.filter(product => {
-            if (product.id === id) {
-                    // return product.id: id,
-                    let obj = {producId : product.id, quantity:e.target.value};
-               
-                //    this.setState({backcCartProducts:[...this.state.backcCartProducts, ...obj]}) 
-            }
-
-            return 
+            subtotal: (sumOfGapQuantity + subtotal)
         })
-        
-        // this.setState({
-        //     cartProducts.id.quantity: value
-        // })
-
     }
 
     render() {
-        const { cartProducts, interestingProducts, backcCartProducts } = this.state;
+        const { cartProducts, interestingProducts, subtotal, shipping } = this.state;
 
         if (cartProducts.length === 0) {
             return (
@@ -131,6 +102,7 @@ export default class CartList extends Component {
                                                 <CartProduct 
                                                 key={i}
                                                 product={product}
+                                                onSubmit={this.toGetDataFromChild}
                                                 />
                                             )
                                         })}
@@ -154,13 +126,13 @@ export default class CartList extends Component {
                             </div>
                             <div className="rightSection">
                                 <h2>Basket totals</h2>
-                                <table cellSpacing="0">
+                                <table cellSpacing="0"> 
                                     <tbody>
                                         <tr>
                                             <th>Subtotal</th>
                                             <td>
                                                 <span>
-                                                    ${218}
+                                                    ${subtotal}
                                                 </span>
                                             </td>
                                         </tr>
@@ -171,17 +143,17 @@ export default class CartList extends Component {
                                             <td>
                                                 <ul>
                                                     <li>
-                                                        ${29}
+                                                        ${shipping}
                                                     </li>
                                                     <li>
-                                                        Shipping Ooptions will be updated during checkout.
+                                                        Shipping Options will be updated during checkout.
                                                     </li>
                                                 </ul>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Total</th>
-                                            <td>${247}</td>
+                                            <td>${subtotal + shipping}</td>
                                         </tr>
                                     </tbody>
                                 </table>
