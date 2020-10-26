@@ -60,11 +60,21 @@ class ProductList extends Component {
     }
 
     if (category === "ALL") {
-      return this.setState({
+      this.setState({
         productsByCategory: [...allProducts],
         mappingPage : false,
         isPageFooterVisible: true
-      }, () => {this.props.history.push(`/shop?category=All&page=1`)} )
+      }, () => {this.props.history.push(`/shop?category=${category}&page=1`)})
+
+      // 10/28 수요일에 백엔드 분들과 맞춰볼 예정입니다.
+      // fetch(`http://`, {
+      //   method: "GET",
+      //   body: JSON.stringify({
+      //     endpoint: `/shop?category=${category}&page=1`
+      //   })
+      // })
+      //   .then(res => res.json())
+      //   .then(result => console.log("endpoint", result))
     }
 
     const filteredProducts = allProducts.filter(product => {
@@ -77,7 +87,7 @@ class ProductList extends Component {
 
     // 10/28 수요일에 백엔드 분들과 맞춰볼 예정입니다.
     // fetch(`http://`, {
-    //   method: "POST",
+    //   method: "GET",
     //   body: JSON.stringify({
     //     endpoint: `/product?category=${categoryName[category]}`
     //   })
@@ -98,6 +108,16 @@ class ProductList extends Component {
       isPrevBtnVisible : prevBtnBool,
       isNextBtnVisible : nextBtnBool
     }, () => {this.props.history.push(`/shop?category=all&page=${num}`)})
+
+    // 10/28 수요일에 백엔드 분들과 맞춰볼 예정입니다.
+    // fetch(`http://`, {
+    //     method: "GET",
+    //     body: JSON.stringify({
+    //       endpoint: `/shop?category=${category}&page=${num}`
+    //     })
+    //   })
+    //     .then(res => res.json())
+    //     .then(result => console.log("endpoint", result))
   }
 
   goToProductDetail = (id) => {
