@@ -13,8 +13,12 @@ export default class CartList extends Component {
     constructor() {
         super();
         this.state = {
-            cartProducts: [],
-            interestingProducts: []
+            // cartProducts: [],
+            interestingProducts: [],
+            cartProducts: [
+                { productId: 1, 
+                quantity: 1 },
+                ]
         }
     }
 

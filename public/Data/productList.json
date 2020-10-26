@@ -5,14 +5,14 @@
       "image": "https://images.unsplash.com/photo-1529607225807-563e0851ee7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "category": "ART PRINTS",
       "description": "Anyone",
-      "price": "$109"
+      "price": 109
     },
     {
       "id": 2,
       "image": "https://images.unsplash.com/photo-1572016875426-b49689eb652a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "category": "ART PRINTS",
       "description": "Strategy",
-      "price": "$109"
+      "price": 109
     },
     {
       "id": 3,

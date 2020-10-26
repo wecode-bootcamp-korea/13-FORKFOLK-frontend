@@ -52,7 +52,7 @@ class Product extends Component {
                         {product.category}
                 </button>
                 <p>{product.description}</p>
-                <div>{product.price}</div>
+                <div>${product.price}</div>
             </li>
         )
     }
