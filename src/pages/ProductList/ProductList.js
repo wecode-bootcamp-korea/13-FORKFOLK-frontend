@@ -52,6 +52,7 @@ class ProductList extends Component {
   filterByCategory = (category) => {
     const { allProducts } = this.state;
     const categoryName = {
+      "ALL" : "All",
       "ART PRINTS" : "art-prints",
       "BOOKS" : "books",
       "MAGAZINE" : "kinfolk-magazines",
@@ -64,13 +65,13 @@ class ProductList extends Component {
         productsByCategory: [...allProducts],
         mappingPage : false,
         isPageFooterVisible: true
-      }, () => {this.props.history.push(`/shop?category=${category}&page=1`)})
+      }, () => {this.props.history.push(`/shop?category=${categoryName[category]}&page=1`)})
 
       // 10/28 수요일에 백엔드 분들과 맞춰볼 예정입니다.
       // fetch(`http://`, {
       //   method: "GET",
       //   body: JSON.stringify({
-      //     endpoint: `/shop?category=${category}&page=1`
+      //     endpoint: `/shop?category=All&page=1`
       //   })
       // })
       //   .then(res => res.json())
@@ -107,13 +108,13 @@ class ProductList extends Component {
       mappingPage : true,
       isPrevBtnVisible : prevBtnBool,
       isNextBtnVisible : nextBtnBool
-    }, () => {this.props.history.push(`/shop?category=all&page=${num}`)})
+    }, () => {this.props.history.push(`/shop?category=All&page=${num}`)})
 
     // 10/28 수요일에 백엔드 분들과 맞춰볼 예정입니다.
     // fetch(`http://`, {
     //     method: "GET",
     //     body: JSON.stringify({
-    //       endpoint: `/shop?category=${category}&page=${num}`
+    //       endpoint: `/shop?category=All&page=${num}`
     //     })
     //   })
     //     .then(res => res.json())
