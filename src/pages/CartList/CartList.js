@@ -13,12 +13,13 @@ export default class CartList extends Component {
     constructor() {
         super();
         this.state = {
-            // cartProducts: [],
+            cartProducts: [],
             interestingProducts: [],
-            cartProducts: [
-                { productId: 1, 
-                quantity: 1 },
-                ]
+            // 추가 기능 구현 중입니다
+            // cartProducts: [
+            //     { productId: 1, 
+            //     quantity: 1 },
+            //     ]
         }
     }
 
