@@ -177,10 +177,12 @@
                       color: white;
                       font-size: 14px;
                       background-color: rgb(77, 77, 77);
+                      cursor: pointer;
                     }
                     .updateBasket {
                       font-size: 18px;
                       background-color: white;
+                      cursor: pointer;
                     }
                   }
                 }
@@ -191,6 +193,7 @@
 
         .rightSection {
           flex: 30%;
+
           h2 {
             font-size: 31px;
             font-size: 1.9375rem;
@@ -217,6 +220,10 @@
               }
               tr:last-child {
                 border-bottom: 1px solid black;
+                th,
+                td {
+                  font-weight: bolder;
+                }
               }
             }
           }
@@ -225,7 +232,7 @@
             text-align: right;
             button {
               display: inline-block;
-
+              cursor: pointer;
               width: 270px;
               height: 40px;
               margin: 0 auto;
