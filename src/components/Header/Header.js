@@ -77,19 +77,6 @@ class Header extends Component {
       }
       if (this.props.location.pathname === "/") {
         window.addEventListener("scroll", this.logoScaleHandler, false);
-        const { pageYOffset } = window;
-        if (pageYOffset === 0) {
-          this.setState({ logoScale: 7, logoMarginTop: 300 });
-          return;
-        }
-        if (pageYOffset >= 200) {
-          this.setState({ logoScale: 1, logoMarginTop: 0 });
-          return;
-        }
-        this.setState({
-          logoScale: 7 - (pageYOffset / 50) * 1.5,
-          logoMarginTop: 300 - (pageYOffset / 50) * 75,
-        });
       }
     }
   }
