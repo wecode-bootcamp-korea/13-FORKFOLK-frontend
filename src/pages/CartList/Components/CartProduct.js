@@ -85,15 +85,15 @@ export default class CartProduct extends Component {
   render() {
     const { product } = this.state;
     const OPTIONVALUE = [
-      { value: 1, outputNum: 1 },
-      { value: 2, outputNum: 2 },
-      { value: 3, outputNum: 3 },
-      { value: 4, outputNum: 4 },
-      { value: 5, outputNum: 5 },
-      { value: 6, outputNum: 6 },
-      { value: 7, outputNum: 7 },
-      { value: 8, outputNum: 8 },
-      { value: 9, outputNum: 9 },
+      { value: 1, quantity: 1 },
+      { value: 2, quantity: 2 },
+      { value: 3, quantity: 3 },
+      { value: 4, quantity: 4 },
+      { value: 5, quantity: 5 },
+      { value: 6, quantity: 6 },
+      { value: 7, quantity: 7 },
+      { value: 8, quantity: 8 },
+      { value: 9, quantity: 9 },
     ];
 
     return (
@@ -112,7 +112,7 @@ export default class CartProduct extends Component {
               {OPTIONVALUE.map((eachOption, i) => {
                 return (
                   <option key={i} value={eachOption.value}>
-                    {eachOption.outputNum}
+                    {eachOption.quantity}
                   </option>
                 );
               })}
