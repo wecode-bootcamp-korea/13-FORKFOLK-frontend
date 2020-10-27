@@ -17,32 +17,28 @@ class Account extends Component {
 
   loginFunc = (event) => {
     event.preventDefault();
+
     const { IDInput, PWInput } = this.state;
-    console.log(IDInput, PWInput);
-    if (this.props.header === "Login") {
-      fetch(LoginAPI, {
-        method: "POST",
-        body: JSON.stringify({
-          email: IDInput,
-          password: PWInput,
-        }),
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
-          localStorage.setItem("user-token", result.TOKEN);
-        });
-    } else {
-      fetch(RegisterAPI, {
-        method: "POST",
-        body: JSON.stringify({
-          email: IDInput,
-          password: PWInput,
-        }),
-      })
-        .then((response) => response.json())
-        .then((result) => {});
-    }
+    const isLogin = this.props.header === "Login";
+    const options = {
+      method: "POST",
+      body: JSON.stringify({
+        email: IDInput,
+        password: PWInput,
+      }),
+    };
+
+    const fetchAccount = async (url, options, callback) => {
+      const res = await fetch(url, options);
+      const json = await res.json();
+      if (callback === "Function") callback(json);
+    };
+
+    if (isLogin) fetchAccount(LoginAPI, options);
+    else
+      fetchAccount(RegisterAPI, options, (result) => {
+        localStorage.setItem("user-token", result.TOKEN);
+      });
   };
 
   changeInputState = (event) => {
@@ -53,7 +49,7 @@ class Account extends Component {
     const isLoginValid = id.includes("@") && pw.length >= 5;
     this.setState({
       [name]: value,
-      LoginBtnEnabled: isLoginValid || isEmailValid,
+      LoginBtnEnabled: isLoginValid,
     });
   };
 

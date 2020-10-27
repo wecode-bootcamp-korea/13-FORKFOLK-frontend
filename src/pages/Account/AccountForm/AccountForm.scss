@@ -1,79 +1,79 @@
-.accountForm{
+.accountForm {
+  display: flex;
+  width: 50%;
+  padding: 0px 20px;
+  flex-direction: column;
+
+  header {
+    font-size: 15px;
+    font-family: "Quicksand";
+    font-weight: 600;
+    margin-bottom: 27px;
+  }
+
+  span {
+    font-size: 17px;
+    font-family: "EB Garamond";
+    margin-bottom: 12px;
+  }
+
+  input {
+    height: 41px;
+    padding: 9px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+    outline: none;
+  }
+
+  div {
     display: flex;
-    width: 50%;
-    padding : 0px 20px;
-    flex-direction: column;
+    flex-direction: row;
+    margin-bottom: 10px;
 
-    header{
-        font-size: 15px;
-        font-family: 'Quicksand';
-        font-weight: 600;
-        margin-bottom: 27px;
+    input {
+      width: 13px;
+      height: 13px;
+      margin: 0 10px 0 0;
+      border: 2px solid #4d4d4d;
     }
+  }
 
-    span{
-        font-size: 17px;
-        font-family:'EB Garamond';
-        margin-bottom: 12px;
+  button {
+    width: 95px;
+    height: 40px;
+    border: 1px solid black;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    background-color: white;
+    transition: 0.3s ease-in-out;
+  }
+
+  .activated {
+    &:hover {
+      color: white;
+      cursor: pointer;
+      background-color: black;
     }
+  }
 
-    input{
-        height: 41px;
-        padding: 9px;
-        border: 1px solid black;
-        margin-bottom: 20px;
-        outline: none;
+  .deactivated {
+    color: gray;
+    background-color: white;
+    border-color: gray;
+    outline: none;
+  }
+
+  .subText {
+    font-size: 18px;
+    font-weight: 400;
+
+    .subLink {
+      text-decoration: underline;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
-
-    div{
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 10px;
-
-        input{
-            width: 13px;
-            height: 13px;
-            margin:0  10px 0 0;
-            border: 2px solid #4d4d4d;
-        }
-    }
-
-    button{
-        width: 95px;
-        height: 40px;
-        border: 1px solid black;
-        font-size: 17px;
-        font-weight: 500;
-        margin-bottom: 15px;
-        background-color: white;
-        transition: 0.3s ease-in-out;
-    }
-
-    .activated{
-        &:hover{
-            color: white;
-            cursor: pointer;
-            background-color: black;
-        }
-    }
-
-    .deactivated{
-        color: gray;
-        background-color: white;
-        border-color:gray ;
-        outline:none;
-    }
-
-    .subText{
-        font-size: 18px;
-        font-weight: 400;
-
-        .subLink{
-            text-decoration: underline;
-
-            &:hover{
-                cursor: pointer;
-            }
-        }
-    }
+  }
 }
