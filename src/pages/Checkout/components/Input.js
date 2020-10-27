@@ -2,7 +2,15 @@ import React, { Component } from "react";
 
 class Input extends Component {
   render() {
-    return <input />;
+    return (
+      <>
+        <label for="">
+          {this.props.label}
+          {this.props.isRequired ? " *" : ""}
+        </label>
+        <input />
+      </>
+    );
   }
 }
 
