@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import "./AccountForm.scss";
 import "../../../styles/reset.scss";
-
-const LoginAPI = "http://10.58.0.139:8000/my-account/signin";
-const RegisterAPI = "http://10.58.0.139:8000/my-account/signup";
+import { LoginAPI, RegisterAPI } from "../../../config";
 
 class Account extends Component {
   constructor() {
@@ -33,7 +31,6 @@ class Account extends Component {
       const json = await res.json();
       if (callback === "Function") callback(json);
     };
-
     if (isLogin) fetchAccount(LoginAPI, options);
     else
       fetchAccount(RegisterAPI, options, (result) => {

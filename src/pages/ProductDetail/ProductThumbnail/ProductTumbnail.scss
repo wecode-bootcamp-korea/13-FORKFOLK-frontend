@@ -1,0 +1,54 @@
+  .productThumbnail{
+        position: relative;
+        min-width: 750px;
+        min-height: 500px;
+        max-height: 500px;
+        margin-right: 40px;
+
+        .fadein {
+            animation: fadeIn 1s linear;
+          }
+
+        button{
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            padding: 0;
+        }
+
+        .productThumbnailLeftBtn{
+            left: 0;
+            cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-left.svg"),pointer;
+        }
+        
+        .productThumbnailRightBtn{
+            right: 0;
+            cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-right.svg"),pointer;
+        }
+    }
+
+    @keyframes fadeIn{
+        from{
+            opacity: 0;
+        }
+    
+        to{
+            opacity: 1;
+        }
+    }
+
+    /* @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadein {
+  animation: fadeIn 1s linear;
+} */
+
