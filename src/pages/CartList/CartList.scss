@@ -1,0 +1,258 @@
+@import "../../styles/common.scss";
+
+.CartList {
+  font-family: "Quicksand", serif, sans-serif;
+
+  .container {
+    margin: 0 auto;
+    padding: 0 3%;
+    max-width: 2000px;
+
+    .module {
+      margin: 0 20px;
+      max-width: 2000px;
+      padding-top: calc(0.00937 * 100vw + 35px);
+      padding-bottom: 30px;
+
+      h1 {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: calc(0.00937 * 100vw + 35px);
+        font-weight: 600;
+      }
+    }
+
+    .emptyModule {
+      margin: 0 20px;
+      max-width: 2000px;
+      padding-top: calc(0.00937 * 100vw + 35px);
+      text-align: center;
+
+      h1 {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: calc(0.00937 * 100vw + 35px);
+        font-weight: 600;
+      }
+
+      p {
+        padding: 20px 0;
+        font-size: 17.5px;
+        font-family: "EB Garamond", serif;
+        letter-spacing: 0.7px;
+      }
+
+      button {
+        font-size: 17.5px;
+        letter-spacing: 0.5px;
+        font-family: "EB Garamond", serif;
+        cursor: pointer;
+        border-bottom: 1px solid black;
+      }
+    }
+
+    .commerce {
+      display: flex;
+
+      .leftSection {
+        padding: 0 1.25rem;
+        font-size: 14px;
+        text-align: left;
+        flex: 17%;
+        letter-spacing: 1.2px;
+        font-weight: lighter;
+      }
+
+      .centerAndRigth {
+        display: flex;
+        flex: 83%;
+        padding: 0 1.25rem;
+        float: left;
+        .centerSection {
+          flex: 65%;
+          padding-right: 50px;
+          margin-right: 50px;
+          border-right: 1px solid lightgray;
+
+          table {
+            width: 100%;
+
+            thead {
+              width: 100%;
+
+              tr {
+                width: 100%;
+                font-size: 15px;
+
+                th {
+                  padding: 10px 0;
+                }
+
+                th:first-child {
+                  width: 43%;
+                  text-align: left;
+                }
+
+                th:nth-child(2) {
+                  width: 15%;
+                  text-align: left;
+                }
+
+                th:nth-child(3) {
+                  width: 12%;
+                  text-align: left;
+                }
+
+                th:last-child {
+                  width: 30%;
+                  text-align: center;
+                }
+              }
+            }
+
+            tbody {
+              .cartProducts {
+                td {
+                  .delBtn {
+                    cursor: pointer;
+                    z-index: 10;
+                    .delIcon {
+                      font-size: 20px;
+                      font-weight: lighter;
+                    }
+                  }
+                }
+              }
+              tr {
+                border-top: 1px solid black;
+
+                td {
+                  text-align: left;
+                  vertical-align: middle;
+
+                  select {
+                    width: 65px;
+                    height: 40px;
+
+                    cursor: pointer;
+                    border-radius: 0%;
+                    outline: none;
+                  }
+                }
+
+                td:first-child {
+                  padding: 10px 0 17px 0;
+
+                  img {
+                    width: 100px;
+                  }
+                }
+
+                td:nth-child(5),
+                td:last-child {
+                  text-align: right;
+                }
+              }
+
+              tr:last-child {
+                td {
+                  padding: 35px 0 10px;
+
+                  div {
+                    input {
+                      display: block;
+                      width: 270px;
+                      height: 40px;
+                      margin: 0 0 20px auto;
+                      padding: 9px;
+                      font-family: inherit;
+                      border-radius: 0;
+                      letter-spacing: 1px;
+                      outline: none;
+                    }
+                    .couponCode {
+                      font-size: 16px;
+                    }
+                    .applyCoupon {
+                      color: white;
+                      font-size: 14px;
+                      background-color: rgb(77, 77, 77);
+                    }
+                    .updateBasket {
+                      font-size: 18px;
+                      background-color: white;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .rightSection {
+          flex: 30%;
+          h2 {
+            font-size: 31px;
+            font-size: 1.9375rem;
+            margin-bottom: 11px;
+            line-height: 1.08;
+          }
+          table {
+            margin-bottom: 35px;
+
+            tbody {
+              tr {
+                border-top: 1px solid black;
+
+                td {
+                  padding: 35px 0;
+                  text-align: right;
+                  ul {
+                    li:last-child {
+                      margin-top: 15px;
+                      line-height: 2;
+                    }
+                  }
+                }
+              }
+              tr:last-child {
+                border-bottom: 1px solid black;
+              }
+            }
+          }
+
+          div {
+            text-align: right;
+            button {
+              display: inline-block;
+
+              width: 270px;
+              height: 40px;
+              margin: 0 auto;
+              color: white;
+              font-family: inherit;
+              background-color: rgb(77, 77, 77);
+              letter-spacing: 2px;
+            }
+          }
+        }
+      }
+    }
+    .crossSells {
+      margin: 100px 20px 0;
+      padding: 45px 0 0;
+      border-top: 1px solid #333333;
+      h2 {
+        font-size: 16px;
+        text-align: center;
+        line-height: 1.08;
+        margin-bottom: 50px;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+      ul {
+        display: inline-block;
+      }
+    }
+  }
+}

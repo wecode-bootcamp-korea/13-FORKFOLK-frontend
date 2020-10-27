@@ -1,37 +1,70 @@
 import React, { Component } from "react";
-import { API } from "../../config";
-// import TitleBox from "../../TitleBox/TitleBox.js";
+import { APIROOT } from "../../config";
+import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import CoreContents from "../../components/CoreContents/CoreContents";
-// import SubContents from "../../components/CoreContents/CoreContents";
 import "../Stories/Stories.scss";
 
 class Stories extends Component {
   constructor() {
     super();
     this.state = {
-      fashionItems: [],
+      mainItem: {},
+      subItems: [],
+      category: "Designdata",
     };
   }
 
   componentDidMount() {
-    fetch(`${API}Data/Fashiondata.json`)
-      .then((fashionData) => fashionData.json())
-      .then((fashionData) =>
-        this.setState({ fashionItems: fashionData.fashionItems })
+    console.log(this.props);
+    fetch(`${APIROOT}/Data/Designdata.json`)
+      .then((Designdata) => Designdata.json())
+      .then((Designdata) =>
+        this.setState({
+          mainItem: Designdata.mainItem,
+          subItems: Designdata.subItems,
+        })
       );
   }
 
-  render() {
-    const { fashionItems } = this.state;
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.category !== this.props.match.params.category) {
+      fetch(`${APIROOT}/Data/${this.props.match.params.category}.json`)
+        .then((Designdata) => Designdata.json())
+        .then((Designdata) =>
+          this.setState({
+            mainItem: Designdata.mainItem,
+            subItems: Designdata.subItems,
+          })
+        );
+    }
+  }
 
+  render() {
+    const { mainItem, subItems } = this.state;
     return (
-      <div className="FashionPage">
+      <div className="DesignPage">
         <div className="TitleBox">
-          <button>ALL STORIES</button>
+          <button onClick={() => this.props.history.push(`/`)}>
+            <VscChevronLeft color="#D17D74" />
+            ALL STORIES
+          </button>
+
           <h1>Design</h1>
-          <button>FASHION</button>
+
+          <button
+            onClick={() =>
+              this.props.history.push(
+                `/stories/${+this.props.match.params.category + 1}`
+              )
+            }
+          >
+            FASHION
+            <VscChevronRight color="#D17D74" />
+          </button>
         </div>
-        <CoreContents title={fashionItems.title} />
+        {!!subItems.length && (
+          <CoreContents mainItem={mainItem} subItems={subItems} />
+        )}
       </div>
     );
   }

@@ -11,20 +11,8 @@ class CoreContents extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch(`http://localhost:3000/Data/CoreContentsdata.json`)
-      .then((CoreContentsdata) => CoreContentsdata.json())
-      .then((contentsData) =>
-        this.setState({
-          mainItem: contentsData.mainItem,
-          subItems: contentsData.subItems,
-        })
-      );
-  }
-
   render() {
-    const { mainItem, subItems } = this.state;
-    console.log(this.props);
+    const { mainItem, subItems } = this.props;
     return (
       <div className="coreComponents">
         <div className="mainContents">
@@ -32,7 +20,7 @@ class CoreContents extends Component {
           <p>
             <span>{mainItem.subTitle}</span>
           </p>
-          <h1>{mainItem.title}</h1>
+          <h1>{mainItem.mainTitle}</h1>
           <p>{mainItem.description}</p>
         </div>
         <div className="subContents">
