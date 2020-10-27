@@ -48,6 +48,14 @@ export default class CartList extends Component {
         })
     }
 
+    goToCheckout = () => {
+        // fetch(`API/checkout`)
+        //     .then(res => res.json())
+        //     .then(result => console.log(result))
+
+        this.props.history.push(`/checkout`)
+    }
+
     render() {
         const { cartProducts, interestingProducts, subtotal, shipping } = this.state;
 
@@ -58,7 +66,7 @@ export default class CartList extends Component {
                         <div className="emptyModule">
                             <h1>Cart</h1>
                             <p>Your basket is currently empty.</p>
-                            <button onClick={() => this.props.history.push("/shop/")}>Return to shop</button>
+                            <button onClick={() => this.props.history.push(`/shop`)}>Return to shop</button>
                         </div>
                     </div>
                 </div>
@@ -73,7 +81,7 @@ export default class CartList extends Component {
                     </div>
                     <div className="commerce">
                         <div className="leftSection">
-                            <Link to="/shop/">
+                            <Link to="/shop">
                                 ◀ BACK TO SHOP
                             </Link>
                         </div>
@@ -158,7 +166,7 @@ export default class CartList extends Component {
                                     </tbody>
                                 </table>
                                 <div>
-                                    <button>
+                                    <button onClick={this.goToCheckout}>
                                         PROCEED TO CHECKOUT
                                     </button>
                                 </div>

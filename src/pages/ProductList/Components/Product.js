@@ -26,6 +26,22 @@ class Product extends Component {
         }
     }
 
+    addToCart = (id, name, price) => {
+        console.log(id, name, price, 1)
+        // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다.
+        // fetch(APIROOT, {
+        //     method: "POST",
+        //     body: JSON.stringify({
+        //         product_id: id, 
+        //         name: name,
+        //         price: price,
+        //         quantity: 1
+        //     })
+        // })
+        //     .then(res => res.json())
+        //     .then(result => console.log(result))
+    }
+
     render() {
         const { isFullHeartBool } = this.state;
         const { product, filterByCategory, goToProductDetail } = this.props;
@@ -41,8 +57,8 @@ class Product extends Component {
                             : 
                             <FaRegHeart className="emptyHeart" /> }
                     </button>
-                    <button className="addToCart">
-                        <Link to="/cart/">Add to Cart</Link>
+                    <button className="addToCart" onClick={() => this.addToCart(product.id, product.name, product.price, product.quantity)}>
+                        Add to Cart
                     </button>
                 </div>
                 <button 
@@ -51,7 +67,7 @@ class Product extends Component {
                     category={product.category}>
                         {product.category}
                 </button>
-                <p>{product.description}</p>
+                <p>{product.name}</p>
                 <div>${product.price}</div>
             </li>
         )

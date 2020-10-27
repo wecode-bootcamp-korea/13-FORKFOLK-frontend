@@ -64,7 +64,7 @@ class ProductList extends Component {
         productsByCategory: [...allProducts],
         mappingPage : false,
         isPageFooterVisible: true
-      }, () => {this.props.history.push(`/shop/`)} 
+      }, () => {this.props.history.push(`/shop`)} 
       )
     } 
       const filteredProducts = allProducts.filter( product => {
@@ -73,7 +73,7 @@ class ProductList extends Component {
       this.setState({isPageFooterVisible: filteredProducts.length < 13,
         productsByCategory: [...filteredProducts],
         productsByPage: [...filteredProducts],
-        isPageFooterVisible: false}, () => {this.props.history.push(`/product?category=${categoryName[category]}/`)})
+        isPageFooterVisible: false}, () => {this.props.history.push(`/product?category=${categoryName[category]}`)})
   }
 
   goToProductDetail = (id) => {

@@ -22,13 +22,13 @@ export default class CartProduct extends Component {
 
     changeQuantity = (e) => {
         const { value } = e.target;
-        const { id, image, title, quantity, price } = this.state.product;
+        const { id, image, name, quantity, price } = this.state.product;
 
         this.setState({
             product: { 
                 id,
                 image,
-                title,
+                name,
                 quantity: value,
                 price
             },
@@ -39,11 +39,14 @@ export default class CartProduct extends Component {
             eachTotalPrice: Number(price * value)
         }, this.toSendDataToParent)
 
-        // 백엔드와 맞춰본 후 주석 해제할 예정입니다.
+        // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다.
         // fetch(APIROOT, {
         //     method: "POST",
         //     body: JSON.stringify({
-        //         product_id: id, quantity: value
+        //         product_id: id, 
+        //         name: name,
+        //         price: price,
+        //         quantity: value
         //     })
         // })
         //     .then(res => res.json())
@@ -53,7 +56,7 @@ export default class CartProduct extends Component {
     deleteProduct = (e, id) => {        
         console.log(`id ${id} is deleted!!`);
 
-        //백엔드와 맞춰본 후 주석 해제할 예정입니다.
+        // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다.
         // const { cartProducts } = this.state;
         // const filteredCart = cartProducts.length && cartProducts.filter(product => {
         //     return product.id !== Number(e.target.id);
@@ -65,7 +68,7 @@ export default class CartProduct extends Component {
         // fetch(APIROOT, {
         //     method: "POST",
         //     body: JSON.stringify({
-        //         removed_product_id: id
+        //         removed_product: id,
         //     })
         // })
         //     .then(res => res.json())
@@ -97,7 +100,7 @@ export default class CartProduct extends Component {
                     <img src={product.image} alt="장바구니 상품"/>
                 </td>
                 <td>
-                    {product.title}
+                    {product.className}
                 </td>
                 <td>
                     ${product.price}
