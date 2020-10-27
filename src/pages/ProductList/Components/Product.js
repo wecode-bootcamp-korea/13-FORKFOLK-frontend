@@ -1,14 +1,19 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import ReactModal from "react-modal";
 import "./Product.scss";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { FaRegTimesCircle } from "react-icons/fa";
+
+ReactModal.setAppElement("#root");
 
 class Product extends Component {
   constructor() {
     super();
     this.state = {
       isFullHeartBool: false,
+      modalIsOpen: false,
+      setModalIsOpen: false,
     };
   }
 
@@ -41,9 +46,25 @@ class Product extends Component {
     //     .then(result => console.log(result))
   };
 
+  setModalIsOpen = (bool) => {
+    console.log("setModalIsOpen is changed");
+    this.setState(
+      {
+        modalIsOpen: bool,
+        setModalIsOpen: bool,
+      },
+      console.log(this.state.setModalIsOpen)
+    );
+  };
+
   render() {
     const { isFullHeartBool } = this.state;
-    const { product, filterByCategory, goToProductDetail } = this.props;
+    const {
+      product,
+      filterByCategory,
+      goToProductDetail,
+      goToCartPage,
+    } = this.props;
     return (
       <li id={product.id} className="Product">
         <div className="imageContainer">
@@ -67,14 +88,10 @@ class Product extends Component {
           </button>
           <button
             className="addToCart"
-            onClick={() =>
-              this.addToCart(
-                product.id,
-                product.name,
-                product.price,
-                product.quantity
-              )
-            }
+            onClick={() => {
+              this.addToCart(product.id, product.name, product.price);
+              this.setModalIsOpen(true);
+            }}
           >
             Add to Cart
           </button>
@@ -88,6 +105,26 @@ class Product extends Component {
         </button>
         <p>{product.name}</p>
         <div>${product.price}</div>
+        <ReactModal
+          className="modalWindow"
+          isOpen={this.state.modalIsOpen}
+          shouldCloseOnOverlayClick={true}
+          onRequestClose={() => this.setModalIsOpen(true)}
+        >
+          <div>
+            <h2 className="ebGaramond">Added to Cart!</h2>
+            <button onClick={() => this.setModalIsOpen(false)}>
+              <FaRegTimesCircle />
+            </button>
+          </div>
+
+          <div>
+            <button onClick={goToCartPage}>View Cart</button>
+            <button onClick={() => this.setModalIsOpen(false)}>
+              Stay on this Page
+            </button>
+          </div>
+        </ReactModal>
       </li>
     );
   }

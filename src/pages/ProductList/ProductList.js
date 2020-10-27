@@ -81,7 +81,12 @@ class ProductList extends Component {
       //   })
       // })
       //   .then(res => res.json())
-      //   .then(result => console.log("endpoint", result))
+      //   .then(result =>
+      // console.log("result", result)
+      // this.setState({
+      //   productsByCategory: result.data
+      // }))
+      // result.data는 임의로 입력한 키값입니다. (백엔드 맞춰보고 수정 예정)
     }
 
     const filteredProducts = allProducts.filter((product) => {
@@ -107,11 +112,29 @@ class ProductList extends Component {
     // })
     //   .then(res => res.json())
     //   .then(result => console.log("endpoint", result))
+    //   .then(result =>
+    //     console.log("result", result)
+    //       this.setState({
+    //       productsByCategory: result.data,
+    //       productsByPage: result.data,
+    // }))
+    // result.data는 임의로 입력한 키값입니다. (백엔드 맞춰보고 수정 예정)
   };
 
   goToProductDetail = (id) => {
-    console.log(this.props.history);
+    // fetch(`API/shop/${id}`, {method: "GET"})
+    //     .then(res => res.json())
+    //     .then(result => console.log(result))
+
     this.props.history.push(`/shop/${id}`);
+  };
+
+  goToCartPage = () => {
+    // fetch(`API/cart`, {method: "GET"})
+    //     .then(res => res.json())
+    //     .then(result => console.log(result))
+
+    this.props.history.push(`/cart`);
   };
 
   filterByPage = (num) => {
@@ -136,14 +159,21 @@ class ProductList extends Component {
     );
 
     // 10/28 수요일에 백엔드 분들과 맞춰볼 예정입니다.
+    // (pagination 방식으로 연결할 예정이기 때문에, slicePageIdx 부분은 주석 처리할 예정입니다.)
     // fetch(`http://`, {
-    //     method: "GET",
-    //     body: JSON.stringify({
-    //       endpoint: `/shop?category=All&page=${num}`
-    //     })
+    //   method: "GET",
+    //   body: JSON.stringify({
+    //     endpoint: `/product?category=${categoryName[category]}`
     //   })
-    //     .then(res => res.json())
-    //     .then(result => console.log("endpoint", result))
+    // })
+    //   .then(res => res.json())
+    //   .then(result => console.log("endpoint", result))
+    //   .then(result =>
+    //     console.log("result", result)
+    //       this.setState({
+    //       productsByPage: result.data,
+    // }))
+    // result.data는 임의로 입력한 키값입니다. (백엔드 맞춰보고 수정 예정)
   };
 
   render() {
@@ -157,6 +187,12 @@ class ProductList extends Component {
       isPageFooterVisible,
     } = this.state;
     const mappingPageIn = mappingPage ? productsByPage : productsByCategory;
+    const PAGENUMS = [
+      { pageNum: 1 },
+      { pageNum: 2 },
+      { pageNum: 3 },
+      { pageNum: 4 },
+    ];
 
     return (
       <div className="ProductList">
@@ -185,6 +221,7 @@ class ProductList extends Component {
                         product={product}
                         filterByCategory={this.filterByCategory}
                         goToProductDetail={this.goToProductDetail}
+                        goToCartPage={this.goToCartPage}
                       />
                     );
                   })
@@ -196,6 +233,7 @@ class ProductList extends Component {
                         product={product}
                         filterByCategory={this.filterByCategory}
                         goToProductDetail={this.goToProductDetail}
+                        goToCartPage={this.goToCartPage}
                       />
                     );
                   })}
@@ -214,34 +252,17 @@ class ProductList extends Component {
             >
               PREV
             </button>
-            <button
-              onClick={() => {
-                this.filterByPage(1);
-              }}
-            >
-              1
-            </button>
-            <button
-              onClick={() => {
-                this.filterByPage(2);
-              }}
-            >
-              2
-            </button>
-            <button
-              onClick={() => {
-                this.filterByPage(3);
-              }}
-            >
-              3
-            </button>
-            <button
-              onClick={() => {
-                this.filterByPage(4);
-              }}
-            >
-              4
-            </button>
+            {PAGENUMS.map((num) => {
+              return (
+                <button
+                  onClick={() => {
+                    this.filterByPage(num.pageNum);
+                  }}
+                >
+                  {num.pageNum}
+                </button>
+              );
+            })}
             <button
               className={isNextBtnVisible ? "" : "invisible"}
               onClick={() => {

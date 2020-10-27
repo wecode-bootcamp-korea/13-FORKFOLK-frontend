@@ -7,7 +7,6 @@ export default class CartProduct extends Component {
     super();
     this.state = {
       product: {},
-      eachId: 0,
       prevQuantity: 0,
       eachQuantity: 0,
       eachTotalPrice: 0,
@@ -33,16 +32,16 @@ export default class CartProduct extends Component {
           quantity: value,
           price,
         },
-        eachId: id,
         prevQuantity: quantity,
         eachQuantity: value,
         eachPrice: price,
         eachTotalPrice: Number(price * value),
       },
-      this.toSendDataToParent
+      this.sendDataToParent
     );
 
-    // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다.
+    // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다. (method: "PATCH" 로 변경 예정)
+    // ==> current
     // fetch(APIROOT, {
     //     method: "POST",
     //     body: JSON.stringify({
@@ -54,40 +53,28 @@ export default class CartProduct extends Component {
     // })
     //     .then(res => res.json())
     //     .then(result => console.log(result))
-  };
-
-  deleteProduct = (e, id) => {
-    console.log(`id ${id} is deleted!!`);
-
-    // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다.
-    // const { cartProducts } = this.state;
-    // const filteredCart = cartProducts.length && cartProducts.filter(product => {
-    //     return product.id !== Number(e.target.id);
-    // });
-    // this.setState({
-    //     cartProducts: [...filteredCart]
-    // });
-
-    // fetch(APIROOT, {
-    //     method: "POST",
+    // ==> changeTo
+    // fetch(`APIROOT/${id}`, {
+    //     method: "PATCH",
     //     body: JSON.stringify({
-    //         removed_product: id,
+    //         quantity: value
     //     })
     // })
     //     .then(res => res.json())
     //     .then(result => console.log(result))
   };
 
-  toSendDataToParent = () => {
+  sendDataToParent = () => {
     const {
-      eachId,
+      product,
       prevQuantity,
       eachQuantity,
       eachPrice,
       eachTotalPrice,
     } = this.state;
+
     this.props.onSubmit(
-      eachId,
+      product.id,
       prevQuantity,
       eachQuantity,
       eachPrice,
@@ -97,7 +84,7 @@ export default class CartProduct extends Component {
 
   render() {
     const { product } = this.state;
-    const optionValue = [
+    const OPTIONVALUE = [
       { value: 1, outputNum: 1 },
       { value: 2, outputNum: 2 },
       { value: 3, outputNum: 3 },
@@ -117,12 +104,12 @@ export default class CartProduct extends Component {
         <td>{product.name}</td>
         <td>${product.price}</td>
         <td>
-          <form onSubmit={this.toSendDataToParent}>
+          <form onSubmit={this.sendDataToParent}>
             <select
               value={product.quantity}
               onChange={(e) => this.changeQuantity(e, product.id)}
             >
-              {optionValue.map((eachOption, i) => {
+              {OPTIONVALUE.map((eachOption, i) => {
                 return (
                   <option key={i} value={eachOption.value}>
                     {eachOption.outputNum}
@@ -134,12 +121,16 @@ export default class CartProduct extends Component {
         </td>
         <td>${product.price * product.quantity}</td>
         <td>
-          <button
-            id={product.id}
-            className="delBtn"
-            onClick={(e) => this.deleteProduct(e, product.id)}
-          >
-            <FaRegTimesCircle className="delIcon" />
+          <button className="delBtn">
+            <FaRegTimesCircle
+              className="delIcon"
+              onClick={() =>
+                this.props.deleteProduct(
+                  product.id,
+                  product.price * product.quantity
+                )
+              }
+            />
           </button>
         </td>
       </tr>

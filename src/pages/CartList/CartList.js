@@ -38,7 +38,7 @@ export default class CartList extends Component {
     ]);
   }
 
-  toGetDataFromChild = (
+  getDataFromChild = (
     eachId,
     prevQuantity,
     eachQuantity,
@@ -57,8 +57,42 @@ export default class CartList extends Component {
     });
   };
 
-  goToCheckout = () => {
-    // fetch(`API/checkout`)
+  deleteProduct = (id, eachTotalPrice) => {
+    console.log(`id ${id} is deleted!!`);
+    console.log("eachTotalPrice", eachTotalPrice);
+
+    const { cartProducts, subtotal } = this.state;
+    const filteredCart =
+      cartProducts.length &&
+      cartProducts.filter((product) => {
+        return id !== Number(product.id);
+      });
+    this.setState({
+      cartProducts: [...filteredCart],
+      subtotal: subtotal - eachTotalPrice,
+    });
+
+    // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다. (method: "DELETE" 로 변경 예정)
+    // ==> current
+    // fetch(APIROOT, {
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //         removed_product: id,
+    //     })
+    // })
+    //     .then(res => res.json())
+    //     .then(result => console.log(result))
+    // ==> changeTo
+    // fetch(`APIROOT/${id}`, {
+    //   method: "DELETE",
+    // })
+    //   .then((res) => res.json())
+    //   .then((result) => console.log(result));
+  };
+
+  goToCheckout = (e) => {
+    e.preventDefault();
+    // fetch(`API/checkout`, {method: "GET"})
     //     .then(res => res.json())
     //     .then(result => console.log(result))
 
@@ -116,7 +150,10 @@ export default class CartList extends Component {
                         <CartProduct
                           key={i}
                           product={product}
-                          onSubmit={this.toGetDataFromChild}
+                          onSubmit={
+                            (this.getDataFromChild, this.getDelDataFromChild)
+                          }
+                          deleteProduct={this.deleteProduct}
                         />
                       );
                     })}
