@@ -22,11 +22,17 @@
     width: 100%;
     position: relative;
     left: 50%;
-    transform: translate(-250px);
+    transform: translateX(-250px);
     display: flex;
     width: 100%;
     padding: 50px 0;
     transform-origin: top center;
+    opacity: 0;
+    &.sliderVisilbe {
+      animation-name: sliderVisible;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
   }
   span {
     display: inline-block;
@@ -44,5 +50,16 @@
       background-color: #000;
       color: #fff;
     }
+  }
+}
+
+@keyframes sliderVisible {
+  from {
+    opacity: 0;
+    transform: translate(-250px, 50px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-250px, 0);
   }
 }

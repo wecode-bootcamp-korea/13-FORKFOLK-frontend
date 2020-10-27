@@ -17,7 +17,9 @@ class ExpandedView extends Component {
           <span>{title}</span>
           <p className={!artsnCulture ? "artsnCulture" : ""}>{description}</p>
         </div>
-        <img alt="representative" src={imgSrc} />
+        <div className="wrapper">
+          <img alt="representative" src={imgSrc} />
+        </div>
       </div>
     );
   }

@@ -9,6 +9,11 @@
     font-weight: 600;
     text-align: center;
   }
+  .visible {
+    animation-name: visible;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
   .subscribe {
     text-align: center;
     display: flex;
@@ -37,5 +42,16 @@
         margin-right: 30px;
       }
     }
+  }
+}
+
+@keyframes visible {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

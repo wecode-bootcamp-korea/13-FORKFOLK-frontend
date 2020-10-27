@@ -27,8 +27,16 @@
       }
     }
   }
-  img {
+  .wrapper {
     width: 610px;
-    cursor: pointer;
+    overflow: hidden;
+    img {
+      width: 610px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      &:hover {
+        transform: scale(1.125);
+      }
+    }
   }
 }

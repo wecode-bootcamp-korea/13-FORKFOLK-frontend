@@ -11,7 +11,14 @@ class ParallaxBackgroundContent extends Component {
   }
   parallaxBg = () => {
     window.addEventListener("scroll", () => {
+      console.log(window.scrollY);
       this.setState({ scrollY: window.scrollY });
+      if (
+        (window.scrollY >= 1400 && window.scrollY < 2900) ||
+        (window.scrollY >= 5900 && window.scrollY < 7500)
+      ) {
+        this.setState({ scrollY: window.scrollY });
+      }
     });
   };
 

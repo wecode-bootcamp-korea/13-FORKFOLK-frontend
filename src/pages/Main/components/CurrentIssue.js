@@ -3,13 +3,14 @@ import React, { Component } from "react";
 import CurrentIssueItem from "./CurrentIssueItem";
 import "./CurrentIssue.scss";
 
-class CurrendIssue extends Component {
+class CurrentIssue extends Component {
   constructor() {
     super();
     this.state = {
       imageList: [],
       translateXValue: 0,
       isCursorPositionleft: false,
+      visible: false,
     };
   }
 
@@ -42,14 +43,30 @@ class CurrendIssue extends Component {
     }
   };
 
+  isVisible = () => {
+    window.addEventListener("scroll", () => {
+      console.log(window.scrollY);
+      if (window.scrollY > 2300 && window.scrollY < 2500) {
+        this.setState({ visible: true });
+      }
+    });
+  };
+
   componentDidMount() {
     fetch("http://localhost:3000/Data/CurrentIssueData.json")
       .then((res) => res.json())
       .then((data) => this.setState({ imageList: data.currentIssueData }));
+    this.isVisible();
   }
-
+  // 10600 12400
   render() {
-    const { imageList, translateXValue, isCursorPositionleft } = this.state;
+    const {
+      imageList,
+      translateXValue,
+      isCursorPositionleft,
+      visible,
+    } = this.state;
+    console.log(visible);
     return (
       <div
         className={`CurrentIssue ${isCursorPositionleft ? "left" : "right"}`}
@@ -57,7 +74,7 @@ class CurrendIssue extends Component {
         onClick={(e) => this.imageSlideHandler(e)}
       >
         <h3>Current Issue</h3>
-        <ul>
+        <ul className={visible ? "sliderVisilbe" : ""}>
           {imageList.map((imageItem) => {
             return (
               <CurrentIssueItem
@@ -77,4 +94,4 @@ class CurrendIssue extends Component {
   }
 }
 
-export default CurrendIssue;
+export default CurrentIssue;
