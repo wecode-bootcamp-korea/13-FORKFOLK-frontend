@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { APIROOT, TitleContents } from "../../config";
+import { TitleContents } from "../../config";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import CoreContents from "../../components/CoreContents/CoreContents";
 import SubContents from "../../components/CoreContents/SubContents/SubContents";
@@ -46,36 +46,33 @@ class Stories extends Component {
 
   render() {
     const { mainItem, subItems, recycleItems } = this.state;
-    let lastPage = this.props.match.params.category === "4";
+    const { category } = this.props.match.params;
+    let lastPage = category === "4";
 
     return (
       <div className="DesignPage">
         <div className="TitleBox">
           <button
             onClick={() => {
-              this.props.match.params.category === "1"
+              category === "1"
                 ? this.props.history.push(`/stories/4`)
-                : this.props.history.push(
-                    `/stories/${+this.props.match.params.category - 1}`
-                  );
+                : this.props.history.push(`/stories/${+category - 1}`);
             }}
           >
             <VscChevronLeft color="#D17D74" />
-            {TitleContents[this.props.match.params.category - 1].prevBtn}
+            {TitleContents[category - 1].prevBtn}
           </button>
-          <h1>{TitleContents[this.props.match.params.category - 1].title}</h1>
+          <h1>{TitleContents[category - 1].title}</h1>
           <button
             onClick={() =>
               lastPage
                 ? this.props.history.push(`/stories/1`)
-                : this.props.history.push(
-                    `/stories/${+this.props.match.params.category + 1}`
-                  )
+                : this.props.history.push(`/stories/${+category + 1}`)
             }
           >
             {lastPage
               ? TitleContents[0].nextBtn
-              : TitleContents[this.props.match.params.category - 1].nextBtn}
+              : TitleContents[category - 1].nextBtn}
             <VscChevronRight color="#D17D74" />
           </button>
         </div>
@@ -87,6 +84,7 @@ class Stories extends Component {
           <div className="recycleItems">
             {recycleItems.map((recycleItems) => (
               <SubContents
+                key={recycleItems.id}
                 id={recycleItems.id}
                 image_url={recycleItems.image_url}
                 issue={recycleItems.issue}

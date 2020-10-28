@@ -30,6 +30,7 @@ class CoreContents extends Component {
         <div className="subContents">
           {subItems.map((subItems) => (
             <SubContents
+              key={subItems.id}
               id={subItems.id}
               image_url={subItems.image_url}
               issue={subItems.issue}
