@@ -1,0 +1,66 @@
+@import "../../styles/common.scss";
+
+.Checkout {
+  margin: 0 $standardSpace;
+  text-align: center;
+  padding-top: 100px;
+  h3 {
+    font-size: 28px;
+    padding-bottom: 30px;
+  }
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    span {
+      padding: 0 5px;
+      border-bottom: 1px solid #000;
+      cursor: pointer;
+    }
+  }
+  input {
+    outline: none;
+  }
+  .invisible {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .flexContainer {
+    display: flex;
+    margin: 100px 0px 50px 50px;
+    text-align: left;
+    > div {
+      &:nth-child(1) {
+        width: 60%;
+      }
+      &:nth-child(2) {
+        width: 40%;
+      }
+      .infoForm {
+        position: relative;
+        &:after {
+          position: absolute;
+          display: block;
+          top: 0;
+          right: 80px;
+          bottom: 0;
+          width: 1px;
+          background-color: #000;
+          content: "";
+        }
+      }
+      button {
+        width: 440px;
+        padding: 13px;
+        border: 1px solid #000;
+        font-size: 16px;
+        font-weight: 500;
+        transition: 0.25s ease;
+        &:hover {
+          background-color: #000;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
