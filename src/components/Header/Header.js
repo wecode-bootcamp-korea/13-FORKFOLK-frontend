@@ -36,19 +36,23 @@ class Header extends Component {
   };
 
   logoScaleHandler = () => {
-    const { pageYOffset } = window;
-    if (pageYOffset < 300) {
-      if (pageYOffset === 0) {
+    const { scrollY } = window;
+    if (scrollY >= 0 && scrollY < 300) {
+      if (scrollY === 0) {
         this.setState({ logoScale: 7, logoMarginTop: 300 });
         return;
       }
-      if (pageYOffset >= 200) {
-        this.setState({ logoScale: 1, logoMarginTop: 0 });
+      if (scrollY > 200) {
+        this.setState({
+          logoScale: 1,
+          logoMarginTop: 0,
+          scrollAniDisable: true,
+        });
         return;
       }
       this.setState({
-        logoScale: 7 - (pageYOffset / 50) * 1.5,
-        logoMarginTop: 300 - (pageYOffset / 50) * 75,
+        logoScale: 7 - (scrollY / 50) * 1.5,
+        logoMarginTop: 300 - (scrollY / 50) * 75,
       });
     }
   };
@@ -56,6 +60,7 @@ class Header extends Component {
   componentDidMount() {
     this.shoppingListButtonValidHandler();
     if (this.props.location.pathname === "/") {
+      this.setState({ logoScale: 7, logoMarginTop: 300 });
       window.addEventListener("scroll", this.logoScaleHandler, false);
     }
     if (this.props.location.pathname !== "/") {
@@ -65,8 +70,8 @@ class Header extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.location.pathname !== this.props.location.pathname) {
+      window.removeEventListener("scroll", this.logoScaleHandler, false);
       if (this.props.location.pathname !== "/") {
-        window.removeEventListener("scroll", this.logoScaleHandler, false);
         this.setState({
           logoScale: 1,
           logoMarginTop: 0,
@@ -74,20 +79,12 @@ class Header extends Component {
         });
       }
       if (this.props.location.pathname === "/") {
-        window.addEventListener("scroll", this.logoScaleHandler, false);
-        const { pageYOffset } = window;
-        if (pageYOffset === 0) {
-          this.setState({ logoScale: 7, logoMarginTop: 300 });
-          return;
-        }
-        if (pageYOffset >= 200) {
-          this.setState({ logoScale: 1, logoMarginTop: 0 });
-          return;
-        }
         this.setState({
-          logoScale: 7 - (pageYOffset / 50) * 1.5,
-          logoMarginTop: 300 - (pageYOffset / 50) * 75,
+          logoScale: 7,
+          logoMarginTop: 300,
+          sideMenuVisible: false,
         });
+        window.addEventListener("scroll", this.logoScaleHandler, false);
       }
     }
   }
