@@ -19,9 +19,15 @@
         button {
           color: inherit;
           font-family: inherit;
+          padding-bottom: 6px;
           cursor: pointer;
           letter-spacing: 1.5px;
         }
+      }
+
+      .underlineActive {
+        border-bottom: 1px solid rgb(77, 77, 77);
+        margin-bottom: -1px;
       }
     }
 
@@ -63,6 +69,11 @@
 
       .invisible {
         display: none;
+      }
+
+      .underlineActive {
+        border-bottom: 1px solid rgb(77, 77, 77);
+        margin-bottom: -1px;
       }
     }
   }

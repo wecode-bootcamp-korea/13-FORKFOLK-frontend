@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Product from "./Components/Product";
 import "./ProductList.scss";
-import { APIROOT } from "../../config";
+import { JINAPIROOT } from "../../config";
+import { BEAPIROOT } from "../../config";
 
 class ProductList extends Component {
   constructor() {
@@ -9,18 +10,18 @@ class ProductList extends Component {
     this.state = {
       filterList: [],
       allProducts: [],
-      productsByCategory: [],
-      productsByPage: [],
-      mappingPage: false,
       isPrevBtnVisible: false,
       isNextBtnVisible: true,
       isPageFooterVisible: true,
+      currentCategory: "ALL",
+      currentPage: 1,
     };
   }
 
   componentDidMount() {
-    const APIOfProductFilterList = `${APIROOT}/Data/productFilterList.json`;
-    const APIOfProductList = `${APIROOT}/Data/productList.json`;
+    const APIOfProductFilterList = `${JINAPIROOT}/Data/productFilterList.json`;
+    // const APIOfProductList = `${JINAPIROOT}/Data/productList.json`;
+    const backendAPI = `${BEAPIROOT}/products?category=All&page=1`;
 
     Promise.all([
       fetch(APIOfProductFilterList)
@@ -32,161 +33,96 @@ class ProductList extends Component {
         })
         .catch((err) => console.log("err.message", err.message)),
 
-      fetch(APIOfProductList)
+      fetch(backendAPI)
         .then((res) => res.json())
         .then((res) => {
           this.setState({
-            allProducts: res.products,
-            productsByCategory: res.products,
+            allProducts: res.page_products,
           });
         })
-        .catch((error) => console.log(error.message)),
+        .catch((err) => console.log("err.message", err.message)),
     ]);
   }
 
-  componentDidUpdate() {
-    fetch(`http://localhost:3000//shop/${this.props.match.params.id}`);
+  componentDidUpdate(prevProps) {
+    const { search } = this.props.location;
+    const { currentCategory, currentPage } = this.state;
+
+    if (prevProps.location.search !== search) {
+      this.filterByCategory(currentCategory, currentPage);
+    }
   }
 
-  filterByCategory = (category) => {
-    const { allProducts } = this.state;
+  filterByCategory = async (category, num) => {
     const categoryName = {
       ALL: "All",
-      "ART PRINTS": "art-prints",
+      "ART PRINTS": "artprint",
       BOOKS: "books",
-      MAGAZINE: "kinfolk-magazines",
+      MAGAZINE: "magazine",
       NOTECARDS: "notecards",
       SUBSCRIPTIONS: "subscriptions",
     };
 
     if (category === "ALL") {
+      const res = await fetch(
+        `${BEAPIROOT}/products?category=${categoryName[category]}&page=${num}`
+      );
+      const { page_products } = await res.json();
+
       this.setState(
         {
-          productsByCategory: [...allProducts],
-          mappingPage: false,
+          allProducts: page_products,
           isPageFooterVisible: true,
+          currentCategory: category,
+          currentPage: num,
         },
         () => {
           this.props.history.push(
-            `/shop?category=${categoryName[category]}&page=1`
+            `/products?category=${categoryName[category]}&page=${num}`
           );
         }
       );
-
-      // 10/28 수요일에 백엔드 분들과 맞춰볼 예정입니다.
-      // fetch(`http://`, {
-      //   method: "GET",
-      //   body: JSON.stringify({
-      //     endpoint: `/shop?category=All&page=1`
-      //   })
-      // })
-      //   .then(res => res.json())
-      //   .then(result =>
-      // console.log("result", result)
-      // this.setState({
-      //   productsByCategory: result.data
-      // }))
-      // result.data는 임의로 입력한 키값입니다. (백엔드 맞춰보고 수정 예정)
+      return;
     }
 
-    const filteredProducts = allProducts.filter((product) => {
-      return product.category === category;
-    });
+    const res = await fetch(
+      `${BEAPIROOT}/products?category=${categoryName[category]}&page=${num}`
+    );
+    const { category_products } = await res.json();
     this.setState(
       {
-        isPageFooterVisible: filteredProducts.length < 13,
-        productsByCategory: [...filteredProducts],
-        productsByPage: [...filteredProducts],
+        allProducts: category_products,
+        isPageFooterVisible: false,
+        currentCategory: category,
       },
       () => {
-        this.props.history.push(`/product?category=${categoryName[category]}`);
+        this.props.history.push(
+          `/products?category=${categoryName[category]}&page=${num}`
+        );
       }
     );
-
-    // 10/28 수요일에 백엔드 분들과 맞춰볼 예정입니다.
-    // fetch(`http://`, {
-    //   method: "GET",
-    //   body: JSON.stringify({
-    //     endpoint: `/product?category=${categoryName[category]}`
-    //   })
-    // })
-    //   .then(res => res.json())
-    //   .then(result => console.log("endpoint", result))
-    //   .then(result =>
-    //     console.log("result", result)
-    //       this.setState({
-    //       productsByCategory: result.data,
-    //       productsByPage: result.data,
-    // }))
-    // result.data는 임의로 입력한 키값입니다. (백엔드 맞춰보고 수정 예정)
+    return;
   };
 
   goToProductDetail = (id) => {
-    // fetch(`API/shop/${id}`, {method: "GET"})
-    //     .then(res => res.json())
-    //     .then(result => console.log(result))
-
     this.props.history.push(`/shop/${id}`);
   };
 
   goToCartPage = () => {
-    // fetch(`API/cart`, {method: "GET"})
-    //     .then(res => res.json())
-    //     .then(result => console.log(result))
-
     this.props.history.push(`/cart`);
-  };
-
-  filterByPage = (num) => {
-    const { productsByCategory } = this.state;
-    const slicePageIdx =
-      num === 1 ? [0, 12] : num === 2 ? [12, 24] : num === 3 ? [24, 36] : [36];
-    const prevBtnBool =
-      num === 1 ? false : num === 2 || num === 3 ? true : true;
-    const nextBtnBool =
-      num === 1 ? true : num === 2 || num === 3 ? true : false;
-
-    this.setState(
-      {
-        productsByPage: productsByCategory.slice(...slicePageIdx),
-        mappingPage: true,
-        isPrevBtnVisible: prevBtnBool,
-        isNextBtnVisible: nextBtnBool,
-      },
-      () => {
-        this.props.history.push(`/shop?category=All&page=${num}`);
-      }
-    );
-
-    // 10/28 수요일에 백엔드 분들과 맞춰볼 예정입니다.
-    // (pagination 방식으로 연결할 예정이기 때문에, slicePageIdx 부분은 주석 처리할 예정입니다.)
-    // fetch(`http://`, {
-    //   method: "GET",
-    //   body: JSON.stringify({
-    //     endpoint: `/product?category=${categoryName[category]}`
-    //   })
-    // })
-    //   .then(res => res.json())
-    //   .then(result => console.log("endpoint", result))
-    //   .then(result =>
-    //     console.log("result", result)
-    //       this.setState({
-    //       productsByPage: result.data,
-    // }))
-    // result.data는 임의로 입력한 키값입니다. (백엔드 맞춰보고 수정 예정)
   };
 
   render() {
     const {
       filterList,
-      productsByCategory,
-      productsByPage,
-      mappingPage,
+      allProducts,
       isPrevBtnVisible,
       isNextBtnVisible,
       isPageFooterVisible,
+      currentCategory,
+      currentPage,
     } = this.state;
-    const mappingPageIn = mappingPage ? productsByPage : productsByCategory;
+
     const PAGENUMS = [
       { pageNum: 1 },
       { pageNum: 2 },
@@ -201,8 +137,15 @@ class ProductList extends Component {
             <span>SHOP:</span>
             {filterList.map((list) => {
               return (
-                <li key={list.id}>
-                  <button onClick={() => this.filterByCategory(list.category)}>
+                <li
+                  className={
+                    currentCategory === list.category ? "underlineActive" : null
+                  }
+                  key={list.id}
+                >
+                  <button
+                    onClick={() => this.filterByCategory(list.category, 1)}
+                  >
                     {list.category}
                   </button>
                 </li>
@@ -213,30 +156,19 @@ class ProductList extends Component {
         <div className="products">
           <content>
             <ul>
-              {mappingPageIn.length > 12
-                ? mappingPageIn.slice(0, 12).map((product, i) => {
-                    return (
-                      <Product
-                        key={i}
-                        product={product}
-                        filterByCategory={this.filterByCategory}
-                        goToProductDetail={this.goToProductDetail}
-                        goToCartPage={this.goToCartPage}
-                      />
-                    );
-                  })
-                : mappingPageIn.map((product, i) => {
-                    return (
-                      <Product
-                        key={i}
-                        id={product.id}
-                        product={product}
-                        filterByCategory={this.filterByCategory}
-                        goToProductDetail={this.goToProductDetail}
-                        goToCartPage={this.goToCartPage}
-                      />
-                    );
-                  })}
+              {allProducts.length &&
+                allProducts.map((product, i) => {
+                  return (
+                    <Product
+                      key={i}
+                      id={product.id}
+                      product={product}
+                      filterByCategory={this.filterByCategory}
+                      goToProductDetail={this.goToProductDetail}
+                      goToCartPage={this.goToCartPage}
+                    />
+                  );
+                })}
             </ul>
           </content>
         </div>
@@ -247,16 +179,20 @@ class ProductList extends Component {
             <button
               className={isPrevBtnVisible ? "" : "invisible"}
               onClick={() => {
-                this.filterByPage(1);
+                this.filterByCategory("ALL", 1);
               }}
             >
               PREV
             </button>
-            {PAGENUMS.map((num) => {
+            {PAGENUMS.map((num, i) => {
               return (
                 <button
+                  key={i}
+                  className={
+                    currentPage === num.pageNum ? "underlineActive" : null
+                  }
                   onClick={() => {
-                    this.filterByPage(num.pageNum);
+                    this.filterByCategory("ALL", num.pageNum);
                   }}
                 >
                   {num.pageNum}
@@ -266,7 +202,7 @@ class ProductList extends Component {
             <button
               className={isNextBtnVisible ? "" : "invisible"}
               onClick={() => {
-                this.filterByPage(4);
+                this.filterByCategory("ALL", 4);
               }}
             >
               NEXT
