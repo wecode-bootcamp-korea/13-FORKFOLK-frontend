@@ -3,8 +3,8 @@
 .Popular {
   margin: 20px $standardSpace 50px;
   ul {
-    padding: $standardSpace;
     display: grid;
+    padding: $standardSpace;
     grid-template-columns: auto auto;
   }
 }

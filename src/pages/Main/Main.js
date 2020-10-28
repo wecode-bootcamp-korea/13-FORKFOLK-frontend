@@ -8,6 +8,7 @@ import ExpandedView from "./components/ExpandedView";
 import FashionIssue from "./components/FashionIssue";
 import TextSticky from "./components/TextSticky";
 import ParallaxBackgroundContent from "./components/ParallaxBackgroundContent";
+import { LOCAL_API_HJ } from "../../config";
 
 class Main extends Component {
   constructor() {
@@ -21,16 +22,19 @@ class Main extends Component {
   }
 
   fetchData = async () => {
-    const fetch1 = await fetch("http://localhost:3000/Data/FlexItemsData.json");
-    const fetch2 = await fetch(
-      "http://localhost:3000/Data/ExpandedViewData.json"
+    const flexItemsApi = await fetch(`${LOCAL_API_HJ}/Data/FlexItemsData.json`);
+    const expandedViewApi = await fetch(
+      `${LOCAL_API_HJ}/Data/ExpandedViewData.json`
     );
-    const json1 = await fetch1.json();
-    const json2 = await fetch2.json();
-    const selectedStories = json1.flexItemsData.selectedStories;
-    const extraordinaryInteriors = json1.flexItemsData.extraordinaryInteriors;
-    const diveIn = json1.flexItemsData.diveIn;
-    const expandedViewContents = json2.expandedViewContents;
+
+    const flexItemsJson = await flexItemsApi.json();
+    const expandedViewJson = await expandedViewApi.json();
+
+    const selectedStories = flexItemsJson.flexItemsData.selectedStories;
+    const extraordinaryInteriors =
+      flexItemsJson.flexItemsData.extraordinaryInteriors;
+    const diveIn = flexItemsJson.flexItemsData.diveIn;
+    const expandedViewContents = expandedViewJson.expandedViewContents;
 
     this.setState({
       selectedStories,
@@ -65,7 +69,7 @@ class Main extends Component {
         {expandedViewContents.length && (
           <ExpandedView contents={expandedViewContents[0]} />
         )}
-        <ParallaxBackgroundContent scrollY={3400} />
+        <ParallaxBackgroundContent minusValue={3400} />
         <CurrentIssue />
         <FlexItemsList
           className="SelectedStories"
@@ -80,7 +84,7 @@ class Main extends Component {
           }
         />
         <FashionIssue />
-        <ParallaxBackgroundContent scrollY={8100} />
+        <ParallaxBackgroundContent minusValue={8100} />
         <FlexItemsList
           className="ExtraordinaryInteriors"
           title="Extranordinary Interiors"

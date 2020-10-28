@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./Popular.scss";
 import PopularContent from "./PopularContent";
+import { LOCAL_API_HJ } from "../../../config";
+import "./Popular.scss";
 
 class Popular extends Component {
   constructor() {
@@ -10,9 +11,7 @@ class Popular extends Component {
     };
   }
   componentDidMount() {
-    fetch("http://localhost:3000/Data/PopularData.json", {
-      method: "GET",
-    })
+    fetch(`${LOCAL_API_HJ}/Data/PopularData.json`)
       .then((res) => res.json())
       .then((result) => this.setState({ popularContents: result.popular }));
   }

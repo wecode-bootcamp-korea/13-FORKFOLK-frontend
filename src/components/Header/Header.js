@@ -11,8 +11,8 @@ class Header extends Component {
     this.state = {
       sideMenuVisible: false,
       shoppingListValid: false,
-      logoMarginTop: 0,
-      logoScale: 1,
+      logoMarginTop: 300,
+      logoScale: 7,
       isMain: true,
     };
   }
@@ -37,14 +37,17 @@ class Header extends Component {
 
   logoScaleHandler = () => {
     const { scrollY } = window;
-    console.log(scrollY);
     if (scrollY >= 0 && scrollY < 300) {
       if (scrollY === 0) {
         this.setState({ logoScale: 7, logoMarginTop: 300 });
         return;
       }
-      if (scrollY >= 200) {
-        this.setState({ logoScale: 1, logoMarginTop: 0 });
+      if (scrollY > 200) {
+        this.setState({
+          logoScale: 1,
+          logoMarginTop: 0,
+          scrollAniDisable: true,
+        });
         return;
       }
       this.setState({

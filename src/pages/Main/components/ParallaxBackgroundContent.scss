@@ -1,13 +1,11 @@
 @import "../../../styles/common.scss";
 
 .ParallaxBackgroundContent {
+  @include centerAlignment;
   position: relative;
   width: 100%;
   height: 540px;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 100px;
   img {
     position: absolute;

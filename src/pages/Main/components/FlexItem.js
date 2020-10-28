@@ -9,8 +9,10 @@ class FlexItem extends Component {
         <div>
           <img src={imgSrc} alt="person" />
         </div>
-        <span className="issue">ARTS &#38; CULTURE, ISSUE {issueNumber}</span>
-        <span>{title}</span>
+        <span className="issue quickSand">
+          ARTS &#38; CULTURE, ISSUE {issueNumber}
+        </span>
+        <span className="quickSand">{title}</span>
         <p>{description}</p>
       </li>
     );

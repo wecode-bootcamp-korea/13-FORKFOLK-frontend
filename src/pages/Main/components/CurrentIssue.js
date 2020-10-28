@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import CurrentIssueItem from "./CurrentIssueItem";
+import { LOCAL_API_HJ } from "../../../config";
 import "./CurrentIssue.scss";
 
 class CurrentIssue extends Component {
@@ -31,34 +32,29 @@ class CurrentIssue extends Component {
   };
 
   cursorImageHandler = (e) => {
-    if (e.clientX < window.innerWidth / 2) {
-      this.setState({
-        isCursorPositionleft: true,
-      });
-    }
-    if (e.clientX > window.innerWidth / 2) {
-      this.setState({
-        isCursorPositionleft: false,
-      });
-    }
+    const isLeft = e.clientX < window.innerWidth / 2;
+    this.setState({
+      isCursorPositionleft: isLeft,
+    });
   };
 
   isVisible = () => {
     window.addEventListener("scroll", () => {
-      console.log(window.scrollY);
-      if (window.scrollY > 2300 && window.scrollY < 2500) {
-        this.setState({ visible: true });
+      if (window.scrollY > 2300) {
+        if (!this.state.visible) {
+          this.setState({ visible: true });
+        }
       }
     });
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000/Data/CurrentIssueData.json")
+    fetch(`${LOCAL_API_HJ}/Data/CurrentIssueData.json`)
       .then((res) => res.json())
       .then((data) => this.setState({ imageList: data.currentIssueData }));
     this.isVisible();
   }
-  // 10600 12400
+
   render() {
     const {
       imageList,
@@ -66,7 +62,6 @@ class CurrentIssue extends Component {
       isCursorPositionleft,
       visible,
     } = this.state;
-    console.log(visible);
     return (
       <div
         className={`CurrentIssue ${isCursorPositionleft ? "left" : "right"}`}

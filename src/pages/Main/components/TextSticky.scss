@@ -1,18 +1,14 @@
 @import "../../../styles/common.scss";
 
 .TextSticky {
-  width: 100%;
+  position: relative;
   height: 120vh;
   color: #ffffff;
   text-align: center;
-  position: relative;
   div {
     position: sticky;
-    padding: 300px 0 100px;
-    bottom: 0;
-    left: 0;
     top: 0;
-    width: 100%;
+    padding: 300px 0 100px;
     p {
       font-size: 76px;
       padding-bottom: 50px;

@@ -7,7 +7,7 @@ class SideMenu extends Component {
   goToAccount = () => {
     this.props.history.push("/Account");
   };
-  componentDidUpdate() {}
+
   render() {
     return (
       <div className={`SideMenu ${this.props.visible && "visible"}`}>

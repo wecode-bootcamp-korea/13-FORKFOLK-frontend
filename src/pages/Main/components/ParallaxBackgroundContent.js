@@ -6,12 +6,11 @@ class ParallaxBackgroundContent extends Component {
   constructor() {
     super();
     this.state = {
-      scrollY: 0,
+      scrollYState: 0,
     };
   }
   parallaxBg = () => {
     window.addEventListener("scroll", () => {
-      console.log(window.scrollY);
       this.setState({ scrollY: window.scrollY });
       if (
         (window.scrollY >= 1400 && window.scrollY < 2900) ||
@@ -25,14 +24,16 @@ class ParallaxBackgroundContent extends Component {
   componentDidMount() {
     this.parallaxBg();
   }
+
   render() {
-    const { scrollY } = this.props;
+    const { scrollY } = this.state;
+    const { minusValue } = this.props;
     return (
       <div className="ParallaxBackgroundContent">
         <img
           src={backgroundImg}
           alt="img"
-          style={{ top: `${(this.state.scrollY - scrollY) * 0.5}px` }}
+          style={{ top: `${(scrollY - minusValue) * 0.5}px` }}
         />
         <span>NINA RICCI</span>
       </div>
