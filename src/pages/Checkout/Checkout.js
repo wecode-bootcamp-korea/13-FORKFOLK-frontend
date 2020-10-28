@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import OrderInfoInput from "./components/OrderInfoInput";
+import Order from "./components/Order";
+import { CHECKOUT_API } from "../../config";
 import "./Checkout.scss";
 import VISALOGO from "./images/visa_logo.png";
 import AMERICANLOGO from "./images/amercan_logo.png";
@@ -14,14 +17,34 @@ class Checkout extends Component {
     this.state = {
       creditCard: true,
       payPal: false,
-      userName: "",
+      name: "",
       address: "",
-      phoneNumber: "",
+      phone_number: "",
     };
   }
+  clickCheckout = () => {
+    const { name, address, phone_number } = this.state;
+    fetch(CHECKOUT_API, {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        address,
+        phone_number,
+      }),
+    });
+  };
+
   radioOnChangeHandler = () => {
     this.setState({ creditCard: !this.state.creditCard, payPal: !this.state.payPal });
   };
+
+  checkoutFormOnChangeHandler = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
     return (
       <div className="Checkout">
@@ -37,18 +60,27 @@ class Checkout extends Component {
             <h3>Billing Details</h3>
             <form className="infoForm">
               <ul>
-                <li>
-                  <label>Name</label>
-                  <input name="userName" placeholder="Please input your name" />
-                </li>
-                <li>
-                  <label>Address</label>
-                  <input name="address" placeholder="Please input your address" />
-                </li>
-                <li>
-                  <label>Phone Number</label>
-                  <input name="phoneNumber" placeholder="Please input your phone number" />
-                </li>
+                <OrderInfoInput
+                  labelTitle="Name"
+                  checkoutFormOnChangeHandler={this.checkoutFormOnChangeHandler}
+                  inputName="name"
+                  placeholder="Please input your name"
+                  inputValue={this.state.name}
+                />
+                <OrderInfoInput
+                  labelTitle="Address"
+                  checkoutFormOnChangeHandler={this.checkoutFormOnChangeHandler}
+                  inputName="address"
+                  placeholder="Please input your address"
+                  inputValue={this.state.address}
+                />
+                <OrderInfoInput
+                  labelTitle="Phone Number"
+                  checkoutFormOnChangeHandler={this.checkoutFormOnChangeHandler}
+                  inputName="phone_number"
+                  placeholder="Please input your phone number"
+                  inputValue={this.state.phone_number}
+                />
               </ul>
             </form>
           </div>
@@ -60,22 +92,7 @@ class Checkout extends Component {
                   <th>Product</th>
                   <th>Subtotal</th>
                 </tr>
-                <tr>
-                  <td>Issue36 x 1</td>
-                  <td>$18</td>
-                </tr>
-                <tr>
-                  <td>Subtotal</td>
-                  <td>$18</td>
-                </tr>
-                <tr>
-                  <td>Shipping</td>
-                  <td>$9</td>
-                </tr>
-                <tr>
-                  <td>Total</td>
-                  <td>$27</td>
-                </tr>
+                <Order />
               </tbody>
             </table>
             <ul className="paymentChoice">
@@ -153,7 +170,7 @@ class Checkout extends Component {
                 </div>
               </li>
             </ul>
-            <button>PLACE ORDER</button>
+            <button onClick={() => this.clickCheckout()}>PLACE ORDER</button>
           </div>
         </div>
       </div>

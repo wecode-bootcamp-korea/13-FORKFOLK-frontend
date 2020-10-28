@@ -62,18 +62,18 @@
         }
       }
       table {
-        width: 70%;
+        width: 75%;
         tbody {
           tr {
             display: flex;
             justify-content: space-between;
-            padding: 20px 0;
+            padding: 20px 10px;
             border-bottom: 1px solid #000;
-            &:nth-child(4) {
+            &.shipping,
+            &:first-child {
               border-bottom-width: 2px;
             }
             &:last-child {
-              border-bottom: none;
               padding-bottom: 50px;
             }
             th {
@@ -100,7 +100,6 @@
         li {
           padding-bottom: 20px;
           .titleContents {
-            border-top: 1px solid #000;
             padding: 20px 0 10px;
             label {
               margin-left: 10px;
