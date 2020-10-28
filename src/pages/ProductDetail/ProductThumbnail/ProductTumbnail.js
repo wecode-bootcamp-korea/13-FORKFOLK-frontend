@@ -6,7 +6,7 @@ class Product extends Component {
   constructor() {
     super();
     this.state = {
-      productImgIdx: 0,
+      productImgIdx: 1,
       visible: false,
     };
   }
@@ -32,14 +32,12 @@ class Product extends Component {
   };
 
   changeModalVisible = (e) => {
-    console.log(e.target.name);
     this.setState({ visible: e.target.name === "enlarge" ? true : false });
   };
 
   render() {
     const { productImg } = this.props;
     const { productImgIdx, visible } = this.state;
-    console.log(visible);
     return (
       <div className="productThumbnail" onScroll={this.changeModalVisible}>
         <div className="thumbnailContainer">

@@ -21,46 +21,40 @@ class ProductDetail extends Component {
     this.state = {
       productInfo: {
         id: null,
-        productImg: [],
-        productName: "",
+        image: [],
+        name: "",
         price: "",
-        descriptions: [
-          {
-            kategory: "",
-            text: "",
-          },
-          {
-            kategory: "",
-            text: "",
-          },
-        ],
+        descriptions: {
+          description: "",
+          shipping: "",
+        },
       },
     };
   }
 
+  // componentDidMount() {
+  //   fetch("http://localhost:3000/Data/ProductDetailData.json", {})
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       this.setState({
+  //         productInfo: res.product_info,
+  //       });
+  //     });
+  // }
+
   componentDidMount() {
-    fetch("http://localhost:3000/Data/ProductDetailData.json", {})
+    fetch(`${PRODUCT_DETAIL_API}${this.props.match.params.id}`, {})
       .then((res) => res.json())
       .then((res) => {
-        this.setState({
-          productInfo: res.product,
-        });
+        this.setState({ productInfo: res.product_info });
       });
   }
 
-  // componentDidMount() {
-  //     fetch(`${PRODUCT_DETAIL_API}${this.props.match.params.id}`,
-  //         {
-  //     }).then(res => res.json())
-  //         .then(res => {
-  //         this.setState({productInfo:res})
-  //     })
-  // }
-
   render() {
     const {
-      productInfo: { id, productImg, productName, price, descriptions },
+      productInfo: { id, image, name, price, descriptions },
     } = this.state;
+    console.log(image);
     return (
       <div className="productDetail">
         <header>
@@ -73,11 +67,13 @@ class ProductDetail extends Component {
           </ul>
         </header>
         <section>
-          <ProductTumbnail productImg={productImg} />
+          {Object.keys(this.state.productInfo.image).length && (
+            <ProductTumbnail productImg={image} />
+          )}
           <aside>
             <ProductDescription
               id={id}
-              productName={productName}
+              productName={name}
               price={price}
               descriptions={descriptions}
             />

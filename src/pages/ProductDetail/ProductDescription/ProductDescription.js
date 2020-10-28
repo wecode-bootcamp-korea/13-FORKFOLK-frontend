@@ -31,10 +31,10 @@ class ProductDescription extends Component {
       <div className="productDescription">
         <h1>{productName}</h1>
         <h2>${price}</h2>
-        {descriptions.map((description, descriptionidx) => (
+        {Object.keys(descriptions).map((description, descriptionidx) => (
           <>
             <button onClick={this.hadleClick} name={descriptionidx}>
-              <span>{description.kategory}</span>
+              <span>{description}</span>
               <span>
                 {DescriptionBtnState === `${descriptionidx}` ? "-" : "+"}
               </span>
@@ -47,7 +47,7 @@ class ProductDescription extends Component {
                   : "closeDecription"
               }
             >
-              {description.text}{" "}
+              {descriptions[description]}{" "}
             </div>
           </>
         ))}
