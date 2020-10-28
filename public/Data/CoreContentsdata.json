@@ -1,0 +1,74 @@
+{
+  "mainItem": {
+    "id": 1,
+    "imgSrc": "https://images.unsplash.com/photo-1535137755190-8a0b337717e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80",
+    "subTitle": "FEATURE",
+    "mainTitle": "Rock Steady",
+    "description": "A breath of fresh air amid the ancient Stone Forest of southwestern China.",
+    "link": ""
+  },
+  "subItems": [
+    {
+      "id": 1,
+      "imgSrc": "https://images.unsplash.com/photo-1598728637989-9c5de7532584?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
+      "issueNumber": " 37",
+      "title": "WeGirls",
+      "description": "The most interesting people, stories and codes all have layers. This fall, so does your wardrobe."
+    },
+    {
+      "id": 2,
+      "imgSrc": "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1988&q=80",
+      "issueNumber": " 37",
+      "title": "The Hot Seat",
+      "description": "Like fashion, chairs can be sumptuous or simple, whimsical or practical, a frill or a necessity."
+    },
+    {
+      "id": 3,
+      "imgSrc": "https://images.unsplash.com/photo-1603203735036-5d5e04033f71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
+      "issueNumber": " 37",
+      "title": "FORK FOLK",
+      "description": "We will show you something special."
+    },
+    {
+      "id": 4,
+      "imgSrc": "https://images.unsplash.com/photo-1532938982164-5be4e1cd3472?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
+      "issueNumber": " 36",
+      "title": "FORK FOLK",
+      "description": "We will show you something special."
+    },
+    {
+      "id": 5,
+      "imgSrc": "https://images.unsplash.com/photo-1603188429329-c0deb9fe2e89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+      "issueNumber": " 36",
+      "title": "FORK FOLK",
+      "description": "We will show you something special."
+    },
+    {
+      "id": 6,
+      "imgSrc": "https://images.unsplash.com/photo-1560918801-53fe5c710a80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1525&q=80",
+      "issueNumber": " 36",
+      "title": "FORK FOLK",
+      "description": "We will show you something special."
+    },
+    {
+      "id": 7,
+      "imgSrc": "https://images.unsplash.com/photo-1525454771545-768df27b46e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+      "issueNumber": " 35",
+      "title": "FORK FOLK",
+      "description": "We will show you something special."
+    },
+    {
+      "id": 8,
+      "imgSrc": "https://images.unsplash.com/photo-1598986119545-ea2701477e93?ixlib=rb-1.2.1&auto=format&fit=crop&w=2854&q=80",
+      "issueNumber": " 35",
+      "title": "FORK FOLK",
+      "description": "We will show you something special."
+    },
+    {
+      "id": 9,
+      "imgSrc": "https://images.unsplash.com/photo-1603152057725-cd04cc027e20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "title": "FORK FOLK",
+      "description": "We will show you something special."
+    }
+  ]
+}
