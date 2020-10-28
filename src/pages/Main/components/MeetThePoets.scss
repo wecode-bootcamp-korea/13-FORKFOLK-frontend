@@ -1,0 +1,11 @@
+@import "../../../styles/common.scss";
+
+.MeetThePoets {
+  margin: 0 $standardSpace;
+  padding: 0 0 100px;
+  border-bottom: 1px solid #000;
+  ul {
+    display: flex;
+    justify-content: space-around;
+  }
+}

@@ -15,6 +15,7 @@ class ProductList extends Component {
       isPageFooterVisible: true,
       currentCategory: "ALL",
       currentPage: 1,
+      animationActive: false,
     };
   }
 
@@ -27,6 +28,7 @@ class ProductList extends Component {
       fetch(APIOfProductFilterList)
         .then((res) => res.json())
         .then((res) => {
+          console.log("api>>>>", res);
           this.setState({
             filterList: res.filterList,
           });
@@ -36,8 +38,10 @@ class ProductList extends Component {
       fetch(backendAPI)
         .then((res) => res.json())
         .then((res) => {
+          console.log("back>>>>", res);
           this.setState({
             allProducts: res.page_products,
+            animationActive: false,
           });
         })
         .catch((err) => console.log("err.message", err.message)),
@@ -50,6 +54,9 @@ class ProductList extends Component {
 
     if (prevProps.location.search !== search) {
       this.filterByCategory(currentCategory, currentPage);
+      this.setState({
+        animationActive: true,
+      });
     }
   }
 
@@ -57,10 +64,15 @@ class ProductList extends Component {
     const categoryName = {
       ALL: "All",
       "ART PRINTS": "artprint",
+      artprint: "artprint",
       BOOKS: "books",
+      books: "books",
       MAGAZINE: "magazine",
+      magazine: "magazine",
       NOTECARDS: "notecards",
+      notecards: "notecards",
       SUBSCRIPTIONS: "subscriptions",
+      subscriptions: "subscriptions",
     };
 
     if (category === "ALL") {
@@ -75,6 +87,7 @@ class ProductList extends Component {
           isPageFooterVisible: true,
           currentCategory: category,
           currentPage: num,
+          animationActive: false,
         },
         () => {
           this.props.history.push(
@@ -94,6 +107,7 @@ class ProductList extends Component {
         allProducts: category_products,
         isPageFooterVisible: false,
         currentCategory: category,
+        animationActive: false,
       },
       () => {
         this.props.history.push(
@@ -121,6 +135,7 @@ class ProductList extends Component {
       isPageFooterVisible,
       currentCategory,
       currentPage,
+      animationActive,
     } = this.state;
 
     const PAGENUMS = [
@@ -154,7 +169,7 @@ class ProductList extends Component {
           </ul>
         </div>
         <div className="products">
-          <content>
+          <content className={animationActive ? "" : "animationActive"}>
             <ul>
               {allProducts.length &&
                 allProducts.map((product, i) => {

@@ -26,7 +26,7 @@ export default class CartList extends Component {
     const backendAPI = `${BEAPIROOT}/products`;
 
     Promise.all([
-      fetch(backendAPI)
+      fetch(APIOfCartList)
         .then((res) => res.json())
         .then((res) => {
           this.setState({

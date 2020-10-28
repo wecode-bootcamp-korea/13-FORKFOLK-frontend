@@ -9,10 +9,10 @@ class Footer extends Component {
         <ul>
           <li>© Kinfolk 2020</li>
           <li>
-            <Link>Terms</Link>
+            <Link to="/">Terms</Link>
           </li>
           <li>
-            <Link>Subscribe</Link>
+            <Link to="/">Subscribe</Link>
           </li>
         </ul>
         <ul>
@@ -26,7 +26,7 @@ class Footer extends Component {
             <a href="http://instagram.com/kinfolk">Instagram</a>
           </li>
         </ul>
-        <Link>Website design &amp; Development by Six</Link>
+        <Link to="/">Website design &amp; Development by Six</Link>
       </footer>
     );
   }
