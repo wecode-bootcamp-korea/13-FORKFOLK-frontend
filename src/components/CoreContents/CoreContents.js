@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import SubContents from "./SubContents/SubContents";
 import "./CoreContents.scss";
 
@@ -17,7 +18,9 @@ class CoreContents extends Component {
     return (
       <div className="coreComponents">
         <div className="mainContents">
-          <img src={mainItem.image_url} />
+          <Link to={`/contentDetail/${mainItem.id}`}>
+            <img src={mainItem.image_url} />
+          </Link>
           <p>
             <span>{mainItem.issue}</span>
           </p>
