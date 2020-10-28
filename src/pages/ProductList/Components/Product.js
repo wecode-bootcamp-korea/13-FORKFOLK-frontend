@@ -17,6 +17,14 @@ class Product extends Component {
     };
   }
 
+  componentDidMount() {
+    window.addEventListener("mousedown", () => this.setModalIsOpen(false));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("mousedown", () => this.setModalIsOpen(true));
+  }
+
   isChangeHeartColor = () => {
     const { isFullHeartBool } = this.state;
     if (isFullHeartBool === false) {
