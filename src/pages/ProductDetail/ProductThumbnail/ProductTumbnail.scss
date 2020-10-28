@@ -1,114 +1,116 @@
-  .productThumbnail{
-        position: relative;
-        min-width: 750px;
-        min-height: 500px;
-        max-height: 500px;
-        margin-right: 40px;
-        .thumbnailContainer{
+.productThumbnail {
+  position: relative;
+  min-width: 750px;
+  min-height: 500px;
+  max-height: 500px;
+  margin-right: 40px;
+  .thumbnailContainer {
+    &:hover .enlarge {
+      opacity: 1;
+    }
 
-          &:hover .enlarge{
-            opacity:1;
-          }
+    .fadein {
+      animation: fadeIn 1s linear;
+    }
 
-        .fadein {
-            animation: fadeIn 1s linear;
-          }
-        
-          img{
-            width: 100%;
-          }
+    img {
+      width: 100%;
+    }
 
-          button{
-            position: absolute;
-            padding: 0;
-          }
+    button {
+      position: absolute;
+      padding: 0;
+    }
 
-        .productThumbnailLeftBtn,.productThumbnailRightBtn{
-            top: 0;
-            width: 50%;
-            height: 100%;
-        }
+    .productThumbnailLeftBtn,
+    .productThumbnailRightBtn {
+      top: 0;
+      width: 50%;
+      height: 100%;
+    }
 
-        .productThumbnailLeftBtn{
-            left: 0;
-            cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-left.svg"),pointer;
-        }
-        
-        .productThumbnailRightBtn{
-            right: 0;
-            cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-right.svg"),pointer;
-        }
+    .productThumbnailLeftBtn {
+      left: 0;
+      cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-left.svg"),
+        pointer;
+    }
 
-        .enlarge{
-          bottom: 0;
-          right: 0;
-          background-color: rgba($color: #000000, $alpha: 0.3);
-          color: white;
-          width: 40px;
-          height: 40px;
-          opacity:0;
-          cursor: pointer;
-          transition: 0.3s ease-in-out;
+    .productThumbnailRightBtn {
+      right: 0;
+      cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-right.svg"),
+        pointer;
+    }
 
-          .FaExpand{
-            font-size: 30px;
-            pointer-events: none;
-          }
-        }
+    .enlarge {
+      bottom: 0;
+      right: 0;
+      background-color: rgba($color: #000000, $alpha: 0.3);
+      color: white;
+      width: 40px;
+      height: 40px;
+      opacity: 0;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+
+      .FaExpand {
+        font-size: 30px;
+        pointer-events: none;
       }
+    }
+  }
 
-      .thumbnailModal{
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: white;
-        width: 100vw;
-        height: 100vh;
+  .thumbnailModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
 
-        div{
-          display: flex;
-          justify-content: space-between;
-          margin: 40px 60px 0 60px;
-          button{
-            cursor: pointer;
-          }
-        }
-
-        section{
-          display: flex;
-          justify-content: space-between;
-
-          button{
-            width: 30px;
-          }
-
-          img{
-            margin: 0 40px;
-
-            &:nth-child(2){
-            width: 60%;}
-          }
-        }
-      }
-
-      .showing{
-        display: block;
+    div {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 60px 0 60px;
+      button {
+        cursor: pointer;
       }
     }
 
+    section {
+      display: flex;
+      justify-content: space-between;
 
-    @keyframes fadeIn{
-        from{
-            opacity: 0;
+      button {
+        width: 30px;
+      }
+
+      img {
+        margin: 0 40px;
+
+        &:nth-child(2) {
+          width: 60%;
         }
-    
-        to{
-            opacity: 1;
-        }
+      }
     }
+  }
 
-    /* @keyframes fadeIn {
+  .showing {
+    display: block;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* @keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -121,4 +123,3 @@
 .fadein {
   animation: fadeIn 1s linear;
 } */
-
