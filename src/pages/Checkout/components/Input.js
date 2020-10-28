@@ -4,7 +4,7 @@ class Input extends Component {
   render() {
     return (
       <>
-        <label for="">
+        <label htmlFor="">
           {this.props.label}
           {this.props.isRequired ? " *" : ""}
         </label>

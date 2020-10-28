@@ -2,63 +2,164 @@
 
 .Checkout {
   text-align: center;
-  margin: 100px $standardSpace;
-  min-height: 55vh;
-  > p {
-    padding: 30px;
-    font-weight: 500;
+  padding-top: 100px;
+  margin: 0 $standardSpace;
+  h3 {
+    font-size: 28px;
+    padding-bottom: 30px;
+  }
+  p {
+    margin-bottom: 20px;
+    font-size: 18px;
     span {
-      padding: 0 5px;
       border-bottom: 1px solid #000;
-      cursor: pointer;
+      padding: 0 5px;
     }
   }
-  h3 {
-    padding: 10px 0 50px;
-    font-weight: 500;
-    font-size: 24px;
+  input {
+    outline: none;
   }
-  .checkoutForms {
+  .invisible {
+    visibility: hidden;
+    display: none;
+    opacity: 0;
+  }
+  .flexContainer {
     text-align: left;
     display: flex;
-    form {
-      position: relative;
-      padding: $standardSpace;
-      width: 60%;
-      display: flex;
-      flex-direction: column;
-      label {
-        margin: 0 0 10px;
+    margin: 100px 0px 50px 50px;
+    > div {
+      &:nth-child(1) {
+        width: 60%;
       }
-      input {
-        padding: 10px;
-        margin-bottom: 10px;
-        width: 80%;
+      &:nth-child(2) {
+        width: 40%;
       }
-      &:after {
-        position: absolute;
-        content: "";
-        display: block;
-        width: 1px;
-        height: 75%;
-        background-color: #000;
-        right: 50px;
-        bottom: 0;
-      }
-    }
-    div {
-      width: 40%;
-      padding: $standardSpace;
-      table {
-        border: 1px solid #000;
-        width: 100%;
-        tr {
-          th {
-            &:nth-child(1) {
-              border: 1px solid #000;
+      .infoForm {
+        position: relative;
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          width: 1px;
+          bottom: 0;
+          top: 0;
+          right: 80px;
+          background-color: #000;
+        }
+        ul {
+          li {
+            padding: 15px 0;
+            label {
+              display: block;
+            }
+            input {
+              margin-top: 15px;
+              padding: 10px;
               width: 70%;
             }
           }
+        }
+      }
+      table {
+        width: 70%;
+        tbody {
+          tr {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid #000;
+            &:nth-child(4) {
+              border-bottom-width: 2px;
+            }
+            &:last-child {
+              border-bottom: none;
+              padding-bottom: 50px;
+            }
+            th {
+              color: #7a7a7a;
+            }
+          }
+        }
+      }
+      .paymentChoice {
+        width: 440px;
+        .cardList {
+          margin-left: 10px;
+          display: flex;
+          align-items: center;
+          li {
+            margin: 0 3px;
+            width: 35px;
+            padding: 0;
+            img {
+              width: 100%;
+            }
+          }
+        }
+        li {
+          padding-bottom: 20px;
+          .titleContents {
+            border-top: 1px solid #000;
+            padding: 20px 0 10px;
+            label {
+              margin-left: 10px;
+            }
+            display: flex;
+            align-items: center;
+          }
+          &:nth-child(1) {
+            .innerContents {
+              ul {
+                padding: 10px 0;
+                li {
+                  label {
+                    display: block;
+                    margin-bottom: 10px;
+                  }
+                  input {
+                    padding: 10px 15px;
+                  }
+                  &:nth-child(1) {
+                    input {
+                      width: 60%;
+                    }
+                  }
+                  &:nth-child(2),
+                  &:nth-child(3) {
+                    margin-right: 30px;
+                    display: inline-block;
+                  }
+                }
+              }
+            }
+          }
+          &:nth-child(2) {
+            .cardList {
+              padding-top: 10px;
+              li {
+                width: 50px;
+                padding: 0;
+              }
+            }
+            .innerContents {
+              span {
+                line-height: 1.5;
+              }
+            }
+          }
+        }
+      }
+      button {
+        border: 1px solid #000;
+        width: 440px;
+        padding: 13px;
+        font-weight: 500;
+        font-size: 16px;
+        transition: 0.25s ease;
+        &:hover {
+          background-color: #000;
+          color: #fff;
         }
       }
     }
