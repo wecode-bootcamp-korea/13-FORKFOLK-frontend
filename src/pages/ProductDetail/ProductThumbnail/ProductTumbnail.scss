@@ -1,44 +1,44 @@
-  .productThumbnail{
-        position: relative;
-        min-width: 750px;
-        min-height: 500px;
-        max-height: 500px;
-        margin-right: 40px;
+.productThumbnail {
+  position: relative;
+  min-width: 750px;
+  min-height: 500px;
+  max-height: 500px;
+  margin-right: 40px;
 
-        .fadein {
-            animation: fadeIn 1s linear;
-          }
+  .fadein {
+    animation: fadeIn 1s linear;
+  }
 
-        button{
-            position: absolute;
-            top: 0;
-            width: 50%;
-            height: 100%;
-            padding: 0;
-        }
+  button {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    padding: 0;
+  }
 
-        .productThumbnailLeftBtn{
-            left: 0;
-            cursor: url("cursorLeft.cur"),pointer;
-        }
-        
-        .productThumbnailRightBtn{
-            right: 0;
-            cursor: url("cursorRight.cur"),pointer;
-        }
-    }
+  .productThumbnailLeftBtn {
+    left: 0;
+    cursor: url("cursorLeft.cur"), pointer;
+  }
 
-    @keyframes fadeIn{
-        from{
-            opacity: 0;
-        }
-    
-        to{
-            opacity: 1;
-        }
-    }
+  .productThumbnailRightBtn {
+    right: 0;
+    cursor: url("cursorRight.cur"), pointer;
+  }
+}
 
-    /* @keyframes fadeIn {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* @keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -51,4 +51,3 @@
 .fadein {
   animation: fadeIn 1s linear;
 } */
-
