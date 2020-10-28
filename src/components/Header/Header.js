@@ -79,6 +79,11 @@ class Header extends Component {
         });
       }
       if (this.props.location.pathname === "/") {
+        this.setState({
+          logoScale: 7,
+          logoMarginTop: 300,
+          sideMenuVisible: false,
+        });
         window.addEventListener("scroll", this.logoScaleHandler, false);
       }
     }
