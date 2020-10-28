@@ -15,6 +15,7 @@ const OPTIONVALUE = [
 ];
 
 export default class CartProduct extends Component {
+  // 내용 모두 부모로 옮김.
   // constructor() {
   //   super();
   //   this.state = {
@@ -25,12 +26,7 @@ export default class CartProduct extends Component {
   //   };
   // }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     product: this.props.product,
-  //   });
-  // }
-
+  // 내용 모두 부모로 옮김.
   // changeQuantity = (e) => {
   //   const { value } = e.target;
   //   const { id, image, name, quantity, price } = this.state.product;
@@ -51,7 +47,7 @@ export default class CartProduct extends Component {
   //     },
   //     this.sendDataToParent
   //   );
-
+  //
   // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다. (method: "PATCH" 로 변경 예정)
   // ==> current
   // fetch(APIROOT, {
@@ -95,7 +91,7 @@ export default class CartProduct extends Component {
   // };
 
   render() {
-    const { product } = this.props;
+    const { product, changeQuantity, deleteProduct } = this.props;
     return (
       <tr className="cartProducts" key={product.id}>
         <td>
@@ -104,32 +100,25 @@ export default class CartProduct extends Component {
         <td>{product.name}</td>
         <td>${product.price}</td>
         <td>
-          {/* <form onSubmit={this.sendDataToParent}>
-            <select
-              value={product.quantity}
-              onChange={(e) => this.changeQuantity(e, product.id)}
-            >
-              {OPTIONVALUE.map((eachOption, i) => {
-                return (
-                  <option key={i} value={eachOption.value}>
-                    {eachOption.quantity}
-                  </option>
-                );
-              })}
-            </select>
-          </form> */}
+          <select
+            value={product.quantity}
+            onChange={(e) => changeQuantity(e, product.id)}
+          >
+            {OPTIONVALUE.map((eachOption, i) => {
+              return (
+                <option key={i} value={eachOption.value}>
+                  {eachOption.quantity}
+                </option>
+              );
+            })}
+          </select>
         </td>
         <td>${product.price * product.quantity}</td>
         <td>
           <button className="delBtn">
             <FaRegTimesCircle
               className="delIcon"
-              onClick={() =>
-                this.props.deleteProduct(
-                  product.id,
-                  product.price * product.quantity
-                )
-              }
+              onClick={() => deleteProduct(product.id)}
             />
           </button>
         </td>

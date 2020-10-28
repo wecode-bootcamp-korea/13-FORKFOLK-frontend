@@ -12,6 +12,9 @@ export default class CartList extends Component {
     this.state = {
       cartProducts: [],
       interestingProducts: [],
+      prevQuantity: 0,
+      eachQuantity: 0,
+      eachTotalPrice: 0,
       subtotal: 0,
       shipping: 29,
     };
@@ -45,41 +48,89 @@ export default class CartList extends Component {
     eachPrice,
     eachTotalPrice
   ) => {
-    const { subtotal } = this.state;
-    const gapOfQuantity =
-      prevQuantity < eachQuantity
-        ? eachQuantity - prevQuantity
-        : -(prevQuantity - eachQuantity);
-    const sumOfGapQuantity = gapOfQuantity * eachPrice;
-
-    this.setState({
-      subtotal: sumOfGapQuantity + subtotal,
-    });
+    //   const { subtotal } = this.state;
+    //   const gapOfQuantity =
+    //     prevQuantity < eachQuantity
+    //       ? eachQuantity - prevQuantity
+    //       : -(prevQuantity - eachQuantity);
+    //   const sumOfGapQuantity = gapOfQuantity * eachPrice;
+    //   this.setState({
+    //     subtotal: sumOfGapQuantity + subtotal,
+    //   });
   };
 
-  deleteProduct = (id, eachTotalPrice) => {
-    console.log(`id ${id} is deleted!!`);
-    console.log("eachTotalPrice", eachTotalPrice);
-
-    const { cartProducts, subtotal } = this.state;
-
-    const filteredCart = cartProducts.filter(
-      (product) => id !== Number(product.id)
-    );
-
-    console.log("filteredCart", filteredCart);
-
-    // const filteredCart =
-    //   cartProducts.length &&
+  changeQuantity = (e, productId) => {
+    console.log("수량 변경 함수가 동작중입니다.");
+    // const { value } = e.target;
+    // const { cartProducts } = this.state;
+    // // const { id, image, name, quantity, price } = this.state.product;
     //   cartProducts.filter((product) => {
-    //     return id !== Number(product.id);
+    //     // product[id] &&
+    //     for (let idx in cartProducts) {
+    //       if (productId === cartProducts[idx].product.id) {
+    //         this.setState({
+    //           cartProducts[idx].product.quantity: value
+    //         })
+    //       }
+    //     }
+    //     if (productId === product.id) {
+    //       this.setState({
+    //         product[quantity]: value;
+    //       });
+    //     }
     //   });
+    // this.setState(
+    //   {
+    //     product: {
+    //       id,
+    //       image,
+    //       name,
+    //       quantity: value,
+    //       price,
+    //     },
+    //     prevQuantity: quantity,
+    //     eachQuantity: value,
+    //     eachPrice: price,
+    //     eachTotalPrice: Number(price * value),
+    //   },
+    //   this.sendDataToParent
+    // );
+    //10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다. (method: "PATCH" 로 변경 예정)
+    // ==> current
+    // fetch(APIROOT, {
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //         product_id: id,
+    //         name: name,
+    //         price: price,
+    //         quantity: value
+    //     })
+    // })
+    //     .then(res => res.json())
+    //     .then(result => console.log(result))
+    // ==> changeTo
+    // fetch(`APIROOT/${id}`, {
+    //     method: "PATCH",
+    //     body: JSON.stringify({
+    //         quantity: value
+    //     })
+    // })
+    //     .then(res => res.json())
+    //     .then(result => console.log(result))
+  };
 
+  deleteProduct = (id) => {
+    console.log("수량 삭제 함수가 동작중입니다.");
+    // console.log(`id ${id} is deleted!!`);
+    // // console.log("eachTotalPrice", eachTotalPrice);
+    // const { cartProducts, subtotal } = this.state;
+    // const filteredCart = cartProducts.filter(
+    //   (product) => id !== Number(product.id)
+    // );
+    // console.log("filteredCart", filteredCart);
     // this.setState({
     //   cartProducts: filteredCart,
-    //   subtotal: subtotal - eachTotalPrice,
     // });
-
     // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다. (method: "DELETE" 로 변경 예정)
     // ==> current
     // fetch(APIROOT, {
@@ -162,6 +213,7 @@ export default class CartList extends Component {
                           // onSubmit={
                           //   (this.getDataFromChild, this.getDelDataFromChild)
                           // }
+                          changeQuantity={this.changeQuantity}
                           deleteProduct={this.deleteProduct}
                         />
                       );
