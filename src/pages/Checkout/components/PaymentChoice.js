@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "./PaymentChoice.scss";
+
 import VISALOGO from "../images/visa_logo.png";
 import AMERICANLOGO from "../images/amercan_logo.png";
 import MASTERLOGO from "../images/master_logo.png";
@@ -15,6 +17,7 @@ class PaymentChoice extends Component {
       payPal: false,
     };
   }
+
   radioOnChangeHandler = () => {
     this.setState({ creditCard: !this.state.creditCard, payPal: !this.state.payPal });
   };
@@ -27,7 +30,7 @@ class PaymentChoice extends Component {
             <input
               type="radio"
               name="payment"
-              checked={this.state.creditCard ? true : false}
+              checked={this.state.creditCard}
               onChange={() => this.radioOnChangeHandler()}
             />
             <label>Credit Card</label>
@@ -58,7 +61,6 @@ class PaymentChoice extends Component {
               <ul>
                 <li>
                   <label>Card Number *</label>
-
                   <input placeholder="1234 1234 1234 1234" />
                 </li>
                 <li>
@@ -78,7 +80,7 @@ class PaymentChoice extends Component {
             <input
               type="radio"
               name="payment"
-              checked={this.state.payPal ? true : false}
+              checked={this.state.payPal}
               onChange={() => this.radioOnChangeHandler()}
             />
             <label>Paypal</label>
