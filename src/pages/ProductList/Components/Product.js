@@ -17,14 +17,6 @@ class Product extends Component {
     };
   }
 
-  componentDidMount() {
-    window.addEventListener("mousedown", () => this.setModalIsOpen(false));
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("mousedown", () => this.setModalIsOpen(true));
-  }
-
   isChangeHeartColor = () => {
     const { isFullHeartBool } = this.state;
     if (isFullHeartBool === false) {
@@ -55,13 +47,13 @@ class Product extends Component {
   };
 
   setModalIsOpen = (bool) => {
-    console.log("setModalIsOpen is changed");
+    console.log("setModalIsOpen is changed to ", bool);
     this.setState(
       {
         modalIsOpen: bool,
         setModalIsOpen: bool,
       },
-      console.log(this.state.setModalIsOpen)
+      console.log("prev setModal bool", this.state.setModalIsOpen)
     );
   };
 
@@ -117,7 +109,7 @@ class Product extends Component {
           className="modalWindow"
           isOpen={this.state.modalIsOpen}
           shouldCloseOnOverlayClick={true}
-          onRequestClose={() => this.setModalIsOpen(true)}
+          onRequestClose={() => this.setModalIsOpen(false)}
         >
           <div>
             <h2 className="ebGaramond">Added to Cart!</h2>
