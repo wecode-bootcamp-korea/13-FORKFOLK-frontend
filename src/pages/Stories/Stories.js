@@ -46,18 +46,19 @@ class Stories extends Component {
 
   render() {
     const { mainItem, subItems, recycleItems } = this.state;
-
-    let lastPage = this.props.match.params.category === 4;
+    let lastPage = this.props.match.params.category === "4";
 
     return (
       <div className="DesignPage">
         <div className="TitleBox">
           <button
-            onClick={() =>
-              this.props.history.push(
-                `/stories/${+this.props.match.params.category - 1}`
-              )
-            }
+            onClick={() => {
+              this.props.match.params.category === "1"
+                ? this.props.history.push(`/stories/4`)
+                : this.props.history.push(
+                    `/stories/${+this.props.match.params.category - 1}`
+                  );
+            }}
           >
             <VscChevronLeft color="#D17D74" />
             {TitleContents[this.props.match.params.category - 1].prevBtn}
