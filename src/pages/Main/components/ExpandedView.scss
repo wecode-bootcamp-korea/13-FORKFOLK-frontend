@@ -1,0 +1,42 @@
+@import "../../../styles/common.scss";
+
+.ExpandedView {
+  display: flex;
+  margin: 0 $standardSpace;
+  padding: 100px $standardSpace;
+  div {
+    position: relative;
+    width: 70%;
+    h3 {
+      padding: 0 0 $standardSpace;
+      font-size: 12px;
+      text-align: left;
+    }
+    span {
+      font-size: 96px;
+    }
+    p {
+      width: 600px;
+      font-size: 20px;
+      margin-top: auto;
+      line-height: 1.3;
+      padding-top: $standardSpace;
+      &.artsnCulture {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+  .wrapper {
+    width: 610px;
+    overflow: hidden;
+    img {
+      width: 610px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      &:hover {
+        transform: scale(1.125);
+      }
+    }
+  }
+}
