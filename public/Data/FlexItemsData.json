@@ -1,0 +1,136 @@
+{
+  "flexItemsData": {
+    "selectedStories": [
+      {
+        "id": 1,
+        "imgSrc": "https://images.unsplash.com/photo-1523895665936-7bfe172b757d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+        "issueNumber": "37",
+        "title": "Pollen Counts",
+        "description": "An introduction to forensic botany"
+      },
+      {
+        "id": 2,
+        "imgSrc": "https://images.unsplash.com/photo-1531256456869-ce942a665e80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "issueNumber": "37",
+        "title": "Pollen Counts",
+        "description": "An introduction to forensic botany"
+      },
+      {
+        "id": 3,
+        "imgSrc": "https://images.unsplash.com/photo-1521490683712-35a1cb235d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+        "issueNumber": "37",
+        "title": "Pollen Counts",
+        "description": "An introduction to forensic botany"
+      },
+      {
+        "id": 4,
+        "imgSrc": "https://images.unsplash.com/photo-1584309832315-39d404eecc77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+        "issueNumber": "37",
+        "title": "Pollen Counts",
+        "description": "An introduction to forensic botany"
+      },
+      {
+        "id": 5,
+        "imgSrc": "https://images.unsplash.com/photo-1579783900613-6eba8db797a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=660&q=80",
+        "issueNumber": "37",
+        "title": "Pollen Counts",
+        "description": "An introduction to forensic botany"
+      },
+      {
+        "id": 6,
+        "imgSrc": "https://images.unsplash.com/photo-1502323777036-f29e3972d82f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+        "issueNumber": "37",
+        "title": "Pollen Counts",
+        "description": "An introduction to forensic botany"
+      }
+    ],
+    "extraordinaryInteriors": [
+      {
+        "id": 1,
+        "imgSrc": "https://images.unsplash.com/photo-1527775507012-525d78a7e64f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80",
+        "issueNumber": "30",
+        "title": "Maison de Verre",
+        "description": "A cubist tableau. A light show. A maverick of modernism. <em>Hugo Macdonald</em> explores a Parisian masterpiece."
+      },
+      {
+        "id": 2,
+        "imgSrc": "https://images.unsplash.com/photo-1541872404045-ff0257272ad5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=658&q=80",
+        "issueNumber": "34",
+        "title": "Home Your: The New Palace",
+        "description": "In a sleepy city in western Gujarat, <i>Komal Sharma</i> discovers the last maharaja of Morvi’s extravagant art deco playground."
+      },
+      {
+        "id": 3,
+        "imgSrc": "https://images.unsplash.com/photo-1484301548518-d0e0a5db0fc8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+        "issueNumber": "29",
+        "title": "Xavier Corberó",
+        "description": "At the edge of Barcelona, an anomaly: a sculptor’s labyrinthine home."
+      },
+      {
+        "id": 4,
+        "imgSrc": "https://images.unsplash.com/photo-1565791380709-49e529c8b073?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1002&q=80",
+        "issueNumber": "30",
+        "title": "Home Tour: Château de Gudanes",
+        "description": "Inside the crumbling château coaxed back to life by “naive willfulness” (and many eager volunteers.)"
+      },
+      {
+        "id": 5,
+        "imgSrc": "https://images.unsplash.com/photo-1528754704377-60e053a66165?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+        "issueNumber": "37",
+        "title": "Home Tour: Adolf Loos",
+        "description": "The Austrian architect laid the foundations for unornamented modernism."
+      },
+      {
+        "id": 6,
+        "imgSrc": "https://images.unsplash.com/photo-1503174971373-b1f69850bded?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1087&q=80",
+        "issueNumber": "37",
+        "title": "Home Tour: E-1027",
+        "description": "Inside the French Riviera villa that Eileen Gray built, Le Corbusier “vandalized”—and history almost forgot."
+      }
+    ],
+    "diveIn": [
+      {
+        "id": 1,
+        "imgSrc": "https://images.unsplash.com/photo-1590293388237-be501287830a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+        "issueNumber": "36",
+        "title": "A Very Private Pool",
+        "description": "A masterpiece-and mystery-in the south of France."
+      },
+      {
+        "id": 2,
+        "imgSrc": "https://images.unsplash.com/photo-1570301920589-13a3c0beb04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1347&q=80",
+        "issueNumber": "36",
+        "title": "In Season",
+        "description": "An ode to summer's great springboard"
+      },
+      {
+        "id": 3,
+        "imgSrc": "https://images.unsplash.com/photo-1553623872-a9df34b05b19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+        "issueNumber": "37",
+        "title": "Consider the Hot Tub",
+        "description": "Cleaning up the history of steamy soaks."
+      },
+      {
+        "id": 4,
+        "imgSrc": "https://images.unsplash.com/photo-1551158025-b74e9d4f3617?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80",
+        "issueNumber": "26",
+        "title": "Get in Formation",
+        "description": "Smile.Swim.Dazzle: Water ballet in the Hollywood hills."
+      },
+      {
+        "id": 5,
+        "imgSrc": "https://images.unsplash.com/photo-1567365356019-e942c0b50721?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80",
+        "issueNumber": "35",
+        "title": "Solid, Liquid + Gas",
+        "description": "One element. Three states. When faced with change, be like water."
+      },
+      {
+        "id": 6,
+        "imgSrc": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+        "issueNumber": "36",
+        "title": "Wild Things",
+        "description": "A drive into the evolution of outdoor swimming."
+      }
+    ]
+  }
+}

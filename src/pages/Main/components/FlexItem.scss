@@ -1,0 +1,46 @@
+@import "../../../styles/common.scss";
+
+.FlexItem {
+  width: $liWidth;
+
+  div {
+    position: relative;
+    &:after {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      cursor: pointer;
+      background-color: #000;
+      content: "";
+      opacity: 0;
+      transition: 0.25s ease;
+    }
+    &:hover {
+      &:after {
+        opacity: 0.3;
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
+
+  .issue {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  span {
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  p {
+    font-size: 18px;
+    font-family: "EB Garamond", serif;
+    line-height: 1.5;
+  }
+}
