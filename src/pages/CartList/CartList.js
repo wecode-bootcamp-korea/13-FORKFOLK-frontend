@@ -62,15 +62,23 @@ export default class CartList extends Component {
     console.log("eachTotalPrice", eachTotalPrice);
 
     const { cartProducts, subtotal } = this.state;
-    const filteredCart =
-      cartProducts.length &&
-      cartProducts.filter((product) => {
-        return id !== Number(product.id);
-      });
-    this.setState({
-      cartProducts: [...filteredCart],
-      subtotal: subtotal - eachTotalPrice,
-    });
+
+    const filteredCart = cartProducts.filter(
+      (product) => id !== Number(product.id)
+    );
+
+    console.log("filteredCart", filteredCart);
+
+    // const filteredCart =
+    //   cartProducts.length &&
+    //   cartProducts.filter((product) => {
+    //     return id !== Number(product.id);
+    //   });
+
+    // this.setState({
+    //   cartProducts: filteredCart,
+    //   subtotal: subtotal - eachTotalPrice,
+    // });
 
     // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다. (method: "DELETE" 로 변경 예정)
     // ==> current
@@ -100,6 +108,7 @@ export default class CartList extends Component {
   };
 
   render() {
+    console.log("all >>> ", this.state.cartProducts);
     const {
       cartProducts,
       interestingProducts,
@@ -150,9 +159,9 @@ export default class CartList extends Component {
                         <CartProduct
                           key={i}
                           product={product}
-                          onSubmit={
-                            (this.getDataFromChild, this.getDelDataFromChild)
-                          }
+                          // onSubmit={
+                          //   (this.getDataFromChild, this.getDelDataFromChild)
+                          // }
                           deleteProduct={this.deleteProduct}
                         />
                       );
