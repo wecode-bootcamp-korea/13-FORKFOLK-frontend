@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Product from "../ProductList/Components/Product";
 import CartProduct from "../CartList/Components/CartProduct";
-import { APIROOT } from "../../config";
+import { JINAPIROOT } from "../../config";
+import { BEAPIROOT } from "../../config";
 import "./CartList.scss";
 // import { map } from "async";
 
@@ -18,10 +19,11 @@ export default class CartList extends Component {
   }
 
   componentDidMount() {
-    const APIOfCartList = `${APIROOT}/Data/cartList.json`;
+    const APIOfCartList = `${JINAPIROOT}/Data/cartList.json`;
+    const backendAPI = `${BEAPIROOT}/products`;
 
     Promise.all([
-      fetch(APIOfCartList)
+      fetch(backendAPI)
         .then((res) => res.json())
         .then((res) => {
           this.setState({

@@ -4,6 +4,7 @@ import "./Product.scss";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaRegTimesCircle } from "react-icons/fa";
+import { BEAPIROOT } from "../../config";
 
 ReactModal.setAppElement("#root");
 
@@ -19,21 +20,16 @@ class Product extends Component {
 
   isChangeHeartColor = () => {
     const { isFullHeartBool } = this.state;
-    if (isFullHeartBool === false) {
-      this.setState({
-        isFullHeartBool: true,
-      });
-    } else {
-      this.setState({
-        isFullHeartBool: false,
-      });
-    }
+
+    this.setState({
+      isFullHeartBool: isFullHeartBool ? !isFullHeartBool : isFullHeartBool,
+    });
   };
 
   addToCart = (id, name, price) => {
     console.log(id, name, price, 1);
     // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다.
-    // fetch(APIROOT, {
+    // fetch(`${BEAPIROOT}/`, {
     //     method: "POST",
     //     body: JSON.stringify({
     //         product_id: id,
@@ -59,12 +55,14 @@ class Product extends Component {
 
   render() {
     const { isFullHeartBool } = this.state;
+
     const {
       product,
       filterByCategory,
       goToProductDetail,
       goToCartPage,
     } = this.props;
+
     return (
       <li id={product.id} className="Product">
         <div className="imageContainer">
@@ -98,7 +96,7 @@ class Product extends Component {
         </div>
         <button
           className="category"
-          onClick={() => filterByCategory(product.category)}
+          onClick={() => filterByCategory(product.category, 1)}
           category={product.category}
         >
           {product.category}
