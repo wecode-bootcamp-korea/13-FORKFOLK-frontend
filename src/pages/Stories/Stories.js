@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { APIROOT } from "../../config";
+import { APIROOT, TitleContents } from "../../config";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import CoreContents from "../../components/CoreContents/CoreContents";
 import "../Stories/Stories.scss";
@@ -15,13 +15,12 @@ class Stories extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     fetch(`${APIROOT}/Data/Designdata.json`)
       .then((Designdata) => Designdata.json())
       .then((Designdata) =>
         this.setState({
-          mainItem: Designdata.mainItem,
-          subItems: Designdata.subItems,
+          mainItem: Designdata.story_list[0],
+          subItems: Designdata.story_list.slice(1),
         })
       );
   }
@@ -32,8 +31,8 @@ class Stories extends Component {
         .then((Designdata) => Designdata.json())
         .then((Designdata) =>
           this.setState({
-            mainItem: Designdata.mainItem,
-            subItems: Designdata.subItems,
+            mainItem: Designdata.story_list[0],
+            subItems: Designdata.story_list.slice(0),
           })
         );
     }
@@ -41,16 +40,44 @@ class Stories extends Component {
 
   render() {
     const { mainItem, subItems } = this.state;
+    // console.log("are you there????", mainItem);
+    console.log(this.props.match.params.category);
+
+    //여기서부터 페이지네이션 식
+
+    // const LIMIT = 18;
+    // const Main: NextPage<Props> = ({best:[],recommend:[]})=>
+    // { const [bestData,setBestData]= useState(best);
+    //   const [offset, setOffset] = useState(initialState:0);
+    //   const getMoreBest = async() => {
+    //     const nestOffset = LIMIT + offset;
+
+    //     const bestResponse = await fetch (input: `http://어쩌구저쩌구 ${}`)
+    //     const bestJson = await bestResponse.json();
+
+    //     setBestData(bestJson.data);
+    //     setOffset(nextOffset);
+
+    //   };
+
+    // }
+
+    // 페이지네이션 식 끝!!!!!!!!!!!!!!
+
     return (
       <div className="DesignPage">
         <div className="TitleBox">
-          <button onClick={() => this.props.history.push(`/`)}>
+          <button
+            onClick={() =>
+              this.props.history.push(
+                `/stories/${+this.props.match.params.category - 1}`
+              )
+            }
+          >
             <VscChevronLeft color="#D17D74" />
-            ALL STORIES
+            {TitleContents[this.props.match.params.category - 1].prevBtn}
           </button>
-
-          <h1>Design</h1>
-
+          <h1>{TitleContents[this.props.match.params.category - 1].title}</h1>
           <button
             onClick={() =>
               this.props.history.push(
@@ -58,13 +85,11 @@ class Stories extends Component {
               )
             }
           >
-            FASHION
+            {TitleContents[this.props.match.params.category - 1].nextBtn}
             <VscChevronRight color="#D17D74" />
           </button>
         </div>
-        {!!subItems.length && (
-          <CoreContents mainItem={mainItem} subItems={subItems} />
-        )}
+        <CoreContents mainItem={mainItem} subItems={subItems} />
       </div>
     );
   }

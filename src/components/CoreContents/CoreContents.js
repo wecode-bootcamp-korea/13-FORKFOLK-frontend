@@ -13,24 +13,25 @@ class CoreContents extends Component {
 
   render() {
     const { mainItem, subItems } = this.props;
+
     return (
       <div className="coreComponents">
         <div className="mainContents">
-          <img src={mainItem.imgSrc} />
+          <img src={mainItem.image_url} />
           <p>
-            <span>{mainItem.subTitle}</span>
+            <span>{mainItem.issue}</span>
           </p>
-          <h1>{mainItem.mainTitle}</h1>
-          <p>{mainItem.description}</p>
+          <h1>{mainItem.title}</h1>
+          <p>{mainItem.content}</p>
         </div>
         <div className="subContents">
           {subItems.map((subItems) => (
             <SubContents
               id={subItems.id}
-              imgSrc={subItems.imgSrc}
-              issueNumber={subItems.issueNumber}
+              image_url={subItems.image_url}
+              issue={subItems.issue}
               title={subItems.title}
-              description={subItems.description}
+              content={subItems.content}
             />
           ))}
         </div>

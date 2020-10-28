@@ -3,16 +3,16 @@ import "./SubContents.scss";
 
 class SubContents extends Component {
   render() {
-    const { id, imgSrc, issueNumber, title, description } = this.props;
+    const { id, image_url, issue, title, content } = this.props;
     return (
       <div className="subComponents">
         <div className="subContentItem" key={id}>
-          <img src={imgSrc} />
+          <img src={image_url} />
           <p>
-            <span>ISSUE {issueNumber}</span>
+            <span>{issue}</span>
           </p>
           <h4>{title}</h4>
-          <p>{description}</p>
+          <p>{content}</p>
         </div>
       </div>
     );
