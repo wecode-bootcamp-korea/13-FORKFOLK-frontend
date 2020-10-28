@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./SubContents.scss";
 
 class SubContents extends Component {
@@ -7,7 +8,9 @@ class SubContents extends Component {
     return (
       <div className="subComponents">
         <div className="subContentItem" key={id}>
-          <img src={image_url} />
+          <Link to={`/contentDetail/${id}`}>
+            <img src={image_url} />
+          </Link>
           <p>
             <span>{issue}</span>
           </p>

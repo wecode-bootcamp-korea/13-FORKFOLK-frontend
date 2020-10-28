@@ -1,21 +1,59 @@
-.TitleBox {
-  display: flex;
-  justify-content: space-between;
-  width: 1343px;
-  height: 252px;
-  margin: 0 45px 0 10px;
-  padding: 83px 25px 74px 25px;
+.DesignPage {
+  .TitleBox {
+    display: flex;
+    justify-content: space-between;
+    width: 1343px;
+    height: 292px;
+    margin: 0 45px 0 45px;
+    padding: 103px 25px 94px 25px;
 
-  h1 {
-    padding-top: 20px;
-    font-family: "EB Garamond", serif;
-    font-size: 70px;
-    line-height: 75.6px;
+    h1 {
+      padding-top: 20px;
+      font-family: "EB Garamond", serif;
+      font-size: 70px;
+      line-height: 75.6px;
+    }
+
+    button {
+      font-size: 14px;
+      line-height: 20.4px;
+      letter-spacing: 1.84px;
+    }
   }
+  .recycleItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 1444px;
+    margin-top: 10vw;
+    padding-left: 30px;
 
-  button {
-    font-size: 14px;
-    line-height: 20.4px;
-    letter-spacing: 1.84px;
+    img {
+      width: 187px;
+      height: auto;
+    }
+
+    h4 {
+      margin: 15px 0 15px 0;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 21.6px;
+    }
+
+    p {
+      width: 190px;
+      color: #4d4d4d;
+      font-family: "EB Garamond", serif;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 25.5px;
+    }
+
+    span {
+      color: #000000;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 18.2px;
+    }
   }
 }
