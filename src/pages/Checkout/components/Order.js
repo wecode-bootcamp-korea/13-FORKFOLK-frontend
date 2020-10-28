@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import OrderItem from "./OrderItem";
 import { ORDER_API } from "../../../config";
+import "./Order.scss";
+
 class Order extends Component {
   constructor() {
     super();
@@ -32,21 +34,27 @@ class Order extends Component {
   render() {
     const { orderList, total } = this.state;
     return (
-      <>
-        <OrderItem orderList={orderList} />
-        <tr>
-          <td>Subtotal</td>
-          <td>${total}</td>
-        </tr>
-        <tr className="shipping">
-          <td>Shipping</td>
-          <td>$9</td>
-        </tr>
-        <tr>
-          <td>Total</td>
-          <td>${total + 9}</td>
-        </tr>
-      </>
+      <table className="Order">
+        <tbody>
+          <tr>
+            <th>Product</th>
+            <th>Subtotal</th>
+          </tr>
+          <OrderItem orderList={orderList} />
+          <tr>
+            <td>Subtotal</td>
+            <td>${total}</td>
+          </tr>
+          <tr className="shipping">
+            <td>Shipping</td>
+            <td>$9</td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>${total + 9}</td>
+          </tr>
+        </tbody>
+      </table>
     );
   }
 }
