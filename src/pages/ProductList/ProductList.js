@@ -15,6 +15,8 @@ class ProductList extends Component {
       isPrevBtnVisible: false,
       isNextBtnVisible: true,
       isPageFooterVisible: true,
+      currentCategory: "ALL",
+      currentPage: 1,
     };
   }
 
@@ -65,6 +67,7 @@ class ProductList extends Component {
           productsByCategory: [...allProducts],
           mappingPage: false,
           isPageFooterVisible: true,
+          currentCategory: category,
         },
         () => {
           this.props.history.push(
@@ -97,6 +100,7 @@ class ProductList extends Component {
         isPageFooterVisible: filteredProducts.length < 13,
         productsByCategory: [...filteredProducts],
         productsByPage: [...filteredProducts],
+        currentCategory: category,
       },
       () => {
         this.props.history.push(`/product?category=${categoryName[category]}`);
@@ -185,6 +189,8 @@ class ProductList extends Component {
       isPrevBtnVisible,
       isNextBtnVisible,
       isPageFooterVisible,
+      currentCategory,
+      currentPage,
     } = this.state;
     const mappingPageIn = mappingPage ? productsByPage : productsByCategory;
     const PAGENUMS = [
@@ -201,7 +207,12 @@ class ProductList extends Component {
             <span>SHOP:</span>
             {filterList.map((list) => {
               return (
-                <li key={list.id}>
+                <li
+                  className={
+                    currentCategory === list.category ? "underlineActive" : null
+                  }
+                  key={list.id}
+                >
                   <button onClick={() => this.filterByCategory(list.category)}>
                     {list.category}
                   </button>
@@ -255,6 +266,9 @@ class ProductList extends Component {
             {PAGENUMS.map((num) => {
               return (
                 <button
+                  className={
+                    currentPage === num.pageNum ? "underlineActive" : null
+                  }
                   onClick={() => {
                     this.filterByPage(num.pageNum);
                   }}
