@@ -1,0 +1,62 @@
+@import "../../../styles/common.scss";
+
+.CurrentIssue {
+  @include centerAlignment;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+  &.left {
+    cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-left.svg"),
+      pointer;
+  }
+  &.right {
+    cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-right.svg"),
+      pointer;
+  }
+
+  ul {
+    display: flex;
+    position: relative;
+    left: 50%;
+    width: 100%;
+    padding: 50px 0;
+    transform: translateX(-250px);
+    transform-origin: top center;
+    opacity: 0;
+    &.sliderVisilbe {
+      animation-name: sliderVisible;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
+  }
+  span {
+    display: inline-block;
+    padding: 50px;
+    font-size: 20px;
+  }
+
+  button {
+    padding: 10px 40px;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: 0.25s ease;
+    font-weight: 600;
+    &:hover {
+      color: #fff;
+      background-color: #000;
+    }
+  }
+}
+
+@keyframes sliderVisible {
+  from {
+    opacity: 0;
+    transform: translate(-250px, 50px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-250px, 0);
+  }
+}

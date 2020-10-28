@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import CoreContents from "./components/CoreContents/CoreContents";
+import Main from "./pages/Main/Main";
 import Stories from "./pages/Stories/Stories";
 
 import Account from "./pages/Account/Account";
@@ -14,7 +14,9 @@ class Routes extends React.Component {
   render() {
     return (
       <Router>
+        <Route component={Header} />
         <Switch>
+          <Route exact path="/" component={Main} />
           <Route exact path="/stories/:category" component={Stories} />
           {/* <Route exact path="/stories" component={Stories} /> */}
           <Route exact path="/Account" component={Account} />
@@ -27,8 +29,7 @@ class Routes extends React.Component {
           <Route exact path="/shop/:id" component={ProductDetail} />
           <Route exact path="/cart/" component={CartList} />
         </Switch>
-        <Route path="/" component={Header} />
-        <Route path="/" component={Footer} />
+        <Route component={Footer} />
       </Router>
     );
   }

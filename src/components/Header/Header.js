@@ -11,11 +11,14 @@ class Header extends Component {
     this.state = {
       sideMenuVisible: false,
       shoppingListValid: false,
+      logoMarginTop: 300,
+      logoScale: 7,
+      isMain: true,
     };
   }
 
   goToMain = () => {
-    this.props.history.push("/main");
+    this.props.history.push("/");
   };
 
   goToShoppingList = () => {
@@ -32,13 +35,67 @@ class Header extends Component {
       this.setState({ shoppingListValid: true });
   };
 
+  logoScaleHandler = () => {
+    const { scrollY } = window;
+    if (scrollY >= 0 && scrollY < 300) {
+      if (scrollY === 0) {
+        this.setState({ logoScale: 7, logoMarginTop: 300 });
+        return;
+      }
+      if (scrollY > 200) {
+        this.setState({
+          logoScale: 1,
+          logoMarginTop: 0,
+          scrollAniDisable: true,
+        });
+        return;
+      }
+      this.setState({
+        logoScale: 7 - (scrollY / 50) * 1.5,
+        logoMarginTop: 300 - (scrollY / 50) * 75,
+      });
+    }
+  };
+
   componentDidMount() {
     this.shoppingListButtonValidHandler();
+    if (this.props.location.pathname === "/") {
+      this.setState({ logoScale: 7, logoMarginTop: 300 });
+      window.addEventListener("scroll", this.logoScaleHandler, false);
+    }
+    if (this.props.location.pathname !== "/") {
+      this.setState({ logoScale: 1, logoMarginTop: 0 });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      window.removeEventListener("scroll", this.logoScaleHandler, false);
+      if (this.props.location.pathname !== "/") {
+        this.setState({
+          logoScale: 1,
+          logoMarginTop: 0,
+          sideMenuVisible: false,
+        });
+      }
+      if (this.props.location.pathname === "/") {
+        this.setState({
+          logoScale: 7,
+          logoMarginTop: 300,
+          sideMenuVisible: false,
+        });
+        window.addEventListener("scroll", this.logoScaleHandler, false);
+      }
+    }
   }
 
   render() {
-    const { logoScale, logoMarginTop } = this.props;
-    const { sideMenuVisible, shoppingListValid } = this.state;
+    const {
+      sideMenuVisible,
+      shoppingListValid,
+      logoScale,
+      logoMarginTop,
+    } = this.state;
     return (
       <>
         <div className="Header">
@@ -51,11 +108,10 @@ class Header extends Component {
                 <Link to="/">Issue</Link>
               </li>
               <li>
-                <Link to="/">Shop</Link>
+                <Link to="/shop">Shop</Link>
               </li>
             </ul>
             <div
-              to="/"
               className="imgBox"
               style={{
                 transform: `scale(${logoScale || 1})`,
