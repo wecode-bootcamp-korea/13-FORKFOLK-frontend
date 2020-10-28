@@ -7,6 +7,7 @@ import Account from "./pages/Account/Account";
 import ProductList from "./pages/ProductList/ProductList";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import CartList from "./pages/CartList/CartList";
+import Checkout from "./pages/Checkout/Checkout";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 

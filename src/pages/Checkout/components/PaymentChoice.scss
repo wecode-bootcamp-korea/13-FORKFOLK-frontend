@@ -1,0 +1,67 @@
+.PaymentChoice {
+  width: 440px;
+  .cardList {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    li {
+      margin: 0 3px;
+      width: 35px;
+      padding: 0;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  li {
+    padding-bottom: 20px;
+    .titleContents {
+      padding: 20px 0 10px;
+      label {
+        margin-left: 10px;
+      }
+      display: flex;
+      align-items: center;
+    }
+    &:nth-child(1) {
+      .innerContents {
+        ul {
+          padding: 10px 0;
+          li {
+            label {
+              display: block;
+              margin-bottom: 10px;
+            }
+            input {
+              padding: 10px 15px;
+            }
+            &:nth-child(1) {
+              input {
+                width: 60%;
+              }
+            }
+            &:nth-child(2),
+            &:nth-child(3) {
+              margin-right: 30px;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+    &:nth-child(2) {
+      .cardList {
+        padding-top: 10px;
+        li {
+          width: 50px;
+          padding: 0;
+        }
+      }
+      .innerContents {
+        span {
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
