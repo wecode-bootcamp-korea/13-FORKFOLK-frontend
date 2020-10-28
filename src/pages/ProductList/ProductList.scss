@@ -3,6 +3,7 @@
   font-family: "Quicksand", serif, sans-serif;
 
   .pageHeader {
+    margin-top: 70px;
     padding: 90px 0 100px;
     text-align: center;
 
@@ -19,7 +20,7 @@
         button {
           color: inherit;
           font-family: inherit;
-          padding-bottom: 6px;
+          padding-bottom: 4px;
           cursor: pointer;
           letter-spacing: 1.5px;
         }
@@ -43,6 +44,10 @@
     margin: 0 auto;
 
     content {
+      opacity: 0;
+      &.animationActive {
+        animation: fadein 3s forwards;
+      }
       ul {
         display: flex;
         margin: 30px auto 0;

@@ -4,7 +4,7 @@ import "./Product.scss";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaRegTimesCircle } from "react-icons/fa";
-import { BEAPIROOT } from "../../config";
+import { BEAPIROOT } from "../../../config";
 
 ReactModal.setAppElement("#root");
 
@@ -30,16 +30,16 @@ class Product extends Component {
     console.log(id, name, price, 1);
     // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다.
     // fetch(`${BEAPIROOT}/`, {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //         product_id: id,
-    //         name: name,
-    //         price: price,
-    //         quantity: 1
-    //     })
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     product_id: id,
+    //     name: name,
+    //     price: price,
+    //     quantity: 1,
+    //   }),
     // })
-    //     .then(res => res.json())
-    //     .then(result => console.log(result))
+    //   .then((res) => res.json())
+    //   .then((result) => console.log(result));
   };
 
   setModalIsOpen = (bool) => {

@@ -4,7 +4,7 @@
   font-family: "Quicksand", serif, sans-serif;
 
   .container {
-    margin: 0 auto;
+    margin: 70px auto 0;
     padding: 0 3%;
     max-width: 2000px;
 
@@ -202,13 +202,14 @@
           }
           table {
             margin-bottom: 35px;
+            width: 100%;
 
             tbody {
               tr {
                 border-top: 1px solid black;
 
                 td {
-                  padding: 35px 0;
+                  padding: 35px 10px 35px 0;
                   text-align: right;
                   ul {
                     li:last-child {
