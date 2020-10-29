@@ -1,7 +1,4 @@
 {
   "extends": ["react-app", "plugin:prettier/recommended"]
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> main
+
