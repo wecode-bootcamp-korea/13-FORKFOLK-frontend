@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Product from "./Components/Product";
 import "./ProductList.scss";
-import { JINAPIROOT } from "../../config";
-import { BEAPIROOT } from "../../config";
+import { JINAPIROOT, BEAPIROOT } from "../../config";
 
 class ProductList extends Component {
   constructor() {

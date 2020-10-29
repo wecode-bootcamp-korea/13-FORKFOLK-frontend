@@ -16,13 +16,9 @@ class Stories extends Component {
       category: "Designdata",
     };
   }
-7.71
+
   componentDidMount() {
-<<<<<<< HEAD
-    fetch(`http://10.58.7.71:8000/stories/${this.props.match.params.category}`)
-=======
     fetch(`${CONTENTS_API}${this.props.match.params.category}`)
->>>>>>> main
       .then((Designdata) => Designdata.json())
       .then((Designdata) =>
         this.setState({
@@ -35,13 +31,7 @@ class Stories extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.category !== this.props.match.params.category) {
-<<<<<<< HEAD
-      fetch(
-        `http://10.58.7.71:8000/stories/${this.props.match.params.category}`
-      )
-=======
       fetch(`http://10.58.2.235:8000/stories/${this.props.match.params.category}`)
->>>>>>> main
         .then((Designdata) => Designdata.json())
         .then((Designdata) =>
           this.setState({

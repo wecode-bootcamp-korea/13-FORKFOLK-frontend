@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Product from "../ProductList/Components/Product";
 import CartProduct from "../CartList/Components/CartProduct";
-import { JINAPIROOT } from "../../config";
-import { BEAPIROOT } from "../../config";
+import { JINAPIROOT, BEAPIROOT } from "../../config";
 import "./CartList.scss";
 
 const backendAPI = `${BEAPIROOT}/order`;
@@ -19,6 +18,7 @@ export default class CartList extends Component {
       shipping: 29,
     };
   }
+
   componentDidMount() {
     Promise.all([
       fetch(`${backendAPI}?status=beforeOrder`, {
@@ -81,8 +81,6 @@ export default class CartList extends Component {
   };
 
   deleteProduct = (id, totalPrice) => {
-    const { cartProducts } = this.state;
-
     fetch(backendAPI, {
       method: "DELETE",
       body: JSON.stringify({
@@ -97,7 +95,7 @@ export default class CartList extends Component {
       .then((res) => {
         this.setState({
           cartProducts: res.remain_list,
-          subtotal: cartProducts
+          subtotal: res.remain_list
             .map((product) => {
               return product.price * product.quantity;
             })
