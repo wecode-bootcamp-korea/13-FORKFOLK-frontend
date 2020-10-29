@@ -15,6 +15,7 @@ class Header extends Component {
       logoScale: 7,
       isMain: true,
       isLoggedIn: false,
+      logoAni: true,
     };
   }
 
@@ -42,6 +43,7 @@ class Header extends Component {
 
   logoScaleHandler = () => {
     const { scrollY } = window;
+
     if (scrollY >= 0 && scrollY < 300) {
       if (scrollY === 0) {
         this.setState({ logoScale: 7, logoMarginTop: 300 });
@@ -51,13 +53,14 @@ class Header extends Component {
         this.setState({
           logoScale: 1,
           logoMarginTop: 0,
-          scrollAniDisable: true,
+          logoAni: false,
         });
         return;
       }
       this.setState({
         logoScale: 7 - (scrollY / 50) * 1.5,
         logoMarginTop: 300 - (scrollY / 50) * 75,
+        logoAni: true,
       });
     }
   };
@@ -84,6 +87,9 @@ class Header extends Component {
         });
       }
       if (this.props.location.pathname === "/") {
+        if (window.scrollY > 200) {
+          console.log("yalloo");
+        }
         this.setState({
           logoScale: 7,
           logoMarginTop: 300,
@@ -102,7 +108,6 @@ class Header extends Component {
       logoScale,
       logoMarginTop,
     } = this.state;
-    console.log(this.state.isLoggedIn);
     return (
       <>
         <div className="Header">

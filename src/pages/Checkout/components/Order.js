@@ -22,13 +22,18 @@ class Order extends Component {
   };
 
   componentDidMount() {
-    fetch(`${ORDER_API}`)
+    fetch(`${ORDER_API}?status=beforeOrder`, {
+      headers: {
+        Authorization: localStorage.getItem("user-token"),
+      },
+    })
       .then((res) => res.json())
-      .then((res) =>
-        this.setState({ orderList: res.cartData }, () => {
-          this.getTotalAmount();
-        })
-      );
+      .then((res) => {
+        console.log(res);
+        // this.setState({ orderList: res.cartData }, () => {
+        //   this.getTotalAmount();
+        // });
+      });
   }
 
   render() {

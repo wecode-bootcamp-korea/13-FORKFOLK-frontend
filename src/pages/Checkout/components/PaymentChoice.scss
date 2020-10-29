@@ -1,12 +1,12 @@
 .PaymentChoice {
   width: 440px;
   .cardList {
-    margin-left: 10px;
     display: flex;
+    margin-left: 10px;
     align-items: center;
     li {
-      margin: 0 3px;
       width: 35px;
+      margin: 0 3px;
       padding: 0;
       img {
         width: 100%;
@@ -16,12 +16,12 @@
   li {
     padding-bottom: 20px;
     .titleContents {
+      display: flex;
       padding: 20px 0 10px;
+      align-items: center;
       label {
         margin-left: 10px;
       }
-      display: flex;
-      align-items: center;
     }
     &:nth-child(1) {
       .innerContents {
@@ -42,8 +42,8 @@
             }
             &:nth-child(2),
             &:nth-child(3) {
-              margin-right: 30px;
               display: inline-block;
+              margin-right: 30px;
             }
           }
         }

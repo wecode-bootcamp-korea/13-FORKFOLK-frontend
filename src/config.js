@@ -1,9 +1,9 @@
 export const APIROOT = "http://localhost:3000";
 
 export const PRODUCT_DETAIL_API = "http://localhost:3000";
-export const CHECKOUT_API = "http://localhost:3000/Data/cartList.json";
+export const CHECKOUT_API = "http://10.58.1.116:8000/checkout";
 export const LOCAL_API_HJ = "http://localhost:3000";
-export const ORDER_API = "http://localhost:3000/Data/OrderData.json";
+export const ORDER_API = "http://10.58.1.116:8000/checkout";
 
 export let TitleContents = [
   {

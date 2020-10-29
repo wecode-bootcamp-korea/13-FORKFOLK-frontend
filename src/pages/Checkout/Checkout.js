@@ -75,6 +75,7 @@ class Checkout extends Component {
                 {formInfo.map((form) => {
                   return (
                     <OrderInfoInput
+                      key={form.id}
                       labelTitle={form.labelTitle}
                       checkoutFormOnChangeHandler={
                         this.checkoutFormOnChangeHandler
