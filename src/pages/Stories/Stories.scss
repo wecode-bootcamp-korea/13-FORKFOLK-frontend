@@ -1,4 +1,7 @@
 .DesignPage {
+  display: flex;
+  flex-direction: column;
+
   .TitleBox {
     display: flex;
     justify-content: space-between;
@@ -15,9 +18,22 @@
     }
 
     button {
+      width: 170px;
       font-size: 14px;
       line-height: 20.4px;
       letter-spacing: 1.84px;
+    }
+
+    .animatedPrev :hover {
+      opacity: 0.7;
+      padding-left: 15px;
+      transition: all 400ms;
+    }
+
+    .animatedNext :hover {
+      opacity: 0.7;
+      padding-right: 15px;
+      transition: all 400ms;
     }
   }
   .recycleItems {
@@ -55,5 +71,11 @@
       font-weight: 500;
       line-height: 18.2px;
     }
+  }
+
+  .pageBtn {
+    width: 50px;
+    height: 30px;
+    border: 1px solid green;
   }
 }

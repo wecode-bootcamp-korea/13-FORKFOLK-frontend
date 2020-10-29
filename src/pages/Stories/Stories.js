@@ -44,6 +44,11 @@ class Stories extends Component {
     }
   }
 
+  // pagination = (e) => {
+  //   const LIMIT = 7;
+  //   const offset = e.target.dataset.idx;
+  // };
+
   render() {
     const { mainItem, subItems, recycleItems } = this.state;
     const { category } = this.props.match.params;
@@ -53,6 +58,7 @@ class Stories extends Component {
       <div className="DesignPage">
         <div className="TitleBox">
           <button
+            className="animatedPrev"
             onClick={() => {
               category === "1"
                 ? this.props.history.push(`/stories/4`)
@@ -60,19 +66,22 @@ class Stories extends Component {
             }}
           >
             <VscChevronLeft color="#D17D74" />
-            {TitleContents[category - 1].prevBtn}
+            <span>{TitleContents[category - 1].prevBtn}</span>
           </button>
           <h1>{TitleContents[category - 1].title}</h1>
           <button
-            onClick={() =>
+            className="animatedNext"
+            onClick={() => {
               lastPage
                 ? this.props.history.push(`/stories/1`)
-                : this.props.history.push(`/stories/${+category + 1}`)
-            }
+                : this.props.history.push(`/stories/${+category + 1}`);
+            }}
           >
-            {lastPage
-              ? TitleContents[0].nextBtn
-              : TitleContents[category - 1].nextBtn}
+            <span>
+              {lastPage
+                ? TitleContents[0].nextBtn
+                : TitleContents[category - 1].nextBtn}
+            </span>
             <VscChevronRight color="#D17D74" />
           </button>
         </div>
@@ -94,6 +103,8 @@ class Stories extends Component {
             ))}
           </div>
         )}
+
+        <button className="pageBtn" onClick="pagination"></button>
       </div>
     );
   }
