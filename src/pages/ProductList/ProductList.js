@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Product from "./Components/Product"
-import "./ProductList.scss"
-import { APIROOT } from "../../config"
-
+import Product from "./Components/Product";
+import "./ProductList.scss";
+import { JINAPIROOT } from "../../config";
+import { BEAPIROOT } from "../../config";
 
 class ProductList extends Component {
   constructor() {
@@ -10,178 +10,221 @@ class ProductList extends Component {
     this.state = {
       filterList: [],
       allProducts: [],
-      productsByCategory: [],
-      productsByPage: [],
-      mappingPage: false,
       isPrevBtnVisible: false,
       isNextBtnVisible: true,
       isPageFooterVisible: true,
-    }
+      currentCategory: "ALL",
+      currentPage: 1,
+      animationActive: false,
+    };
   }
 
   componentDidMount() {
-    const APIOfProductFilterList = `${APIROOT}/Data/productFilterList.json`;
-    const APIOfProductList = `${APIROOT}/Data/productList.json`;
+    const APIOfProductFilterList = `${JINAPIROOT}/Data/productFilterList.json`;
+    // const APIOfProductList = `${JINAPIROOT}/Data/productList.json`;
+    const backendAPI = `${BEAPIROOT}/products?category=All&page=1`;
 
     Promise.all([
       fetch(APIOfProductFilterList)
-        .then(res => res.json())
-        .then(res => {
+        .then((res) => res.json())
+        .then((res) => {
           this.setState({
             filterList: res.filterList,
-          })
+          });
         })
-        .catch(err => console.log("err.message", err.message)),
+        .catch((err) => console.log("err.message", err.message)),
 
-      fetch(APIOfProductList)
-        .then(res => res.json())
-        .then(res => {
+      fetch(backendAPI)
+        .then((res) => res.json())
+        .then((res) => {
           this.setState({
-            allProducts: res.products,
-            productsByCategory: res.products
-          })
+            allProducts: res.page_products,
+            animationActive: false,
+          });
         })
-        .catch(error => console.log(error.message))
-    ])
+        .catch((err) => console.log("err.message", err.message)),
+    ]);
   }
 
-  componentDidUpdate() {
-    fetch(`http://localhost:3000//shop/${this.props.match.params.id}`);
-  }
+  componentDidUpdate(prevProps) {
+    const { search } = this.props.location;
+    const { currentCategory, currentPage } = this.state;
 
-  filterByCategory = (category) => {
-    const { allProducts } = this.state;
-    const categoryName = {
-      "ART PRINTS" : "art-prints",
-      "BOOKS" : "books",
-      "MAGAZINE" : "kinfolk-magazines",
-      "NOTECARDS" : "notecards",
-      "SUBSCRIPTIONS" : "subscriptions",
+    if (prevProps.location.search !== search) {
+      this.filterByCategory(currentCategory, currentPage);
+      this.setState({
+        animationActive: true,
+      });
     }
+  }
+
+  filterByCategory = async (category, num) => {
+    const categoryName = {
+      ALL: "All",
+      "ART PRINTS": "artprint",
+      artprint: "artprint",
+      BOOKS: "books",
+      books: "books",
+      MAGAZINE: "magazine",
+      magazine: "magazine",
+      NOTECARDS: "notecards",
+      notecards: "notecards",
+      SUBSCRIPTIONS: "subscriptions",
+      subscriptions: "subscriptions",
+    };
 
     if (category === "ALL") {
-      return this.setState({
-        productsByCategory: [...allProducts],
-        mappingPage : false,
-        isPageFooterVisible: true
-      }, () => {this.props.history.push('/shop/')} 
-      
-      )
-    } 
-      const filteredProducts = allProducts.filter( product => {
-        return product.category === category;
-      })
-      this.setState({isPageFooterVisible: filteredProducts.length < 13,
-        productsByCategory: [...filteredProducts],
-        productsByPage: [...filteredProducts],
-        isPageFooterVisible: false}, () => {this.props.history.push(`/product-category/${categoryName[category]}/`)})
-  }
+      const res = await fetch(
+        `${BEAPIROOT}/products?category=${categoryName[category]}&page=${num}`
+      );
+      const { page_products } = await res.json();
+
+      this.setState(
+        {
+          allProducts: page_products,
+          isPageFooterVisible: true,
+          currentCategory: category,
+          currentPage: num,
+          animationActive: false,
+        },
+        () => {
+          this.props.history.push(
+            `/products?category=${categoryName[category]}&page=${num}`
+          );
+        }
+      );
+      return;
+    }
+
+    const res = await fetch(
+      `${BEAPIROOT}/products?category=${categoryName[category]}&page=${num}`
+    );
+    const { page_products } = await res.json();
+    this.setState(
+      {
+        allProducts: page_products,
+        isPageFooterVisible: false,
+        currentCategory: category,
+        animationActive: false,
+      },
+      () => {
+        this.props.history.push(
+          `/products?category=${categoryName[category]}&page=${num}`
+        );
+      }
+    );
+    return;
+  };
 
   goToProductDetail = (id) => {
-    console.log(this.props.history)
-    this.props.history.push(`/shop/${id}`)
-  }
+    this.props.history.push(`/shop/${id}`);
+  };
 
-  filterByPage = (num) => {
-    const { productsByCategory } = this.state;
-    const slicePageIdx = num === 1 ? [0, 12] : num === 2 ? [12, 24] : num === 3 ? [24, 36] : [36];
-    const prevBtnBool = num === 1 ? false : num === 2 || num === 3 ? true : true;
-    const nextBtnBool = num === 1 ? true : num === 2 || num === 3 ? true : false;
+  goToCartPage = () => {
+    this.props.history.push(`/cart`);
+  };
 
-    this.setState({
-      productsByPage : productsByCategory.slice(...slicePageIdx),
-      mappingPage : true,
-      isPrevBtnVisible : prevBtnBool,
-      isNextBtnVisible : nextBtnBool
-    })
-  }
-
-  
-
-  
- 
   render() {
-    const {filterList, productsByCategory, productsByPage, mappingPage, isPrevBtnVisible, isNextBtnVisible, isPageFooterVisible } = this.state;
-    const mappingPageIn = mappingPage ? productsByPage : productsByCategory
+    const {
+      filterList,
+      allProducts,
+      isPrevBtnVisible,
+      isNextBtnVisible,
+      isPageFooterVisible,
+      currentCategory,
+      currentPage,
+      animationActive,
+    } = this.state;
+
+    const PAGENUMS = [
+      { pageNum: 1 },
+      { pageNum: 2 },
+      { pageNum: 3 },
+      { pageNum: 4 },
+    ];
 
     return (
       <div className="ProductList">
         <div className="pageHeader">
           <ul>
-          <span>SHOP:</span>
-            {filterList.map(list => {
+            <span>SHOP:</span>
+            {filterList.map((list) => {
               return (
-                <li key={list.id}>
-                  <button onClick={() => this.filterByCategory(list.category)}>{list.category}</button>
+                <li
+                  className={
+                    currentCategory === list.category ? "underlineActive" : null
+                  }
+                  key={list.id}
+                >
+                  <button
+                    onClick={() => this.filterByCategory(list.category, 1)}
+                  >
+                    {list.category}
+                  </button>
                 </li>
-              )
+              );
             })}
           </ul>
         </div>
         <div className="products">
-          <content>
+          <content className={animationActive ? "" : "animationActive"}>
             <ul>
-              {
-                mappingPageIn.length > 12 ?
-                  mappingPageIn.slice(0, 12).map((product, i) => {
-                    return (
-                      <Product 
+              {allProducts.length &&
+                allProducts.map((product, i) => {
+                  return (
+                    <Product
                       key={i}
+                      id={product.id}
                       product={product}
                       filterByCategory={this.filterByCategory}
                       goToProductDetail={this.goToProductDetail}
-                      />
-                    )
-                  }) 
-                :
-                mappingPageIn.map((product, i) => {
-                  return (
-                    <Product 
-                    key={i}
-                    id={product.id}
-                    product={product}
-                    filterByCategory={this.filterByCategory}
-                    goToProductDetail={this.goToProductDetail}
+                      goToCartPage={this.goToCartPage}
                     />
-                  )
-                })
-              }
+                  );
+                })}
             </ul>
           </content>
         </div>
-        <div className={isPageFooterVisible ? "pageFooter" : "invisiblePageFooter"}>
+        <div
+          className={isPageFooterVisible ? "pageFooter" : "invisiblePageFooter"}
+        >
           <span>
-            <button 
-              className={isPrevBtnVisible ? "": "invisible"} 
-              onClick={() => {this.filterByPage(1);}}>
+            <button
+              className={isPrevBtnVisible ? "" : "invisible"}
+              onClick={() => {
+                this.filterByCategory("ALL", 1);
+              }}
+            >
               PREV
             </button>
-            <button 
-              onClick={() => {this.filterByPage(1);}}>
-              1
-            </button>
-            <button 
-              onClick={() => {this.filterByPage(2);}}>
-              2
-            </button>
-            <button 
-              onClick={() => {this.filterByPage(3);}}>
-              3
-            </button>
-            <button 
-              onClick={() => {this.filterByPage(4);}}>
-              4
-            </button>
-            <button 
-              className={isNextBtnVisible ? "" : "invisible"} 
-              onClick={() => {this.filterByPage(4);}}>
+            {PAGENUMS.map((num, i) => {
+              return (
+                <button
+                  key={i}
+                  className={
+                    currentPage === num.pageNum ? "underlineActive" : null
+                  }
+                  onClick={() => {
+                    this.filterByCategory("ALL", num.pageNum);
+                  }}
+                >
+                  {num.pageNum}
+                </button>
+              );
+            })}
+            <button
+              className={isNextBtnVisible ? "" : "invisible"}
+              onClick={() => {
+                this.filterByCategory("ALL", 4);
+              }}
+            >
               NEXT
             </button>
           </span>
         </div>
-      </div>    
-    )
+      </div>
+    );
   }
-};
+}
 
 export default ProductList;

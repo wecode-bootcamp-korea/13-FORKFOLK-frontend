@@ -1,12 +1,7 @@
 {
-  "extends": ["react-app", "plugin:prettier/recommended"],
-  "prettier/prettier": [
-    "error",
-    {},
-    {
-      "fileInfoOptions": {
-        "withNodeModules": true
-      }
-    }
-  ]
+  "extends": ["react-app", "plugin:prettier/recommended"]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

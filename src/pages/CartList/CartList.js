@@ -1,32 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Product from "../ProductList/Components/Product";
-import { APIROOT } from "../../config";
+import CartProduct from "../CartList/Components/CartProduct";
+import { JINAPIROOT } from "../../config";
+import { BEAPIROOT } from "../../config";
 import "./CartList.scss";
-import { FaChevronDown } from "react-icons/fa";
-import { FaRegTimesCircle } from "react-icons/fa";
-import { map } from "async";
-
+const APIOfCartList = `${JINAPIROOT}/Data/cartList.json`;
+const backendAPI = `${BEAPIROOT}/order`;
 export default class CartList extends Component {
   constructor() {
     super();
     this.state = {
       cartProducts: [],
-      interestingProducts: [],
-      // 추가 기능 구현 중입니다
-      // cartProducts: [
-      //     { productId: 1,
-      //     quantity: 1 },
-      //     ]
+      // interestingProducts: [],
+      subtotal: 0,
+      shipping: 29,
     };
   }
-
   componentDidMount() {
-    console.log("CDM");
-    const APIOfCartList = `${APIROOT}/Data/cartList.json`;
-
+    console.log("componentDidMount start");
     Promise.all([
-      fetch("http://10.58.1.116:8000?status=beforeOrder", {
+      fetch(`${backendAPI}?status=beforeOrder`, {
         headers: {
           Authorization: localStorage.getItem("user-token"),
         },
@@ -34,33 +28,88 @@ export default class CartList extends Component {
         .then((res) => res.json())
         .then((res) => {
           this.setState({
-            cartProducts: res.cartData,
-            interestingProducts: res.interestingProducts,
+            cartProducts: res.in_cart_list,
+            // interestingProducts: res.interestingProducts,
+            subtotal: res.in_cart_list
+              .map((product) => {
+                return product.price * product.quantity;
+              })
+              .reduce((a, b) => a + b),
           });
         })
         .catch((err) => console.log("err.message", err.message)),
     ]);
   }
-
-  deleteProduct = (e) => {
-    console.log("e.target", e.target.id);
-
+  changeQuantity = (e, productId) => {
+    const { value } = e.target;
     const { cartProducts } = this.state;
-
-    const filteredCart =
-      cartProducts[0] &&
-      cartProducts.filter((product) => {
-        return product.id !== Number(e.target.id);
-      });
-
-    this.setState({
-      cartProducts: [...filteredCart],
-    });
+    this.setState((prevState) => ({
+      cartProducts: prevState.cartProducts.map((product) =>
+        product.id === productId ? { ...product, quantity: value } : product,
+      ),
+      subtotal: cartProducts
+        .map((product) => {
+          return product.price * value;
+        })
+        .reduce((a, b) => a + b),
+    }));
+    fetch(backendAPI, {
+      method: "POST",
+      body: JSON.stringify({
+        status: "beforeOrder",
+        product_id: productId,
+        quantity: value,
+      }),
+      headers: {
+        Authorization: localStorage.getItem("user-token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => console.log(result));
   };
-
+  deleteProduct = (id, totalPrice) => {
+    console.log("delete 함수가 실행중입니다.");
+    // const { cartProducts, subtotal } = this.state;
+    console.log("id", id);
+    fetch(backendAPI, {
+      method: "DELETE",
+      body: JSON.stringify({
+        status: "beforeOrder",
+        product_id: id,
+      }),
+      headers: {
+        Authorization: localStorage.getItem("user-token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        // this.setState({
+        //   cartProducts: res.in_cart_list
+        // });
+      });
+    // const filteredCart = cartProducts.filter(
+    //   (product) => id !== Number(product.id)
+    // );
+    // this.setState({
+    //   cartProducts: filteredCart,
+    //   subtotal: subtotal - totalPrice,
+    // });
+  };
+  goToCheckout = (e) => {
+    e.preventDefault();
+    // fetch(`API/checkout`, {method: "GET"})
+    //     .then(res => res.json())
+    //     .then(result => console.log(result))
+    this.props.history.push(`/checkout`);
+  };
   render() {
-    const { cartProducts, interestingProducts } = this.state;
-
+    const {
+      cartProducts,
+      // interestingProducts,
+      subtotal,
+      shipping,
+    } = this.state;
     if (cartProducts.length === 0) {
       return (
         <div className="CartList">
@@ -68,15 +117,12 @@ export default class CartList extends Component {
             <div className="emptyModule">
               <h1>Cart</h1>
               <p>Your basket is currently empty.</p>
-              <button onClick={() => this.props.history.push("/shop/")}>
-                Return to shop
-              </button>
+              <button onClick={() => this.props.history.push(`/shop`)}>Return to shop</button>
             </div>
           </div>
         </div>
       );
     }
-
     return (
       <div className="CartList">
         <div className="container">
@@ -85,7 +131,7 @@ export default class CartList extends Component {
           </div>
           <div className="commerce">
             <div className="leftSection">
-              <Link to="/shop/">◀ BACK TO SHOP</Link>
+              <Link to="/shop">◀ BACK TO SHOP</Link>
             </div>
             <div className="centerAndRigth">
               <div className="centerSection">
@@ -99,40 +145,17 @@ export default class CartList extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {cartProducts.map((product, i) => {
-                      return (
-                        <tr className="cartProducts" key={product.id}>
-                          <td>
-                            <img src={product.image} alt="장바구니 상품" />
-                          </td>
-                          <td>{product.title}</td>
-                          <td>${product.price}</td>
-                          <td>
-                            <select>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                            </select>
-                          </td>
-                          <td>${product.price}</td>
-                          <td>
-                            <button
-                              id={product.id}
-                              className="delBtn"
-                              onClick={this.deleteProduct}
-                            >
-                              <FaRegTimesCircle className="delIcon" />
-                            </button>
-                          </td>
-                        </tr>
-                      );
-                    })}
+                    {cartProducts.length &&
+                      cartProducts.map((product, i) => {
+                        return (
+                          <CartProduct
+                            key={i}
+                            product={product}
+                            changeQuantity={this.changeQuantity}
+                            deleteProduct={this.deleteProduct}
+                          />
+                        );
+                      })}
                     <tr>
                       <td colSpan="6">
                         <div>
@@ -141,11 +164,7 @@ export default class CartList extends Component {
                             type="text"
                             placeholder="Coupon code"
                           ></input>
-                          <input
-                            className="applyCoupon"
-                            type="submit"
-                            value="APPLY COUPON"
-                          ></input>
+                          <input className="applyCoupon" type="submit" value="APPLY COUPON"></input>
                         </div>
                         <div>
                           <input
@@ -166,28 +185,26 @@ export default class CartList extends Component {
                     <tr>
                       <th>Subtotal</th>
                       <td>
-                        <span>${218}</span>
+                        <span>${subtotal}</span>
                       </td>
                     </tr>
                     <tr>
                       <th>Shipping</th>
                       <td>
                         <ul>
-                          <li>${29}</li>
-                          <li>
-                            Shipping Ooptions will be updated during checkout.
-                          </li>
+                          <li>${shipping}</li>
+                          <li>Shipping Options will be updated during checkout.</li>
                         </ul>
                       </td>
                     </tr>
                     <tr>
                       <th>Total</th>
-                      <td>${247}</td>
+                      <td>${subtotal + shipping}</td>
                     </tr>
                   </tbody>
                 </table>
                 <div>
-                  <button>PROCEED TO CHECKOUT</button>
+                  <button onClick={this.goToCheckout}>PROCEED TO CHECKOUT</button>
                 </div>
               </div>
             </div>
@@ -195,9 +212,10 @@ export default class CartList extends Component {
           <div className="crossSells">
             <h2>You may be interested in...</h2>
             <ul>
-              {interestingProducts.map((product, i) => (
+              <li>제품 출력 예정입니다.</li>
+              {/* {interestingProducts.map((product, i) => (
                 <Product key={i} product={product} />
-              ))}
+              ))} */}
             </ul>
           </div>
         </div>

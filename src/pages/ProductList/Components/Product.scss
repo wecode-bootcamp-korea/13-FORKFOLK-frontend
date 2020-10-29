@@ -11,25 +11,26 @@
 
   .imageContainer {
     position: relative;
-    button:first-child {
-      img {
-        width: 100%;
-        height: 100%;
 
-        &:hover {
-          cursor: pointer;
-          filter: brightness(60%);
-          transition: all 0.3s ease;
-        }
-      }
+    .productImage {
+      width: 100%;
+      height: 100%;
     }
 
     &:hover {
+      .productImage {
+        cursor: pointer;
+        filter: brightness(60%);
+        transition: all 0.3s ease;
+      }
+
       .heartIcon {
+        z-index: 10;
         position: absolute;
-        top: 8px;
-        right: 6px;
-        font-size: 32px;
+        top: 4%;
+        right: 4%;
+        transform: translate(-4%, -4%);
+        font-size: 280%;
         cursor: pointer;
 
         .fullHeart {
@@ -43,13 +44,17 @@
 
       .addToCart {
         position: absolute;
-        top: 42%;
-        right: 27%;
-        padding: 12px 24px;
-        font-size: 18px;
+        top: 50%;
+        left: 50%;
+        padding: 8% 16%;
+        font-size: 28px;
         font-family: inherit;
         cursor: pointer;
-        background-color: rgba(255, 255, 255, 0.7);
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.6);
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.85);
+        }
       }
     }
 
@@ -75,5 +80,53 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 1.6;
+  }
+}
+
+.modalWindow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 370px;
+  border: 1px solid gray;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-content: center;
+  outline: none;
+
+  div:first-child {
+    h2 {
+      padding: 48px 14px 18px;
+      color: black;
+      font-size: 50px;
+      text-align: center;
+    }
+    button {
+      position: absolute;
+      top: 10px;
+      right: 5px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+  }
+
+  div:last-child {
+    position: relative;
+    button {
+      display: block;
+      width: 450px;
+      height: 70px;
+      margin: 32px auto;
+      border: 1px solid black;
+      font-size: 20px;
+      transition: 0.25s ease;
+      justify-items: center;
+      &:hover {
+        color: white;
+        background-color: black;
+      }
+    }
   }
 }

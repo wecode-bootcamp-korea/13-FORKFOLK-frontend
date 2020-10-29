@@ -1,11 +1,95 @@
+// import React, { Component } from "react";
+// import "./AccountForm.scss";
+// import "../../../styles/reset.scss";
+// import { LoginAPI, RegisterAPI } from "../../../config";
+
+// class Account extends Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       IDInput: "",
+//       PWInput: "",
+//       LoginBtnEnabled: "",
+//     };
+//   }
+
+//   loginFunc = (event) => {
+//     event.preventDefault();
+//     const { IDInput, PWInput } = this.state;
+//     const isLogin = this.props.header === "Login";
+//     const options = {
+//       method: "POST",
+//       body: JSON.stringify({
+//         email: IDInput,
+//         password: PWInput,
+//       }),
+//     };
+
+//     const fetchAccount = async (url, options, callback) => {
+//       const res = await fetch(url, options);
+//       const json = await res.json();
+//       callback(json);
+//     };
+//   }
+
+//     if (isLogin)
+//      { fetchAccount(LoginAPI, options, (result) => {
+//         this.props.postError(result.message);
+//         if (result.message === "SUCCESS") {
+//           localStorage.setItem("user-token", result.TOKEN);
+//           this.props.goToMain();
+//         }
+//       });}
+//     else
+//       fetchAccount(RegisterAPI, options, (result) => {
+//         this.props.postError(result.message);
+//       });
+//   };
+
+//   changeInputState = (event) => {
+//     const { value, name } = event.target;
+//     const { IDInput, PWInput } = this.state;
+//     const id = name === "IDInput" ? value : IDInput;
+//     const pw = name === "PWInput" ? value : PWInput;
+//     const isLoginValid = id.includes("@") && pw.length >= 5;
+//     this.setState({
+//       [name]: value,
+//       LoginBtnEnabled: isLoginValid,
+//     });
+//   };
+
+//   render() {
+//     const { LoginBtnEnabled } = this.state;
+//     const { header, inputLable, checkBoxLable, buttonText, subText, subLink } = this.props;
+//     return (
+//       <form className="accountForm">
+//         <header>{header}</header>
+//         <span>{inputLable}</span>
+//         <input type="text" name="IDInput" onChange={this.changeInputState} />
+//         <span>Password *</span>
+//         <input type="password" name="PWInput" onChange={this.changeInputState} />
+//         <div>
+//           <input type="checkbox" />
+//           <span>{checkBoxLable}</span>
+//         </div>
+//         <button className={LoginBtnEnabled ? "activated" : "deactivated"} onClick={this.loginFunc}>
+//           {buttonText}
+//         </button>
+//         <span className="subText">
+//           {subText}
+//           <span className="subLink">{subLink}</span>
+//         </span>
+//       </form>
+//     );
+//   }
+// }
+
+// export default Account;
+
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import "./AccountForm.scss";
 import "../../../styles/reset.scss";
-
-const LoginAPI = "http://10.58.1.116:8000/my-account/signin";
-const RegisterAPI = "http://10.58.1.116:8000/my-account/signup";
-
+import { LoginAPI, RegisterAPI } from "../../../config";
 class Account extends Component {
   constructor() {
     super();
@@ -15,87 +99,61 @@ class Account extends Component {
       LoginBtnEnabled: "",
     };
   }
-
   loginFunc = (event) => {
     event.preventDefault();
     const { IDInput, PWInput } = this.state;
-    console.log(IDInput, PWInput);
-    if (this.props.header === "Login") {
-      fetch(LoginAPI, {
-        method: "POST",
-        body: JSON.stringify({
-          email: IDInput,
-          password: PWInput,
-        }),
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
+    const isLogin = this.props.header === "Login";
+    const options = {
+      method: "POST",
+      body: JSON.stringify({
+        email: IDInput,
+        password: PWInput,
+      }),
+    };
+    const fetchAccount = async (url, options, callback) => {
+      const res = await fetch(url, options);
+      const json = await res.json();
+      callback(json);
+    };
+    if (isLogin)
+      fetchAccount(LoginAPI, options, (result) => {
+        this.props.postError(result.message);
+        if (result.message === "SUCCESS") {
           localStorage.setItem("user-token", result.TOKEN);
-          //
-          this.props.history.push("/");
-        });
-    } else {
-      fetch(RegisterAPI, {
-        method: "POST",
-        body: JSON.stringify({
-          email: IDInput,
-          password: PWInput,
-        }),
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
-        });
-    }
+          this.props.goToMain();
+        }
+      });
+    else
+      fetchAccount(RegisterAPI, options, (result) => {
+        this.props.postError(result.message);
+      });
   };
-
-  changeLoginBtnEnabled = () => {
-    const { IDInput, PWInput } = this.state;
-    let isLoginFormValid = false;
-    if (this.props.header === "Login") {
-      isLoginFormValid = PWInput.length >= 5 && PWInput.length >= 5;
-    } else {
-      isLoginFormValid = IDInput.includes("@") && PWInput.length >= 5;
-    }
-    this.setState({ LoginBtnEnabled: isLoginFormValid });
-  };
-
   changeInputState = (event) => {
     const { value, name } = event.target;
-
-    this.setState({ [name]: value }, this.changeLoginBtnEnabled);
+    const { IDInput, PWInput } = this.state;
+    const id = name === "IDInput" ? value : IDInput;
+    const pw = name === "PWInput" ? value : PWInput;
+    const isLoginValid = id.includes("@") && pw.length >= 5;
+    this.setState({
+      [name]: value,
+      LoginBtnEnabled: isLoginValid,
+    });
   };
-
   render() {
     const { LoginBtnEnabled } = this.state;
-    const {
-      header,
-      inputLable,
-      checkBoxLable,
-      buttonText,
-      subText,
-      subLink,
-    } = this.props;
+    const { header, inputLable, checkBoxLable, buttonText, subText, subLink } = this.props;
     return (
       <form className="accountForm">
         <header>{header}</header>
         <span>{inputLable}</span>
         <input type="text" name="IDInput" onChange={this.changeInputState} />
         <span>Password *</span>
-        <input
-          type="password"
-          name="PWInput"
-          onChange={this.changeInputState}
-        />
+        <input type="password" name="PWInput" onChange={this.changeInputState} />
         <div>
           <input type="checkbox" />
           <span>{checkBoxLable}</span>
         </div>
-        <button
-          className={LoginBtnEnabled ? "activated" : "deactivated"}
-          onClick={this.loginFunc}
-        >
+        <button className={LoginBtnEnabled ? "activated" : "deactivated"} onClick={this.loginFunc}>
           {buttonText}
         </button>
         <span className="subText">
@@ -106,5 +164,4 @@ class Account extends Component {
     );
   }
 }
-
-export default withRouter(Account);
+export default Account;
