@@ -87,7 +87,6 @@ class Header extends Component {
       }
       if (this.props.location.pathname === "/") {
         if (window.scrollY > 200) {
-          console.log("yalloo");
         }
         this.setState({
           logoScale: 7,
