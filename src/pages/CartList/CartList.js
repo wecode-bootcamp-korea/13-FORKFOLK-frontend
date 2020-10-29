@@ -30,7 +30,6 @@ export default class CartList extends Component {
         .then((res) => {
           this.setState({
             cartProducts: res.in_cart_list,
-
             subtotal: res.in_cart_list
               .map((product) => {
                 return product.price * product.quantity;
@@ -43,7 +42,6 @@ export default class CartList extends Component {
       fetch(APIOfCartList)
         .then((res) => res.json())
         .then((res) => {
-          console.log("cartlist res >>>", res);
           this.setState({
             interestingProducts: res.interestingProducts,
           });
@@ -81,9 +79,8 @@ export default class CartList extends Component {
         }));
       });
   };
+
   deleteProduct = (id, totalPrice) => {
-    console.log("delete 함수가 실행중입니다.");
-    console.log("id >>>", id);
     const { cartProducts } = this.state;
 
     fetch(backendAPI, {
@@ -108,10 +105,12 @@ export default class CartList extends Component {
         });
       });
   };
+
   goToCheckout = (e) => {
     e.preventDefault();
     this.props.history.push(`/checkout`);
   };
+
   render() {
     const { cartProducts, interestingProducts, subtotal, shipping } = this.state;
     if (cartProducts.length === 0) {
@@ -216,7 +215,6 @@ export default class CartList extends Component {
           <div className="crossSells">
             <h2>You may be interested in...</h2>
             <ul>
-              {/* <li>제품 출력 예정입니다.</li> */}
               {interestingProducts.map((product, i) => (
                 <Product key={i} product={product} />
               ))}

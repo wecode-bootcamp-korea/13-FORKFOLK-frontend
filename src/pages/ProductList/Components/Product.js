@@ -27,7 +27,6 @@ class Product extends Component {
   };
 
   addToCart = (id, name, price) => {
-    console.log(id, name, price, 1);
     fetch(`${BEAPIROOT}/order`, {
       method: "POST",
       body: JSON.stringify({
@@ -44,14 +43,10 @@ class Product extends Component {
   };
 
   setModalIsOpen = (bool) => {
-    console.log("setModalIsOpen is changed to ", bool);
-    this.setState(
-      {
-        modalIsOpen: bool,
-        setModalIsOpen: bool,
-      },
-      console.log("prev setModal bool", this.state.setModalIsOpen),
-    );
+    this.setState({
+      modalIsOpen: bool,
+      setModalIsOpen: bool,
+    });
   };
 
   render() {

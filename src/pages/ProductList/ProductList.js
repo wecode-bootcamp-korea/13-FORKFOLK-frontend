@@ -21,7 +21,6 @@ class ProductList extends Component {
 
   componentDidMount() {
     const APIOfProductFilterList = `${JINAPIROOT}/Data/productFilterList.json`;
-    // const APIOfProductList = `${JINAPIROOT}/Data/productList.json`;
     const backendAPI = `${BEAPIROOT}/products?category=All&page=1`;
 
     Promise.all([
@@ -96,8 +95,7 @@ class ProductList extends Component {
 
     const res = await fetch(`${BEAPIROOT}/products?category=${categoryName[category]}&page=${num}`);
     const { page_products } = await res.json();
-    // const json = await res.json();
-    //   console.log("json", json)
+
     this.setState(
       {
         allProducts: page_products,
