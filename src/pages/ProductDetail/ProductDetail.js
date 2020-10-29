@@ -29,6 +29,7 @@ class ProductDetail extends Component {
             kategory: "",
             text: "",
           },
+
           {
             kategory: "",
             text: "",
@@ -38,23 +39,24 @@ class ProductDetail extends Component {
     };
   }
 
-  // componentDidMount() {
-  //     fetch('http://localhost:3000/Data/ProductDetailData.json', {
-  //     }).then(res => res.json())
-  //       .then(res => {
-  //         this.setState({
-  //             productInfo : res.product
-  //         });
-  //       });
-  // }
-
   componentDidMount() {
-    fetch(`${PRODUCT_DETAIL_API}/${this.props.match.params.id}`, {})
+    fetch("http://localhost:3000/Data/ProductDetailData.json", {})
       .then((res) => res.json())
       .then((res) => {
-        this.setState({ productInfo: res });
+        this.setState({
+          productInfo: res.product,
+        });
       });
   }
+
+  // componentDidMount() {
+  //     fetch(`${PRODUCT_DETAIL_API}/${this.props.match.params.id}`,
+  //         {
+  //     }).then(res => res.json())
+  //         .then(res => {
+  //         this.setState({productInfo:res})
+  //     })
+  //   }
 
   render() {
     const {

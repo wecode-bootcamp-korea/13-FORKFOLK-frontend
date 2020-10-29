@@ -13,6 +13,13 @@
 @mixin hoverColor {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+@mixin centerAlignment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 $liWidth: 240px;
 $standardSpace: 40px;
 

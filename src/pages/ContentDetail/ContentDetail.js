@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CONTENT_DETAIL_API } from "../../config";
 import "./ContentDetail.scss";
 
 class ContentDetail extends Component {
@@ -17,11 +18,9 @@ class ContentDetail extends Component {
   }
 
   componentDidMount() {
-    console.log(`10.58.2.235:8000/stories/story/${this.props.match.params.id}`);
-    fetch(`http://10.58.2.235:8000/stories/story/${this.props.match.params.id}`)
+    fetch(`${CONTENT_DETAIL_API}${this.props.match.params.id}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.story_detail[0]);
         this.setState({ contentInfo: res.story_detail[0] });
       });
   }

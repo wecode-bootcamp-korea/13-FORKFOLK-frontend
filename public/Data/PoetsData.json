@@ -1,0 +1,25 @@
+{
+  "poets": [
+    {
+      "id": 1,
+      "imgSrc": "https://images.unsplash.com/photo-1591727884968-cc11135a19b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=655&q=80",
+      "issueNumber": 37,
+      "name": "Joekenneth Museau",
+      "description": "The Brooklyn poet on a mission to heal."
+    },
+    {
+      "id": 2,
+      "imgSrc": "https://images.unsplash.com/photo-1579741385378-6ad925d2b298?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "issueNumber": 36,
+      "name": "Ocean Vuong",
+      "description": "The poet and novelist avioding definitive endings."
+    },
+    {
+      "id": 3,
+      "imgSrc": "https://images.unsplash.com/photo-1580626831795-21588458f224?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=632&q=80",
+      "issueNumber": 30,
+      "name": "Eileen Myles",
+      "description": "Meet Eileen Myles, the poet who once ran for president."
+    }
+  ]
+}

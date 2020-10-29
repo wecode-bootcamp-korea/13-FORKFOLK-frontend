@@ -3,6 +3,7 @@
   font-family: "Quicksand", serif, sans-serif;
 
   .pageHeader {
+    margin-top: 70px;
     padding: 90px 0 100px;
     text-align: center;
 
@@ -19,9 +20,15 @@
         button {
           color: inherit;
           font-family: inherit;
+          padding-bottom: 4px;
           cursor: pointer;
           letter-spacing: 1.5px;
         }
+      }
+
+      .underlineActive {
+        border-bottom: 1px solid rgb(77, 77, 77);
+        margin-bottom: -1px;
       }
     }
 
@@ -37,6 +44,10 @@
     margin: 0 auto;
 
     content {
+      opacity: 0;
+      &.animationActive {
+        animation: fadein 3s forwards;
+      }
       ul {
         display: flex;
         margin: 30px auto 0;
@@ -63,6 +74,11 @@
 
       .invisible {
         display: none;
+      }
+
+      .underlineActive {
+        border-bottom: 1px solid rgb(77, 77, 77);
+        margin-bottom: -1px;
       }
     }
   }
