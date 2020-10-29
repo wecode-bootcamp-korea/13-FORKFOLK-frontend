@@ -65,24 +65,33 @@ class Product extends Component {
           </button>
         </div>
         <div className={visible ? "thumbnailModal showing" : "thumbnailModal"}>
-          <div>
-            <span>1 of 10</span>
+          <header>
             <button onClick={this.changeModalVisible}>X</button>
-          </div>
+          </header>
           <section>
-            <img
-              alt="left"
+            <button
+              className="LBtn"
               name="L"
               onClick={this.changeproductImgIdx}
-              src="https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-left.svg"
-            />
-            <img src={productImg[productImgIdx]}></img>
-            <img
-              alt="right"
+            >
+              <img
+                alt="LBtnImg"
+                src="https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-left.svg"
+              />
+            </button>
+            <div className="modalImgContainer">
+              <img src={productImg[productImgIdx]}></img>
+            </div>
+            <button
+              className="RBtn"
               name="R"
               onClick={this.changeproductImgIdx}
-              src="https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-right.svg"
-            />
+            >
+              <img
+                alt="RBtnImg"
+                src="https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-right.svg"
+              />
+            </button>
           </section>
         </div>
       </div>

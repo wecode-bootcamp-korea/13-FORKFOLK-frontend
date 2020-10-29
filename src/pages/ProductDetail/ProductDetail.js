@@ -32,23 +32,23 @@ class ProductDetail extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   fetch("http://localhost:3000/Data/ProductDetailData.json", {})
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       this.setState({
-  //         productInfo: res.product_info,
-  //       });
-  //     });
-  // }
-
   componentDidMount() {
-    fetch(`${PRODUCT_DETAIL_API}${this.props.match.params.id}`, {})
+    fetch("http://localhost:3000/Data/ProductDetailData.json", {})
       .then((res) => res.json())
       .then((res) => {
-        this.setState({ productInfo: res.product_info });
+        this.setState({
+          productInfo: res.product_info,
+        });
       });
   }
+
+  // componentDidMount() {
+  //   fetch(`${PRODUCT_DETAIL_API}${this.props.match.params.id}`, {})
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       this.setState({ productInfo: res.product_info });
+  //     });
+  // }
 
   render() {
     const {

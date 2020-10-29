@@ -1,9 +1,10 @@
 .productThumbnail {
   position: relative;
-  min-width: 750px;
-  min-height: 500px;
-  max-height: 500px;
+  width: 750px;
+  height: 500px;
   margin-right: 40px;
+  overflow: hidden;
+
   .thumbnailContainer {
     &:hover .enlarge {
       opacity: 1;
@@ -68,28 +69,42 @@
     width: 100vw;
     height: 100vh;
 
-    div {
+    header {
       display: flex;
       justify-content: space-between;
       margin: 40px 60px 0 60px;
       button {
         cursor: pointer;
+        margin-left: auto;
       }
     }
 
     section {
+      height: 100%;
       display: flex;
       justify-content: space-between;
+      align-items: center;
 
-      button {
-        width: 30px;
+      .LBtn,
+      .RBtn {
+        width: 40px;
+        height: 40px;
+        margin: 0 40px;
+        img {
+          pointer-events: none;
+          width: 100%;
+          height: 100%;
+        }
       }
 
-      img {
-        margin: 0 40px;
-
-        &:nth-child(2) {
-          width: 60%;
+      .modalImgContainer {
+        position: relative;
+        overflow: hidden;
+        width: 60%;
+        height: 70%;
+        padding: 0 auto;
+        img {
+          width: 100%;
         }
       }
     }
