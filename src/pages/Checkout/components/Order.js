@@ -22,13 +22,15 @@ class Order extends Component {
   };
 
   componentDidMount() {
-    fetch(`${ORDER_API}?status=beforeOrder`, {
+    console.log(localStorage.getItem("user-token"));
+    fetch(`http://10.58.1.116:8000/checkout?status=beforeOrder`, {
       headers: {
         Authorization: localStorage.getItem("user-token"),
       },
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         this.setState({ orderList: res["checkout list"] }, () => {
           this.getTotalAmount();
         });

@@ -35,7 +35,7 @@ class Checkout extends Component {
       .then((res) => res.json())
       .then((res) => {
         if (res.message == "SUCCESS") {
-          this.history.push("/");
+          this.props.history.push("/");
           alert("주문이 완료되었습니다.");
         }
       })
