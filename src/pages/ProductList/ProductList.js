@@ -11,8 +11,6 @@ class ProductList extends Component {
     this.state = {
       filterList: [],
       allProducts: [],
-      isPrevBtnVisible: false,
-      isNextBtnVisible: true,
       isPageFooterVisible: true,
       currentCategory: "ALL",
       currentPage: 1,
@@ -87,6 +85,7 @@ class ProductList extends Component {
           currentPage: num,
           animationActive: false,
         },
+
         () => {
           this.props.history.push(`/products?category=${categoryName[category]}&page=${num}`);
         },
@@ -123,8 +122,6 @@ class ProductList extends Component {
     const {
       filterList,
       allProducts,
-      isPrevBtnVisible,
-      isNextBtnVisible,
       isPageFooterVisible,
       currentCategory,
       currentPage,
@@ -172,7 +169,6 @@ class ProductList extends Component {
         <div className={isPageFooterVisible ? "pageFooter" : "invisiblePageFooter"}>
           <span>
             <button
-              className={isPrevBtnVisible ? "" : "invisible"}
               onClick={() => {
                 this.filterByCategory("ALL", 1);
               }}
@@ -193,7 +189,6 @@ class ProductList extends Component {
               );
             })}
             <button
-              className={isNextBtnVisible ? "" : "invisible"}
               onClick={() => {
                 this.filterByCategory("ALL", 4);
               }}
