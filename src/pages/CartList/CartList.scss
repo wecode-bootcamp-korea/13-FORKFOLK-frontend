@@ -1,10 +1,18 @@
 @import "../../styles/common.scss";
 
 .CartList {
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
   font-family: "Quicksand", serif, sans-serif;
 
   .container {
-    margin: 0 auto;
+    margin: 70px auto 0;
     padding: 0 3%;
     max-width: 2000px;
 
@@ -177,10 +185,12 @@
                       color: white;
                       font-size: 14px;
                       background-color: rgb(77, 77, 77);
+                      cursor: pointer;
                     }
                     .updateBasket {
                       font-size: 18px;
                       background-color: white;
+                      cursor: pointer;
                     }
                   }
                 }
@@ -191,6 +201,7 @@
 
         .rightSection {
           flex: 30%;
+
           h2 {
             font-size: 31px;
             font-size: 1.9375rem;
@@ -199,13 +210,14 @@
           }
           table {
             margin-bottom: 35px;
+            width: 100%;
 
             tbody {
               tr {
                 border-top: 1px solid black;
 
                 td {
-                  padding: 35px 0;
+                  padding: 35px 10px 35px 0;
                   text-align: right;
                   ul {
                     li:last-child {
@@ -217,6 +229,10 @@
               }
               tr:last-child {
                 border-bottom: 1px solid black;
+                th,
+                td {
+                  font-weight: bolder;
+                }
               }
             }
           }
@@ -225,7 +241,7 @@
             text-align: right;
             button {
               display: inline-block;
-
+              cursor: pointer;
               width: 270px;
               height: 40px;
               margin: 0 auto;

@@ -18,9 +18,7 @@ class ProductDescription extends Component {
     const { DescriptionBtnState } = this.state;
     const { name } = e.target;
     this.setState(
-      DescriptionBtnState === name
-        ? { DescriptionBtnState: 2 }
-        : { DescriptionBtnState: name }
+      DescriptionBtnState === name ? { DescriptionBtnState: 2 } : { DescriptionBtnState: name },
     );
   };
 
@@ -35,16 +33,12 @@ class ProductDescription extends Component {
           <>
             <button onClick={this.hadleClick} name={descriptionidx}>
               <span>{description}</span>
-              <span>
-                {DescriptionBtnState === `${descriptionidx}` ? "-" : "+"}
-              </span>
+              <span>{DescriptionBtnState === `${descriptionidx}` ? "-" : "+"}</span>
             </button>
             <div
               name={descriptionidx}
               className={
-                DescriptionBtnState === `${descriptionidx}`
-                  ? "openDecription"
-                  : "closeDecription"
+                DescriptionBtnState === `${descriptionidx}` ? "openDecription" : "closeDecription"
               }
             >
               {descriptions[description]}{" "}

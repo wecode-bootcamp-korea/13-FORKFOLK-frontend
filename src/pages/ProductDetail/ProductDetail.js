@@ -72,11 +72,7 @@ class ProductDetail extends Component {
               price={price}
               descriptions={descriptions}
             />
-            <ProductCartMenu
-              id={id}
-              price={price}
-              goToBasket={this.goToBasket}
-            />
+            <ProductCartMenu id={id} price={price} goToBasket={this.goToBasket} />
           </aside>
         </section>
       </div>

@@ -1,0 +1,20 @@
+{
+  "expandedViewContents": [
+    {
+      "id": 1,
+      "artsnCulture": false,
+      "field": "ARTS & CULTURE",
+      "title": "Haatepah Clearbear",
+      "description": "First, Haatepah Clearbear learned about his past. Now the young model is using that knowledge to advoxate for Native American Futures-and the planet. Words by Robert Ito. Photohgraphy by Ben Duggan. Styling by Whiteney Whitaker.",
+      "imgSrc": "https://images.unsplash.com/photo-1514775820126-67d984f0c964?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=676&q=80"
+    },
+    {
+      "id": 2,
+      "artsnCulture": true,
+      "field": "DESIGN",
+      "title": "At Home With: Nanushka",
+      "description": "Meet the bold couple who took ther Budapest brand global. Words by Laura Rysman. Photography by Zoltan Tombor.",
+      "imgSrc": "https://images.unsplash.com/photo-1477517787936-70ba786643fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    }
+  ]
+}

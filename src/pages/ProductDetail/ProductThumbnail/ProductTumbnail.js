@@ -21,10 +21,7 @@ class Product extends Component {
     const { productImg } = this.props;
     name === "R"
       ? this.setState({
-          productImgIdx:
-            productImgIdx < productImg.length - 1
-              ? productImgIdx + 1
-              : productImgIdx,
+          productImgIdx: productImgIdx < productImg.length - 1 ? productImgIdx + 1 : productImgIdx,
         })
       : this.setState({
           productImgIdx: productImgIdx > 0 ? productImgIdx - 1 : productImgIdx,
@@ -41,11 +38,7 @@ class Product extends Component {
     return (
       <div className="productThumbnail" onScroll={this.changeModalVisible}>
         <div className="thumbnailContainer">
-          <img
-            className="fadein"
-            alt="productImg"
-            src={productImg[productImgIdx]}
-          />
+          <img className="fadein" alt="productImg" src={productImg[productImgIdx]} />
           <button
             name="L"
             onClick={this.changeproductImgIdx}
@@ -56,11 +49,7 @@ class Product extends Component {
             onClick={this.changeproductImgIdx}
             className="productThumbnailRightBtn"
           ></button>
-          <button
-            name="enlarge"
-            className="enlarge"
-            onClick={this.changeModalVisible}
-          >
+          <button name="enlarge" className="enlarge" onClick={this.changeModalVisible}>
             <FaExpand className="FaExpand" />
           </button>
         </div>
@@ -69,11 +58,7 @@ class Product extends Component {
             <button onClick={this.changeModalVisible}>X</button>
           </header>
           <section>
-            <button
-              className="LBtn"
-              name="L"
-              onClick={this.changeproductImgIdx}
-            >
+            <button className="LBtn" name="L" onClick={this.changeproductImgIdx}>
               <img
                 alt="LBtnImg"
                 src="https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-left.svg"
@@ -82,11 +67,7 @@ class Product extends Component {
             <div className="modalImgContainer">
               <img src={productImg[productImgIdx]}></img>
             </div>
-            <button
-              className="RBtn"
-              name="R"
-              onClick={this.changeproductImgIdx}
-            >
+            <button className="RBtn" name="R" onClick={this.changeproductImgIdx}>
               <img
                 alt="RBtnImg"
                 src="https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-right.svg"
