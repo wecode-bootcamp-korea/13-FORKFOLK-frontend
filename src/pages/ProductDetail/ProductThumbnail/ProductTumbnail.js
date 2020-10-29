@@ -29,7 +29,7 @@ class Product extends Component {
   };
 
   changeModalVisible = (e) => {
-    this.setState({ visible: e.target.name === "enlarge" ? true : false });
+    this.setState({ visible: e.target.name === "enlarge" });
   };
 
   render() {
