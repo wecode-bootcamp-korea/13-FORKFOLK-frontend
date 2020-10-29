@@ -15,7 +15,6 @@ class Account extends Component {
 
   loginFunc = (event) => {
     event.preventDefault();
-
     const { IDInput, PWInput } = this.state;
     const isLogin = this.props.header === "Login";
     const options = {
@@ -29,12 +28,20 @@ class Account extends Component {
     const fetchAccount = async (url, options, callback) => {
       const res = await fetch(url, options);
       const json = await res.json();
-      if (callback === "Function") callback(json);
+      callback(json);
     };
-    if (isLogin) fetchAccount(LoginAPI, options);
+
+    if (isLogin)
+      fetchAccount(LoginAPI, options, (result) => {
+        this.props.postError(result.message);
+        if (result.message === "SUCCESS") {
+          localStorage.setItem("user-token", result.TOKEN);
+          this.props.goToMain();
+        }
+      });
     else
       fetchAccount(RegisterAPI, options, (result) => {
-        localStorage.setItem("user-token", result.TOKEN);
+        this.props.postError(result.message);
       });
   };
 

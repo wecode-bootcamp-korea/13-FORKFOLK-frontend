@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Account.scss";
 import AccountForm from "./AccountForm/AccountForm";
 import "../../styles/reset.scss";
@@ -23,24 +23,47 @@ const FORM_LABELS = [
   },
 ];
 
-function Account() {
-  return (
-    <div className="Account">
-      <header>My Account</header>
-      <section>
-        {FORM_LABELS.map((el) => (
-          <AccountForm
-            header={el.header}
-            inputLable={el.inputLable}
-            checkBoxLable={el.checkBoxLable}
-            buttonText={el.buttonText}
-            subText={el.subText}
-            subLink={el.subLink}
-          />
-        ))}
-      </section>
-    </div>
-  );
+class Account extends Component {
+  constructor() {
+    super();
+    this.state = {
+      errorMessege: "",
+    };
+  }
+
+  setErrorMessege = (errorCode) => {
+    this.setState({ errorMessege: errorCode });
+  };
+
+  goToMain = () => {
+    this.props.history.push("/");
+  };
+
+  render() {
+    const { errorMessege } = this.state;
+    return (
+      <div className="Account">
+        <header>My Account</header>
+        <div className={errorMessege ? "errorContainer showing" : "errorContainer"}>
+          {errorMessege}
+        </div>
+        <section>
+          {FORM_LABELS.map((el) => (
+            <AccountForm
+              header={el.header}
+              inputLable={el.inputLable}
+              checkBoxLable={el.checkBoxLable}
+              buttonText={el.buttonText}
+              subText={el.subText}
+              subLink={el.subLink}
+              postError={this.setErrorMessege}
+              goToMain={this.goToMain}
+            />
+          ))}
+        </section>
+      </div>
+    );
+  }
 }
 
 export default Account;

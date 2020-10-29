@@ -8,7 +8,20 @@
   header {
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 52px;
+    margin-bottom: 40px;
+  }
+  .errorContainer {
+    width: 80%;
+    padding: 10px;
+    border: 0.1px solid black;
+    color: red;
+    text-align: center;
+    margin-bottom: 40px;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+  }
+  .showing {
+    opacity: 1;
   }
 
   section {
