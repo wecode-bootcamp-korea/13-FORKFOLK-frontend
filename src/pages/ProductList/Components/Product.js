@@ -18,13 +18,6 @@ class Product extends Component {
     };
   }
 
-  componentDidMount() {
-    localStorage.setItem(
-      "Authorization",
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6OH0.Ttvs-lhvzS1dS9UXidyU-Zc_wGJnd7SesJMPNszwF68"
-    );
-  }
-
   isChangeHeartColor = () => {
     const { isFullHeartBool } = this.state;
 
@@ -42,6 +35,9 @@ class Product extends Component {
         product_id: id,
         quantity: 1,
       }),
+      headers: {
+        Authorization: localStorage.getItem("user-token"),
+      },
     })
       .then((res) => res.json())
       .then((result) => console.log(result));

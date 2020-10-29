@@ -99,7 +99,10 @@ class ProductList extends Component {
     const res = await fetch(
       `${BEAPIROOT}/products?category=${categoryName[category]}&page=${num}`
     );
+    
     const { page_products } = await res.json();
+    // const json = await res.json();
+    //   console.log("json", json)
     this.setState(
       {
         allProducts: page_products,
@@ -121,7 +124,8 @@ class ProductList extends Component {
   };
 
   goToCartPage = () => {
-    this.props.history.push(`/cart`);
+    this.props.history.push(`/order`);
+
   };
 
   render() {
