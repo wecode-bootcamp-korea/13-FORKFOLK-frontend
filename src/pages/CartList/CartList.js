@@ -224,27 +224,13 @@ export default class CartList extends Component {
                       <th>Total</th>
                       <td>${subtotal + shipping}</td>
                     </tr>
-                  </tbody>
+                  </tbody>  
                 </table>
-                <div>
-                  <button onClick={this.goToCheckout}>
-                    PROCEED TO CHECKOUT
-                  </button>
-                </div>
               </div>
             </div>
           </div>
-          <div className="crossSells">
-            <h2>You may be interested in...</h2>
-            <ul>
-              <li>제품 출력 예정입니다.</li>
-              {/* {interestingProducts.map((product, i) => (
-                <Product key={i} product={product} />
-              ))} */}
-            </ul>
-          </div>
         </div>
       </div>
-    );
+    )    
   }
 }
