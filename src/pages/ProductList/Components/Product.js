@@ -61,7 +61,6 @@ class Product extends Component {
 
   render() {
     const { isFullHeartBool } = this.state;
-
     const {
       product,
       filterByCategory,
