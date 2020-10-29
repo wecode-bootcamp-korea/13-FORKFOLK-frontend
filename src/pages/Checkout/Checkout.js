@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import OrderInfoInput from "./components/OrderInfoInput";
 import Order from "./components/Order";
 import PaymentChoice from "./components/PaymentChoice";
-import FORM_INFO from "./CheckOutFormInfo";
+import FORM_INFO from "./CheckoutFormInfo";
 import { CHECKOUT_API } from "../../config";
 import "./Checkout.scss";
 
