@@ -43,12 +43,6 @@ class Stories extends Component {
         );
     }
   }
-
-  // pagination = (e) => {
-  //   const LIMIT = 7;
-  //   const offset = e.target.dataset.idx;
-  // };
-
   render() {
     const { mainItem, subItems, recycleItems } = this.state;
     const { category } = this.props.match.params;
@@ -103,8 +97,6 @@ class Stories extends Component {
             ))}
           </div>
         )}
-
-        <button className="pageBtn" onClick="pagination"></button>
       </div>
     );
   }
