@@ -10,6 +10,7 @@ class Checkout extends Component {
   constructor() {
     super();
     this.state = {
+      buttonValid: false,
       formInfo: [],
       name: "",
       address: "",
@@ -21,6 +22,9 @@ class Checkout extends Component {
     const { name, address, phone_number } = this.state;
     fetch(CHECKOUT_API, {
       method: "POST",
+      headers: new Headers({
+        Authorization: localStorage.getItem("user-token"),
+      }),
       body: JSON.stringify({
         name,
         address,
@@ -29,11 +33,23 @@ class Checkout extends Component {
     });
   };
 
+  buttonValidHandler = () => {
+    const { name, address, phone_number } = this.state;
+    name.length && address.length && phone_number.length
+      ? this.setState({ buttonValid: true })
+      : this.setState({ buttonValid: false });
+  };
+
   checkoutFormOnChangeHandler = (e) => {
     const { name, value } = e.target;
-    this.setState({
-      [name]: value,
-    });
+    this.setState(
+      {
+        [name]: value,
+      },
+      () => {
+        this.buttonValidHandler();
+      }
+    );
   };
 
   componentDidMount() {
@@ -41,6 +57,7 @@ class Checkout extends Component {
   }
 
   render() {
+    const { buttonValid, formInfo } = this.state;
     return (
       <div className="Checkout">
         <h3>Checkout</h3>
@@ -55,7 +72,7 @@ class Checkout extends Component {
             <h3>Billing Details</h3>
             <form className="infoForm">
               <ul>
-                {this.state.formInfo.map((form) => {
+                {formInfo.map((form) => {
                   return (
                     <OrderInfoInput
                       labelTitle={form.labelTitle}
@@ -75,7 +92,13 @@ class Checkout extends Component {
             <h3>Your Order</h3>
             <Order />
             <PaymentChoice />
-            <button onClick={() => this.clickCheckout()}>PLACE ORDER</button>
+            <button
+              className={buttonValid ? "enable" : "disable"}
+              onClick={() => this.clickCheckout()}
+              disabled={!buttonValid}
+            >
+              PLACE ORDER
+            </button>
           </div>
         </div>
       </div>

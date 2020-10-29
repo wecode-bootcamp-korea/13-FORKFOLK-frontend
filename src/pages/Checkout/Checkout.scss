@@ -53,12 +53,15 @@
         width: 440px;
         padding: 13px;
         border: 1px solid #000;
+        color: #000;
         font-size: 16px;
         font-weight: 500;
         transition: 0.25s ease;
-        &:hover {
-          background-color: #000;
-          color: #fff;
+        &.enable {
+          &:hover {
+            background-color: #000;
+            color: #fff;
+          }
         }
       }
     }
