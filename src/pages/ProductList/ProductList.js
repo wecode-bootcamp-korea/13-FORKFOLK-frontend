@@ -28,7 +28,6 @@ class ProductList extends Component {
       fetch(APIOfProductFilterList)
         .then((res) => res.json())
         .then((res) => {
-          console.log("api>>>>", res);
           this.setState({
             filterList: res.filterList,
           });
@@ -38,7 +37,6 @@ class ProductList extends Component {
       fetch(backendAPI)
         .then((res) => res.json())
         .then((res) => {
-          console.log("back>>>>", res);
           this.setState({
             allProducts: res.page_products,
             animationActive: false,
@@ -101,10 +99,10 @@ class ProductList extends Component {
     const res = await fetch(
       `${BEAPIROOT}/products?category=${categoryName[category]}&page=${num}`
     );
-    const { category_products } = await res.json();
+    const { page_products } = await res.json();
     this.setState(
       {
-        allProducts: category_products,
+        allProducts: page_products,
         isPageFooterVisible: false,
         currentCategory: category,
         animationActive: false,

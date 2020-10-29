@@ -18,6 +18,13 @@ class Product extends Component {
     };
   }
 
+  componentDidMount() {
+    localStorage.setItem(
+      "Authorization",
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6OH0.Ttvs-lhvzS1dS9UXidyU-Zc_wGJnd7SesJMPNszwF68"
+    );
+  }
+
   isChangeHeartColor = () => {
     const { isFullHeartBool } = this.state;
 
@@ -29,17 +36,16 @@ class Product extends Component {
   addToCart = (id, name, price) => {
     console.log(id, name, price, 1);
     // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다.
-    // fetch(`${BEAPIROOT}/`, {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     product_id: id,
-    //     name: name,
-    //     price: price,
-    //     quantity: 1,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((result) => console.log(result));
+    fetch(`${BEAPIROOT}/order`, {
+      method: "POST",
+      body: JSON.stringify({
+        status: "beforeOrder",
+        product_id: id,
+        quantity: 1,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => console.log(result));
   };
 
   setModalIsOpen = (bool) => {

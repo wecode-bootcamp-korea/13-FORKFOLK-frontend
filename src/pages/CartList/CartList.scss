@@ -1,6 +1,14 @@
 @import "../../styles/common.scss";
 
 .CartList {
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
   font-family: "Quicksand", serif, sans-serif;
 
   .container {

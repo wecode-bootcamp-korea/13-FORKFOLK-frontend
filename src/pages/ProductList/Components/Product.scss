@@ -1,13 +1,4 @@
 .Product {
-  @keyframes fadein {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
   float: left;
   width: 25%;
   padding: 0 1.25rem;
@@ -21,13 +12,9 @@
   .imageContainer {
     position: relative;
 
-    button:first-child {
-      padding: 0;
-
-      .productImage {
-        width: 100%;
-        height: 100%;
-      }
+    .productImage {
+      width: 100%;
+      height: 100%;
     }
 
     &:hover {
