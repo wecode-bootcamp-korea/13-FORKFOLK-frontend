@@ -130,12 +130,14 @@
                     }
                   }
                 }
+                td:first-child {
+                  width: 20%;
+                }
               }
               tr {
                 border-top: 1px solid black;
 
                 td {
-                  text-align: left;
                   vertical-align: middle;
 
                   select {

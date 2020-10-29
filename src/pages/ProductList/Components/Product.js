@@ -18,11 +18,9 @@ class Product extends Component {
     };
   }
 
-  isChangeHeartColor = () => {
-    const { isFullHeartBool } = this.state;
-
+  isChangeHeartColor = (bool) => {
     this.setState({
-      isFullHeartBool: isFullHeartBool ? !isFullHeartBool : isFullHeartBool,
+      isFullHeartBool: true ? bool : !bool,
     });
   };
 
@@ -63,7 +61,7 @@ class Product extends Component {
           >
             <img className="productImage" src={product.image} alt="상품 이미지" />
           </button>
-          <button className="heartIcon" onClick={this.isChangeHeartColor}>
+          <button className="heartIcon" onClick={() => this.isChangeHeartColor(!isFullHeartBool)}>
             {isFullHeartBool ? (
               <FaHeart className="fullHeart" />
             ) : (

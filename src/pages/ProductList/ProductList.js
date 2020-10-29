@@ -183,7 +183,7 @@ class ProductList extends Component {
               return (
                 <button
                   key={i}
-                  className={currentPage === num.pageNum ? "underlineActive" : null}
+                  className={currentPage === num.pageNum ? "underlineActive" : ""}
                   onClick={() => {
                     this.filterByCategory("ALL", num.pageNum);
                   }}

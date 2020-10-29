@@ -34,7 +34,7 @@ export default class CartList extends Component {
               .map((product) => {
                 return product.price * product.quantity;
               })
-              .reduce((a, b) => a + b),
+              .reduce((a, b) => a + b, 0),
           });
         })
         .catch((err) => console.log("err.message", err.message)),
@@ -75,7 +75,7 @@ export default class CartList extends Component {
             .map((product) => {
               return product.price * value;
             })
-            .reduce((a, b) => a + b),
+            .reduce((a, b) => a + b, 0),
         }));
       });
   };
@@ -99,7 +99,7 @@ export default class CartList extends Component {
             .map((product) => {
               return product.price * product.quantity;
             })
-            .reduce((a, b) => a + b),
+            .reduce((a, b) => a + b, 0),
         });
       });
   };
