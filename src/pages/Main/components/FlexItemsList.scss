@@ -1,0 +1,16 @@
+@import "../../../styles/common.scss";
+.FlexItemsList {
+  margin: 0 $standardSpace;
+  padding: 0 20px 150px;
+  text-align: center;
+  border-top: 1px solid #000;
+  &.ExtraordinaryInteriors {
+    border-top: none;
+  }
+  ul {
+    display: flex;
+    padding: 0 20px;
+    text-align: left;
+    justify-content: space-between;
+  }
+}

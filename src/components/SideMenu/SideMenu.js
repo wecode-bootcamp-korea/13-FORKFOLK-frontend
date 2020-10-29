@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import "./SideMenu.scss";
 
 class SideMenu extends Component {
+  goToAccount = () => {
+    this.props.history.push("/Account");
+  };
+
   render() {
     return (
       <div className={`SideMenu ${this.props.visible && "visible"}`}>
@@ -18,16 +22,16 @@ class SideMenu extends Component {
           <nav className="ebGaramond">
             <ul>
               <li>
-                <Link to="/">Design</Link>
+                <Link to="/stories/1">Design</Link>
               </li>
               <li>
-                <Link to="/">Fashion</Link>
+                <Link to="/stories/2">Fashion</Link>
               </li>
               <li>
-                <Link to="/">Interiors</Link>
+                <Link to="/stories/3">Interiors</Link>
               </li>
               <li>
-                <Link to="/">Arts &amp; Culture</Link>
+                <Link to="/stories/4">Arts &amp; Culture</Link>
               </li>
             </ul>
             <ul>
@@ -52,10 +56,10 @@ class SideMenu extends Component {
           </ul>
           <ul className="myPage">
             <li>
-              <button to="/Account">Log In / Register</button>
+              <button onClick={this.goToAccount}>Log In / Register</button>
             </li>
             <li>
-              <button to="/">Subscribe</button>
+              <button>Subscribe</button>
             </li>
           </ul>
         </div>
@@ -64,4 +68,4 @@ class SideMenu extends Component {
   }
 }
 
-export default SideMenu;
+export default withRouter(SideMenu);
