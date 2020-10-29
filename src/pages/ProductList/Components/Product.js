@@ -50,18 +50,13 @@ class Product extends Component {
         modalIsOpen: bool,
         setModalIsOpen: bool,
       },
-      console.log("prev setModal bool", this.state.setModalIsOpen)
+      console.log("prev setModal bool", this.state.setModalIsOpen),
     );
   };
 
   render() {
     const { isFullHeartBool } = this.state;
-    const {
-      product,
-      filterByCategory,
-      goToProductDetail,
-      goToCartPage,
-    } = this.props;
+    const { product, filterByCategory, goToProductDetail, goToCartPage } = this.props;
 
     return (
       <li id={product.id} className="Product">
@@ -71,11 +66,7 @@ class Product extends Component {
               goToProductDetail(product.id);
             }}
           >
-            <img
-              className="productImage"
-              src={product.image}
-              alt="상품 이미지"
-            />
+            <img className="productImage" src={product.image} alt="상품 이미지" />
           </button>
           <button className="heartIcon" onClick={this.isChangeHeartColor}>
             {isFullHeartBool ? (
@@ -118,9 +109,7 @@ class Product extends Component {
 
           <div>
             <button onClick={goToCartPage}>View Cart</button>
-            <button onClick={() => this.setModalIsOpen(false)}>
-              Stay on this Page
-            </button>
+            <button onClick={() => this.setModalIsOpen(false)}>Stay on this Page</button>
           </div>
         </ReactModal>
       </li>

@@ -17,19 +17,20 @@ export default class CartList extends Component {
       interestingProducts: [],
       subtotal: 0,
       shipping: 29,
-    }
+    };
   }
-
   componentDidMount() {
     Promise.all([
-      fetch(`${backendAPI}?status=beforeOrder`, {headers: {
-        Authorization: localStorage.getItem("user-token"),
-      },})
+      fetch(`${backendAPI}?status=beforeOrder`, {
+        headers: {
+          Authorization: localStorage.getItem("user-token"),
+        },
+      })
         .then((res) => res.json())
         .then((res) => {
           this.setState({
             cartProducts: res.in_cart_list,
-            
+
             subtotal: res.in_cart_list
               .map((product) => {
                 return product.price * product.quantity;
@@ -40,17 +41,16 @@ export default class CartList extends Component {
         .catch((err) => console.log("err.message", err.message)),
 
       fetch(APIOfCartList)
-        .then(res => res.json())
-        .then(res => {
-          console.log("cartlist res >>>", res)
+        .then((res) => res.json())
+        .then((res) => {
+          console.log("cartlist res >>>", res);
           this.setState({
             interestingProducts: res.interestingProducts,
           });
         })
-        .catch(err => console.log("err.message", err.message))
+        .catch((err) => console.log("err.message", err.message)),
     ]);
   }
-
 
   changeQuantity = (e, productId) => {
     const { value } = e.target;
@@ -61,37 +61,36 @@ export default class CartList extends Component {
       body: JSON.stringify({
         status: "beforeOrder",
         product_id: productId,
-        quantity: value
+        quantity: value,
       }),
       headers: {
         Authorization: localStorage.getItem("user-token"),
       },
     })
-    .then(res => res.json())
-    .then(res => {
-      this.setState((prevState) => ({
-        cartProducts: prevState.cartProducts.map((product) =>
-          product.id === productId ? { ...product, quantity: value } : product
-        ),
-        subtotal: cartProducts
-          .map((product) => {
-            return product.price * value;
-          })
-          .reduce((a, b) => a + b),
-      }))
-    })
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState((prevState) => ({
+          cartProducts: prevState.cartProducts.map((product) =>
+            product.id === productId ? { ...product, quantity: value } : product,
+          ),
+          subtotal: cartProducts
+            .map((product) => {
+              return product.price * value;
+            })
+            .reduce((a, b) => a + b),
+        }));
+      });
   };
-
   deleteProduct = (id, totalPrice) => {
-    console.log("delete 함수가 실행중입니다.")
-    console.log("id >>>", id)
+    console.log("delete 함수가 실행중입니다.");
+    console.log("id >>>", id);
     const { cartProducts } = this.state;
 
     fetch(backendAPI, {
       method: "DELETE",
       body: JSON.stringify({
         status: "beforeOrder",
-        product_id: id
+        product_id: id,
       }),
       headers: {
         Authorization: localStorage.getItem("user-token"),
@@ -102,28 +101,19 @@ export default class CartList extends Component {
         this.setState({
           cartProducts: res.remain_list,
           subtotal: cartProducts
-          .map((product) => {
-            return product.price * product.quantity;
-          })
-          .reduce((a, b) => a + b)
+            .map((product) => {
+              return product.price * product.quantity;
+            })
+            .reduce((a, b) => a + b),
         });
-    });
- 
+      });
   };
-
   goToCheckout = (e) => {
     e.preventDefault();
     this.props.history.push(`/checkout`);
   };
-
   render() {
-    const {
-      cartProducts,
-      interestingProducts,
-      subtotal,
-      shipping,
-    } = this.state;
-
+    const { cartProducts, interestingProducts, subtotal, shipping } = this.state;
     if (cartProducts.length === 0) {
       return (
         <div className="CartList">
@@ -131,15 +121,12 @@ export default class CartList extends Component {
             <div className="emptyModule">
               <h1>Cart</h1>
               <p>Your basket is currently empty.</p>
-              <button onClick={() => this.props.history.push(`/shop`)}>
-                Return to shop
-              </button>
+              <button onClick={() => this.props.history.push(`/shop`)}>Return to shop</button>
             </div>
           </div>
         </div>
       );
     }
-
     return (
       <div className="CartList">
         <div className="container">
@@ -181,11 +168,7 @@ export default class CartList extends Component {
                             type="text"
                             placeholder="Coupon code"
                           ></input>
-                          <input
-                            className="applyCoupon"
-                            type="submit"
-                            value="APPLY COUPON"
-                          ></input>
+                          <input className="applyCoupon" type="submit" value="APPLY COUPON"></input>
                         </div>
                         <div>
                           <input
@@ -214,9 +197,7 @@ export default class CartList extends Component {
                       <td>
                         <ul>
                           <li>${shipping}</li>
-                          <li>
-                            Shipping Options will be updated during checkout.
-                          </li>
+                          <li>Shipping Options will be updated during checkout.</li>
                         </ul>
                       </td>
                     </tr>
@@ -224,12 +205,10 @@ export default class CartList extends Component {
                       <th>Total</th>
                       <td>${subtotal + shipping}</td>
                     </tr>
-                  </tbody>  
+                  </tbody>
                 </table>
                 <div>
-                  <button onClick={this.goToCheckout}>
-                    PROCEED TO CHECKOUT
-                  </button>
+                  <button onClick={this.goToCheckout}>PROCEED TO CHECKOUT</button>
                 </div>
               </div>
             </div>
@@ -245,6 +224,6 @@ export default class CartList extends Component {
           </div>
         </div>
       </div>
-    )    
+    );
   }
 }

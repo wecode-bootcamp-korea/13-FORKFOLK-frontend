@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { TitleContents } from "../../config";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
+import { CONTENTS_API } from "../../config";
 import CoreContents from "../../components/CoreContents/CoreContents";
 import SubContents from "../../components/CoreContents/SubContents/SubContents";
 import "../Stories/Stories.scss";
@@ -17,29 +18,37 @@ class Stories extends Component {
   }
 7.71
   componentDidMount() {
+<<<<<<< HEAD
     fetch(`http://10.58.7.71:8000/stories/${this.props.match.params.category}`)
+=======
+    fetch(`${CONTENTS_API}${this.props.match.params.category}`)
+>>>>>>> main
       .then((Designdata) => Designdata.json())
       .then((Designdata) =>
         this.setState({
           mainItem: Designdata.story_list[0],
           subItems: Designdata.story_list.slice(1),
           recycleItems: Designdata.recycle_stories,
-        })
+        }),
       );
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.category !== this.props.match.params.category) {
+<<<<<<< HEAD
       fetch(
         `http://10.58.7.71:8000/stories/${this.props.match.params.category}`
       )
+=======
+      fetch(`http://10.58.2.235:8000/stories/${this.props.match.params.category}`)
+>>>>>>> main
         .then((Designdata) => Designdata.json())
         .then((Designdata) =>
           this.setState({
             mainItem: Designdata.story_list[0],
             subItems: Designdata.story_list.slice(1),
             recycleItems: Designdata.recycle_stories,
-          })
+          }),
         );
     }
   }
@@ -71,11 +80,7 @@ class Stories extends Component {
                 : this.props.history.push(`/stories/${+category + 1}`);
             }}
           >
-            <span>
-              {lastPage
-                ? TitleContents[0].nextBtn
-                : TitleContents[category - 1].nextBtn}
-            </span>
+            <span>{lastPage ? TitleContents[0].nextBtn : TitleContents[category - 1].nextBtn}</span>
             <VscChevronRight color="#D17D74" />
           </button>
         </div>

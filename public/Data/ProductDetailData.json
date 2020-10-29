@@ -1,23 +1,61 @@
 {
-    "product": 
-      {
-        "id": 0,
-        "productImg" : ["https://cdn.pixabay.com/photo/2020/08/19/00/13/sea-5499649__480.jpg",
-            "https://cdn.pixabay.com/photo/2020/10/03/08/38/fog-5622894__480.jpg",
-            "https://cdn.pixabay.com/photo/2020/10/18/11/01/deer-5664425__480.jpg",
-            "https://cdn.pixabay.com/photo/2020/10/18/06/52/roses-5663972__480.jpg"],
-        "productName": "Issue Thirty-Two",
-        "price": "18",
-        "descriptions": [
-         {
-            "kategory" : "DESCRIPTION",
-            "text" :"Meet Socrate, the beloved cat of Luc Braquet—the French photographer responsible for some of Kinfolk’s most glamourous fashion editorials including The Big Swing and Summer at Sea. Originally commissioned for Kinfolk’s Summer 2019 issue, the series Le Chat Chic saw Braquet and stylist Tania Rat-Patron try something a little different: They transformed Socrate into a Parisian glamour puss—and one of the magazine’s most popular models of all time. For The Kinfolk Print Collection, Socrate waves a classic Hermès silk scarf with carefree abandon. Fur coat: Model’s own."
-         },
-         {
-            "kategory" : "SHIPPING + HANDING",
-            "text" :"Meet Socrate, the beloved cat of Luc Braquet—the French photographer responsible for some of Kinfolk’s most glamourous fashion editorials including The Big Swing and Summer at Sea. Originally commissioned for Kinfolk’s Summer 2019 issue, the series Le Chat Chic saw Braquet and stylist Tania Rat-Patron try something a little different: They transformed Socrate into a Parisian glamour puss—and one of the magazine’s most popular models of all time. For The Kinfolk Print Collection, Socrate waves a classic Hermès silk scarf with carefree abandon. Fur coat: Model’s own."
-         }
-        ]
-      }
-    
+  "product_info": {
+  "id": 118,
+  "name": "President",
+  "price": "118.00",
+  "descriptions": {
+  "description": "Card partner participant without buy force.\nClearly might help financial common. Federal store start old hospital once. Those although important house.\nPm sound act produce PM respond term.",
+  "shipping": "Again actually whole natural go because. Raise peace important outside pattern more price poor. See detail culture system life.\nUp technology chair quality leader. Center themselves chance sell."
+  },
+  "shipping": "Again actually whole natural go because. Raise peace important outside pattern more price poor. See detail culture system life.\nUp technology chair quality leader. Center themselves chance sell.",
+  "image": [
+  "https://images.unsplash.com/photo-1587466317255-083616f2fcd5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+  "https://images.unsplash.com/photo-1544650039-22886fbb4323?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+  "https://images.unsplash.com/photo-1585059466160-5cd3af4c49d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+  ]
+  },
+  "related_product": [
+  {
+  "id": 116,
+  "name": "Career",
+  "image": "https://images.unsplash.com/photo-1587466317255-083616f2fcd5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+  "category": "subscriptions",
+  "price": "129.00"
+  },
+  {
+  "id": 113,
+  "name": "Finally",
+  "image": "https://images.unsplash.com/photo-1587466317255-083616f2fcd5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+  "category": "subscriptions",
+  "price": "109.00"
+  },
+  {
+  "id": 114,
+  "name": "Physical",
+  "image": "https://images.unsplash.com/photo-1587466317255-083616f2fcd5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+  "category": "subscriptions",
+  "price": "118.00"
+  },
+  {
+  "id": 115,
+  "name": "Reality",
+  "image": "https://images.unsplash.com/photo-1587466317255-083616f2fcd5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+  "category": "subscriptions",
+  "price": "109.00"
+  },
+  {
+  "id": 119,
+  "name": "History",
+  "image": "https://images.unsplash.com/photo-1587466317255-083616f2fcd5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+  "category": "subscriptions",
+  "price": "89.00"
+  },
+  {
+  "id": 117,
+  "name": "Choice",
+  "image": "https://images.unsplash.com/photo-1587466317255-083616f2fcd5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+  "category": "subscriptions",
+  "price": "89.00"
+  }
+  ]
   }

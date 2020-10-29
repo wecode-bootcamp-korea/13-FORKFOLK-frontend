@@ -1,44 +1,124 @@
-  .productThumbnail{
+.productThumbnail {
+  position: relative;
+  width: 750px;
+  height: 500px;
+  overflow: hidden;
+  margin-right: 40px;
+
+  .thumbnailContainer {
+    &:hover .enlarge {
+      opacity: 1;
+    }
+
+    .fadein {
+      animation: fadeIn 1s linear;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    button {
+      position: absolute;
+      padding: 0;
+    }
+
+    .productThumbnailLeftBtn,
+    .productThumbnailRightBtn {
+      top: 0;
+      width: 50%;
+      height: 100%;
+    }
+
+    .productThumbnailLeftBtn {
+      left: 0;
+      cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-left.svg"),
+        pointer;
+    }
+
+    .productThumbnailRightBtn {
+      right: 0;
+      cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-right.svg"),
+        pointer;
+    }
+
+    .enlarge {
+      right: 0;
+      bottom: 0;
+      width: 40px;
+      height: 40px;
+      color: white;
+      cursor: pointer;
+      background-color: rgba($color: #000000, $alpha: 0.3);
+      opacity: 0;
+      transition: 0.3s ease-in-out;
+
+      .FaExpand {
+        font-size: 30px;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .thumbnailModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+
+    header {
+      display: flex;
+      margin: 40px 60px 0 60px;
+      justify-content: space-between;
+
+      button {
+        cursor: pointer;
+        margin-left: auto;
+      }
+    }
+
+    section {
+      display: flex;
+      height: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      .LBtn,
+      .RBtn {
+        width: 40px;
+        height: 40px;
+        margin: 0 40px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+        }
+      }
+
+      .modalImgContainer {
         position: relative;
-        min-width: 750px;
-        min-height: 500px;
-        max-height: 500px;
-        margin-right: 40px;
+        width: 60%;
+        height: 70%;
+        padding: 0 auto;
+        overflow: hidden;
 
-        .fadein {
-            animation: fadeIn 1s linear;
-          }
-
-        button{
-            position: absolute;
-            top: 0;
-            width: 50%;
-            height: 100%;
-            padding: 0;
+        img {
+          width: 100%;
         }
-
-        .productThumbnailLeftBtn{
-            left: 0;
-            cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-left.svg"),pointer;
-        }
-        
-        .productThumbnailRightBtn{
-            right: 0;
-            cursor: url("https://24hkto1dz1v3ddyf93n0ye45-wpengine.netdna-ssl.com/wp-content/themes/kinfolk2020/assets/img/icons/svg/chevron-right.svg"),pointer;
-        }
+      }
     }
+  }
 
-    @keyframes fadeIn{
-        from{
-            opacity: 0;
-        }
-    
-        to{
-            opacity: 1;
-        }
-    }
+  .showing {
+    display: block;
+  }
+}
 
-    /* @keyframes fadeIn {
+@keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -47,8 +127,3 @@
     opacity: 1;
   }
 }
-
-.fadein {
-  animation: fadeIn 1s linear;
-} */
-
