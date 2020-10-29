@@ -50,7 +50,7 @@ class Product extends Component {
   render() {
     const { isFullHeartBool } = this.state;
     const {
-      product: { id, image, name, price, category, quantity },
+      product: { id, image, name, price, category },
       filterByCategory,
       goToProductDetail,
       goToCartPage,
