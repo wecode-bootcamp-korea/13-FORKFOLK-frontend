@@ -3,6 +3,8 @@ import Product from "./Components/Product";
 import "./ProductList.scss";
 import { JINAPIROOT, BEAPIROOT } from "../../config";
 
+const PAGENUMS = [{ pageNum: 1 }, { pageNum: 2 }, { pageNum: 3 }, { pageNum: 4 }];
+
 class ProductList extends Component {
   constructor() {
     super();
@@ -128,8 +130,6 @@ class ProductList extends Component {
       currentPage,
       animationActive,
     } = this.state;
-
-    const PAGENUMS = [{ pageNum: 1 }, { pageNum: 2 }, { pageNum: 3 }, { pageNum: 4 }];
 
     return (
       <div className="ProductList">
