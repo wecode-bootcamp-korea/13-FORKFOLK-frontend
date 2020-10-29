@@ -49,17 +49,22 @@ class Product extends Component {
 
   render() {
     const { isFullHeartBool } = this.state;
-    const { product, filterByCategory, goToProductDetail, goToCartPage } = this.props;
+    const {
+      product: { id, image, name, price, category, quantity },
+      filterByCategory,
+      goToProductDetail,
+      goToCartPage,
+    } = this.props;
 
     return (
-      <li id={product.id} className="Product">
+      <li id={id} className="Product">
         <div className="imageContainer">
           <button
             onClick={() => {
-              goToProductDetail(product.id);
+              goToProductDetail(id);
             }}
           >
-            <img className="productImage" src={product.image} alt="상품 이미지" />
+            <img className="productImage" src={image} alt="상품 이미지" />
           </button>
           <button className="heartIcon" onClick={() => this.isChangeHeartColor(!isFullHeartBool)}>
             {isFullHeartBool ? (
@@ -71,7 +76,7 @@ class Product extends Component {
           <button
             className="addToCart"
             onClick={() => {
-              this.addToCart(product.id, product.name, product.price);
+              this.addToCart(id, name, price);
               this.setModalIsOpen(true);
             }}
           >
@@ -80,13 +85,13 @@ class Product extends Component {
         </div>
         <button
           className="category"
-          onClick={() => filterByCategory(product.category, 1)}
-          category={product.category}
+          onClick={() => filterByCategory(category, 1)}
+          category={category}
         >
-          {product.category}
+          {category}
         </button>
-        <p>{product.name}</p>
-        <div>${product.price}</div>
+        <p>{name}</p>
+        <div>${price}</div>
         <ReactModal
           className="modalWindow"
           isOpen={this.state.modalIsOpen}
