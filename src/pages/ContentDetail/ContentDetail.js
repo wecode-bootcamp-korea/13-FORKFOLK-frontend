@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
+=======
 import { CONTENT_DETAIL_API } from "../../config";
+>>>>>>> main
 import "./ContentDetail.scss";
 
 class ContentDetail extends Component {
@@ -18,9 +21,17 @@ class ContentDetail extends Component {
   }
 
   componentDidMount() {
+<<<<<<< HEAD
+    console.log(`10.58.2.235:8000/stories/story/${this.props.match.params.id}`);
+    fetch(`http://10.58.2.235:8000/stories/story/${this.props.match.params.id}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.story_detail[0]);
+=======
     fetch(`${CONTENT_DETAIL_API}${this.props.match.params.id}`)
       .then((res) => res.json())
       .then((res) => {
+>>>>>>> main
         this.setState({ contentInfo: res.story_detail[0] });
       });
   }

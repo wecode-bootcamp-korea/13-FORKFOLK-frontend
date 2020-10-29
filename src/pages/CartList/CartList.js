@@ -5,7 +5,6 @@ import CartProduct from "../CartList/Components/CartProduct";
 import { JINAPIROOT } from "../../config";
 import { BEAPIROOT } from "../../config";
 import "./CartList.scss";
-
 export default class CartList extends Component {
   constructor() {
     super();
@@ -16,11 +15,9 @@ export default class CartList extends Component {
       shipping: 29,
     };
   }
-
   componentDidMount() {
     const APIOfCartList = `${JINAPIROOT}/Data/cartList.json`;
     const backendAPI = `${BEAPIROOT}/order`;
-
     Promise.all([
       fetch(backendAPI)
         .then((res) => res.json())
@@ -38,14 +35,12 @@ export default class CartList extends Component {
         .catch((err) => console.log("err.message", err.message)),
     ]);
   }
-
   changeQuantity = (e, productId) => {
     const { value } = e.target;
     const { cartProducts } = this.state;
-
     this.setState((prevState) => ({
       cartProducts: prevState.cartProducts.map((product) =>
-        product.id === productId ? { ...product, quantity: value } : product
+        product.id === productId ? { ...product, quantity: value } : product,
       ),
       subtotal: cartProducts
         .map((product) => {
@@ -53,7 +48,6 @@ export default class CartList extends Component {
         })
         .reduce((a, b) => a + b),
     }));
-
     // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다. (method: "PATCH" 로 변경 예정)
     // ==> current
     // fetch(APIROOT, {
@@ -78,17 +72,13 @@ export default class CartList extends Component {
     //     .then(result => console.log(result))
     // };
   };
-
   deleteProduct = (id, totalPrice) => {
     const { cartProducts, subtotal } = this.state;
-    const filteredCart = cartProducts.filter(
-      (product) => id !== Number(product.id)
-    );
+    const filteredCart = cartProducts.filter((product) => id !== Number(product.id));
     this.setState({
       cartProducts: filteredCart,
       subtotal: subtotal - totalPrice,
     });
-
     // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다. (method: "DELETE" 로 변경 예정)
     // ==> current
     // fetch(APIROOT, {
@@ -106,16 +96,13 @@ export default class CartList extends Component {
     //   .then((res) => res.json())
     //   .then((result) => console.log(result));
   };
-
   goToCheckout = (e) => {
     e.preventDefault();
     // fetch(`API/checkout`, {method: "GET"})
     //     .then(res => res.json())
     //     .then(result => console.log(result))
-
     this.props.history.push(`/checkout`);
   };
-
   render() {
     const {
       cartProducts,
@@ -123,7 +110,6 @@ export default class CartList extends Component {
       subtotal,
       shipping,
     } = this.state;
-
     if (cartProducts.length === 0) {
       return (
         <div className="CartList">
@@ -131,15 +117,12 @@ export default class CartList extends Component {
             <div className="emptyModule">
               <h1>Cart</h1>
               <p>Your basket is currently empty.</p>
-              <button onClick={() => this.props.history.push(`/shop`)}>
-                Return to shop
-              </button>
+              <button onClick={() => this.props.history.push(`/shop`)}>Return to shop</button>
             </div>
           </div>
         </div>
       );
     }
-
     return (
       <div className="CartList">
         <div className="container">
@@ -181,11 +164,7 @@ export default class CartList extends Component {
                             type="text"
                             placeholder="Coupon code"
                           ></input>
-                          <input
-                            className="applyCoupon"
-                            type="submit"
-                            value="APPLY COUPON"
-                          ></input>
+                          <input className="applyCoupon" type="submit" value="APPLY COUPON"></input>
                         </div>
                         <div>
                           <input
@@ -214,9 +193,7 @@ export default class CartList extends Component {
                       <td>
                         <ul>
                           <li>${shipping}</li>
-                          <li>
-                            Shipping Options will be updated during checkout.
-                          </li>
+                          <li>Shipping Options will be updated during checkout.</li>
                         </ul>
                       </td>
                     </tr>
@@ -227,9 +204,7 @@ export default class CartList extends Component {
                   </tbody>  
                 </table>
                 <div>
-                  <button onClick={this.goToCheckout}>
-                    PROCEED TO CHECKOUT
-                  </button>
+                  <button onClick={this.goToCheckout}>PROCEED TO CHECKOUT</button>
                 </div>
               </div>
             </div>
