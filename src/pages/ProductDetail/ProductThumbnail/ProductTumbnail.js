@@ -65,7 +65,7 @@ class Product extends Component {
               />
             </button>
             <div className="modalImgContainer">
-              <img src={productImg[productImgIdx]}></img>
+              <img alt="html" src={productImg[productImgIdx]}></img>
             </div>
             <button className="RBtn" name="R" onClick={this.changeproductImgIdx}>
               <img
