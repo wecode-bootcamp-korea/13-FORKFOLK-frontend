@@ -224,7 +224,7 @@ export default class CartList extends Component {
                       <th>Total</th>
                       <td>${subtotal + shipping}</td>
                     </tr>
-                  </tbody>
+                  </tbody>  
                 </table>
                 <div>
                   <button onClick={this.goToCheckout}>
@@ -245,6 +245,6 @@ export default class CartList extends Component {
           </div>
         </div>
       </div>
-    );
+    )    
   }
 }

@@ -35,7 +35,6 @@ class Product extends Component {
 
   addToCart = (id, name, price) => {
     console.log(id, name, price, 1);
-    // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다.
     fetch(`${BEAPIROOT}/order`, {
       method: "POST",
       body: JSON.stringify({
