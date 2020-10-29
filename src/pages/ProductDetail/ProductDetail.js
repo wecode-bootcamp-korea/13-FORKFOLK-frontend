@@ -29,6 +29,7 @@ class ProductDetail extends Component {
           shipping: "",
         },
       },
+      relatedProduct: [],
     };
   }
 
@@ -36,7 +37,7 @@ class ProductDetail extends Component {
     fetch(`${PRODUCT_DETAIL_API}${this.props.match.params.id}`)
       .then((res) => res.json())
       .then((res) => {
-        this.setState({ productInfo: res.product_info });
+        this.setState({ productInfo: res.product_info, relatedProduct: res.related_product });
       });
   }
 
@@ -47,6 +48,7 @@ class ProductDetail extends Component {
   render() {
     const {
       productInfo: { id, image, name, price, descriptions },
+      relatedProduct,
     } = this.state;
     return (
       <div className="productDetail">
@@ -75,9 +77,22 @@ class ProductDetail extends Component {
             <ProductCartMenu id={id} price={price} goToBasket={this.goToBasket} />
           </aside>
         </section>
+        <section className="relatedProductSection">
+          <header>Related products</header>
+          <div className="relatedProducts">
+            {relatedProduct.length &&
+              relatedProduct.map((el) => (
+                <div className="relatedProduct">
+                  <img alt="el.name" src={el.image} />
+                  <span className="relatedProductCategory">{el.category}</span>
+                  <span>{el.name}</span>
+                  <span>${el.price}</span>
+                </div>
+              ))}
+          </div>
+        </section>
       </div>
     );
   }
 }
-
 export default ProductDetail;
