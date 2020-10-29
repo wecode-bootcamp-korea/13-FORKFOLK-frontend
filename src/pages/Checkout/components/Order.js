@@ -25,7 +25,7 @@ class Order extends Component {
     fetch(`${ORDER_API}`)
       .then((res) => res.json())
       .then((res) =>
-        this.setState({ orderList: res.orderData }, () => {
+        this.setState({ orderList: res.cartData }, () => {
           this.getTotalAmount();
         })
       );

@@ -14,8 +14,13 @@ class Header extends Component {
       logoMarginTop: 300,
       logoScale: 7,
       isMain: true,
+      isLoggedIn: false,
     };
   }
+
+  isLoggedInHandler = (state) => {
+    this.setState({ isLoggedIn: state });
+  };
 
   goToMain = () => {
     this.props.history.push("/");
@@ -58,7 +63,6 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    this.shoppingListButtonValidHandler();
     if (this.props.location.pathname === "/") {
       this.setState({ logoScale: 7, logoMarginTop: 300 });
       window.addEventListener("scroll", this.logoScaleHandler, false);
@@ -66,9 +70,10 @@ class Header extends Component {
     if (this.props.location.pathname !== "/") {
       this.setState({ logoScale: 1, logoMarginTop: 0 });
     }
+    localStorage.getItem("user-token") && this.setState({ isLoggedIn: true });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevProps.location.pathname !== this.props.location.pathname) {
       window.removeEventListener("scroll", this.logoScaleHandler, false);
       if (this.props.location.pathname !== "/") {
@@ -86,16 +91,18 @@ class Header extends Component {
         });
         window.addEventListener("scroll", this.logoScaleHandler, false);
       }
+      localStorage.getItem("user-token") && this.setState({ isLoggedIn: true });
     }
   }
 
   render() {
     const {
       sideMenuVisible,
-      shoppingListValid,
+      isLoggedIn,
       logoScale,
       logoMarginTop,
     } = this.state;
+    console.log(this.state.isLoggedIn);
     return (
       <>
         <div className="Header">
@@ -121,7 +128,7 @@ class Header extends Component {
               <img src={logo} alt="logo" onClick={() => this.goToMain()} />
             </div>
             <ul>
-              {shoppingListValid && (
+              {isLoggedIn && (
                 <li>
                   <button onClick={() => this.goToShoppingList()}>
                     <FaShoppingCart />
@@ -149,6 +156,8 @@ class Header extends Component {
         <SideMenu
           visible={sideMenuVisible}
           sideMenuVisibilityHandler={() => this.sideMenuVisibilityHandler()}
+          isLoggedInHandler={() => this.isLoggedInHandler()}
+          isLoggedIn={isLoggedIn}
         />
       </>
     );

@@ -4,11 +4,31 @@ import { Link, withRouter } from "react-router-dom";
 import "./SideMenu.scss";
 
 class SideMenu extends Component {
-  goToAccount = () => {
-    this.props.history.push("/Account");
+  goToAccountOrLogout = () => {
+    if (!localStorage.getItem("user-token")) {
+      this.props.history.push("/Account");
+      return;
+    }
+    localStorage.removeItem("user-token");
+    this.props.isLoggedInHandler(false);
+    this.props.history.push("/");
   };
 
+  isLoggedIn = () => {
+    if (localStorage.getItem("user-token")) {
+      this.props.isLoggedInHandler(true);
+    }
+  };
+
+  componentDidMount() {
+    if (localStorage.getItem("user-token")) {
+      this.props.isLoggedInHandler(true);
+    }
+  }
+
   render() {
+    const { isLoggedIn } = this.props;
+
     return (
       <div className={`SideMenu ${this.props.visible && "visible"}`}>
         <div className="wrapper">
@@ -56,7 +76,9 @@ class SideMenu extends Component {
           </ul>
           <ul className="myPage">
             <li>
-              <button onClick={this.goToAccount}>Log In / Register</button>
+              <button onClick={this.goToAccountOrLogout}>
+                {!isLoggedIn ? "Log In / Register" : "Log Out"}
+              </button>
             </li>
             <li>
               <button>Subscribe</button>

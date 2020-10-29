@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./PaymentChoice.scss";
 
-import VISALOGO from "../images/visa_logo.png";
-import AMERICANLOGO from "../images/amercan_logo.png";
-import MASTERLOGO from "../images/master_logo.png";
-import DISCOVERLOGO from "../images/discover_logo.png";
-import JCBLOGO from "../images/jcb_logo.png";
-import DINERSLOGO from "../images/diners_logo.png";
-import PAYPALLOGO from "../images/paypal_logo.png";
+import VISALOGO from "../Images/visa_logo.png";
+import AMERICANLOGO from "../Images/american_logo.png";
+import MASTERLOGO from "../Images/master_logo.png";
+import DISCOVERLOGO from "../Images/discover_logo.png";
+import JCBLOGO from "../Images/jcb_logo.png";
+import DINERSLOGO from "../Images/diners_logo.png";
+import PAYPALLOGO from "../Images/paypal_logo.png";
 
 class PaymentChoice extends Component {
   constructor() {
