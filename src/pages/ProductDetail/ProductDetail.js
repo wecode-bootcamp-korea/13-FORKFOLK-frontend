@@ -33,35 +33,30 @@ class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/Data/ProductDetailData.json", {})
+    fetch(`${PRODUCT_DETAIL_API}${this.props.match.params.id}`)
       .then((res) => res.json())
       .then((res) => {
-        this.setState({
-          productInfo: res.product_info,
-        });
+        this.setState({ productInfo: res.product_info });
       });
   }
 
-  // componentDidMount() {
-  //   fetch(`${PRODUCT_DETAIL_API}${this.props.match.params.id}`, {})
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       this.setState({ productInfo: res.product_info });
-  //     });
-  // }
+  goToBasket = () => {
+    this.props.history.push(`/cart/`);
+  };
 
   render() {
     const {
       productInfo: { id, image, name, price, descriptions },
     } = this.state;
-    console.log(image);
     return (
       <div className="productDetail">
         <header>
           <ul>
             {HEADER_CATEGORYS.map((headerCategory) => (
               <li>
-                <button>{headerCategory}</button>
+                <button name={headerCategory} onClick={this.goToShop}>
+                  {headerCategory}
+                </button>
               </li>
             ))}
           </ul>
@@ -77,7 +72,11 @@ class ProductDetail extends Component {
               price={price}
               descriptions={descriptions}
             />
-            <ProductCartMenu id={id} price={price} />
+            <ProductCartMenu
+              id={id}
+              price={price}
+              goToBasket={this.goToBasket}
+            />
           </aside>
         </section>
       </div>

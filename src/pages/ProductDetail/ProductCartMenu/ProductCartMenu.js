@@ -25,22 +25,25 @@ class ProductCartMenu extends Component {
   };
 
   moveToBasket = () => {
-    const { id, countProduct, clientToken } = this.props;
-    fetch(BASKET_API, {
-      method: "POST",
-      body: JSON.stringify({
-        product_id: id,
-        quantity: countProduct,
-      }),
-      headers: {
-        Authorization: clientToken,
-      },
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        this.props.history.push(`/cart/`);
-      });
+    const { id } = this.props;
+    const { countProduct } = this.state;
+    countProduct
+      ? fetch(BASKET_API, {
+          method: "POST",
+          body: JSON.stringify({
+            status: "beforeOrder",
+            product_id: id,
+            quantity: countProduct,
+          }),
+          headers: {
+            Authorization: localStorage.getItem("user-token"),
+          },
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            this.props.goToBasket();
+          })
+      : window.alert("수량을 확인해 주세요");
   };
 
   render() {
@@ -60,7 +63,7 @@ class ProductCartMenu extends Component {
           <span>Total Price</span>
           <span>${totalPrice}</span>
         </div>
-        <div className="cartContainer" onClick="">
+        <div className="cartContainer" onClick={this.moveToBasket}>
           Add to basket
         </div>
       </div>

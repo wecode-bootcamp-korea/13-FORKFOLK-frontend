@@ -17,6 +17,7 @@
 
     button {
       font-size: 25px;
+
       cursor: pointer;
     }
   }
@@ -31,6 +32,7 @@
 
   .cartContainer {
     border: 0.1px solid black;
+    cursor: pointer;
     justify-content: center;
   }
 }

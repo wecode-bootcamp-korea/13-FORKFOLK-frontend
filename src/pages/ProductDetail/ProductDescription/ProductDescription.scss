@@ -17,25 +17,6 @@
     margin-bottom: 30px;
   }
 
-  div {
-    height: 0px;
-    font-size: 18px;
-    font-family: "EB Garamond";
-    overflow: hidden;
-    line-height: 24px;
-    text-overflow: ellipsis;
-    border-bottom: 0.1 solid black;
-    transition: 0.3s ease-in-out;
-  }
-
-  .openDecription {
-    height: 100px;
-  }
-
-  .closeDecription {
-    height: 0px;
-  }
-
   button {
     display: flex;
     width: 100%;
@@ -49,7 +30,27 @@
     align-items: center;
 
     span {
+      font-size: 20px;
       pointer-events: none;
     }
+  }
+
+  div {
+    height: 0px;
+    font-size: 20px;
+    font-family: "EB Garamond";
+    overflow: hidden;
+    line-height: 24px;
+    text-overflow: ellipsis;
+    border-bottom: 0.1 solid black;
+    transition: 0.3s ease-in-out;
+  }
+
+  .openDecription {
+    height: 120px;
+  }
+
+  .closeDecription {
+    height: 0px;
   }
 }

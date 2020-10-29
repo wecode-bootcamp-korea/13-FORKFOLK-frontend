@@ -6,7 +6,7 @@ class Product extends Component {
   constructor() {
     super();
     this.state = {
-      productImgIdx: 1,
+      productImgIdx: 0,
       visible: false,
     };
   }
