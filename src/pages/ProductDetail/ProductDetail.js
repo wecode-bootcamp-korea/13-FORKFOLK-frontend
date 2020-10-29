@@ -42,7 +42,7 @@ class ProductDetail extends Component {
   }
 
   goToBasket = () => {
-    this.props.history.push(`/cart/`);
+    this.props.history.push(`/order`);
   };
 
   render() {

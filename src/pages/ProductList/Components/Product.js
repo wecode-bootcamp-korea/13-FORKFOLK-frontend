@@ -18,13 +18,6 @@ class Product extends Component {
     };
   }
 
-  componentDidMount() {
-    localStorage.setItem(
-      "Authorization",
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6OH0.Ttvs-lhvzS1dS9UXidyU-Zc_wGJnd7SesJMPNszwF68"
-    );
-  }
-
   isChangeHeartColor = () => {
     const { isFullHeartBool } = this.state;
 
@@ -34,7 +27,6 @@ class Product extends Component {
   };
 
   addToCart = (id, name, price) => {
-    console.log(id, name, price, 1);
     fetch(`${BEAPIROOT}/order`, {
       method: "POST",
       body: JSON.stringify({
@@ -42,30 +34,24 @@ class Product extends Component {
         product_id: id,
         quantity: 1,
       }),
+      headers: {
+        Authorization: localStorage.getItem("user-token"),
+      },
     })
       .then((res) => res.json())
       .then((result) => console.log(result));
   };
 
   setModalIsOpen = (bool) => {
-    console.log("setModalIsOpen is changed to ", bool);
-    this.setState(
-      {
-        modalIsOpen: bool,
-        setModalIsOpen: bool,
-      },
-      console.log("prev setModal bool", this.state.setModalIsOpen)
-    );
+    this.setState({
+      modalIsOpen: bool,
+      setModalIsOpen: bool,
+    });
   };
 
   render() {
     const { isFullHeartBool } = this.state;
-    const {
-      product,
-      filterByCategory,
-      goToProductDetail,
-      goToCartPage,
-    } = this.props;
+    const { product, filterByCategory, goToProductDetail, goToCartPage } = this.props;
 
     return (
       <li id={product.id} className="Product">
@@ -75,11 +61,7 @@ class Product extends Component {
               goToProductDetail(product.id);
             }}
           >
-            <img
-              className="productImage"
-              src={product.image}
-              alt="상품 이미지"
-            />
+            <img className="productImage" src={product.image} alt="상품 이미지" />
           </button>
           <button className="heartIcon" onClick={this.isChangeHeartColor}>
             {isFullHeartBool ? (
@@ -122,9 +104,7 @@ class Product extends Component {
 
           <div>
             <button onClick={goToCartPage}>View Cart</button>
-            <button onClick={() => this.setModalIsOpen(false)}>
-              Stay on this Page
-            </button>
+            <button onClick={() => this.setModalIsOpen(false)}>Stay on this Page</button>
           </div>
         </ReactModal>
       </li>

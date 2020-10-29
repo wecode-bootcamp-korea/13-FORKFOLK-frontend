@@ -2,30 +2,35 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Product from "../ProductList/Components/Product";
 import CartProduct from "../CartList/Components/CartProduct";
-import { JINAPIROOT } from "../../config";
-import { BEAPIROOT } from "../../config";
+import { JINAPIROOT, BEAPIROOT } from "../../config";
 import "./CartList.scss";
+
+const backendAPI = `${BEAPIROOT}/order`;
+const APIOfCartList = `${JINAPIROOT}/Data/cartList.json`;
+
 export default class CartList extends Component {
   constructor() {
     super();
     this.state = {
       cartProducts: [],
-      // interestingProducts: [],
+      interestingProducts: [],
       subtotal: 0,
       shipping: 29,
     };
   }
+
   componentDidMount() {
-    const APIOfCartList = `${JINAPIROOT}/Data/cartList.json`;
-    const backendAPI = `${BEAPIROOT}/order`;
     Promise.all([
-      fetch(backendAPI)
+      fetch(`${backendAPI}?status=beforeOrder`, {
+        headers: {
+          Authorization: localStorage.getItem("user-token"),
+        },
+      })
         .then((res) => res.json())
         .then((res) => {
           this.setState({
-            cartProducts: res.cartData,
-            // interestingProducts: res.interestingProducts,
-            subtotal: res.cartData
+            cartProducts: res.in_cart_list,
+            subtotal: res.in_cart_list
               .map((product) => {
                 return product.price * product.quantity;
               })
@@ -33,83 +38,79 @@ export default class CartList extends Component {
           });
         })
         .catch((err) => console.log("err.message", err.message)),
+
+      fetch(APIOfCartList)
+        .then((res) => res.json())
+        .then((res) => {
+          this.setState({
+            interestingProducts: res.interestingProducts,
+          });
+        })
+        .catch((err) => console.log("err.message", err.message)),
     ]);
   }
+
   changeQuantity = (e, productId) => {
     const { value } = e.target;
     const { cartProducts } = this.state;
-    this.setState((prevState) => ({
-      cartProducts: prevState.cartProducts.map((product) =>
-        product.id === productId ? { ...product, quantity: value } : product,
-      ),
-      subtotal: cartProducts
-        .map((product) => {
-          return product.price * value;
-        })
-        .reduce((a, b) => a + b),
-    }));
-    // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다. (method: "PATCH" 로 변경 예정)
-    // ==> current
-    // fetch(APIROOT, {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //         product_id: id,
-    //         name: name,
-    //         price: price,
-    //         quantity: value
-    //     })
-    // })
-    //     .then(res => res.json())
-    //     .then(result => console.log(result))
-    // ==> changeTo
-    // fetch(`APIROOT/${id}`, {
-    //     method: "PATCH",
-    //     body: JSON.stringify({
-    //         quantity: value
-    //     })
-    // })
-    //     .then(res => res.json())
-    //     .then(result => console.log(result))
-    // };
+
+    fetch(backendAPI, {
+      method: "POST",
+      body: JSON.stringify({
+        status: "beforeOrder",
+        product_id: productId,
+        quantity: value,
+      }),
+      headers: {
+        Authorization: localStorage.getItem("user-token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState((prevState) => ({
+          cartProducts: prevState.cartProducts.map((product) =>
+            product.id === productId ? { ...product, quantity: value } : product,
+          ),
+          subtotal: cartProducts
+            .map((product) => {
+              return product.price * value;
+            })
+            .reduce((a, b) => a + b),
+        }));
+      });
   };
+
   deleteProduct = (id, totalPrice) => {
-    const { cartProducts, subtotal } = this.state;
-    const filteredCart = cartProducts.filter((product) => id !== Number(product.id));
-    this.setState({
-      cartProducts: filteredCart,
-      subtotal: subtotal - totalPrice,
-    });
-    // 10/28 수요일에 백엔드와 맞춰본 후 주석 해제할 예정입니다. (method: "DELETE" 로 변경 예정)
-    // ==> current
-    // fetch(APIROOT, {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //         removed_product: id,
-    //     })
-    // })
-    //     .then(res => res.json())
-    //     .then(result => console.log(result))
-    // ==> changeTo
-    // fetch(`APIROOT/${id}`, {
-    //   method: "DELETE",
-    // })
-    //   .then((res) => res.json())
-    //   .then((result) => console.log(result));
+    fetch(backendAPI, {
+      method: "DELETE",
+      body: JSON.stringify({
+        status: "beforeOrder",
+        product_id: id,
+      }),
+      headers: {
+        Authorization: localStorage.getItem("user-token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+          cartProducts: res.remain_list,
+          subtotal: res.remain_list
+            .map((product) => {
+              return product.price * product.quantity;
+            })
+            .reduce((a, b) => a + b),
+        });
+      });
   };
+
   goToCheckout = (e) => {
     e.preventDefault();
-    // fetch(`API/checkout`, {method: "GET"})
-    //     .then(res => res.json())
-    //     .then(result => console.log(result))
     this.props.history.push(`/checkout`);
   };
+
   render() {
-    const {
-      cartProducts,
-      // interestingProducts,
-      subtotal,
-      shipping,
-    } = this.state;
+    const { cartProducts, interestingProducts, subtotal, shipping } = this.state;
     if (cartProducts.length === 0) {
       return (
         <div className="CartList">
@@ -201,7 +202,7 @@ export default class CartList extends Component {
                       <th>Total</th>
                       <td>${subtotal + shipping}</td>
                     </tr>
-                  </tbody>  
+                  </tbody>
                 </table>
                 <div>
                   <button onClick={this.goToCheckout}>PROCEED TO CHECKOUT</button>
@@ -212,14 +213,13 @@ export default class CartList extends Component {
           <div className="crossSells">
             <h2>You may be interested in...</h2>
             <ul>
-              <li>제품 출력 예정입니다.</li>
-              {/* {interestingProducts.map((product, i) => (
+              {interestingProducts.map((product, i) => (
                 <Product key={i} product={product} />
-              ))} */}
+              ))}
             </ul>
           </div>
         </div>
       </div>
-    )    
+    );
   }
 }

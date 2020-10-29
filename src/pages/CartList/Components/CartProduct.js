@@ -24,10 +24,7 @@ export default class CartProduct extends Component {
         <td>{product.name}</td>
         <td>${product.price}</td>
         <td>
-          <select
-            value={product.quantity}
-            onChange={(e) => changeQuantity(e, product.id)}
-          >
+          <select value={product.quantity} onChange={(e) => changeQuantity(e, product.id)}>
             {OPTIONVALUE.map((eachOption, i) => {
               return (
                 <option key={i} value={eachOption.value}>
@@ -42,9 +39,7 @@ export default class CartProduct extends Component {
           <button className="delBtn">
             <FaRegTimesCircle
               className="delIcon"
-              onClick={() =>
-                deleteProduct(product.id, product.price * product.quantity)
-              }
+              onClick={() => deleteProduct(product.id, product.price * product.quantity)}
             />
           </button>
         </td>
