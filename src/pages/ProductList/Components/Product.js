@@ -21,7 +21,7 @@ class Product extends Component {
   componentDidMount() {
     localStorage.setItem(
       "Authorization",
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6OH0.Ttvs-lhvzS1dS9UXidyU-Zc_wGJnd7SesJMPNszwF68"
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6OH0.Ttvs-lhvzS1dS9UXidyU-Zc_wGJnd7SesJMPNszwF68",
     );
   }
 
@@ -37,6 +37,9 @@ class Product extends Component {
     console.log(id, name, price, 1);
     fetch(`${BEAPIROOT}/order`, {
       method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("user-token"),
+      },
       body: JSON.stringify({
         status: "beforeOrder",
         product_id: id,
@@ -44,7 +47,7 @@ class Product extends Component {
       }),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then((result) => console.log("addToCart: ", result));
   };
 
   setModalIsOpen = (bool) => {
@@ -54,18 +57,13 @@ class Product extends Component {
         modalIsOpen: bool,
         setModalIsOpen: bool,
       },
-      console.log("prev setModal bool", this.state.setModalIsOpen)
+      console.log("prev setModal bool", this.state.setModalIsOpen),
     );
   };
 
   render() {
     const { isFullHeartBool } = this.state;
-    const {
-      product,
-      filterByCategory,
-      goToProductDetail,
-      goToCartPage,
-    } = this.props;
+    const { product, filterByCategory, goToProductDetail, goToCartPage } = this.props;
 
     return (
       <li id={product.id} className="Product">
@@ -75,11 +73,7 @@ class Product extends Component {
               goToProductDetail(product.id);
             }}
           >
-            <img
-              className="productImage"
-              src={product.image}
-              alt="상품 이미지"
-            />
+            <img className="productImage" src={product.image} alt="상품 이미지" />
           </button>
           <button className="heartIcon" onClick={this.isChangeHeartColor}>
             {isFullHeartBool ? (
@@ -122,9 +116,7 @@ class Product extends Component {
 
           <div>
             <button onClick={goToCartPage}>View Cart</button>
-            <button onClick={() => this.setModalIsOpen(false)}>
-              Stay on this Page
-            </button>
+            <button onClick={() => this.setModalIsOpen(false)}>Stay on this Page</button>
           </div>
         </ReactModal>
       </li>

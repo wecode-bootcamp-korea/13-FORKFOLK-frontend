@@ -28,7 +28,7 @@ class Header extends Component {
   };
 
   goToShoppingList = () => {
-    this.props.history.push("/cart");
+    this.props.history.push("/order");
   };
 
   sideMenuVisibilityHandler = () => {
@@ -37,8 +37,7 @@ class Header extends Component {
   };
 
   shoppingListButtonValidHandler = () => {
-    localStorage.getItem("user-token") &&
-      this.setState({ shoppingListValid: true });
+    localStorage.getItem("user-token") && this.setState({ shoppingListValid: true });
   };
 
   logoScaleHandler = () => {
@@ -102,12 +101,7 @@ class Header extends Component {
   }
 
   render() {
-    const {
-      sideMenuVisible,
-      isLoggedIn,
-      logoScale,
-      logoMarginTop,
-    } = this.state;
+    const { sideMenuVisible, isLoggedIn, logoScale, logoMarginTop } = this.state;
     return (
       <>
         <div className="Header">
@@ -146,10 +140,7 @@ class Header extends Component {
                 </button>
               </li>
               <li>
-                <button
-                  className="sideMenuButton"
-                  onClick={() => this.sideMenuVisibilityHandler()}
-                >
+                <button className="sideMenuButton" onClick={() => this.sideMenuVisibilityHandler()}>
                   <span></span>
                   <span></span>
                   <span></span>

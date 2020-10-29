@@ -29,10 +29,9 @@ class Order extends Component {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-        // this.setState({ orderList: res.cartData }, () => {
-        //   this.getTotalAmount();
-        // });
+        this.setState({ orderList: res["checkout list"] }, () => {
+          this.getTotalAmount();
+        });
       });
   }
 

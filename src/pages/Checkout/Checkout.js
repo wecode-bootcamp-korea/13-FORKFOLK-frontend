@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import OrderInfoInput from "./components/OrderInfoInput";
 import Order from "./components/Order";
 import PaymentChoice from "./components/PaymentChoice";
@@ -20,17 +21,28 @@ class Checkout extends Component {
 
   clickCheckout = () => {
     const { name, address, phone_number } = this.state;
-    fetch(CHECKOUT_API, {
+    fetch(`${CHECKOUT_API}/checkout`, {
       method: "POST",
-      headers: new Headers({
+      headers: {
         Authorization: localStorage.getItem("user-token"),
-      }),
+      },
       body: JSON.stringify({
         name,
         address,
         phone_number,
       }),
-    });
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        if (res.message == "SUCCESS") {
+          this.history.push("/");
+          alert("주문이 완료되었습니다.");
+        }
+      })
+      .catch((res) => {
+        alert(`${res.message}!`);
+      });
   };
 
   buttonValidHandler = () => {
@@ -48,7 +60,7 @@ class Checkout extends Component {
       },
       () => {
         this.buttonValidHandler();
-      }
+      },
     );
   };
 
@@ -77,9 +89,7 @@ class Checkout extends Component {
                     <OrderInfoInput
                       key={form.id}
                       labelTitle={form.labelTitle}
-                      checkoutFormOnChangeHandler={
-                        this.checkoutFormOnChangeHandler
-                      }
+                      checkoutFormOnChangeHandler={this.checkoutFormOnChangeHandler}
                       inputName={form.inputName}
                       placeholder={form.placeHolder}
                       inputValue={this.state[form.inputName]}
@@ -107,4 +117,4 @@ class Checkout extends Component {
   }
 }
 
-export default Checkout;
+export default withRouter(Checkout);

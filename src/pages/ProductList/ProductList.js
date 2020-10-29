@@ -75,7 +75,7 @@ class ProductList extends Component {
 
     if (category === "ALL") {
       const res = await fetch(
-        `${BEAPIROOT}/products?category=${categoryName[category]}&page=${num}`
+        `${BEAPIROOT}/products?category=${categoryName[category]}&page=${num}`,
       );
       const { page_products } = await res.json();
 
@@ -88,17 +88,13 @@ class ProductList extends Component {
           animationActive: false,
         },
         () => {
-          this.props.history.push(
-            `/products?category=${categoryName[category]}&page=${num}`
-          );
-        }
+          this.props.history.push(`/products?category=${categoryName[category]}&page=${num}`);
+        },
       );
       return;
     }
 
-    const res = await fetch(
-      `${BEAPIROOT}/products?category=${categoryName[category]}&page=${num}`
-    );
+    const res = await fetch(`${BEAPIROOT}/products?category=${categoryName[category]}&page=${num}`);
     const { page_products } = await res.json();
     this.setState(
       {
@@ -108,10 +104,8 @@ class ProductList extends Component {
         animationActive: false,
       },
       () => {
-        this.props.history.push(
-          `/products?category=${categoryName[category]}&page=${num}`
-        );
-      }
+        this.props.history.push(`/products?category=${categoryName[category]}&page=${num}`);
+      },
     );
     return;
   };
@@ -121,7 +115,7 @@ class ProductList extends Component {
   };
 
   goToCartPage = () => {
-    this.props.history.push(`/cart`);
+    this.props.history.push(`/order`);
   };
 
   render() {
@@ -136,12 +130,7 @@ class ProductList extends Component {
       animationActive,
     } = this.state;
 
-    const PAGENUMS = [
-      { pageNum: 1 },
-      { pageNum: 2 },
-      { pageNum: 3 },
-      { pageNum: 4 },
-    ];
+    const PAGENUMS = [{ pageNum: 1 }, { pageNum: 2 }, { pageNum: 3 }, { pageNum: 4 }];
 
     return (
       <div className="ProductList">
@@ -151,14 +140,10 @@ class ProductList extends Component {
             {filterList.map((list) => {
               return (
                 <li
-                  className={
-                    currentCategory === list.category ? "underlineActive" : null
-                  }
+                  className={currentCategory === list.category ? "underlineActive" : null}
                   key={list.id}
                 >
-                  <button
-                    onClick={() => this.filterByCategory(list.category, 1)}
-                  >
+                  <button onClick={() => this.filterByCategory(list.category, 1)}>
                     {list.category}
                   </button>
                 </li>
@@ -185,9 +170,7 @@ class ProductList extends Component {
             </ul>
           </content>
         </div>
-        <div
-          className={isPageFooterVisible ? "pageFooter" : "invisiblePageFooter"}
-        >
+        <div className={isPageFooterVisible ? "pageFooter" : "invisiblePageFooter"}>
           <span>
             <button
               className={isPrevBtnVisible ? "" : "invisible"}
@@ -201,9 +184,7 @@ class ProductList extends Component {
               return (
                 <button
                   key={i}
-                  className={
-                    currentPage === num.pageNum ? "underlineActive" : null
-                  }
+                  className={currentPage === num.pageNum ? "underlineActive" : null}
                   onClick={() => {
                     this.filterByCategory("ALL", num.pageNum);
                   }}
