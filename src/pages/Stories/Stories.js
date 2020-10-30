@@ -31,7 +31,7 @@ class Stories extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.category !== this.props.match.params.category) {
-      fetch(`http://10.58.2.235:8000/stories/${this.props.match.params.category}`)
+      fetch(`${CONTENTS_API}${this.props.match.params.category}`)
         .then((Designdata) => Designdata.json())
         .then((Designdata) =>
           this.setState({
