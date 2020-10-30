@@ -7,6 +7,7 @@ import ContentDetail from "./pages/ContentDetail/ContentDetail";
 import ProductList from "./pages/ProductList/ProductList";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import CartList from "./pages/CartList/CartList";
+import Checkout from "./pages/Checkout/Checkout";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
@@ -25,8 +26,9 @@ class Routes extends React.Component {
           <Route exact path="/shop/" component={ProductList} />
           <Route exact path="/product-category/:category" component={ProductList} />
           <Route exact path="/shop/:id" component={ProductDetail} />
+          <Route exact path="/order" component={CartList} />
+          <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/products" component={ProductList} />
-          <Route exact path="/cart/" component={CartList} />
         </Switch>
         <Route component={Footer} />
       </Router>

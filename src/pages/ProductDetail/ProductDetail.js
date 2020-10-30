@@ -42,7 +42,7 @@ class ProductDetail extends Component {
   }
 
   goToBasket = () => {
-    this.props.history.push(`/cart/`);
+    this.props.history.push(`/order`);
   };
 
   render() {
@@ -81,9 +81,9 @@ class ProductDetail extends Component {
           <header>Related products</header>
           <div className="relatedProducts">
             {relatedProduct.length &&
-              relatedProduct.map((el) => (
+              relatedProduct.map((el, idx) => (
                 <div className="relatedProduct">
-                  <img alt="el.name" src={el.image} />
+                  <img alt="el.name" src={el.image[idx]} />
                   <span className="relatedProductCategory">{el.category}</span>
                   <span>{el.name}</span>
                   <span>${el.price}</span>
