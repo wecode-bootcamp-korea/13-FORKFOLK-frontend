@@ -14,6 +14,7 @@ class ContentDetail extends Component {
         issue: "",
         image_list: [],
       },
+      relatedContent: [],
     };
   }
 
@@ -21,13 +22,14 @@ class ContentDetail extends Component {
     fetch(`${CONTENT_DETAIL_API}${this.props.match.params.id}`)
       .then((res) => res.json())
       .then((res) => {
-        this.setState({ contentInfo: res.story_detail[0] });
+        this.setState({ contentInfo: res.story_detail[0], relatedContent: res.related_stories });
       });
   }
 
   render() {
     const {
       contentInfo: { title, content, description, issue, image_list },
+      relatedContent,
     } = this.state;
     return (
       <main className="contentDetail">
@@ -48,6 +50,22 @@ class ContentDetail extends Component {
               </article>
             </div>
             <img alt="image1" src={image_list[2]}></img>
+          </div>
+        </section>
+        <section className="relatedContentSection">
+          <header>Related Contents</header>
+          <div className="relatedContents">
+            {relatedContent.length &&
+              relatedContent.map((el) => (
+                <div className="relatedContent">
+                  <img alt="el.name" src={el.image_url} />
+                  <span className="relatedContentCategory">
+                    {el.main_category}, {el.issue}
+                  </span>
+                  <span className="relatedContentTitle">{el.title}</span>
+                  <span>{el.content}</span>
+                </div>
+              ))}
           </div>
         </section>
       </main>
