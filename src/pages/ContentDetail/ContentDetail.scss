@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
 
-  section {
+  .contentContainer {
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -43,6 +43,52 @@
 
     img {
       width: 45%;
+    }
+  }
+  .relatedContentSection {
+    display: flex;
+    width: 90%;
+    align-items: center;
+    flex-direction: column;
+    border-top: 0.1px solid black;
+    margin-bottom: 100px;
+
+    header {
+      margin: 50px 0;
+      font-weight: 500;
+    }
+
+    .relatedContents {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .relatedContent {
+        display: flex;
+        width: 15%;
+        height: 250px;
+        flex-direction: column;
+        align-items: flex-start;
+
+        img {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+
+        span {
+          font-size: 13px;
+          margin-bottom: 5px;
+        }
+
+        .relatedContentCategory {
+          margin-bottom: 20px;
+        }
+        .relatedContentCategory,
+        .relatedContentTitle {
+          font-weight: 600;
+        }
+      }
     }
   }
 }

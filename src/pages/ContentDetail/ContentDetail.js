@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-=======
 import { CONTENT_DETAIL_API } from "../../config";
->>>>>>> main
 import "./ContentDetail.scss";
 
 class ContentDetail extends Component {
@@ -17,28 +14,22 @@ class ContentDetail extends Component {
         issue: "",
         image_list: [],
       },
+      relatedContent: [],
     };
   }
 
   componentDidMount() {
-<<<<<<< HEAD
-    console.log(`10.58.2.235:8000/stories/story/${this.props.match.params.id}`);
-    fetch(`http://10.58.2.235:8000/stories/story/${this.props.match.params.id}`)
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res.story_detail[0]);
-=======
     fetch(`${CONTENT_DETAIL_API}${this.props.match.params.id}`)
       .then((res) => res.json())
       .then((res) => {
->>>>>>> main
-        this.setState({ contentInfo: res.story_detail[0] });
+        this.setState({ contentInfo: res.story_detail[0], relatedContent: res.related_stories });
       });
   }
 
   render() {
     const {
       contentInfo: { title, content, description, issue, image_list },
+      relatedContent,
     } = this.state;
     return (
       <main className="contentDetail">
@@ -59,6 +50,22 @@ class ContentDetail extends Component {
               </article>
             </div>
             <img alt="image1" src={image_list[2]}></img>
+          </div>
+        </section>
+        <section className="relatedContentSection">
+          <header>Related Contents</header>
+          <div className="relatedContents">
+            {relatedContent.length &&
+              relatedContent.map((el) => (
+                <div className="relatedContent">
+                  <img alt="el.name" src={el.image_url} />
+                  <span className="relatedContentCategory">
+                    {el.main_category}, {el.issue}
+                  </span>
+                  <span className="relatedContentTitle">{el.title}</span>
+                  <span>{el.content}</span>
+                </div>
+              ))}
           </div>
         </section>
       </main>
