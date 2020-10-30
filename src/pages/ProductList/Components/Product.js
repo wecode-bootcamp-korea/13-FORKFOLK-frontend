@@ -15,11 +15,13 @@ class Product extends Component {
       setModalIsOpen: false,
     };
   }
+
   isChangeHeartColor = (bool) => {
     this.setState({
       isFullHeartBool: true ? bool : !bool,
     });
   };
+
   addToCart = (id, name, price) => {
     fetch(`${BEAPIROOT}/order`, {
       method: "POST",
@@ -49,6 +51,7 @@ class Product extends Component {
       goToProductDetail,
       goToCartPage,
     } = this.props;
+
     return (
       <li id={id} className="Product">
         <div className="imageContainer">

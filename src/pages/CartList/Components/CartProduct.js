@@ -15,16 +15,21 @@ const OPTIONVALUE = [
 
 export default class CartProduct extends Component {
   render() {
-    const { product, changeQuantity, deleteProduct } = this.props;
+    const {
+      product: { id, image, name, price, quantity },
+      changeQuantity,
+      deleteProduct,
+    } = this.props;
+
     return (
-      <tr className="cartProducts" key={product.id}>
+      <tr className="cartProducts" key={id}>
         <td>
-          <img src={product.image} alt="장바구니 상품" />
+          <img src={image} alt="장바구니 상품" />
         </td>
-        <td>{product.name}</td>
-        <td>${product.price}</td>
+        <td>{name}</td>
+        <td>${price}</td>
         <td>
-          <select value={product.quantity} onChange={(e) => changeQuantity(e, product.id)}>
+          <select value={quantity} onChange={(e) => changeQuantity(e, id)}>
             {OPTIONVALUE.map((eachOption, i) => {
               return (
                 <option key={i} value={eachOption.value}>
@@ -34,12 +39,12 @@ export default class CartProduct extends Component {
             })}
           </select>
         </td>
-        <td>${product.price * product.quantity}</td>
+        <td>${price * quantity}</td>
         <td>
           <button className="delBtn">
             <FaRegTimesCircle
               className="delIcon"
-              onClick={() => deleteProduct(product.id, product.price * product.quantity)}
+              onClick={() => deleteProduct(id, price * quantity)}
             />
           </button>
         </td>
