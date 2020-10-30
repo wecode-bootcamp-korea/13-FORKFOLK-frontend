@@ -13,6 +13,7 @@ class ContentDetail extends Component {
         description: "",
         issue: "",
         image_list: [],
+        related_stories_list: [],
       },
     };
   }
@@ -21,7 +22,10 @@ class ContentDetail extends Component {
     fetch(`${CONTENT_DETAIL_API}${this.props.match.params.id}`)
       .then((res) => res.json())
       .then((res) => {
-        this.setState({ contentInfo: res.story_detail[0] });
+        console.log(res);
+        this.setState({
+          contentInfo: res.story_detail[0],
+        });
       });
   }
 
@@ -30,7 +34,7 @@ class ContentDetail extends Component {
       contentInfo: { title, content, description, issue, image_list },
     } = this.state;
     return (
-      <main className="contentDetail">
+      <main className="contentDetail" style={{ border: "1px solid #000" }}>
         <section className="contentContainer">
           <article>
             <span>{issue}</span>
