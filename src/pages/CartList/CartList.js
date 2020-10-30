@@ -2,23 +2,21 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Product from "../ProductList/Components/Product";
 import CartProduct from "../CartList/Components/CartProduct";
-import { JINAPIROOT } from "../../config";
-import { BEAPIROOT } from "../../config";
+import { JINAPIROOT, BEAPIROOT } from "../../config";
 import "./CartList.scss";
-const APIOfCartList = `${JINAPIROOT}/Data/cartList.json`;
 const backendAPI = `${BEAPIROOT}/order`;
+const APIOfCartList = `${JINAPIROOT}/Data/cartList.json`;
 export default class CartList extends Component {
   constructor() {
     super();
     this.state = {
       cartProducts: [],
-      // interestingProducts: [],
+      interestingProducts: [],
       subtotal: 0,
       shipping: 29,
     };
   }
   componentDidMount() {
-    console.log("componentDidMount start");
     Promise.all([
       fetch(`${backendAPI}?status=beforeOrder`, {
         headers: {
@@ -29,12 +27,19 @@ export default class CartList extends Component {
         .then((res) => {
           this.setState({
             cartProducts: res.in_cart_list,
-            // interestingProducts: res.interestingProducts,
             subtotal: res.in_cart_list
               .map((product) => {
                 return product.price * product.quantity;
               })
-              .reduce((a, b) => a + b),
+              .reduce((a, b) => a + b, 0),
+          });
+        })
+        .catch((err) => console.log("err.message", err.message)),
+      fetch(APIOfCartList)
+        .then((res) => res.json())
+        .then((res) => {
+          this.setState({
+            interestingProducts: res.interestingProducts,
           });
         })
         .catch((err) => console.log("err.message", err.message)),
@@ -43,16 +48,6 @@ export default class CartList extends Component {
   changeQuantity = (e, productId) => {
     const { value } = e.target;
     const { cartProducts } = this.state;
-    this.setState((prevState) => ({
-      cartProducts: prevState.cartProducts.map((product) =>
-        product.id === productId ? { ...product, quantity: value } : product,
-      ),
-      subtotal: cartProducts
-        .map((product) => {
-          return product.price * value;
-        })
-        .reduce((a, b) => a + b),
-    }));
     fetch(backendAPI, {
       method: "POST",
       body: JSON.stringify({
@@ -65,12 +60,20 @@ export default class CartList extends Component {
       },
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then((res) => {
+        this.setState((prevState) => ({
+          cartProducts: prevState.cartProducts.map((product) =>
+            product.id === productId ? { ...product, quantity: value } : product,
+          ),
+          subtotal: cartProducts
+            .map((product) => {
+              return product.price * value;
+            })
+            .reduce((a, b) => a + b, 0),
+        }));
+      });
   };
   deleteProduct = (id, totalPrice) => {
-    console.log("delete 함수가 실행중입니다.");
-    // const { cartProducts, subtotal } = this.state;
-    console.log("id", id);
     fetch(backendAPI, {
       method: "DELETE",
       body: JSON.stringify({
@@ -83,33 +86,22 @@ export default class CartList extends Component {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-        // this.setState({
-        //   cartProducts: res.in_cart_list
-        // });
+        this.setState({
+          cartProducts: res.remain_list,
+          subtotal: res.remain_list
+            .map((product) => {
+              return product.price * product.quantity;
+            })
+            .reduce((a, b) => a + b, 0),
+        });
       });
-    // const filteredCart = cartProducts.filter(
-    //   (product) => id !== Number(product.id)
-    // );
-    // this.setState({
-    //   cartProducts: filteredCart,
-    //   subtotal: subtotal - totalPrice,
-    // });
   };
   goToCheckout = (e) => {
     e.preventDefault();
-    // fetch(`API/checkout`, {method: "GET"})
-    //     .then(res => res.json())
-    //     .then(result => console.log(result))
     this.props.history.push(`/checkout`);
   };
   render() {
-    const {
-      cartProducts,
-      // interestingProducts,
-      subtotal,
-      shipping,
-    } = this.state;
+    const { cartProducts, interestingProducts, subtotal, shipping } = this.state;
     if (cartProducts.length === 0) {
       return (
         <div className="CartList">
@@ -212,10 +204,9 @@ export default class CartList extends Component {
           <div className="crossSells">
             <h2>You may be interested in...</h2>
             <ul>
-              <li>제품 출력 예정입니다.</li>
-              {/* {interestingProducts.map((product, i) => (
+              {interestingProducts.map((product, i) => (
                 <Product key={i} product={product} />
-              ))} */}
+              ))}
             </ul>
           </div>
         </div>

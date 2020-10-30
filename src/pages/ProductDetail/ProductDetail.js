@@ -21,46 +21,34 @@ class ProductDetail extends Component {
     this.state = {
       productInfo: {
         id: null,
-        productImg: [],
-        productName: "",
+        image: [],
+        name: "",
         price: "",
-        descriptions: [
-          {
-            kategory: "",
-            text: "",
-          },
-
-          {
-            kategory: "",
-            text: "",
-          },
-        ],
+        descriptions: {
+          description: "",
+          shipping: "",
+        },
       },
+      relatedProduct: [],
     };
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/Data/ProductDetailData.json", {})
+    fetch(`${PRODUCT_DETAIL_API}${this.props.match.params.id}`)
       .then((res) => res.json())
       .then((res) => {
-        this.setState({
-          productInfo: res.product,
-        });
+        this.setState({ productInfo: res.product_info, relatedProduct: res.related_product });
       });
   }
 
-  // componentDidMount() {
-  //     fetch(`${PRODUCT_DETAIL_API}/${this.props.match.params.id}`,
-  //         {
-  //     }).then(res => res.json())
-  //         .then(res => {
-  //         this.setState({productInfo:res})
-  //     })
-  //   }
+  goToBasket = () => {
+    this.props.history.push(`/order`);
+  };
 
   render() {
     const {
-      productInfo: { id, productImg, productName, price, descriptions },
+      productInfo: { id, image, name, price, descriptions },
+      relatedProduct,
     } = this.state;
     return (
       <div className="productDetail">
@@ -68,26 +56,43 @@ class ProductDetail extends Component {
           <ul>
             {HEADER_CATEGORYS.map((headerCategory) => (
               <li>
-                <button>{headerCategory}</button>
+                <button name={headerCategory} onClick={this.goToShop}>
+                  {headerCategory}
+                </button>
               </li>
             ))}
           </ul>
         </header>
         <section>
-          <ProductTumbnail productImg={productImg} />
+          {Object.keys(this.state.productInfo.image).length && (
+            <ProductTumbnail productImg={image} />
+          )}
           <aside>
             <ProductDescription
               id={id}
-              productName={productName}
+              productName={name}
               price={price}
               descriptions={descriptions}
             />
-            <ProductCartMenu price={price} />
+            <ProductCartMenu id={id} price={price} goToBasket={this.goToBasket} />
           </aside>
+        </section>
+        <section className="relatedProductSection">
+          <header>Related products</header>
+          <div className="relatedProducts">
+            {relatedProduct.length &&
+              relatedProduct.map((el) => (
+                <div className="relatedProduct">
+                  <img alt="el.name" src={el.image} />
+                  <span className="relatedProductCategory">{el.category}</span>
+                  <span>{el.name}</span>
+                  <span>${el.price}</span>
+                </div>
+              ))}
+          </div>
         </section>
       </div>
     );
   }
 }
-
 export default ProductDetail;
