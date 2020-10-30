@@ -5,9 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { BEAPIROOT } from "../../../config";
-
 ReactModal.setAppElement("#root");
-
 class Product extends Component {
   constructor() {
     super();
@@ -17,15 +15,11 @@ class Product extends Component {
       setModalIsOpen: false,
     };
   }
-
-  isChangeHeartColor = () => {
-    const { isFullHeartBool } = this.state;
-
+  isChangeHeartColor = (bool) => {
     this.setState({
-      isFullHeartBool: isFullHeartBool ? !isFullHeartBool : isFullHeartBool,
+      isFullHeartBool: true ? bool : !bool,
     });
   };
-
   addToCart = (id, name, price) => {
     fetch(`${BEAPIROOT}/order`, {
       method: "POST",
@@ -41,29 +35,31 @@ class Product extends Component {
       .then((res) => res.json())
       .then((result) => console.log(result));
   };
-
   setModalIsOpen = (bool) => {
     this.setState({
       modalIsOpen: bool,
       setModalIsOpen: bool,
     });
   };
-
   render() {
     const { isFullHeartBool } = this.state;
-    const { product, filterByCategory, goToProductDetail, goToCartPage } = this.props;
-
+    const {
+      product: { id, image, name, price, category },
+      filterByCategory,
+      goToProductDetail,
+      goToCartPage,
+    } = this.props;
     return (
-      <li id={product.id} className="Product">
+      <li id={id} className="Product">
         <div className="imageContainer">
           <button
             onClick={() => {
-              goToProductDetail(product.id);
+              goToProductDetail(id);
             }}
           >
-            <img className="productImage" src={product.image} alt="상품 이미지" />
+            <img className="productImage" src={image} alt="상품 이미지" />
           </button>
-          <button className="heartIcon" onClick={this.isChangeHeartColor}>
+          <button className="heartIcon" onClick={() => this.isChangeHeartColor(!isFullHeartBool)}>
             {isFullHeartBool ? (
               <FaHeart className="fullHeart" />
             ) : (
@@ -73,7 +69,7 @@ class Product extends Component {
           <button
             className="addToCart"
             onClick={() => {
-              this.addToCart(product.id, product.name, product.price);
+              this.addToCart(id, name, price);
               this.setModalIsOpen(true);
             }}
           >
@@ -82,13 +78,13 @@ class Product extends Component {
         </div>
         <button
           className="category"
-          onClick={() => filterByCategory(product.category, 1)}
-          category={product.category}
+          onClick={() => filterByCategory(category, 1)}
+          category={category}
         >
-          {product.category}
+          {category}
         </button>
-        <p>{product.name}</p>
-        <div>${product.price}</div>
+        <p>{name}</p>
+        <div>${price}</div>
         <ReactModal
           className="modalWindow"
           isOpen={this.state.modalIsOpen}
@@ -101,7 +97,6 @@ class Product extends Component {
               <FaRegTimesCircle />
             </button>
           </div>
-
           <div>
             <button onClick={goToCartPage}>View Cart</button>
             <button onClick={() => this.setModalIsOpen(false)}>Stay on this Page</button>
@@ -111,5 +106,4 @@ class Product extends Component {
     );
   }
 }
-
 export default Product;

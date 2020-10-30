@@ -4,10 +4,8 @@ import Product from "../ProductList/Components/Product";
 import CartProduct from "../CartList/Components/CartProduct";
 import { JINAPIROOT, BEAPIROOT } from "../../config";
 import "./CartList.scss";
-
 const backendAPI = `${BEAPIROOT}/order`;
 const APIOfCartList = `${JINAPIROOT}/Data/cartList.json`;
-
 export default class CartList extends Component {
   constructor() {
     super();
@@ -18,7 +16,6 @@ export default class CartList extends Component {
       shipping: 29,
     };
   }
-
   componentDidMount() {
     Promise.all([
       fetch(`${backendAPI}?status=beforeOrder`, {
@@ -34,11 +31,10 @@ export default class CartList extends Component {
               .map((product) => {
                 return product.price * product.quantity;
               })
-              .reduce((a, b) => a + b),
+              .reduce((a, b) => a + b, 0),
           });
         })
         .catch((err) => console.log("err.message", err.message)),
-
       fetch(APIOfCartList)
         .then((res) => res.json())
         .then((res) => {
@@ -49,11 +45,9 @@ export default class CartList extends Component {
         .catch((err) => console.log("err.message", err.message)),
     ]);
   }
-
   changeQuantity = (e, productId) => {
     const { value } = e.target;
     const { cartProducts } = this.state;
-
     fetch(backendAPI, {
       method: "POST",
       body: JSON.stringify({
@@ -75,11 +69,10 @@ export default class CartList extends Component {
             .map((product) => {
               return product.price * value;
             })
-            .reduce((a, b) => a + b),
+            .reduce((a, b) => a + b, 0),
         }));
       });
   };
-
   deleteProduct = (id, totalPrice) => {
     fetch(backendAPI, {
       method: "DELETE",
@@ -99,16 +92,14 @@ export default class CartList extends Component {
             .map((product) => {
               return product.price * product.quantity;
             })
-            .reduce((a, b) => a + b),
+            .reduce((a, b) => a + b, 0),
         });
       });
   };
-
   goToCheckout = (e) => {
     e.preventDefault();
     this.props.history.push(`/checkout`);
   };
-
   render() {
     const { cartProducts, interestingProducts, subtotal, shipping } = this.state;
     if (cartProducts.length === 0) {

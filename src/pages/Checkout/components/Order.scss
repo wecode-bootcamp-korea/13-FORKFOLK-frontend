@@ -1,0 +1,21 @@
+.Order {
+  width: 75%;
+  tbody {
+    tr {
+      display: flex;
+      padding: 20px 10px;
+      justify-content: space-between;
+      border-bottom: 1px solid #000;
+      &.shipping,
+      &:first-child {
+        border-bottom-width: 2px;
+      }
+      &:last-child {
+        padding-bottom: 50px;
+      }
+      th {
+        color: #7a7a7a;
+      }
+    }
+  }
+}
