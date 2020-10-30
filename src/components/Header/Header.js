@@ -14,15 +14,21 @@ class Header extends Component {
       logoMarginTop: 300,
       logoScale: 7,
       isMain: true,
+      isLoggedIn: false,
+      logoAni: true,
     };
   }
+
+  isLoggedInHandler = (state) => {
+    this.setState({ isLoggedIn: state });
+  };
 
   goToMain = () => {
     this.props.history.push("/");
   };
 
   goToShoppingList = () => {
-    this.props.history.push("/cart");
+    this.props.history.push("/order");
   };
 
   sideMenuVisibilityHandler = () => {
@@ -31,12 +37,12 @@ class Header extends Component {
   };
 
   shoppingListButtonValidHandler = () => {
-    localStorage.getItem("user-token") &&
-      this.setState({ shoppingListValid: true });
+    localStorage.getItem("user-token") && this.setState({ shoppingListValid: true });
   };
 
   logoScaleHandler = () => {
     const { scrollY } = window;
+
     if (scrollY >= 0 && scrollY < 300) {
       if (scrollY === 0) {
         this.setState({ logoScale: 7, logoMarginTop: 300 });
@@ -46,19 +52,19 @@ class Header extends Component {
         this.setState({
           logoScale: 1,
           logoMarginTop: 0,
-          scrollAniDisable: true,
+          logoAni: false,
         });
         return;
       }
       this.setState({
         logoScale: 7 - (scrollY / 50) * 1.5,
         logoMarginTop: 300 - (scrollY / 50) * 75,
+        logoAni: true,
       });
     }
   };
 
   componentDidMount() {
-    this.shoppingListButtonValidHandler();
     if (this.props.location.pathname === "/") {
       this.setState({ logoScale: 7, logoMarginTop: 300 });
       window.addEventListener("scroll", this.logoScaleHandler, false);
@@ -66,9 +72,10 @@ class Header extends Component {
     if (this.props.location.pathname !== "/") {
       this.setState({ logoScale: 1, logoMarginTop: 0 });
     }
+    localStorage.getItem("user-token") && this.setState({ isLoggedIn: true });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevProps.location.pathname !== this.props.location.pathname) {
       window.removeEventListener("scroll", this.logoScaleHandler, false);
       if (this.props.location.pathname !== "/") {
@@ -79,6 +86,8 @@ class Header extends Component {
         });
       }
       if (this.props.location.pathname === "/") {
+        if (window.scrollY > 200) {
+        }
         this.setState({
           logoScale: 7,
           logoMarginTop: 300,
@@ -86,16 +95,12 @@ class Header extends Component {
         });
         window.addEventListener("scroll", this.logoScaleHandler, false);
       }
+      localStorage.getItem("user-token") && this.setState({ isLoggedIn: true });
     }
   }
 
   render() {
-    const {
-      sideMenuVisible,
-      shoppingListValid,
-      logoScale,
-      logoMarginTop,
-    } = this.state;
+    const { sideMenuVisible, isLoggedIn, logoScale, logoMarginTop } = this.state;
     return (
       <>
         <div className="Header">
@@ -121,7 +126,7 @@ class Header extends Component {
               <img src={logo} alt="logo" onClick={() => this.goToMain()} />
             </div>
             <ul>
-              {shoppingListValid && (
+              {isLoggedIn && (
                 <li>
                   <button onClick={() => this.goToShoppingList()}>
                     <FaShoppingCart />
@@ -134,10 +139,7 @@ class Header extends Component {
                 </button>
               </li>
               <li>
-                <button
-                  className="sideMenuButton"
-                  onClick={() => this.sideMenuVisibilityHandler()}
-                >
+                <button className="sideMenuButton" onClick={() => this.sideMenuVisibilityHandler()}>
                   <span></span>
                   <span></span>
                   <span></span>
@@ -149,6 +151,8 @@ class Header extends Component {
         <SideMenu
           visible={sideMenuVisible}
           sideMenuVisibilityHandler={() => this.sideMenuVisibilityHandler()}
+          isLoggedInHandler={() => this.isLoggedInHandler()}
+          isLoggedIn={isLoggedIn}
         />
       </>
     );

@@ -5,9 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { BEAPIROOT } from "../../../config";
-
 ReactModal.setAppElement("#root");
-
 class Product extends Component {
   constructor() {
     super();
@@ -39,14 +37,12 @@ class Product extends Component {
       .then((res) => res.json())
       .then((result) => console.log(result));
   };
-
   setModalIsOpen = (bool) => {
     this.setState({
       modalIsOpen: bool,
       setModalIsOpen: bool,
     });
   };
-
   render() {
     const { isFullHeartBool } = this.state;
     const {
@@ -104,7 +100,6 @@ class Product extends Component {
               <FaRegTimesCircle />
             </button>
           </div>
-
           <div>
             <button onClick={goToCartPage}>View Cart</button>
             <button onClick={() => this.setModalIsOpen(false)}>Stay on this Page</button>
@@ -114,5 +109,4 @@ class Product extends Component {
     );
   }
 }
-
 export default Product;
