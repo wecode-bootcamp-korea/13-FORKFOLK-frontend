@@ -23,7 +23,7 @@ class Order extends Component {
 
   componentDidMount() {
     console.log(localStorage.getItem("user-token"));
-    fetch(`http://10.58.1.116:8000/checkout?status=beforeOrder`, {
+    fetch(`${ORDER_API}/checkout?status=beforeOrder`, {
       headers: {
         Authorization: localStorage.getItem("user-token"),
       },

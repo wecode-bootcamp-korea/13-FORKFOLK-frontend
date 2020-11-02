@@ -30,11 +30,7 @@ class ParallaxBackgroundContent extends Component {
     const { minusValue } = this.props;
     return (
       <div className="ParallaxBackgroundContent">
-        <img
-          src={backgroundImg}
-          alt="img"
-          style={{ top: `${(scrollY - minusValue) * 0.5}px` }}
-        />
+        <img src={backgroundImg} alt="img" style={{ top: `${(scrollY - minusValue) * 0.5}px` }} />
         <span>NINA RICCI</span>
       </div>
     );
