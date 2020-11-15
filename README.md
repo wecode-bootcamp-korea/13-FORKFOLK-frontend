@@ -31,17 +31,11 @@
 
 ## 작업 순서
 
-### 1차 스프린트
-
 1. CRA를 통한 초기 세팅 구축
 1. reset.scss 및 common.scss 추가
 1. 팀원 파트 분배 및 작업 진행
 
 - 구현정: Header, Main Page, Footer, Side Menu
-- 백은진: Product List Page
-- 이예린: Account Page
+- 백은진: Product List Page, Cart List Page
+- 이예린: Account Page, Product Detail page, Content Detail page
 - 임향수: Core Contents Page
-
-### 2차 스프린트
-
-- 추후 작성 예정
